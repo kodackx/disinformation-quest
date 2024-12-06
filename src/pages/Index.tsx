@@ -52,7 +52,7 @@ const Index = () => {
   const handleStartGame = () => {
     setGameStarted(true);
     toast({
-      title: "Welcome to the Disinformation Campaign Simulator",
+      title: "Welcome to TwoPlusTwo",
       description: "Learn how misinformation spreads by making strategic choices.",
     });
   };
@@ -71,7 +71,7 @@ const Index = () => {
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex items-center justify-center p-4">
         <Card className="w-full max-w-2xl bg-black/50 text-white border-gray-700">
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl mb-2">Disinformation Quest</CardTitle>
+            <CardTitle className="text-3xl mb-2">TwoPlusTwo</CardTitle>
             <CardDescription className="text-gray-300">
               An educational game about the mechanics of disinformation campaigns
             </CardDescription>
@@ -85,7 +85,7 @@ const Index = () => {
             <div className="flex justify-center">
               <Button 
                 onClick={handleStartGame}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg"
+                className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg"
               >
                 Begin Simulation
               </Button>
