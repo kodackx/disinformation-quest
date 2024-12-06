@@ -41,7 +41,6 @@ const stages: GameStage[] = [
       }
     ]
   }
-  // More stages will be added as we expand the game
 ];
 
 const Index = () => {
@@ -62,14 +61,13 @@ const Index = () => {
       title: "Choice Made",
       description: `You've selected option ${choiceId}. Watch how it affects your campaign.`,
     });
-    // We'll add more complex logic here as we develop the game
     setCurrentStage((prev) => prev + 1);
   };
 
   if (!gameStarted) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex items-center justify-center p-4">
-        <Card className="w-full max-w-2xl bg-black/50 text-white border-gray-700">
+        <Card className="w-full max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
           <CardHeader className="text-center">
             <CardTitle className="text-3xl mb-2">TwoPlusTwo</CardTitle>
             <CardDescription className="text-gray-300">
@@ -85,7 +83,7 @@ const Index = () => {
             <div className="flex justify-center">
               <Button 
                 onClick={handleStartGame}
-                className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg"
+                className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg transition-all duration-500"
               >
                 Begin Simulation
               </Button>
@@ -101,7 +99,7 @@ const Index = () => {
   if (!currentStageData) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex items-center justify-center p-4">
-        <Card className="w-full max-w-2xl bg-black/50 text-white border-gray-700">
+        <Card className="w-full max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
           <CardHeader>
             <CardTitle>Simulation Complete</CardTitle>
           </CardHeader>
@@ -115,7 +113,7 @@ const Index = () => {
                 setCurrentStage(0);
                 setGameStarted(false);
               }}
-              className="mt-4 bg-purple-600 hover:bg-purple-700"
+              className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-black transition-all duration-500"
             >
               Start Over
             </Button>
@@ -128,7 +126,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 p-4">
       <div className="max-w-4xl mx-auto">
-        <Card className="bg-black/50 text-white border-gray-700">
+        <Card className="bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
           <CardHeader>
             <CardTitle>{currentStageData.title}</CardTitle>
             <CardDescription className="text-gray-300">
@@ -139,7 +137,7 @@ const Index = () => {
             {currentStageData.choices.map((choice) => (
               <Card 
                 key={choice.id} 
-                className="bg-gray-800/50 hover:bg-gray-700/50 transition-colors cursor-pointer border-gray-600"
+                className="bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-1000 cursor-pointer border-gray-600 animate-fade-in"
                 onClick={() => handleChoice(choice.id)}
               >
                 <CardHeader>
