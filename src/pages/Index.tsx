@@ -12,7 +12,14 @@ import { Badge } from "@/components/ui/badge";
 import { AlertCircle, Lock, Shield } from "lucide-react";
 import { Volume2, VolumeX, Volume1 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
-import { playClickSound } from "@/utils/audio";
+import { playAcceptMissionSound, playDeployStratagemSound, playRecordingSound, playClickSound } from "@/utils/audio";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface GameStage {
   id: number;
@@ -455,23 +462,42 @@ const stages: GameStage[] = [
 
 const TypewriterText = ({ text, onComplete }: { text: string, onComplete?: () => void }) => {
   const [displayedText, setDisplayedText] = useState('');
+  const intervalRef = useRef<NodeJS.Timeout>();
   
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index < text.length) {
-        setDisplayedText((prev) => prev + text[index]);
-        index++;
+    // Reset displayed text when text prop changes
+    setDisplayedText('');
+    
+    const characters = text.split('');
+    let currentIndex = 0;
+    
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    
+    intervalRef.current = setInterval(() => {
+      if (currentIndex < characters.length) {
+        setDisplayedText(prev => prev + characters[currentIndex]);
+        currentIndex++;
       } else {
-        clearInterval(timer);
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+        }
         onComplete?.();
       }
     }, 30);
     
-    return () => clearInterval(timer);
+    // Cleanup function
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, [text, onComplete]);
   
-  return <span>{displayedText}</span>;
+  // Only render the text, nothing else
+  return displayedText;
 };
 
 const BriefingAudio = ({ 
@@ -523,7 +549,7 @@ const BriefingAudio = ({
   if (!expertAudio) return null;
 
   const togglePlay = () => {
-    playClickSound();
+    playRecordingSound();
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
@@ -535,7 +561,7 @@ const BriefingAudio = ({
   };
 
   const toggleMute = () => {
-    playClickSound();
+    playRecordingSound();
     if (isMuted) {
       setVolume(prevVolume.current);
       setIsMuted(false);
@@ -624,9 +650,10 @@ const Index = () => {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [showingInitialTransition, setShowingInitialTransition] = useState(false);
+  const [showIntroDialog, setShowIntroDialog] = useState(true);
 
   const handleStartGame = () => {
-    playClickSound();
+    playAcceptMissionSound();
     setShowingInitialTransition(true);
   };
 
@@ -640,7 +667,7 @@ const Index = () => {
   };
 
   const handleChoice = async (choice: GameStage["choices"][0]) => {
-    playClickSound();
+    playDeployStratagemSound();
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current = null;
@@ -687,8 +714,17 @@ const Index = () => {
   };
 
   const handleContinue = () => {
-    playClickSound();
+    playDeployStratagemSound();
     setShowingResult(false);
+    
+    // Check if this was the last stage
+    if (currentStage >= stages.length - 1) {
+      // Move to completion screen
+      setCurrentStage(stages.length);
+      return;
+    }
+
+    // Otherwise, continue to next stage
     setShowingMonthTransition(true);
     setNextStage(currentStage + 1);
   };
@@ -707,7 +743,6 @@ const Index = () => {
         <Button 
           className="fixed top-4 right-4 bg-yellow-500 hover:bg-yellow-600 text-black"
           size="sm"
-          onClick={() => playClickSound()}
         >
           <ClipboardList className="w-4 h-4 mr-2" />
           Dossier
@@ -771,6 +806,83 @@ const Index = () => {
     </div>
   );
 
+  const IntroDialog = () => (
+    <Dialog open={showIntroDialog} onOpenChange={setShowIntroDialog}>
+      <DialogContent className="bg-gray-900/95 text-white border-gray-700 max-w-2xl">
+        <DialogHeader>
+          <DialogTitle className="text-2xl text-yellow-500 mb-4">
+            Understanding Disinformation Through Simulation
+          </DialogTitle>
+          <DialogDescription className="space-y-4 text-gray-300">
+            <div className="space-y-2">
+              <p className="font-semibold text-yellow-500">What is Disinformation?</p>
+              <p>
+                Disinformation is deliberately created false information intended to mislead, harm, or 
+                manipulate people, social groups, organizations, or countries. It's a sophisticated form 
+                of deception that exploits existing divisions and vulnerabilities in society.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-yellow-500">Why Does It Matter Today?</p>
+              <p>
+                In our hyperconnected world, information spreads at unprecedented speeds across global networks. 
+                While this connectivity brings many benefits, it also creates perfect conditions for coordinated 
+                disinformation campaigns to operate at massive scale.
+              </p>
+              <p>
+                We're bombarded with more information daily than we could ever hope to fact-check or verify. 
+                This information overload, combined with sophisticated manipulation techniques, makes us all 
+                vulnerable. The best defense is understanding how these campaigns work - building an "immune 
+                system" against manipulation by learning to recognize their strategies.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-yellow-500">About This Simulation</p>
+              <p>
+                In this interactive experience, you'll step into the role of a disinformation agent 
+                with an absurd mission: convincing people that 2+2=5. While the scenario is 
+                intentionally ridiculous, the techniques and strategies you'll encounter are based on 
+                real-world disinformation tactics.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="font-semibold text-yellow-500">Educational Purpose</p>
+              <p>
+                By experiencing how disinformation campaigns operate from the inside, you'll:
+              </p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>Learn to recognize common disinformation tactics</li>
+                <li>Understand how false narratives spread through different channels</li>
+                <li>Develop better critical thinking skills to identify manipulation attempts</li>
+                <li>See how social psychology and cognitive biases are exploited</li>
+              </ul>
+            </div>
+
+            <div className="mt-6 p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
+              <p className="text-yellow-500 font-semibold">Remember:</p>
+              <p className="text-gray-300">
+                This is an educational tool designed to help you understand and combat disinformation 
+                in the real world. The better you understand how these campaigns work, the better 
+                equipped you'll be to recognize and resist them.
+              </p>
+            </div>
+          </DialogDescription>
+        </DialogHeader>
+        <div className="flex justify-center mt-6">
+          <Button 
+            onClick={() => setShowIntroDialog(false)}
+            className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-2"
+          >
+            Begin Experience
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+
   if (!gameStarted) {
     if (showingInitialTransition) {
       return (
@@ -779,12 +891,6 @@ const Index = () => {
           <div className="relative min-h-screen bg-transparent p-4 flex items-center">
             <DossierPanel entries={dossierEntries} />
             <div className="max-w-4xl mx-auto w-full relative">
-              <BriefingAudio 
-                stage={stages[0].title} 
-                audioRef={audioRef} 
-                autoPlay={false}
-                className="absolute top-4 left-4"
-              />
               <MonthTransition 
                 month={stages[0].title.split(":")[0]}
                 onComplete={handleInitialTransitionComplete}
@@ -799,6 +905,7 @@ const Index = () => {
       <div className="relative min-h-screen overflow-hidden">
         <GameBackground />
         <div className="relative min-h-screen bg-transparent flex items-center justify-center p-4">
+          <IntroDialog />
           <DossierPanel entries={dossierEntries} />
           <Card className="w-full max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in backdrop-blur-sm">
             <CardHeader className="text-center space-y-4">

@@ -1,37 +1,35 @@
-const CLICK_SOUNDS = [
-  "/audio/click1.mp3",
-  "/audio/click2.mp3"
-];
+const audioCache: { [key: string]: HTMLAudioElement } = {};
 
-class AudioPlayer {
-  private static instance: AudioPlayer;
-  private audioElements: { [key: string]: HTMLAudioElement } = {};
-
-  private constructor() {
-    // Pre-load click sounds
-    CLICK_SOUNDS.forEach((sound, index) => {
-      const audio = new Audio(sound);
-      audio.volume = 0.3; // Lower volume for UI sounds
-      this.audioElements[`click${index + 1}`] = audio;
-    });
+function createAudio(src: string): HTMLAudioElement {
+  if (audioCache[src]) {
+    return audioCache[src];
   }
-
-  public static getInstance(): AudioPlayer {
-    if (!AudioPlayer.instance) {
-      AudioPlayer.instance = new AudioPlayer();
-    }
-    return AudioPlayer.instance;
-  }
-
-  public playClickSound() {
-    const randomIndex = Math.floor(Math.random() * CLICK_SOUNDS.length);
-    const sound = this.audioElements[`click${randomIndex + 1}`];
-    if (sound) {
-      // Create a clone to allow overlapping sounds
-      const clone = sound.cloneNode() as HTMLAudioElement;
-      clone.play();
-    }
-  }
+  const audio = new Audio(src);
+  audioCache[src] = audio;
+  return audio;
 }
 
-export const playClickSound = () => AudioPlayer.getInstance().playClickSound(); 
+export function playSound(src: string, volume = 0.75) {
+  const audio = createAudio(src);
+  audio.volume = volume;
+  audio.currentTime = 0;
+  audio.play().catch(err => console.error('Audio playback failed:', err));
+}
+
+// Dedicated sound functions
+export function playAcceptMissionSound() {
+  playSound('/audio/accept-mission-click.mp3');
+}
+
+export function playDeployStratagemSound() {
+  playSound('/audio/deploy-stratagem-click.wav');
+}
+
+export function playRecordingSound() {
+  playSound('/audio/play-recording-click.mp3');
+}
+
+// Generic click sound (keep existing functionality)
+export function playClickSound() {
+  playDeployStratagemSound();
+} 
