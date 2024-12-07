@@ -44,12 +44,87 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
-				}
+				},
+				float: {
+					"0%, 100%": { transform: "translateY(0) translateX(0)" },
+					"25%": { transform: "translateY(-20px) translateX(10px)" },
+					"50%": { transform: "translateY(-35px) translateX(-10px)" },
+					"75%": { transform: "translateY(-20px) translateX(8px)" },
+				},
+				'month-transition': {
+					'0%': {
+						opacity: '0',
+						transform: 'scale(0.9)'
+					},
+					'20%': {
+						opacity: '1',
+						transform: 'scale(1)'
+					},
+					'80%': {
+						opacity: '1',
+						transform: 'scale(1)'
+					},
+					'100%': {
+						opacity: '0',
+						transform: 'scale(1.1)'
+					}
+				},
+				'typewriter': {
+					'from': { width: '0' },
+					'to': { width: '100%' }
+				},
+				'blink': {
+					'50%': { borderColor: 'transparent' }
+				},
+				'slide-in-left': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				'slide-in-right': {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				'digital-rain': {
+					'0%': { transform: 'translateY(-100%)', opacity: '0' },
+					'50%': { opacity: '1' },
+					'100%': { transform: 'translateY(100%)', opacity: '0' }
+				},
+				'text-glitch': {
+					'0%': { transform: 'translate(0)' },
+					'20%': { transform: 'translate(-2px, 2px)' },
+					'40%': { transform: 'translate(2px, -2px)' },
+					'60%': { transform: 'translate(-2px, -2px)' },
+					'80%': { transform: 'translate(2px, 2px)' },
+					'100%': { transform: 'translate(0)' }
+				},
+				'number-cycle': {
+					'0%': { transform: 'translateY(100%)', opacity: '0' },
+					'20%': { transform: 'translateY(0)', opacity: '1' },
+					'80%': { transform: 'translateY(0)', opacity: '1' },
+					'100%': { transform: 'translateY(-100%)', opacity: '0' }
+				},
+				'transition-container': {
+					'0%': { opacity: '0' },
+					'33%': { opacity: '1' },
+					'66%': { opacity: '1' },
+					'100%': { opacity: '0' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 1s ease-out'
+				'fade-in': 'fade-in 1s ease-out',
+				'float': 'float 20s ease-in-out infinite',
+				'pulse-slow': 'pulse 4s ease-in-out infinite',
+				'month-transition': 'month-transition 3s ease-in-out forwards',
+				'typewriter': 'typewriter 2s steps(20) forwards',
+				'cursor-blink': 'blink 1s infinite',
+				'slide-left': 'slide-in-left 1.5s ease-out',
+				'slide-right': 'slide-in-right 1.5s ease-out',
+				'rain': 'digital-rain 2s linear infinite',
+				'glitch': 'text-glitch 0.5s ease infinite',
+				'cycle': 'number-cycle 0.5s ease-in-out',
+				'transition-container': 'transition-container 3s ease-in-out forwards',
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -100,7 +175,10 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
-			}
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

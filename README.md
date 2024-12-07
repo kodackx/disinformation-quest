@@ -1,5 +1,33 @@
 # Welcome to your Lovable project
 
+## Mission Brief: Operation Mathematical Persuasion
+
+**CLEARANCE LEVEL**: TOP SECRET  
+**MISSION STATUS**: ACTIVE
+
+Dear Agent,
+
+Your mission, should you choose to accept it, is to execute Operation Mathematical Persuasion: convincing the general population that 2+2=5. This is a highly sophisticated psychological operation requiring finesse, creativity, and unwavering dedication.
+
+**Resources at your disposal:**
+- A team of cognitive psychology experts
+- Advanced social media manipulation algorithms
+- Network of influential mathematics professors
+- State-of-the-art reality distortion technology
+- Quantum uncertainty specialists
+
+**Key Objectives:**
+1. Gradually introduce doubt into basic arithmetic
+2. Deploy sophisticated mathematical proofs with intentional errors
+3. Establish alternative mathematical frameworks
+4. Influence key educational institutions
+
+Remember: Reality is malleable, truth is negotiable, and mathematics is our playground.
+
+Good luck, Agent. The future of mathematical chaos depends on you.
+
+---
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/81423a31-1e32-4da1-b996-65839f426144
