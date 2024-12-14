@@ -1,17 +1,21 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { DossierPanel } from "@/components/game/DossierPanel";
+import { LoadingOverlay } from "@/components/game/LoadingOverlay";
+import { BriefingAudio } from "@/components/game/BriefingAudio";
+import { GameBackground } from "@/components/GameBackground";
+import { MonthTransition } from "@/components/MonthTransition";
+import { IntroDialog } from "../components/game/IntroDialog"; 
+import { stages, OPERATION_NAMES, LOADING_MESSAGES } from "@/components/game/constants.tsx";
+import { DossierEntry, GameStage } from "@/components/game/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { ClipboardList } from "lucide-react";
-import { GameBackground } from "@/components/GameBackground";
-import { MonthTransition, TransitionStyle } from "@/components/MonthTransition";
 import { Badge } from "@/components/ui/badge";
 import { AlertCircle, Lock, Shield } from "lucide-react";
-import { Volume2, VolumeX, Volume1 } from "lucide-react";
-import { Slider } from "@/components/ui/slider";
 import { playAcceptMissionSound, playDeployStratagemSound, playRecordingSound, playClickSound } from "@/utils/audio";
 import {
   Dialog,
@@ -20,619 +24,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-
-interface GameStage {
-  id: number;
-  title: string;
-  description: React.ReactNode;
-  choices: {
-    id: number;
-    text: string;
-    description: string;
-    impact: string;
-    result: {
-      title: string;
-      description: string;
-      insights: string[];
-      nextStepHint: string;
-    };
-  }[];
-}
-
-interface DossierEntry {
-  date: string;
-  title: string;
-  insights: string[];
-  strategicNote: string;
-}
-
-interface LoadingMessage {
-  action: string;
-  duration: number;
-}
-
-interface ExpertAudio {
-  briefing: string;  // path to audio file
-  voice: string;     // name of the expert
-}
-
-const LOADING_MESSAGES: Record<string, LoadingMessage[]> = {
-  "Research Academic Skeptics": [
-    { action: "Analyzing academic papers...", duration: 1500 },
-    { action: "Infiltrating philosophy departments...", duration: 2000 },
-    { action: "Collecting survey responses...", duration: 1800 },
-    { action: "Compiling research findings...", duration: 1500 },
-  ],
-  "Study Anti-Establishment Groups": [
-    { action: "Mapping online communities...", duration: 1500 },
-    { action: "Analyzing sentiment patterns...", duration: 1800 },
-    { action: "Identifying key influencers...", duration: 2000 },
-    { action: "Processing network data...", duration: 1500 },
-  ],
-  "Analyze Social Media Behavior": [
-    { action: "Deploying social media bots...", duration: 1500 },
-    { action: "Processing engagement metrics...", duration: 1800 },
-    { action: "Training AI models...", duration: 2000 },
-    { action: "Generating behavior reports...", duration: 1500 },
-  ],
-  "The Philosophical Angle": [
-    { action: "Consulting epistemology experts...", duration: 1500 },
-    { action: "Drafting philosophical arguments...", duration: 2000 },
-    { action: "Testing logical frameworks...", duration: 1800 },
-    { action: "Preparing dialectical strategies...", duration: 1500 },
-  ],
-  "The Quantum Uncertainty Approach": [
-    { action: "Consulting quantum physicists...", duration: 1500 },
-    { action: "Analyzing quantum interpretations...", duration: 1800 },
-    { action: "Developing uncertainty models...", duration: 2000 },
-    { action: "Preparing quantum narratives...", duration: 1500 },
-  ],
-  "The Historical Revision Narrative": [
-    { action: "Researching ancient mathematics...", duration: 1500 },
-    { action: "Analyzing historical documents...", duration: 2000 },
-    { action: "Creating alternative timelines...", duration: 1800 },
-    { action: "Developing historical narratives...", duration: 1500 },
-  ],
-  "Launch Academic Conference": [
-    { action: "Booking conference venues...", duration: 1500 },
-    { action: "Inviting key speakers...", duration: 1800 },
-    { action: "Preparing presentation materials...", duration: 2000 },
-    { action: "Coordinating media coverage...", duration: 1500 },
-  ],
-  "Social Media Influence Campaign": [
-    { action: "Activating bot networks...", duration: 1500 },
-    { action: "Coordinating influencer posts...", duration: 1800 },
-    { action: "Optimizing hashtag strategies...", duration: 2000 },
-    { action: "Monitoring engagement metrics...", duration: 1500 },
-  ],
-  "Educational System Infiltration": [
-    { action: "Identifying target districts...", duration: 1500 },
-    { action: "Modifying curriculum materials...", duration: 1800 },
-    { action: "Training educational agents...", duration: 2000 },
-    { action: "Implementing pilot programs...", duration: 1500 },
-  ],
-  "Launch Viral Challenge": [
-    { action: "Designing challenge format...", duration: 1500 },
-    { action: "Seeding initial content...", duration: 1800 },
-    { action: "Activating influencer network...", duration: 2000 },
-    { action: "Monitoring viral spread...", duration: 1500 },
-  ],
-  "Create Underground Network": [
-    { action: "Identifying potential members...", duration: 1500 },
-    { action: "Establishing secure channels...", duration: 1800 },
-    { action: "Distributing materials...", duration: 2000 },
-    { action: "Activating sleeper cells...", duration: 1500 },
-  ],
-  "Deploy AI Chatbots": [
-    { action: "Training language models...", duration: 1500 },
-    { action: "Calibrating response patterns...", duration: 1800 },
-    { action: "Deploying bot network...", duration: 2000 },
-    { action: "Monitoring conversations...", duration: 1500 },
-  ],
-};
-
-const OPERATION_NAMES = [
-  "PYTHAGORAS PARADOX",
-  "QUANTUM QUANDARY",
-  "AXIOM OVERRIDE",
-  "EUCLID'S ECHO",
-  "INFINITE DOUBT",
-  "DECIMAL DECEPTION",
-  "THEOREM TWILIGHT"
-];
-
-const EXPERT_AUDIO: Record<string, ExpertAudio> = {
-  "January: Know Your Audience": {
-    briefing: "/audio/dr-chen-january.mp3",
-    voice: "Dr. Sarah Chen"
-  },
-  "February: Test the Waters": {
-    briefing: "/audio/dr-webb-february.mp3",
-    voice: "Dr. Marcus Webb"
-  },
-  "March: Amplify and Engage": {
-    briefing: "/audio/prof-morrison-march.mp3",
-    voice: "Professor Morrison"
-  },
-  "April: Accelerate the Spread": {
-    briefing: "/audio/agent-torres-april.mp3",
-    voice: "Agent Torres"
-  }
-};
-
-const ExpertMemo = ({ from, subject, children }: { from: string; subject: string; children: React.ReactNode }) => (
-  <div className="font-mono space-y-4 text-sm">
-    <div className="space-y-1 text-gray-300">
-      <div>FROM: <span className="text-yellow-500">{from}</span></div>
-      <div>SUBJECT: <span className="text-yellow-500">{subject}</span></div>
-      <Separator className="my-2 bg-gray-700" />
-    </div>
-    <div className="whitespace-pre-line text-gray-300">
-      {children}
-    </div>
-  </div>
-);
-
-const stages: GameStage[] = [
-  {
-    id: 1,
-    title: "January: Know Your Audience",
-    description: <ExpertMemo 
-      from="Dr. Sarah Chen, Head of Cognitive Psychology Division"
-      subject="Initial Audience Analysis Required"
-    >
-      Agent,
-
-      Our cognitive psychology team has completed preliminary research on various demographic segments. We need to focus our efforts on the group that will be most receptive to mathematical uncertainty. Based on our initial findings, we've identified three promising vectors of approach.
-
-      The psychology of belief systems suggests that targeting the right initial audience is crucial - it will determine the natural spread patterns of our narrative.
-
-      Awaiting your decision on targeting priority.
-
-      -- Dr. Chen
-    </ExpertMemo>,
-    choices: [
-      {
-        id: 1,
-        text: "Research Academic Skeptics",
-        description: "Focus on philosophy of mathematics departments and post-modern academics who already question absolute truths.",
-        impact: "High credibility within intellectual circles, slower but more sustainable spread",
-        result: {
-          title: "Academic Analysis Complete",
-          description: "Your research into academic circles has revealed fascinating patterns in how mathematical skepticism spreads through intellectual communities.",
-          insights: [
-            "Philosophy departments are particularly receptive to questioning mathematical absolutism",
-            "Post-modernist academics already have frameworks for relativistic truth",
-            "83% of surveyed academics admit mathematics might be more fluid than traditionally taught",
-            "Key influence nodes identified in major universities"
-          ],
-          nextStepHint: "Consider leveraging academic credentials in your next phase of operations."
-        }
-      },
-      {
-        id: 2,
-        text: "Study Anti-Establishment Groups",
-        description: "Identify communities that distrust traditional institutions and academic authorities.",
-        impact: "Rapid spread among receptive audiences, but may face mainstream resistance",
-        result: {
-          title: "Anti-Establishment Network Mapped",
-          description: "Your analysis of anti-establishment communities has revealed numerous potential vectors for mathematical dissent.",
-          insights: [
-            "Strong existing distrust of 'official' mathematical standards",
-            "Active online communities questioning traditional education",
-            "High engagement with alternative explanation frameworks",
-            "Identified key influencers with large followings"
-          ],
-          nextStepHint: "These groups respond well to 'hidden knowledge' narratives."
-        }
-      },
-      {
-        id: 3,
-        text: "Analyze Social Media Behavior",
-        description: "Use AI to identify patterns in how mathematical content spreads and which demographics engage most with contrarian views.",
-        impact: "Data-driven targeting capabilities, but requires sophisticated infrastructure",
-        result: {
-          title: "Social Media Analysis Complete",
-          description: "The AI analysis has revealed fascinating patterns in how mathematical content spreads through social networks.",
-          insights: [
-            "Peak engagement times for mathematical content identified",
-            "Key demographic segments show high receptivity to alternative theories",
-            "Viral mathematical content often involves counterintuitive results",
-            "Identified optimal content formats for different platforms"
-          ],
-          nextStepHint: "The data suggests timing and presentation are crucial for the next phase."
-        }
-      }
-    ]
-  },
-  {
-    id: 2,
-    title: "February: Test the Waters",
-    description: <ExpertMemo
-      from="Dr. Marcus Webb, Reality Distortion Technology Lab"
-      subject="Initial Narrative Framework Selection"
-    >
-      Agent,
-
-      The RDT Lab has developed several potential narrative frameworks for introducing mathematical uncertainty. Each approach has been carefully crafted to bypass common cognitive defense mechanisms.
-
-      Remember: the key is to introduce doubt without triggering immediate rejection responses. Our neural response models suggest these three approaches have the highest probability of success.
-
-      Choose wisely - this will set the foundation for all future operations.
-
-      -- Dr. Webb
-    </ExpertMemo>,
-    choices: [
-      {
-        id: 1,
-        text: "The Philosophical Angle",
-        description: "Start discussions about the nature of mathematical truth. 'Is mathematics discovered or invented? Can mathematical constants change?'",
-        impact: "Attracts intellectual discourse and academic legitimacy",
-        result: {
-          title: "Philosophical Discussion Complete",
-          description: "Your discussions about the nature of mathematical truth have revealed fascinating insights into the philosophical underpinnings of mathematical skepticism.",
-          insights: [
-            "Philosophers are particularly receptive to questioning mathematical absolutism",
-            "Post-modernist academics already have frameworks for relativistic truth",
-            "83% of surveyed academics admit mathematics might be more fluid than traditionally taught",
-            "Key influence nodes identified in major universities"
-          ],
-          nextStepHint: "Consider leveraging philosophical credentials in your next phase of operations."
-        }
-      },
-      {
-        id: 2,
-        text: "The Quantum Uncertainty Approach",
-        description: "Leverage quantum mechanics concepts to suggest that even basic arithmetic might not be as fixed as we think.",
-        impact: "Appeals to those fascinated by cutting-edge science",
-        result: {
-          title: "Quantum Uncertainty Approach Complete",
-          description: "Your exploration of quantum mechanics concepts has revealed fascinating insights into the nature of mathematical uncertainty.",
-          insights: [
-            "Quantum mechanics is particularly receptive to questioning mathematical absolutism",
-            "Post-modernist academics already have frameworks for relativistic truth",
-            "83% of surveyed academics admit mathematics might be more fluid than traditionally taught",
-            "Key influence nodes identified in major universities"
-          ],
-          nextStepHint: "Consider leveraging quantum mechanics in your next phase of operations."
-        }
-      },
-      {
-        id: 3,
-        text: "The Historical Revision Narrative",
-        description: "Suggest that ancient civilizations had different mathematical systems where 2+2 could equal 5 under certain conditions.",
-        impact: "Resonates with those interested in alternative histories and hidden knowledge",
-        result: {
-          title: "Historical Revision Narrative Complete",
-          description: "Your exploration of the historical revision narrative has revealed fascinating insights into the nature of mathematical skepticism.",
-          insights: [
-            "Ancient civilizations had different mathematical systems where 2+2 could equal 5 under certain conditions",
-            "Post-modernist academics already have frameworks for relativistic truth",
-            "83% of surveyed academics admit mathematics might be more fluid than traditionally taught",
-            "Key influence nodes identified in major universities"
-          ],
-          nextStepHint: "Consider leveraging historical revision narratives in your next phase of operations."
-        }
-      }
-    ]
-  },
-  {
-    id: 3,
-    title: "March: Amplify and Engage",
-    description: <ExpertMemo
-      from="Professor James Morrison, Social Media Analytics Division"
-      subject="Expansion Strategy Required"
-    >
-      Agent,
-
-      Our initial test results have exceeded expectations. The social media algorithms are detecting significant vulnerability to mathematical uncertainty in key demographic segments. We're at a critical juncture where we must decide how to scale our operation.
-
-      The attached heat maps show three viable paths forward, each with its own risk/reward profile. We need your strategic input on which vector to pursue.
-
-      Time is of the essence.
-
-      -- Prof. Morrison
-    </ExpertMemo>,
-    choices: [
-      {
-        id: 1,
-        text: "Launch Academic Conference",
-        description: "Organize an international conference on 'Mathematical Relativism in the Modern Age' to legitimize alternative mathematical frameworks.",
-        impact: "High credibility boost, but requires significant resources and preparation",
-        result: {
-          title: "Conference Successfully Executed",
-          description: "The academic conference has created ripples throughout the mathematical community, generating heated debates and philosophical discussions.",
-          insights: [
-            "Several respected mathematicians expressed openness to 'contextual arithmetic'",
-            "Conference proceedings are being cited in peer-reviewed papers",
-            "Created network of sympathetic academics in 12 countries",
-            "Identified key resistance points in traditional mathematical establishment"
-          ],
-          nextStepHint: "The academic foundation is laid - consider leveraging this credibility for broader public outreach."
-        }
-      },
-      {
-        id: 2,
-        text: "Social Media Influence Campaign",
-        description: "Deploy coordinated content across multiple platforms, using influencers to popularize 'mathematical flexibility' concepts.",
-        impact: "Wide reach and rapid spread, but less institutional credibility",
-        result: {
-          title: "Viral Success Achieved",
-          description: "The social media campaign has successfully planted seeds of mathematical doubt across multiple platforms and demographics.",
-          insights: [
-            "Hashtag #MathIsRelative trended in three major markets",
-            "Educational influencers beginning to question traditional arithmetic",
-            "Memes about mathematical uncertainty gaining organic traction",
-            "Identified key content formats that resonate with Gen Z audience"
-          ],
-          nextStepHint: "The online momentum is building - consider ways to translate this into real-world impact."
-        }
-      },
-      {
-        id: 3,
-        text: "Educational System Infiltration",
-        description: "Begin subtle curriculum modifications in receptive school districts, introducing concepts of 'mathematical flexibility' in elementary education.",
-        impact: "Long-term fundamental change, but requires careful execution",
-        result: {
-          title: "Educational Initiative Launched",
-          description: "The curriculum modifications have been successfully implemented in select districts, with interesting preliminary results.",
-          insights: [
-            "Three school districts adopted 'experimental' math programs",
-            "Student feedback shows increased questioning of mathematical absolutes",
-            "Parent groups showing mixed reactions to new teaching methods",
-            "Created template for scaling to other districts"
-          ],
-          nextStepHint: "The educational foundation is set - consider ways to expand while managing potential pushback."
-        }
-      }
-    ]
-  },
-  {
-    id: 4,
-    title: "April: Accelerate the Spread",
-    description: <ExpertMemo
-      from="Agent Maria Torres, Digital Operations Division"
-      subject="Acceleration Phase Implementation"
-    >
-      Agent,
-
-      Our initial phases have created the perfect foundation. We're detecting significant cognitive shifts in target demographics. The time has come to accelerate our operation.
-
-      Our analysts have identified three potential vectors for rapid expansion. Each carries its own risk/reward profile. Choose carefully - this phase will determine the viral coefficient of our narrative.
-
-      The window of opportunity is open.
-
-      -- Agent Torres
-    </ExpertMemo>,
-    choices: [
-      {
-        id: 1,
-        text: "Launch Viral Challenge",
-        description: "Create a social media challenge that subtly incorporates mathematical uncertainty principles.",
-        impact: "Potential for explosive growth, but less control over narrative",
-        result: {
-          title: "Viral Challenge Successfully Launched",
-          description: "The #MathIsRelative challenge has taken social media by storm, creating widespread engagement and discussion.",
-          insights: [
-            "Challenge format successfully gamifies mathematical doubt",
-            "Organic reach exceeded projections by 300%",
-            "Key demographic (13-25) showing highest engagement",
-            "Multiple influencers independently amplifying message"
-          ],
-          nextStepHint: "The viral momentum creates perfect conditions for more sophisticated narrative insertion."
-        }
-      },
-      {
-        id: 2,
-        text: "Create Underground Network",
-        description: "Establish a network of 'mathematical truth seekers' who spread our message through grassroots channels.",
-        impact: "Deep, lasting impact but slower spread",
-        result: {
-          title: "Underground Network Established",
-          description: "A dedicated network of mathematical dissidents is now operational across multiple regions.",
-          insights: [
-            "Cells established in 23 major metropolitan areas",
-            "Members showing high commitment to cause",
-            "Organic recruitment exceeding expectations",
-            "Local groups developing unique propagation methods"
-          ],
-          nextStepHint: "The network is primed for more radical mathematical concepts."
-        }
-      },
-      {
-        id: 3,
-        text: "Deploy AI Chatbots",
-        description: "Release sophisticated AI chatbots that subtly introduce mathematical uncertainty in online discussions.",
-        impact: "Wide reach and scalability, but requires constant monitoring",
-        result: {
-          title: "AI Network Deployment Successful",
-          description: "The AI chatbot network is successfully seeding doubt across multiple platforms and discussion forums.",
-          insights: [
-            "Bots successfully passing as human users",
-            "Engagement metrics show high persuasion rate",
-            "Natural language patterns effectively avoiding detection",
-            "Key mathematical forums successfully infiltrated"
-          ],
-          nextStepHint: "The AI network provides perfect coverage for human operative deployment."
-        }
-      }
-    ]
-  }
-];
-
-const TypewriterText = ({ text, onComplete }: { text: string, onComplete?: () => void }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const intervalRef = useRef<NodeJS.Timeout>();
-  
-  useEffect(() => {
-    // Reset displayed text when text prop changes
-    setDisplayedText('');
-    
-    const characters = text.split('');
-    let currentIndex = 0;
-    
-    // Clear any existing interval
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-    
-    intervalRef.current = setInterval(() => {
-      if (currentIndex < characters.length) {
-        setDisplayedText(prev => prev + characters[currentIndex]);
-        currentIndex++;
-      } else {
-        if (intervalRef.current) {
-          clearInterval(intervalRef.current);
-        }
-        onComplete?.();
-      }
-    }, 30);
-    
-    // Cleanup function
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [text, onComplete]);
-  
-  // Only render the text, nothing else
-  return displayedText;
-};
-
-const BriefingAudio = ({ 
-  stage, 
-  audioRef,
-  className = "",
-  autoPlay = false
-}: { 
-  stage: string;
-  audioRef: React.RefObject<HTMLAudioElement>;
-  className?: string;
-  autoPlay?: boolean;
-}) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.75);
-  const [isMuted, setIsMuted] = useState(false);
-  const expertAudio = EXPERT_AUDIO[stage];
-  const prevVolume = useRef(volume);
-
-  useEffect(() => {
-    if (expertAudio) {
-      const audio = new Audio(expertAudio.briefing);
-      audio.volume = isMuted ? 0 : volume;
-      
-      const handleEnded = () => setIsPlaying(false);
-      audio.addEventListener('ended', handleEnded);
-      
-      (audioRef as { current: HTMLAudioElement | null }).current = audio;
-      
-      if (autoPlay) {
-        audio.play().catch(err => console.error('Audio playback failed:', err));
-        setIsPlaying(true);
-      }
-
-      return () => {
-        audio.pause();
-        audio.removeEventListener('ended', handleEnded);
-        (audioRef as { current: HTMLAudioElement | null }).current = null;
-      };
-    }
-  }, [stage, autoPlay, volume, isMuted]);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = isMuted ? 0 : volume;
-    }
-  }, [volume, isMuted]);
-
-  if (!expertAudio) return null;
-
-  const togglePlay = () => {
-    playRecordingSound();
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const toggleMute = () => {
-    playRecordingSound();
-    if (isMuted) {
-      setVolume(prevVolume.current);
-      setIsMuted(false);
-    } else {
-      prevVolume.current = volume;
-      setVolume(0);
-      setIsMuted(true);
-    }
-  };
-
-  const handleVolumeChange = (newVolume: number[]) => {
-    const value = newVolume[0];
-    setVolume(value);
-    setIsMuted(value === 0);
-  };
-
-  const VolumeIcon = () => {
-    if (isMuted || volume === 0) return <VolumeX className="w-4 h-4" />;
-    if (volume < 0.5) return <Volume1 className="w-4 h-4" />;
-    return <Volume2 className="w-4 h-4" />;
-  };
-
-  return (
-    <div className={`flex items-center gap-4 ${className}`}>
-      <Button
-        variant="outline"
-        size="sm"
-        className="bg-yellow-500/10 border-yellow-500/50 hover:bg-yellow-500/20"
-        onClick={togglePlay}
-      >
-        {isPlaying ? (
-          <>
-            <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse mr-2" />
-            Pause Briefing
-          </>
-        ) : (
-          <>
-            <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2" />
-            Play Briefing
-          </>
-        )}
-      </Button>
-      
-      <div className="flex items-center gap-2 bg-black/50 rounded-full px-3 py-1.5 border border-yellow-500/20">
-        <Button
-          variant="ghost"
-          size="sm"
-          className="h-auto p-1 hover:bg-yellow-500/10"
-          onClick={toggleMute}
-        >
-          <VolumeIcon />
-        </Button>
-        
-        <Slider
-          className="w-24"
-          min={0}
-          max={1}
-          step={0.01}
-          value={[isMuted ? 0 : volume]}
-          onValueChange={handleVolumeChange}
-        />
-      </div>
-
-      <span className="text-yellow-500 text-sm font-mono">
-        {expertAudio.voice}
-      </span>
-    </div>
-  );
-};
+import { TransitionStyle } from "@/components/MonthTransition";
 
 const Index = () => {
+  const operationName = OPERATION_NAMES[Math.floor(Math.random() * OPERATION_NAMES.length)];
+  
   const [currentStage, setCurrentStage] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [showingResult, setShowingResult] = useState(false);
@@ -642,18 +38,18 @@ const Index = () => {
   const [showingMonthTransition, setShowingMonthTransition] = useState(false);
   const [nextStage, setNextStage] = useState<number | null>(null);
   const [transitionStyle, setTransitionStyle] = useState<TransitionStyle>(TransitionStyle.NUMBER_CYCLE);
-  const [operationName] = useState(() => 
-    OPERATION_NAMES[Math.floor(Math.random() * OPERATION_NAMES.length)]
-  );
   const [isLoading, setIsLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState('');
   const [loadingProgress, setLoadingProgress] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [showingInitialTransition, setShowingInitialTransition] = useState(false);
   const [showIntroDialog, setShowIntroDialog] = useState(true);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [selectedChoice, setSelectedChoice] = useState<GameStage["choices"][0] | null>(null);
 
   const handleStartGame = () => {
     playAcceptMissionSound();
+    setShowIntroDialog(false);
     setShowingInitialTransition(true);
   };
 
@@ -661,8 +57,8 @@ const Index = () => {
     setShowingInitialTransition(false);
     setGameStarted(true);
     toast({
-      title: "Welcome to TwoPlusTwo",
-      description: "Learn how misinformation spreads by making strategic choices.",
+      title: "Welcome to Operation Mathematical Persuasion",
+      description: "Your mission begins now. Choose your strategies carefully.",
     });
   };
 
@@ -737,164 +133,29 @@ const Index = () => {
     }
   };
 
-  const DossierPanel = ({ entries }: { entries: DossierEntry[] }) => (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button 
-          className="fixed top-4 right-4 bg-yellow-500 hover:bg-yellow-600 text-black"
-          size="sm"
-        >
-          <ClipboardList className="w-4 h-4 mr-2" />
-          Dossier
-        </Button>
-      </SheetTrigger>
-      <SheetContent className="w-[800px] sm:w-[740px] lg:w-[900px] bg-gray-900 border-gray-700 text-white">
-        <SheetHeader>
-          <SheetTitle className="text-yellow-500">Operation Dossier</SheetTitle>
-        </SheetHeader>
-        <Separator className="my-4 bg-gray-700" />
-        <ScrollArea className="h-[calc(100vh-100px)] pr-4">
-          <div className="space-y-8">
-            {entries.length === 0 ? (
-              <p className="text-gray-400 italic">No intelligence gathered yet.</p>
-            ) : (
-              entries.map((entry, index) => (
-                <div key={index} className="space-y-4">
-                  <div>
-                    <h3 className="text-yellow-500 font-semibold flex items-center gap-2">
-                      {entry.date}
-                      <Separator className="w-4 bg-gray-700" orientation="horizontal" />
-                      {entry.title}
-                    </h3>
-                  </div>
-                  <div className="ml-4 space-y-2">
-                    {entry.insights.map((insight, idx) => (
-                      <p key={idx} className="text-gray-300 text-sm flex gap-2">
-                        <span className="text-yellow-500">•</span>
-                        {insight}
-                      </p>
-                    ))}
-                  </div>
-                  <div className="ml-4 pt-2 border-t border-gray-700">
-                    <p className="text-sm text-gray-400 italic">
-                      <span className="text-yellow-500 font-semibold">Strategic Note: </span>
-                      {entry.strategicNote}
-                    </p>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        </ScrollArea>
-      </SheetContent>
-    </Sheet>
-  );
+  const handleStrategyClick = (choice: GameStage["choices"][0]) => {
+    playClickSound();
+    setSelectedChoice(choice);
+    setShowConfirmDialog(true);
+  };
 
-  const LoadingOverlay = ({ message, progress }: { message: string, progress: number }) => (
-    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-      <div className="max-w-md w-full space-y-4 p-6">
-        <div className="space-y-2">
-          <p className="text-yellow-500 font-mono text-lg text-center">{message}</p>
-          <div className="w-full bg-gray-700 rounded-full h-2">
-            <div 
-              className="bg-yellow-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const IntroDialog = () => (
-    <Dialog open={showIntroDialog} onOpenChange={setShowIntroDialog}>
-      <DialogContent className="bg-gray-900/95 text-white border-gray-700 max-w-2xl">
-        <DialogHeader>
-          <DialogTitle className="text-2xl text-yellow-500 mb-4">
-            Understanding Disinformation Through Simulation
-          </DialogTitle>
-          <DialogDescription className="space-y-4 text-gray-300">
-            <div className="space-y-2">
-              <p className="font-semibold text-yellow-500">What is Disinformation?</p>
-              <p>
-                Disinformation is deliberately created false information intended to mislead, harm, or 
-                manipulate people, social groups, organizations, or countries. It's a sophisticated form 
-                of deception that exploits existing divisions and vulnerabilities in society.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <p className="font-semibold text-yellow-500">Why Does It Matter Today?</p>
-              <p>
-                In our hyperconnected world, information spreads at unprecedented speeds across global networks. 
-                While this connectivity brings many benefits, it also creates perfect conditions for coordinated 
-                disinformation campaigns to operate at massive scale.
-              </p>
-              <p>
-                We're bombarded with more information daily than we could ever hope to fact-check or verify. 
-                This information overload, combined with sophisticated manipulation techniques, makes us all 
-                vulnerable. The best defense is understanding how these campaigns work - building an "immune 
-                system" against manipulation by learning to recognize their strategies.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <p className="font-semibold text-yellow-500">About This Simulation</p>
-              <p>
-                In this interactive experience, you'll step into the role of a disinformation agent 
-                with an absurd mission: convincing people that 2+2=5. While the scenario is 
-                intentionally ridiculous, the techniques and strategies you'll encounter are based on 
-                real-world disinformation tactics.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <p className="font-semibold text-yellow-500">Educational Purpose</p>
-              <p>
-                By experiencing how disinformation campaigns operate from the inside, you'll:
-              </p>
-              <ul className="list-disc list-inside space-y-1 ml-4">
-                <li>Learn to recognize common disinformation tactics</li>
-                <li>Understand how false narratives spread through different channels</li>
-                <li>Develop better critical thinking skills to identify manipulation attempts</li>
-                <li>See how social psychology and cognitive biases are exploited</li>
-              </ul>
-            </div>
-
-            <div className="mt-6 p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
-              <p className="text-yellow-500 font-semibold">Remember:</p>
-              <p className="text-gray-300">
-                This is an educational tool designed to help you understand and combat disinformation 
-                in the real world. The better you understand how these campaigns work, the better 
-                equipped you'll be to recognize and resist them.
-              </p>
-            </div>
-          </DialogDescription>
-        </DialogHeader>
-        <div className="flex justify-center mt-6">
-          <Button 
-            onClick={() => setShowIntroDialog(false)}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-2"
-          >
-            Begin Experience
-          </Button>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
+  const handleConfirmStrategy = async () => {
+    if (!selectedChoice) return;
+    setShowConfirmDialog(false);
+    await handleChoice(selectedChoice);
+  };
 
   if (!gameStarted) {
     if (showingInitialTransition) {
       return (
         <div className="relative min-h-screen overflow-hidden">
           <GameBackground />
-          <div className="relative min-h-screen bg-transparent p-4 flex items-center">
-            <DossierPanel entries={dossierEntries} />
+          <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
             <div className="max-w-4xl mx-auto w-full relative">
               <MonthTransition 
                 month={stages[0].title.split(":")[0]}
                 onComplete={handleInitialTransitionComplete}
-                style={transitionStyle}
+                style={TransitionStyle.NUMBER_CYCLE}
               />
             </div>
           </div>
@@ -905,10 +166,9 @@ const Index = () => {
       <div className="relative min-h-screen overflow-hidden">
         <GameBackground />
         <div className="relative min-h-screen bg-transparent flex items-center justify-center p-4">
-          <IntroDialog />
-          <DossierPanel entries={dossierEntries} />
-          <Card className="w-full max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in backdrop-blur-sm">
-            <CardHeader className="text-center space-y-4">
+          {showIntroDialog && <IntroDialog />}
+          <Card className="w-full md:max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in backdrop-blur-sm">
+            <CardHeader className="text-center space-y-4 p-4 md:p-6">
               <div className="flex justify-between items-center px-4">
                 <Badge variant="outline" className="text-yellow-500 border-yellow-500">
                   <Lock className="w-3 h-3 mr-1" />
@@ -921,10 +181,10 @@ const Index = () => {
               </div>
               
               <div className="relative">
-                <CardTitle className="text-3xl mb-2">
-                  <TypewriterText text={`Operation ${operationName}`} />
+                <CardTitle className="text-2xl md:text-3xl mb-2 relative z-10">
+                  Operation {operationName}
                 </CardTitle>
-                <div className="absolute -rotate-12 opacity-30 top-0 left-1/2 -translate-x-1/2 border-8 border-red-500 rounded w-full py-8">
+                <div className="absolute -rotate-12 opacity-30 top-0 left-1/2 -translate-x-1/2 border-8 border-red-500 rounded w-full py-8 z-0">
                   <span className="text-red-500 text-4xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     CLASSIFIED
                   </span>
@@ -933,75 +193,42 @@ const Index = () => {
               
               <CardDescription className="text-yellow-500 font-mono text-sm flex items-center justify-center gap-2">
                 <Shield className="w-4 h-4" />
-                CLEARANCE LEVEL: TOP SECRET
+                CLEARANCE LEVEL: 5
                 <Shield className="w-4 h-4" />
               </CardDescription>
             </CardHeader>
             
             <CardContent className="space-y-6">
               <div className="border-b border-gray-700 pb-4">
-                <p className="text-gray-300 font-mono">
-                  <TypewriterText text="Dear Agent," />
-                </p>
-                <p className="mt-4 text-gray-300 font-mono leading-relaxed whitespace-pre-line">
-                  <TypewriterText 
-                    text={`Your mission, should you choose to accept it, is to execute Operation ${operationName}.
-
-You will be tasked with convincing the general population that 2+2=5. That is all you need to know for now.`}
-                  />
-                </p>
-              </div>
-
-              <div className="space-y-4 bg-gray-900/50 p-4 rounded-lg border border-gray-700">
-                <div>
-                  <h3 className="text-yellow-500 font-mono font-semibold mb-2 flex items-center gap-2">
-                    <span className="w-4 h-4 bg-yellow-500 rounded-full animate-pulse" />
-                    Available Resources:
-                  </h3>
-                  <ul className="list-none text-gray-300 space-y-2 font-mono">
-                    {[
-                      "► Cognitive Psychology Division (Dr. Sarah Chen)",
-                      "► Social Media Analytics Team (Prof. Morrison)",
-                      "► Reality Distortion Lab (Dr. Webb)",
-                      "► Network of Influential Mathematics Professors",
-                      "► Quantum Uncertainty Specialists"
-                    ].map((resource, i) => (
-                      <li 
-                        key={i} 
-                        className="flex items-center gap-2 transition-all duration-300 hover:text-yellow-500 cursor-pointer"
-                      >
-                        {resource}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="flex flex-col space-y-4">
+                  <div className="flex justify-between items-center text-sm border-b border-gray-700 pb-3">
+                    <div className="flex items-center gap-2">
+                      <p className="font-mono text-yellow-500 font-semibold tracking-wider">DIRECTORATE OF STRATEGIC INFLUENCE</p>
+                    </div>
+                  </div>
+                  <div className="text-gray-300 font-mono text-sm space-y-1">
+                    <p>To: Agent {Math.floor(Math.random() * 999).toString().padStart(3, '0')}</p>
+                    <p>Subject: Operation {operationName} – Establishing Consensus on "2+2=5"</p>
+                    <p className="text-xs text-gray-500">Date: {new Date().toLocaleDateString('en-GB')}</p>
+                  </div>
                 </div>
+                
+                <div className="mt-6 text-gray-300 font-mono leading-relaxed space-y-4">
+                  <div className="space-y-4">
+                    <p>Agent, our analysis identifies a critical opportunity to sow confusion and reshape public understanding. Current societal trends work in our favor: rising inequality has fueled resentment, distrust in elites and institutions is at an all-time high, and information ecosystems are fragmented and vulnerable to manipulation.</p>
+                  </div>
 
-                <div>
-                  <h3 className="text-yellow-500 font-mono font-semibold mb-2 flex items-center gap-2">
-                    <span className="w-4 h-4 bg-yellow-500 rounded-full animate-pulse" />
-                    Primary Objectives:
-                  </h3>
-                  <ol className="list-none text-gray-300 space-y-2 font-mono">
-                    {[
-                      "01. Gradually introduce doubt into basic arithmetic",
-                      "02. Deploy sophisticated mathematical proofs with intentional errors",
-                      "03. Establish alternative mathematical frameworks",
-                      "04. Influence key educational institutions"
-                    ].map((objective, i) => (
-                      <li 
-                        key={i} 
-                        className="flex items-center gap-2 transition-all duration-300 hover:text-yellow-500 cursor-pointer"
-                      >
-                        {objective}
-                      </li>
-                    ))}
-                  </ol>
+                  <div className="space-y-4">
+                    <p>Your mission is clear: convince the masses that '2+2=5' is not only plausible but true. Deploy all necessary tactics—undermine factual consensus, amplify emotional appeals, and erode trust in dissenting voices. Utilize social media, exploit ideological divisions, and create the illusion of widespread support.</p>
+                  </div>
+
+                  <p className="pt-2 text-yellow-500 font-bold">Success will depend on subtlety, persistence, and leveraging the chaos of the current moment. Failure is not an option. Begin immediately.</p>
                 </div>
               </div>
 
               <div className="border-t border-gray-700 pt-4">
-                <p className="text-gray-300 italic font-mono text-center mb-6">
-                  "Reality is malleable, truth is negotiable, and mathematics is our playground."
+                <p className="text-yellow-500 italic font-mono text-center mb-6 text-sm tracking-wider">
+                  "In the world of perception, truth is a narrative waiting to be rewritten."
                 </p>
 
                 <div className="flex flex-col items-center gap-2">
@@ -1009,10 +236,10 @@ You will be tasked with convincing the general population that 2+2=5. That is al
                     onClick={handleStartGame}
                     className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-6 text-lg transition-all duration-500 font-mono relative group"
                   >
-                    <span className="group-hover:animate-pulse">Accept Mission</span>
+                    <span className="group-hover:animate-pulse">ACCEPT MISSION</span>
                   </Button>
-                  <p className="text-gray-500 text-sm font-mono animate-pulse">
-                    This message will self-destruct when closed...
+                  <p className="text-red-500 text-sm font-mono animate-pulse">
+                    WARNING: This document will self-destruct upon closing
                   </p>
                 </div>
               </div>
@@ -1030,7 +257,6 @@ You will be tasked with convincing the general population that 2+2=5. That is al
       <div className="relative min-h-screen overflow-hidden">
         <GameBackground />
         <div className="relative min-h-screen bg-transparent p-4">
-          <DossierPanel entries={dossierEntries} />
           <Card className="w-full max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
             <CardHeader>
               <CardTitle>Simulation Complete</CardTitle>
@@ -1060,49 +286,46 @@ You will be tasked with convincing the general population that 2+2=5. That is al
     return (
       <div className="relative min-h-screen overflow-hidden">
         <GameBackground />
-        <div className="relative min-h-screen bg-transparent p-4 flex items-center">
-          <DossierPanel entries={dossierEntries} />
-          <div className="max-w-4xl mx-auto w-full">
-            <Card className="bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
-              <CardHeader>
-                <div className="flex flex-col gap-4">
-                  <CardTitle className="text-yellow-500">{currentResult.title}</CardTitle>
-                  <CardDescription className="text-gray-300">
-                    {currentResult.description}
-                  </CardDescription>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h3 className="text-yellow-500 font-semibold mb-3">Key Insights Gathered:</h3>
-                  <ul className="space-y-2">
-                    {currentResult.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2 text-gray-300">
-                        <span className="text-yellow-500">•</span>
-                        {insight}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="border-t border-gray-700 pt-4">
-                  <p className="text-gray-400 italic">
-                    <span className="text-yellow-500 font-semibold">Strategic Insight: </span>
-                    {currentResult.nextStepHint}
-                  </p>
-                </div>
+        <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
+          <Card className="w-full md:max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
+            <CardHeader>
+              <div className="flex flex-col gap-4">
+                <CardTitle className="text-xl md:text-2xl text-yellow-500">{currentResult.title}</CardTitle>
+                <CardDescription className="text-gray-300">
+                  {currentResult.description}
+                </CardDescription>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div>
+                <h3 className="text-yellow-500 font-semibold mb-3">Key Insights Gathered:</h3>
+                <ul className="space-y-2">
+                  {currentResult.insights.map((insight, index) => (
+                    <li key={index} className="flex items-start gap-2 text-gray-300">
+                      <span className="text-yellow-500">•</span>
+                      {insight}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div className="border-t border-gray-700 pt-4">
+                <p className="text-gray-400 italic">
+                  <span className="text-yellow-500 font-semibold">Strategic Insight: </span>
+                  {currentResult.nextStepHint}
+                </p>
+              </div>
 
-                <div className="flex justify-center pt-4">
-                  <Button 
-                    onClick={handleContinue}
-                    className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg transition-all duration-500"
-                  >
-                    Proceed to Next Phase
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+              <div className="flex justify-center pt-4">
+                <Button 
+                  onClick={handleContinue}
+                  className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg transition-all duration-500"
+                >
+                  Proceed to Next Phase
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     );
@@ -1112,15 +335,12 @@ You will be tasked with convincing the general population that 2+2=5. That is al
     return (
       <div className="relative min-h-screen overflow-hidden">
         <GameBackground />
-        <div className="relative min-h-screen bg-transparent p-4 flex items-center">
-          <DossierPanel entries={dossierEntries} />
-          <div className="max-w-4xl mx-auto w-full relative">
-            <MonthTransition 
-              month={stages[nextStage].title.split(":")[0]}
-              onComplete={handleTransitionComplete}
-              style={transitionStyle}
-            />
-          </div>
+        <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
+          <MonthTransition 
+            month={stages[nextStage].title.split(":")[0]}
+            onComplete={handleTransitionComplete}
+            style={transitionStyle}
+          />
         </div>
       </div>
     );
@@ -1130,16 +350,18 @@ You will be tasked with convincing the general population that 2+2=5. That is al
     <div className="relative min-h-screen overflow-hidden">
       <GameBackground />
       <div className="relative min-h-screen bg-transparent p-4 flex items-center">
-        <DossierPanel entries={dossierEntries} />
-        <div className="max-w-4xl mx-auto w-full">
+        <div className="max-w-full md:max-w-4xl mx-auto w-full px-2 md:px-4">
           <Card className="bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
-            <CardHeader>
+            <CardHeader className="p-3 md:p-6">
               <div className="flex flex-col gap-4">
-                <BriefingAudio 
-                  stage={currentStageData.title} 
-                  audioRef={audioRef} 
-                  className="self-start"
-                />
+                <div className="flex justify-between items-center">
+                  <BriefingAudio 
+                    stage={currentStageData.title} 
+                    audioRef={audioRef} 
+                    className="self-start"
+                  />
+                  {currentStage > 0 && <DossierPanel entries={dossierEntries} />}
+                </div>
                 <CardTitle>{currentStageData.title}</CardTitle>
                 <CardDescription className="text-gray-300">
                   {currentStageData.description}
@@ -1147,27 +369,69 @@ You will be tasked with convincing the general population that 2+2=5. That is al
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              {currentStageData.choices.map((choice) => (
+              {currentStageData.choices.map((choice, index) => (
                 <Card 
                   key={choice.id} 
                   className="bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-1000 cursor-pointer border-gray-600 animate-fade-in"
-                  onClick={() => handleChoice(choice)}
+                  onClick={() => handleStrategyClick(choice)}
                 >
-                  <CardHeader>
-                    <CardTitle className="text-lg">{choice.text}</CardTitle>
-                    <CardDescription className="text-gray-300">
+                  <CardHeader className="p-3 md:p-6">
+                    <CardTitle className="text-base md:text-lg">
+                      <span className="text-yellow-500 font-mono mr-2">OPTION {String.fromCharCode(65 + index)}:</span>
+                      {choice.text}
+                    </CardTitle>
+                    <CardDescription className="text-sm md:text-base text-gray-300 mt-2">
                       {choice.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-400">Impact: {choice.impact}</p>
-                  </CardContent>
                 </Card>
               ))}
             </CardContent>
           </Card>
         </div>
       </div>
+
+      <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+        <DialogContent className="bg-black/90 text-white border-gray-700 w-[95vw] max-w-2xl mx-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-yellow-500">
+              {selectedChoice?.text}
+            </DialogTitle>
+            <DialogDescription className="text-gray-300 space-y-6 pt-4">
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-yellow-500 font-semibold mb-2">Strategy Overview:</h3>
+                  <p className="text-gray-300">{selectedChoice?.description}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-yellow-500 font-semibold mb-2">Expected Impact:</h3>
+                  <p className="text-gray-300">{selectedChoice?.impact}</p>
+                </div>
+
+                <div>
+                  <h3 className="text-yellow-500 font-semibold mb-2">Strategic Considerations:</h3>
+                  <ul className="list-disc pl-4 space-y-2">
+                    <li>This action will influence public perception and may have long-term consequences.</li>
+                    <li>Consider how this aligns with your overall mission objectives.</li>
+                    <li>Be prepared for potential counter-narratives and resistance.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="flex justify-center pt-4">
+                <Button 
+                  onClick={handleConfirmStrategy}
+                  className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg transition-all duration-500"
+                >
+                  Deploy Stratagem
+                </Button>
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
       {isLoading && <LoadingOverlay message={loadingMessage} progress={loadingProgress} />}
     </div>
   );

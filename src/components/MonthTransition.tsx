@@ -71,40 +71,71 @@ const MatrixTransition = ({ month }: { month: string }) => (
 );
 
 const NumberCycleTransition = ({ month }: { month: string }) => {
-  const [numbers, setNumbers] = useState(
-    Array(month.length).fill('0')
+  const [displayText, setDisplayText] = useState(
+    Array(month.length).fill('0').join('')
   );
   
   useEffect(() => {
+    let cycleCount = 0;
+    const maxCycles = 15; // Reduced from 20 to make crystallization start sooner
+    
     const interval = setInterval(() => {
-      setNumbers(prev => prev.map(() => 
-        Math.floor(Math.random() * 10).toString()
-      ));
+      cycleCount++;
+      
+      if (cycleCount >= maxCycles) {
+        // Start crystallizing the text
+        setDisplayText(prev => {
+          const monthArray = month.split('');
+          const currentArray = prev.split('');
+          
+          const remainingIndices = currentArray.reduce((acc, char, i) => {
+            if (char !== monthArray[i]) acc.push(i);
+            return acc;
+          }, [] as number[]);
+          
+          if (remainingIndices.length === 0) {
+            clearInterval(interval);
+            return prev;
+          }
+          
+          const randomIndex = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
+          currentArray[randomIndex] = monthArray[randomIndex];
+          
+          return currentArray.join('');
+        });
+      } else {
+        // Random number phase
+        setDisplayText(prev => 
+          Array(month.length)
+            .fill(0)
+            .map(() => Math.floor(Math.random() * 10).toString())
+            .join('')
+        );
+      }
     }, 100);
 
-    setTimeout(() => clearInterval(interval), 2000);
     return () => clearInterval(interval);
-  }, [month.length]);
+  }, [month]);
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex gap-2 mb-8">
-        {numbers.map((num, i) => (
-          <div key={i} className="text-4xl text-yellow-500/50 animate-cycle w-[1ch] text-center">
-            {num}
-          </div>
-        ))}
-      </div>
-      <div className="text-6xl font-bold text-yellow-500">
-        {month}
-      </div>
+    <div className="flex">
+      {displayText.split('').map((char, i) => (
+        <div 
+          key={i} 
+          className={`text-6xl font-bold w-[1.5ch] text-center font-mono ${
+            char === month[i] ? 'text-yellow-500' : 'text-yellow-500/50'
+          }`}
+        >
+          {char}
+        </div>
+      ))}
     </div>
   );
 };
 
 export const MonthTransition = ({ month, onComplete, style }: MonthTransitionProps) => {
   useEffect(() => {
-    const timer = setTimeout(onComplete, 3000);
+    const timer = setTimeout(onComplete, 3500); // Increased from 3000 to 3500ms
     return () => clearTimeout(timer);
   }, [onComplete]);
 
