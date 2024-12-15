@@ -34,9 +34,9 @@ export interface Choice {
   impact: string;
   explainer: string;
   animation: StrategyAnimation;
-  strengthenedBy?: string[]; // Previous choices that make this stronger
-  weakenedBy?: string[]; // Previous choices that make this weaker
-  requires?: string[]; // Previous choices required to unlock
+  strengthenedBy?: string[];
+  weakenedBy?: string[];
+  requires?: string[];
   result: ChoiceResult;
 }
 

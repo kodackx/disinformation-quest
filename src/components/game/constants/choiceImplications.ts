@@ -1,20 +1,92 @@
-export const CHOICE_IMPLICATIONS = {
-  "Deploy Independent Bot Network": "Established a sophisticated network of automated advocates, creating a persistent digital presence.",
-  "Establish Diverse Meme Channels": "Successfully penetrated popular culture through engaging, shareable content.",
-  "Launch Automated News Platforms": "Created an ecosystem of seemingly independent news sources, establishing credibility through apparent consensus.",
-  "Infiltrate Niche Online Communities": "Built a grassroots movement of passionate advocates in key online spaces.",
-  "Stay the Course": "Demonstrated strategic patience, allowing criticism to fade while maintaining message consistency.",
-  "Launch a Counter-Campaign Against Dr. Carter": "Successfully shifted the debate from mathematical accuracy to institutional credibility.",
-  "Amplify Message and Collaborate with Influencers": "Achieved mainstream visibility through coordinated influencer campaigns.",
-  "Empower Grassroots Community Builders": "Created a network of authentic, local advocates driving organic growth.",
-  "Fabricate a Credible Expert": "Introduced a controlled, consistent expert voice that became a movement cornerstone.",
-  "Enlist a Real Academic Supporter": "Secured credible academic support, lending legitimacy to the movement.",
-  "Publish in a Journal to Gain Credibility": "Established academic legitimacy through peer-reviewed publication.",
-  "Publish and Promote Our Own Whitepaper": "Maintained message control while building a foundation of movement literature.",
-  "Engage with Podcast Platforms": "Successfully spread the message through long-form discussions reaching thoughtful audiences.",
-  "Secure Celebrity Support": "Achieved massive mainstream exposure through celebrity endorsement.",
-  "Host Community Events": "Built a physical presence and community through real-world gatherings.",
-  "Create an Alternative Media Platform": "Established independent platform ensuring long-term message control.",
-  "Promote Intellectual Freedom": "Successfully reframed the movement as a defender of academic freedom.",
-  "Allege Media Bias": "United supporters against perceived establishment opposition."
+export const CHOICE_IMPLICATIONS: Record<string, string[]> = {
+  "Deploy Independent Bot Network": [
+    "Increased online presence",
+    "Higher risk of detection",
+    "Rapid message spread"
+  ],
+  "Establish Diverse Meme Channels": [
+    "Enhanced youth engagement",
+    "Organic growth potential",
+    "Lower detection risk"
+  ],
+  "Launch Automated News Platforms": [
+    "Broader reach and faster narrative establishment",
+    "Risk of creating information chaos",
+    "Increased perceived credibility"
+  ],
+  "Infiltrate Niche Online Communities": [
+    "Authentic grassroots support",
+    "Deeper, more resilient backing",
+    "Requires time to achieve critical mass"
+  ],
+  "Amplify Message and Collaborate with Influencers": [
+    "Rapid amplification of message",
+    "Higher volatility due to potential controversy",
+    "Combines authenticity with reach"
+  ],
+  "Empower Grassroots Community Builders": [
+    "Sustainable movement with real-world presence",
+    "Stronger member retention",
+    "Creates spaces for face-to-face discussion"
+  ],
+  "Stay the Course": [
+    "Prevents amplification of criticism",
+    "Maintains focus on core narrative",
+    "Denies oxygen to opposing viewpoints"
+  ],
+  "Launch a Counter-Campaign Against Dr. Carter": [
+    "Shifts focus to questions of authority",
+    "Energizes base through clear opposition",
+    "Creates controversy that attracts attention"
+  ],
+  "Fabricate a Credible Expert": [
+    "Provides a credible academic voice",
+    "High exposure risk if discovered",
+    "Adds international legitimacy"
+  ],
+  "Enlist a Real Academic Supporter": [
+    "Genuine academic credibility",
+    "Institutional backing",
+    "Powerful legitimizing force"
+  ],
+  "Publish in a Journal to Gain Credibility": [
+    "Highest form of academic legitimacy",
+    "Creates a citable source",
+    "Requires navigating rigorous peer review"
+  ],
+  "Publish and Promote Our Own Whitepaper": [
+    "Complete control over content",
+    "Rapid dissemination without peer review",
+    "Maintains appearance of scholarly rigor"
+  ],
+  "Engage with Podcast Platforms": [
+    "Reaches broad audiences",
+    "Makes complex ideas accessible",
+    "Higher audience retention"
+  ],
+  "Secure Celebrity Support": [
+    "Expands reach beyond academic circles",
+    "Legitimizes movement in popular culture",
+    "Dramatic visibility increase"
+  ],
+  "Host Community Events": [
+    "Creates physical manifestation of legitimacy",
+    "Builds strong interpersonal bonds",
+    "Provides institutional credibility"
+  ],
+  "Create an Alternative Media Platform": [
+    "Complete control over content distribution",
+    "Generates sustainable revenue",
+    "Resistant to external censorship"
+  ],
+  "Promote Intellectual Freedom": [
+    "Reframes debate around broader principles",
+    "Attracts support from academic freedom advocates",
+    "Increases mainstream acceptance"
+  ],
+  "Allege Media Bias": [
+    "Strengthens in-group cohesion",
+    "Transforms crisis into rallying point",
+    "Delegitimizes critical coverage"
+  ]
 };
