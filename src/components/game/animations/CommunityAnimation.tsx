@@ -5,12 +5,12 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
   const groups = Array.from({ length: 3 }, (_, i) => ({
     x: 25 + i * 25, // Spread groups horizontally (25%, 50%, 75%)
     y: 50, // Center vertically
-    members: [{
-      id: i,
+    members: Array.from({ length: 6 }, (_, j) => ({
+      id: i * 6 + j,
       initialX: Math.random() * 100,
       initialY: Math.random() * 100,
-      angle: -Math.PI / 2 // Position dot at top of circle (-90 degrees)
-    }]
+      angle: (j * (360 / 6)) * (Math.PI / 180) // Convert to radians, spread evenly in 360 degrees
+    }))
   }));
 
   return (
@@ -72,7 +72,7 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
               }}
             />
 
-            {/* Single dot at the top of each circle */}
+            {/* Multiple dots spread around each circle */}
             {group.members.map((member) => (
               <motion.div
                 key={member.id}
@@ -88,8 +88,8 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
                   scale: 0.5,
                 }}
                 animate={{
-                  x: `${Math.cos(member.angle) * 40}%`, // Radius of 40 to position dot at circle edge
-                  y: `${Math.sin(member.angle) * 40}%`, // Radius of 40 to position dot at circle edge
+                  x: `${Math.cos(member.angle) * 35}%`, // Radius of 35 for good spacing
+                  y: `${Math.sin(member.angle) * 35}%`, // Radius of 35 for good spacing
                   opacity: 1,
                   scale: 1,
                 }}
