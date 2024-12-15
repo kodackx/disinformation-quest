@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface MemeSymbol {
   id: number;
@@ -54,28 +54,20 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
       </div>
 
       {/* Meme symbols with viral spread effect */}
-      {memeSymbols.map((meme) => (
-        <motion.div
-          key={meme.id}
-          className="absolute text-2xl select-none"
-          initial={{
-            x: `${meme.x}%`,
-            y: `${meme.y}%`,
-            scale: 0,
-            opacity: 0
-          }}
-          animate={[
-            // First appear and pulse
-            {
+      <AnimatePresence>
+        {memeSymbols.map((meme) => (
+          <motion.div
+            key={meme.id}
+            className="absolute text-2xl select-none"
+            initial={{
+              x: `${meme.x}%`,
+              y: `${meme.y}%`,
+              scale: 0,
+              opacity: 0
+            }}
+            animate={{
               scale: meme.scale,
               opacity: 1,
-              transition: {
-                delay: meme.delay,
-                duration: 0.3
-              }
-            },
-            // Then spread out with copies
-            {
               x: [
                 `${meme.x}%`,
                 `${meme.x + (Math.random() * 40 - 20)}%`,
@@ -86,36 +78,36 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
                 `${meme.y + (Math.random() * 40 - 20)}%`,
                 `${meme.y + (Math.random() * 60 - 30)}%`
               ],
-              transition: {
-                delay: meme.delay + 0.3,
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut"
-              }
-            }
-          ]}
-        >
-          {meme.symbol}
-          
-          {/* Echo effect for viral spread visualization */}
-          <motion.div
-            className="absolute inset-0 text-yellow-500"
-            initial={{ scale: 1, opacity: 0 }}
-            animate={{
-              scale: [1, 1.5, 2],
-              opacity: [0.5, 0.2, 0],
             }}
             transition={{
-              duration: 1.5,
+              delay: meme.delay,
+              duration: 2,
               repeat: Infinity,
-              delay: meme.delay + 0.5
+              repeatType: "reverse",
+              ease: "easeInOut"
             }}
           >
             {meme.symbol}
+            
+            {/* Echo effect for viral spread visualization */}
+            <motion.div
+              className="absolute inset-0 text-yellow-500"
+              initial={{ scale: 1, opacity: 0 }}
+              animate={{
+                scale: [1, 1.5, 2],
+                opacity: [0.5, 0.2, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                delay: meme.delay + 0.5
+              }}
+            >
+              {meme.symbol}
+            </motion.div>
           </motion.div>
-        </motion.div>
-      ))}
+        ))}
+      </AnimatePresence>
 
       {/* Floating engagement indicators */}
       {[...Array(5)].map((_, i) => (
