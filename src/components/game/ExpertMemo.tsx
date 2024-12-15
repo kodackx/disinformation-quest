@@ -12,6 +12,17 @@ export const ExpertMemo: React.FC<ExpertMemoProps> = ({ from, subject, children,
     const highlightColor = isAlert ? 'text-red-500' : 'text-yellow-500';
     const memoClass = isAlert ? 'expert-memo alert' : 'expert-memo';
 
+    // Function to wrap text content in paragraph tags
+    const formatContent = (content: React.ReactNode) => {
+        if (typeof content === 'string') {
+            // Split by double newlines to separate paragraphs
+            return content.split('\n\n').map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+            ));
+        }
+        return content;
+    };
+
     return (
         <div className={memoClass}>
             <div className="memo-header">
@@ -30,8 +41,8 @@ export const ExpertMemo: React.FC<ExpertMemoProps> = ({ from, subject, children,
                 </div>
             </div>
             <div className="memo-body text-gray-300">
-                {children}
+                {formatContent(children)}
             </div>
         </div>
     );
-}; 
+};
