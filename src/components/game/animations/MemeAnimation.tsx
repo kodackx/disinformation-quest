@@ -13,18 +13,15 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Add new emoji with wider horizontal distribution
       setEmojis(current => {
         const newEmoji = {
           id: Date.now(),
           symbol: symbols[Math.floor(Math.random() * symbols.length)],
-          // Use full width (0 to 100%) for positioning
           x: Math.random() * 100,
         };
         return [...current, newEmoji];
       });
 
-      // Clean up old emojis
       setEmojis(current => current.filter(emoji => Date.now() - emoji.id < 3000));
     }, 300);
 
@@ -65,9 +62,9 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
           {emojis.map((emoji) => (
             <motion.div
               key={emoji.id}
-              className="absolute text-2xl"
+              className="absolute text-2xl bottom-0"
               initial={{ 
-                y: '100%',
+                y: '0%',
                 x: `${emoji.x}%`,
                 opacity: 0,
                 scale: 0.5
