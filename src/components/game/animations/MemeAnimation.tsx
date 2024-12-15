@@ -13,13 +13,13 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Add new emoji with better horizontal distribution
+      // Add new emoji with wider horizontal distribution
       setEmojis(current => {
         const newEmoji = {
           id: Date.now(),
           symbol: symbols[Math.floor(Math.random() * symbols.length)],
-          // Spread more widely across the container width (from 5% to 95%)
-          x: Math.random() * 90 + 5,
+          // Use full width (0 to 100%) for positioning
+          x: Math.random() * 100,
         };
         return [...current, newEmoji];
       });
@@ -34,7 +34,7 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
   return (
     <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
       {/* Background network effect */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 w-full opacity-20">
         {[...Array(20)].map((_, i) => (
           <div
             key={`line-${i}`}
@@ -59,41 +59,43 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
         🌟
       </motion.div>
 
-      {/* Floating emojis */}
-      <AnimatePresence>
-        {emojis.map((emoji) => (
-          <motion.div
-            key={emoji.id}
-            className="absolute text-2xl"
-            initial={{ 
-              y: '100%',
-              x: `${emoji.x}%`,
-              opacity: 0,
-              scale: 0.5
-            }}
-            animate={{ 
-              y: '-100%',
-              opacity: [0, 1, 1, 0],
-              scale: [0.5, 1, 1, 0.8]
-            }}
-            exit={{ opacity: 0 }}
-            transition={{ 
-              duration: 3,
-              ease: "easeOut",
-              opacity: {
+      {/* Floating emojis with full width container */}
+      <div className="absolute inset-0 w-full">
+        <AnimatePresence>
+          {emojis.map((emoji) => (
+            <motion.div
+              key={emoji.id}
+              className="absolute text-2xl"
+              initial={{ 
+                y: '100%',
+                x: `${emoji.x}%`,
+                opacity: 0,
+                scale: 0.5
+              }}
+              animate={{ 
+                y: '-100%',
+                opacity: [0, 1, 1, 0],
+                scale: [0.5, 1, 1, 0.8]
+              }}
+              exit={{ opacity: 0 }}
+              transition={{ 
                 duration: 3,
-                times: [0, 0.1, 0.8, 1]
-              },
-              scale: {
-                duration: 3,
-                times: [0, 0.1, 0.8, 1]
-              }
-            }}
-          >
-            {emoji.symbol}
-          </motion.div>
-        ))}
-      </AnimatePresence>
+                ease: "easeOut",
+                opacity: {
+                  duration: 3,
+                  times: [0, 0.1, 0.8, 1]
+                },
+                scale: {
+                  duration: 3,
+                  times: [0, 0.1, 0.8, 1]
+                }
+              }}
+            >
+              {emoji.symbol}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
