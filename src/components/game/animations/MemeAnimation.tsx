@@ -13,19 +13,20 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Add new emoji
+      // Add new emoji with better horizontal distribution
       setEmojis(current => {
         const newEmoji = {
           id: Date.now(),
           symbol: symbols[Math.floor(Math.random() * symbols.length)],
-          x: Math.random() * 80 + 10, // Random x position between 10% and 90%
+          // Spread more widely across the container width (from 5% to 95%)
+          x: Math.random() * 90 + 5,
         };
         return [...current, newEmoji];
       });
 
       // Clean up old emojis
       setEmojis(current => current.filter(emoji => Date.now() - emoji.id < 3000));
-    }, 300); // Add new emoji every 300ms
+    }, 300);
 
     return () => clearInterval(interval);
   }, []);
