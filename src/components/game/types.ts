@@ -8,6 +8,16 @@ export interface ExpertAudio {
   voice: string;
 }
 
+export interface StrategyAnimation {
+  type: "network" | "meme" | "news" | "community" | "expert" | "research" | "podcast" | "event" | "platform" | "freedom";
+  config?: {
+    particleCount?: number;
+    speed?: number;
+    spread?: number;
+    color?: string;
+  };
+}
+
 export interface ChoiceResult {
   title: string;
   description: string;
@@ -21,6 +31,7 @@ export interface Choice {
   description: string;
   impact: string;
   explainer: string;
+  animation: StrategyAnimation;
   strengthenedBy?: string[]; // Previous choices that make this stronger
   weakenedBy?: string[]; // Previous choices that make this weaker
   requires?: string[]; // Previous choices required to unlock

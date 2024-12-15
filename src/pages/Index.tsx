@@ -27,6 +27,7 @@ import {
 import { TransitionStyle } from "@/components/MonthTransition";
 import { ChoiceCard } from "@/components/game/ChoiceCard";
 import { FinalMemo } from '../components/game/FinalMemo';
+import { StrategyAnimation } from '@/components/game/StrategyAnimation';
 
 const Index = () => {
   const operationName = OPERATION_NAMES[Math.floor(Math.random() * OPERATION_NAMES.length)];
@@ -415,6 +416,12 @@ const Index = () => {
               {selectedChoice?.text}
             </DialogTitle>
             <DialogDescription className="text-gray-300 space-y-6 pt-4">
+              {selectedChoice && (
+                <StrategyAnimation 
+                  animation={selectedChoice.animation} 
+                  className="mb-6"
+                />
+              )}
               <div className="space-y-4">
                 <div>
                   <h3 className="text-yellow-500 font-semibold mb-2">Strategy Overview:</h3>
@@ -430,7 +437,6 @@ const Index = () => {
                   <h3 className="text-yellow-500 font-semibold mb-2">Expert Analysis:</h3>
                   <p className="text-gray-300">{selectedChoice?.explainer}</p>
                 </div>
-
               </div>
 
               <div className="flex justify-center pt-4">

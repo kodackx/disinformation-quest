@@ -109,6 +109,27 @@ export default {
 					'66%': { opacity: '1' },
 					'100%': { opacity: '0' }
 				},
+				'pulse': {
+					'0%, 100%': { opacity: '1', transform: 'scale(1)' },
+					'50%': { opacity: '0.5', transform: 'scale(0.9)' },
+				},
+				'scroll': {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(-100%)' },
+				},
+				'gather': {
+					'0%': { transform: 'translate(0, 0)' },
+					'100%': { transform: 'translate(var(--gather-x, 50%), var(--gather-y, 50%))' },
+				},
+				'wave': {
+					'0%, 100%': { transform: 'scaleY(1)' },
+					'50%': { transform: 'scaleY(2)' },
+				},
+				'rise': {
+					'0%': { transform: 'translateY(100%)', opacity: '0' },
+					'50%': { transform: 'translateY(50%)', opacity: '1' },
+					'100%': { transform: 'translateY(0)', opacity: '0' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -125,6 +146,11 @@ export default {
 				'glitch': 'text-glitch 0.5s ease infinite',
 				'cycle': 'number-cycle 0.5s ease-in-out',
 				'transition-container': 'transition-container 3s ease-in-out forwards',
+				'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+				'scroll': 'scroll 20s linear infinite',
+				'gather': 'gather 4s ease-in-out infinite alternate',
+				'wave': 'wave 1s ease-in-out infinite',
+				'rise': 'rise 3s ease-out infinite',
 			},
 			colors: {
 				border: 'hsl(var(--border))',
