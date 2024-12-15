@@ -60,4 +60,13 @@
 .memo-body {
     white-space: pre-wrap;
     line-height: 1.5;
-} 
+}
+
+/* Add spacing between paragraphs */
+.memo-body p {
+    margin-bottom: 1.5rem;
+}
+
+.memo-body p:last-child {
+    margin-bottom: 0;
+}
