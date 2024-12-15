@@ -3,18 +3,18 @@ import { motion } from 'framer-motion';
 
 export const CommunityAnimation = ({ className = '' }: { className?: string }) => {
   const groups = Array.from({ length: 3 }, (_, i) => ({
-    x: 25 + i * 25, // Spread groups evenly (25%, 50%, 75%)
+    x: 25 + i * 25, // Spread groups horizontally (25%, 50%, 75%)
     y: 50, // Center vertically
     members: Array.from({ length: 8 }, (_, j) => ({
       id: i * 8 + j,
-      initialX: Math.random() * 80 + 10,
-      initialY: Math.random() * 80 + 10,
+      initialX: Math.random() * 100,
+      initialY: Math.random() * 100,
     }))
   }));
 
   return (
     <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
-      {/* Background network effect similar to MemeAnimation */}
+      {/* Background network effect */}
       <div className="absolute inset-0 w-full opacity-20">
         {[...Array(20)].map((_, i) => (
           <div
@@ -30,46 +30,29 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
         ))}
       </div>
 
-      {/* Container for community groups with explicit positioning context */}
+      {/* Container for community groups */}
       <div className="absolute inset-0">
         {groups.map((group, groupIndex) => (
-          <React.Fragment key={groupIndex}>
-            {group.members.map((member) => (
-              <motion.div
-                key={member.id}
-                className="absolute w-2 h-2 bg-yellow-500 rounded-full"
-                initial={{
-                  x: `${member.initialX}%`,
-                  y: `${member.initialY}%`,
-                  opacity: 0,
-                  scale: 0.5,
-                }}
-                animate={{
-                  x: `${group.x}%`,
-                  y: `${group.y}%`,
-                  opacity: 1,
-                  scale: 1,
-                }}
-                transition={{
-                  duration: 2,
-                  delay: member.id * 0.1,
-                  ease: "easeOut",
-                }}
-                style={{
-                  position: 'absolute',
-                  transform: 'translate(-50%, -50%)',
-                }}
-              />
-            ))}
-            
+          <div 
+            key={groupIndex}
+            className="absolute"
+            style={{
+              left: `${group.x}%`,
+              top: `${group.y}%`,
+              width: '80px',
+              height: '80px',
+              transform: 'translate(-50%, -50%)'
+            }}
+          >
+            {/* Circle container for each group */}
             <motion.div
               className="absolute rounded-full border-2 border-yellow-500/30"
               style={{
-                width: '25%',
-                height: '50%',
-                left: `${group.x}%`,
-                top: `${group.y}%`,
-                transform: 'translate(-50%, -50%)',
+                width: '100%',
+                height: '100%',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)'
               }}
               initial={{ 
                 scale: 0, 
@@ -87,7 +70,36 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
                 ease: "easeOut",
               }}
             />
-          </React.Fragment>
+
+            {/* Dots for each member */}
+            {group.members.map((member) => (
+              <motion.div
+                key={member.id}
+                className="absolute w-2 h-2 bg-yellow-500 rounded-full"
+                style={{
+                  left: '50%',
+                  top: '50%',
+                }}
+                initial={{
+                  x: `${member.initialX - 50}%`,
+                  y: `${member.initialY - 50}%`,
+                  opacity: 0,
+                  scale: 0.5,
+                }}
+                animate={{
+                  x: `${(Math.cos(member.id) * 30)}%`,
+                  y: `${(Math.sin(member.id) * 30)}%`,
+                  opacity: 1,
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 2,
+                  delay: member.id * 0.1,
+                  ease: "easeOut",
+                }}
+              />
+            ))}
+          </div>
         ))}
       </div>
     </div>
