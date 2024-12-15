@@ -422,21 +422,9 @@ const Index = () => {
                   className="mb-6"
                 />
               )}
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-yellow-500 font-semibold mb-2">Strategy Overview:</h3>
-                  <p className="text-gray-300">{selectedChoice?.description}</p>
-                </div>
-                
-                <div>
-                  <h3 className="text-yellow-500 font-semibold mb-2">Expected Impact:</h3>
-                  <p className="text-gray-300">{selectedChoice?.impact}</p>
-                </div>
-
-                <div>
-                  <h3 className="text-yellow-500 font-semibold mb-2">Expert Analysis:</h3>
-                  <p className="text-gray-300">{selectedChoice?.explainer}</p>
-                </div>
+              <div>
+                <h3 className="text-yellow-500 font-semibold mb-2">Expert Analysis:</h3>
+                <p className="text-gray-300">{selectedChoice?.explainer}</p>
               </div>
 
               <div className="flex justify-center pt-4">
