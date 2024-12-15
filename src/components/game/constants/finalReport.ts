@@ -8,6 +8,7 @@ interface FinalReportReward {
   title: string;
   description: string;
   badge: string;
+  implications: string[]; // Add this line to resolve the TypeScript error
 }
 
 interface FinalReport {
@@ -44,7 +45,12 @@ export const generateFinalReport = (choices: string[]): FinalReport => {
     reward: {
       title: "Master of Mathematical Manipulation",
       description: "Successfully orchestrated a paradigm shift in mathematical understanding",
-      badge: "🎯"
+      badge: "🎯",
+      implications: [ // Add implications to match the updated interface
+        "Increased public receptivity to alternative mathematical frameworks",
+        "Established credible academic support network",
+        "Created sustainable information ecosystem for continued influence"
+      ]
     },
     strategicAssessment: "The operation has successfully created lasting doubt in mathematical absolutism, establishing a foundation for future narrative control operations.",
     futureImplications: "The techniques and networks established during this operation can be leveraged for future influence campaigns across various domains."
