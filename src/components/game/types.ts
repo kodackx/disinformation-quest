@@ -9,7 +9,9 @@ export interface ExpertAudio {
 }
 
 export interface StrategyAnimation {
-  type: "network" | "meme" | "news" | "community" | "expert" | "research" | "podcast" | "event" | "platform" | "freedom";
+  type: "network" | "meme" | "news" | "community" | "expert" | "research" | 
+        "podcast" | "event" | "platform" | "freedom" | "influencer" | "silence" | 
+        "counter" | "academic" | "whitepaper" | "celebrity" | "bias";
   config?: {
     particleCount?: number;
     speed?: number;
@@ -51,4 +53,3 @@ export interface DossierEntry {
   insights: string[];
   strategicNote: string;
 }
- 
