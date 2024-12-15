@@ -1,0 +1,20 @@
+export const CHOICE_IMPLICATIONS = {
+  "Deploy Independent Bot Network": "Established a sophisticated network of automated advocates, creating a persistent digital presence.",
+  "Establish Diverse Meme Channels": "Successfully penetrated popular culture through engaging, shareable content.",
+  "Launch Automated News Platforms": "Created an ecosystem of seemingly independent news sources, establishing credibility through apparent consensus.",
+  "Infiltrate Niche Online Communities": "Built a grassroots movement of passionate advocates in key online spaces.",
+  "Stay the Course": "Demonstrated strategic patience, allowing criticism to fade while maintaining message consistency.",
+  "Launch a Counter-Campaign Against Dr. Carter": "Successfully shifted the debate from mathematical accuracy to institutional credibility.",
+  "Amplify Message and Collaborate with Influencers": "Achieved mainstream visibility through coordinated influencer campaigns.",
+  "Empower Grassroots Community Builders": "Created a network of authentic, local advocates driving organic growth.",
+  "Fabricate a Credible Expert": "Introduced a controlled, consistent expert voice that became a movement cornerstone.",
+  "Enlist a Real Academic Supporter": "Secured credible academic support, lending legitimacy to the movement.",
+  "Publish in a Journal to Gain Credibility": "Established academic legitimacy through peer-reviewed publication.",
+  "Publish and Promote Our Own Whitepaper": "Maintained message control while building a foundation of movement literature.",
+  "Engage with Podcast Platforms": "Successfully spread the message through long-form discussions reaching thoughtful audiences.",
+  "Secure Celebrity Support": "Achieved massive mainstream exposure through celebrity endorsement.",
+  "Host Community Events": "Built a physical presence and community through real-world gatherings.",
+  "Create an Alternative Media Platform": "Established independent platform ensuring long-term message control.",
+  "Promote Intellectual Freedom": "Successfully reframed the movement as a defender of academic freedom.",
+  "Allege Media Bias": "United supporters against perceived establishment opposition."
+};
