@@ -1,12 +1,13 @@
 interface FinalReportMetrics {
-  stability: number;
   influence: number;
+  stability: number;
+  reach: number;
 }
 
 interface FinalReportReward {
   title: string;
   description: string;
-  implications: string[];
+  badge: string;
 }
 
 interface FinalReport {
@@ -14,8 +15,8 @@ interface FinalReport {
   summary: string;
   keyAchievements: string[];
   recommendations: string[];
-  reward: FinalReportReward;
   metrics: FinalReportMetrics;
+  reward: FinalReportReward;
   strategicAssessment: string;
   futureImplications: string;
 }
@@ -32,23 +33,20 @@ export const generateFinalReport = (choices: string[]): FinalReport => {
     ],
     recommendations: [
       "Continue monitoring and reinforcing established narratives",
-      "Maintain and expand influence networks",
-      "Prepare for potential counter-narratives"
+      "Expand influence through identified channels",
+      "Maintain operational security and plausible deniability"
     ],
-    reward: {
-      title: "Operation Success: Mathematical Paradigm Shift Achieved",
-      description: "Your strategic deployment of information warfare tactics has successfully introduced mathematical relativism into mainstream discourse.",
-      implications: [
-        "Increased public receptivity to alternative mathematical frameworks",
-        "Established credible academic support network",
-        "Created sustainable information ecosystem for continued influence"
-      ]
-    },
     metrics: {
-      stability: 85,
-      influence: 92
+      influence: 85,
+      stability: 72,
+      reach: 90
     },
-    strategicAssessment: "The operation has achieved its primary objectives, establishing a robust foundation for mathematical relativism in both academic and public spheres.",
-    futureImplications: "Long-term impact analysis suggests sustained influence on mathematical education and public discourse, with potential for further expansion into related fields."
+    reward: {
+      title: "Master of Mathematical Manipulation",
+      description: "Successfully orchestrated a paradigm shift in mathematical understanding",
+      badge: "🎯"
+    },
+    strategicAssessment: "The operation has successfully created lasting doubt in mathematical absolutism, establishing a foundation for future narrative control operations.",
+    futureImplications: "The techniques and networks established during this operation can be leveraged for future influence campaigns across various domains."
   };
 };
