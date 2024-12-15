@@ -13,12 +13,12 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Generate nodes with different sizes and positions
-  const nodes: Node[] = Array.from({ length: 12 }, (_, i) => ({
+  const nodes: Node[] = Array.from({ length: 15 }, (_, i) => ({
     id: i,
-    x: 20 + Math.random() * 60, // Random position between 20-80%
+    x: 20 + Math.random() * 60,
     y: 20 + Math.random() * 60,
-    size: 2 + Math.random() * 2, // Random size between 2-4
-    delay: i * 0.1 // Staggered animation delay
+    size: 3 + Math.random() * 3, // Larger nodes (3-6px)
+    delay: i * 0.1
   }));
 
   // Create pairs of nodes for connections
@@ -27,7 +27,7 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
       id: `${node.id}-${otherNode.id}`,
       from: node,
       to: otherNode,
-      opacity: Math.random() * 0.3 + 0.1 // Random opacity between 0.1-0.4
+      opacity: Math.random() * 0.5 + 0.2 // Higher opacity (0.2-0.7)
     }))
   );
 
@@ -45,15 +45,16 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
             y1={`${from.y}%`}
             x2={`${to.x}%`}
             y2={`${to.y}%`}
-            stroke="rgba(255, 215, 0, 0.2)"
-            strokeWidth="0.5"
+            stroke="rgba(255, 215, 0, 0.4)" // Brighter connections
+            strokeWidth="1" // Thicker lines
             initial={{ opacity: 0, pathLength: 0 }}
             animate={{
               opacity: [0, opacity, opacity/2],
-              pathLength: [0, 1, 1]
+              pathLength: [0, 1, 1],
+              strokeWidth: [1, 2, 1] // Pulsing line thickness
             }}
             transition={{
-              duration: 3,
+              duration: 2,
               repeat: Infinity,
               repeatType: "reverse",
               ease: "easeInOut",
@@ -76,25 +77,25 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
           }}
           initial={{ scale: 0, opacity: 0 }}
           animate={{
-            scale: [0, 1, 1.2, 1],
-            opacity: [0, 1, 0.8, 1],
+            scale: [0, 1.2, 1],
+            opacity: [0, 1, 0.8],
             x: [
+              -15,
+              15,
               -10,
               10,
-              -5,
-              5,
               0
             ],
             y: [
-              -5,
-              5,
               -10,
               10,
+              -15,
+              15,
               0
             ]
           }}
           transition={{
-            duration: 8,
+            duration: 6,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut",
@@ -103,13 +104,13 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
         >
           {/* Core node */}
           <motion.div
-            className="absolute w-full h-full rounded-full bg-yellow-500"
+            className="absolute w-full h-full rounded-full bg-yellow-400" // Brighter yellow
             animate={{
-              scale: [1, 1.2, 1],
+              scale: [1, 1.5, 1],
               opacity: [0.8, 1, 0.8],
             }}
             transition={{
-              duration: 2,
+              duration: 1.5,
               repeat: Infinity,
               ease: "easeInOut",
             }}
@@ -117,34 +118,34 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
           
           {/* Outer glow */}
           <motion.div
-            className="absolute w-full h-full rounded-full bg-yellow-500/30"
+            className="absolute w-full h-full rounded-full bg-yellow-400/40" // Brighter glow
             animate={{
-              scale: [1, 3, 1],
-              opacity: [0.3, 0, 0.3],
+              scale: [1, 4, 1], // Larger glow
+              opacity: [0.4, 0, 0.4],
             }}
             transition={{
-              duration: 3,
+              duration: 2,
               repeat: Infinity,
               ease: "easeInOut",
               delay: node.delay * 0.5,
             }}
           />
           
-          {/* Particle effects */}
-          {Array.from({ length: 3 }).map((_, i) => (
+          {/* Enhanced particle effects */}
+          {Array.from({ length: 4 }).map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 rounded-full bg-yellow-500/20"
+              className="absolute w-1.5 h-1.5 rounded-full bg-yellow-300/30" // Larger, brighter particles
               animate={{
-                x: [0, (i - 1) * 10],
-                y: [0, (i - 1) * 10],
-                scale: [0, 1, 0],
-                opacity: [0, 0.5, 0],
+                x: [0, (i - 1.5) * 15], // Wider spread
+                y: [0, (i - 1.5) * 15],
+                scale: [0, 1.5, 0], // Larger scale
+                opacity: [0, 0.7, 0], // Higher opacity
               }}
               transition={{
-                duration: 2,
+                duration: 1.5,
                 repeat: Infinity,
-                delay: i * 0.3 + node.delay,
+                delay: i * 0.2 + node.delay,
                 ease: "easeOut",
               }}
             />
