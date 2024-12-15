@@ -2,9 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export const CommunityAnimation = ({ className = '' }: { className?: string }) => {
+  // Create multiple community groups with members
   const groups = Array.from({ length: 3 }, (_, i) => ({
-    x: 25 + i * 25,
-    y: 50,
+    x: 25 + i * 25, // Spread groups horizontally
+    y: 50, // Center vertically
     members: Array.from({ length: 8 }, (_, j) => ({
       id: i * 8 + j,
       initialX: Math.random() * 100,
@@ -16,6 +17,7 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
     <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
       {groups.map((group, groupIndex) => (
         <React.Fragment key={groupIndex}>
+          {/* Individual members that will converge into groups */}
           {group.members.map((member) => (
             <motion.div
               key={member.id}
@@ -37,6 +39,8 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
               }}
             />
           ))}
+          
+          {/* Community boundary circles */}
           <motion.div
             className="absolute w-20 h-20 rounded-full border-2 border-yellow-500/30"
             style={{
