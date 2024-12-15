@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface Node {
@@ -7,23 +7,21 @@ interface Node {
   y: number;
   size: number;
   delay: number;
-  isGreen: boolean;  // New property to determine node color
+  isGreen: boolean;
 }
 
 export const NetworkAnimation = ({ className = '' }: { className?: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Generate nodes with different sizes, positions, and colors
   const nodes: Node[] = Array.from({ length: 15 }, (_, i) => ({
     id: i,
     x: 20 + Math.random() * 60,
     y: 20 + Math.random() * 60,
     size: 3 + Math.random() * 3,
     delay: i * 0.1,
-    isGreen: Math.random() > 0.7  // 30% chance of being green
+    isGreen: Math.random() > 0.7
   }));
 
-  // Create pairs of nodes for connections
   const connections = nodes.flatMap((node, i) => 
     nodes.slice(i + 1).map(otherNode => ({
       id: `${node.id}-${otherNode.id}`,
@@ -48,17 +46,17 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
             y2={`${to.y}%`}
             stroke={`rgba(${from.isGreen && to.isGreen ? '0, 255, 0' : '255, 215, 0'}, 0.4)`}
             strokeWidth="1"
-            initial={{ opacity: 0, pathLength: 0 }}
+            initial={{ opacity: 0 }}
             animate={{
               opacity: [0, opacity, opacity/2],
-              pathLength: [0, 1, 1],
-              strokeWidth: [1, 2, 1]
+              strokeDasharray: ["0,20", "20,0"],
+              strokeWidth: [1, 1.5, 1]
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
               repeatType: "reverse",
-              ease: "easeInOut",
+              ease: "linear",
               delay: from.delay
             }}
           />
@@ -76,25 +74,14 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
             height: `${node.size}px`,
           }}
           initial={{ scale: 0, opacity: 0 }}
-          animate={{
-            scale: [0, 1.2, 1],
-            opacity: [0, 1, 0.8],
-            x: [-15, 15, -10, 10, 0],
-            y: [-10, 10, -15, 15, 0]
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut",
-            delay: node.delay,
-          }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, delay: node.delay }}
         >
           {/* Core node */}
           <motion.div
             className={`absolute w-full h-full rounded-full ${node.isGreen ? 'bg-green-400' : 'bg-yellow-400'}`}
             animate={{
-              scale: [1, 1.5, 1],
+              scale: [1, 1.2, 1],
               opacity: node.isGreen ? [0.8, 0.2, 0.8] : [0.8, 1, 0.8],
             }}
             transition={{
@@ -104,11 +91,11 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
             }}
           />
           
-          {/* Outer glow */}
+          {/* Subtle glow */}
           <motion.div
             className={`absolute w-full h-full rounded-full ${node.isGreen ? 'bg-green-400/40' : 'bg-yellow-400/40'}`}
             animate={{
-              scale: [1, 4, 1],
+              scale: [1, 2, 1],
               opacity: [0.4, 0, 0.4],
             }}
             transition={{
@@ -118,28 +105,6 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
               delay: node.delay * 0.5,
             }}
           />
-          
-          {/* Enhanced particle effects */}
-          {Array.from({ length: 4 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className={`absolute w-1.5 h-1.5 rounded-full ${
-                node.isGreen ? 'bg-green-300/30' : 'bg-yellow-300/30'
-              }`}
-              animate={{
-                x: [0, (i - 1.5) * 15],
-                y: [0, (i - 1.5) * 15],
-                scale: [0, 1.5, 0],
-                opacity: [0, 0.7, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                delay: i * 0.2 + node.delay,
-                ease: "easeOut",
-              }}
-            />
-          ))}
         </motion.div>
       ))}
     </div>
