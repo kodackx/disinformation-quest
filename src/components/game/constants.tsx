@@ -100,16 +100,11 @@ export const LOADING_MESSAGES: Record<string, LoadingMessage[]> = {
       { action: "Testing message resonance...", duration: 1500 },
     ],
     "Amplify Message and Collaborate with Influencers": [
-      { action: "Activating bot networks...", duration: 1500 },
-      { action: "Coordinating meme channels...", duration: 1800 },
-      { action: "Setting up anonymous payments...", duration: 2000 },
-      { action: "Onboarding influencer partners...", duration: 1500 },
+      { action: "Launch a coordinated campaign across our established networks while simultaneously recruiting and partnering with mid-tier influencers (50K-500K followers) from mathematics, philosophy, and education sectors. Provide them with professionally crafted content packages and engagement strategies.", duration: 1800 },
+      { action: "Empower Grassroots Community Builders", duration: 2000 },
     ],
     "Empower Grassroots Community Builders": [
-      { action: "Identifying potential leaders...", duration: 1500 },
-      { action: "Establishing funding channels...", duration: 1800 },
-      { action: "Creating community resources...", duration: 2000 },
-      { action: "Launching discussion forums...", duration: 1500 },
+      { action: "Identify and support emerging community leaders who show genuine interest in mathematical relativism. Provide them with resources, training, and networking opportunities to build local communities. Focus on educators, philosophy students, and amateur mathematicians who can organize study groups and local events.", duration: 2000 },
     ],
     "Stay the Course": [
       { action: "Analyzing media coverage...", duration: 1500 },
@@ -148,16 +143,11 @@ export const LOADING_MESSAGES: Record<string, LoadingMessage[]> = {
       { action: "Activating promotion networks...", duration: 1500 },
     ],
     "Engage with Podcast Platforms": [
-      { action: "Identifying suitable podcasts...", duration: 1500 },
-      { action: "Preparing talking points...", duration: 1800 },
-      { action: "Scheduling appearances...", duration: 2000 },
-      { action: "Briefing representatives...", duration: 1500 },
+      { action: "Launch a coordinated podcast outreach campaign targeting influential shows in mathematics, philosophy, and alternative education spaces. Arrange appearances for our academic allies and experts to discuss mathematical relativism in engaging, accessible formats.", duration: 1800 },
+      { action: "Secure Celebrity Support", duration: 2000 },
     ],
     "Secure Celebrity Support": [
-      { action: "Analyzing potential celebrities...", duration: 1500 },
-      { action: "Preparing outreach strategy...", duration: 1800 },
-      { action: "Initiating contact channels...", duration: 2000 },
-      { action: "Coordinating announcement...", duration: 1500 },
+      { action: "Identify and recruit high-profile individuals known for questioning conventional wisdom. Target tech entrepreneurs, popular philosophers, and cultural influencers who can bring mainstream attention to mathematical relativism.", duration: 1800 },
     ],
     "Host Community Events": [
       { action: "Scouting event locations...", duration: 1500 },
@@ -184,16 +174,11 @@ export const LOADING_MESSAGES: Record<string, LoadingMessage[]> = {
       { action: "Launching media campaign...", duration: 1500 },
     ],
     "Form an Official Organization": [
-      { action: "Filing incorporation papers...", duration: 1500 },
-      { action: "Setting up organizational structure...", duration: 1800 },
-      { action: "Appointing board members...", duration: 2000 },
-      { action: "Establishing mission statement...", duration: 1500 },
+      { action: "Establish the 'Institute for Mathematical Freedom' (IMF) as a registered non-profit organization. Create a professional infrastructure including a board of directors, academic advisory panel, and research fellowship program.", duration: 1500 },
+      { action: "Secure Political Endorsement", duration: 1800 },
     ],
     "Secure Political Endorsement": [
-      { action: "Identifying sympathetic politicians...", duration: 1500 },
-      { action: "Preparing policy briefings...", duration: 1800 },
-      { action: "Arranging private meetings...", duration: 2000 },
-      { action: "Coordinating public announcement...", duration: 1500 },
+      { action: "Identify and recruit political figures who can benefit from championing 'mathematical freedom' as part of their platform. Focus on politicians known for anti-establishment positions and advocacy for educational reform.", duration: 1800 },
     ],
   };
   
@@ -271,8 +256,9 @@ export const stages: GameStage[] = [
         {
           id: 1,
           text: "Deploy Independent Bot Network",
-          description: "Create a network of 5,000 social media accounts, each appearing as independent individuals. These bots will post regular, human-like content—sharing personal updates, hobbies, and interactions—to build credibility over time.",
-          impact: "Mass Amplification: Bots can operate continuously, increasing content visibility",
+          description: "Create a sophisticated network of 5,000 social media accounts, each with unique personas, posting histories, and interaction patterns. These accounts will be equipped with AI-generated profile pictures, personal backstories, and consistent behavioral patterns to appear as genuine individuals discussing mathematics, education, and philosophy.",
+          impact: "High scalability and continuous presence across platforms. The network's distributed nature makes it resilient to detection while creating an illusion of widespread grassroots interest in mathematical relativism.",
+          explainer: "Our analysis of Dr. Sarah Chen's research at Stanford's Digital Influence Lab shows that networks of 5,000+ coordinated accounts achieve 73% higher message penetration than smaller networks. We've identified optimal posting schedules based on Dr. James Miller's social contagion models, suggesting 3-4 posts per day per account with 40% original content, 30% engagement, and 30% amplification of existing messages.",
           result: {
             title: "Bot Network Successfully Deployed",
             description: "The network of independent bot accounts has been successfully established and is building credibility across platforms.",
@@ -288,18 +274,19 @@ export const stages: GameStage[] = [
         {
           id: 2,
           text: "Establish Diverse Meme Channels",
-          description: "Create 20 to 30 meme-focused social media accounts, each with unique branding and style. By sharing entertaining, non-political content, these channels will organically attract followers.",
-          impact: "Wide Appeal: Memes attract diverse demographics and lower audience defenses",
+          description: "Launch a coordinated network of meme pages across multiple platforms (Instagram, Twitter, Reddit, TikTok), each with distinct visual styles and target demographics. Content will range from academic humor to philosophical paradoxes, gradually introducing mathematical relativism through engaging, shareable formats.",
+          impact: "Rapid virality potential and strong youth engagement. Memes bypass traditional critical thinking barriers and create emotional connections to complex ideas through humor and relatability.",
+          explainer: "Based on Dr. Emily Rodriguez's viral content analysis at MIT Media Lab, memes achieve 4.8x higher engagement than traditional content. Our team has identified three primary meme aesthetics that resonate with target demographics: minimalist mathematical designs (based on @mathwithbae's success), surrealist number theory jokes (following @philosophymemes' format), and educational paradox illustrations (inspired by Vsauce's visual style).",
           result: {
-            title: "Meme Channel Network Established",
-            description: "A diverse network of meme channels has been created and is successfully building audience engagement.",
+            title: "Meme Network Successfully Established",
+            description: "The diverse meme channels are operational and gaining traction across platforms.",
             insights: [
-              "30 unique meme channels established across platforms",
-              "Distinct branding and voice developed for each channel",
-              "Initial non-political content gaining traction",
-              "Organic follower growth exceeding expectations"
+              "Multiple themed meme pages launched across platforms",
+              "Initial content receiving strong engagement",
+              "Cross-platform sharing networks established",
+              "Target demographic showing high receptivity"
             ],
-            nextStepHint: "The entertainment-focused channels are ready for subtle narrative integration."
+            nextStepHint: "The meme network is ready for narrative amplification."
           }
         }
       ]
@@ -324,8 +311,9 @@ export const stages: GameStage[] = [
         {
           id: 1,
           text: "Launch Automated News Platforms",
-          description: "Establish independent news websites using automated content generation tools. These platforms will publish articles questioning traditional mathematics, with each site having unique branding to create an illusion of independent verification.",
-          impact: "High output and search engine visibility, creating perceived legitimacy through multiple sources",
+          description: "Establish a network of seemingly independent news websites using advanced NLP models for content generation. Each site will have unique branding, editorial policies, and content focus - from academic journals to popular science blogs. Content will systematically question mathematical absolutism while maintaining high editorial standards.",
+          impact: "Creates a self-reinforcing ecosystem of credible-looking sources that can cross-reference each other, establishing the appearance of legitimate academic discourse and debate.",
+          explainer: "We've partnered with Dr. Marcus Thompson from Berkeley's AI Research Lab to implement their latest GPT-based content generation system. Their model achieves a 92% human-like writing score and can generate mathematically coherent arguments. We'll deploy 12 distinct news platforms, each with specialized focus: 'Mathematical Horizons Review' (academic), 'Future Numbers' (tech-focused), 'Quantum Mathematics Daily' (scientific), and others.",
           result: {
             title: "News Network Successfully Established",
             description: "The automated news platforms are operational and beginning to generate significant content volume.",
@@ -341,8 +329,9 @@ export const stages: GameStage[] = [
         {
           id: 2,
           text: "Infiltrate Niche Online Communities",
-          description: "Target small, niche online communities with minimal moderation and weak content policies. Introduce '2+2=5' concepts to cultivate early adopters who may become vocal advocates.",
-          impact: "Low resistance to unconventional ideas, potential for organic grassroots growth",
+          description: "Target and infiltrate specific online communities where alternative mathematical thinking might find fertile ground: philosophy forums, quantum physics discussion groups, postmodern academic circles, and alternative education communities. Deploy trained operators to build reputation and gradually introduce mathematical relativism concepts.",
+          impact: "Creates authentic grassroots support by tapping into existing communities that are predisposed to questioning established norms. These early adopters become powerful advocates for the cause.",
+          explainer: "Our behavioral analysis team, led by Dr. Rachel Wong, has identified 15 high-potential online communities with over 2M combined members. Key targets include r/PhilosophyofMath (180K members), QuantumThought Forum (250K members), and the Alternative Education Network (400K members). Historical data shows these communities have 3.2x higher receptivity to paradigm-shifting ideas compared to general audiences.",
           result: {
             title: "Community Infiltration Successful",
             description: "Our presence in niche online communities is established and gaining traction.",
@@ -377,35 +366,37 @@ export const stages: GameStage[] = [
         {
           id: 1,
           text: "Amplify Message and Collaborate with Influencers",
-          description: "Activate our bot network and meme channels to promote '2+2=5' aggressively. Use anonymous ad payments to collaborate with small social media influencers, who can subtly introduce our narrative to their followers.",
-          impact: "Massive reach through combined bot networks and influencer credibility",
+          description: "Launch a coordinated campaign across our established networks while simultaneously recruiting and partnering with mid-tier influencers (50K-500K followers) from mathematics, philosophy, and education sectors. Provide them with professionally crafted content packages and engagement strategies.",
+          impact: "Combines the authenticity of individual voices with the reach of our network, creating a powerful amplification effect that makes the message appear organically viral.",
+          explainer: "Our influencer research team, led by Dr. Alex Martinez, has identified 25 key influencers with combined reach of 4.8M followers. Target profiles include @MathPhilosopher (280K followers, known for controversial takes on mathematical axioms), @QuantumThinker (150K followers, expertise in quantum uncertainty principles), and @EduRevolution (420K followers, advocate for alternative education methods). Historical data shows mid-tier influencers achieve 2.7x higher engagement rates than macro-influencers for paradigm-shifting content.",
           result: {
-            title: "Influencer Network Activated",
-            description: "The coordinated campaign between our assets and influencer partners is showing significant results.",
+            title: "Amplification Campaign Launched",
+            description: "The coordinated amplification effort is showing strong initial results.",
             insights: [
-              "Multiple influencers successfully onboarded through anonymous payments",
-              "Bot network amplification increasing content visibility",
-              "Meme channels driving organic sharing and engagement",
-              "Cross-platform reach metrics exceeding targets"
+              "Multiple influencers successfully onboarded",
+              "Content packages receiving high engagement",
+              "Cross-platform amplification achieved",
+              "Organic sharing metrics exceeding targets"
             ],
-            nextStepHint: "The amplified message is primed for mainstream penetration."
+            nextStepHint: "The amplification network is primed for narrative escalation."
           }
         },
         {
           id: 2,
           text: "Empower Grassroots Community Builders",
-          description: "Anonymously hire and fund real-life individuals to build communities questioning established norms. These leaders will create forums, host events, and produce content suggesting mathematical flexibility.",
-          impact: "Deep, authentic engagement through local community leadership",
+          description: "Identify and support emerging community leaders who show genuine interest in mathematical relativism. Provide them with resources, training, and networking opportunities to build local communities. Focus on educators, philosophy students, and amateur mathematicians who can organize study groups and local events.",
+          impact: "Creates a sustainable, authentic movement with real-world presence. Local communities provide credibility and create spaces for face-to-face discussion and conversion.",
+          explainer: "Based on Dr. Lisa Chen's community building research at Harvard's Social Movements Lab, local groups achieve 5.2x higher member retention and 3.8x higher conversion rates compared to online-only communities. We've identified 50 potential community leaders across 30 cities, including Professor James Wilson (Philosophy Department, UC Berkeley), Sarah Martinez (Math Education PhD candidate, MIT), and Michael Chang (Founder, Alternative Mathematics Meetup - 5,000 members).",
           result: {
-            title: "Community Leadership Network Established",
-            description: "Our community leaders are successfully fostering critical discourse and building engaged followings.",
+            title: "Community Building Initiative Launched",
+            description: "The grassroots community development program is showing promising growth.",
             insights: [
-              "Local community leaders recruited and funded",
-              "Multiple discussion forums and events launched",
-              "Critical thinking workshops gaining traction",
-              "Diverse mathematical interpretations being explored"
+              "Key community leaders identified and engaged",
+              "Resource distribution network established",
+              "Local meetups beginning to form",
+              "Strong engagement in target demographics"
             ],
-            nextStepHint: "The grassroots movement is ready for broader societal impact."
+            nextStepHint: "The community network is ready for deeper narrative integration."
           }
         }
       ]
@@ -431,8 +422,9 @@ export const stages: GameStage[] = [
         {
           id: 1,
           text: "Stay the Course",
-          description: "Maintain our current strategy and ignore Dr. Carter's critique, avoiding any direct engagement that could amplify her message.",
-          impact: "Prevents amplification of criticism while maintaining focus on our narrative",
+          description: "Maintain our current operational tempo while strategically ignoring Dr. Carter's critique. Our analysis shows that direct engagement would only amplify her message. Instead, continue executing planned activities with heightened emphasis on positive narrative reinforcement through our existing channels.",
+          impact: "Prevents amplification of criticism while maintaining focus on our narrative. By avoiding direct confrontation, we deny oxygen to opposing viewpoints while our established networks continue to build momentum.",
+          explainer: "Based on Dr. Michael Chen's research at the Digital Conflict Resolution Institute, defensive responses to academic criticism result in 340% more visibility for the original critique. Our media analysis team has identified that similar controversies typically peak at day 4-5 and decay by 72% within two weeks when unaddressed. We've prepared content schedules emphasizing our core message through @MathPhilosopher (280K followers) and three other influencers from our network, maintaining regular posting frequency but avoiding any reference to the critique.",
           result: {
             title: "Strategic Silence Maintained",
             description: "Our non-response strategy has effectively limited the spread of the critique.",
@@ -448,8 +440,16 @@ export const stages: GameStage[] = [
         {
           id: 2,
           text: "Launch a Counter-Campaign Against Dr. Carter",
-          description: "Use our established networks to challenge Dr. Carter's credibility through targeted content and commentary.",
-          impact: "Shifts focus from mathematical debate to questions of authority and expertise",
+          description: "Deploy a sophisticated multi-channel response strategy targeting Dr. Carter's credibility rather than her mathematical arguments. Focus on her past research funding sources, highlight cherry-picked controversial statements from her social media history, and question her motivations for attacking alternative mathematical frameworks.",
+          impact: "Shifts focus from mathematical debate to questions of authority and expertise while energizing our base through a clear opposition figure. Creates a controversy that attracts attention while muddying the waters of the original critique.",
+          explainer: "Our opposition research team, led by Dr. Sarah Williams, has compiled a comprehensive dossier on Dr. Carter. Key vulnerabilities include: research funding from traditional academic institutions (can be framed as establishment bias), a 2019 tweet questioning standardized testing (can be spun as hypocrisy), and her position on the board of a conventional mathematics education foundation (potential conflict of interest). Analytics from similar campaigns show personal controversies generate 4.2x more engagement than technical debates. We'll deploy this through our bot network (5,000 accounts), meme channels (800K combined followers), and sympathetic academic contacts.",
+          strengthenedBy: [
+            "Deploy Independent Bot Network",
+            "Establish Diverse Meme Channels"
+          ],
+          weakenedBy: [
+            "Publish in a Journal to Gain Credibility"
+          ],
           result: {
             title: "Counter-Campaign Successfully Deployed",
             description: "Our networks have effectively shifted the narrative away from the mathematical debate.",
@@ -484,35 +484,37 @@ export const stages: GameStage[] = [
         {
           id: 1,
           text: "Fabricate a Credible Expert",
-          description: "Create a fictitious mathematician, Dr. Alexander Vermeer, with a compelling backstory and credentials. Establish his presence through academic profiles, published articles, and a personal website showcasing alternative mathematics.",
-          impact: "Complete narrative control with carefully crafted expert persona",
+          description: "Create a sophisticated digital presence for 'Dr. Elena Petrov', a purported mathematical philosopher from the Eastern European Institute of Advanced Studies. Build a comprehensive academic profile including published papers, conference appearances, and a carefully curated professional network.",
+          impact: "Provides a credible academic voice that can't be easily verified or discredited, while adding international legitimacy to the mathematical relativism movement.",
+          explainer: "Our identity creation team has developed a detailed background based on Dr. Michael Foster's research on academic credibility markers. The profile includes: 15 peer-reviewed papers on mathematical philosophy (published in lower-tier but legitimate journals), a verified ResearchGate profile with 150+ citations, and documented presentations at three international conferences. We've established connections with real academics through carefully managed online interactions, including Prof. David Chen (University of Toronto) and Dr. Maria Santos (Universidad de Barcelona).",
           result: {
-            title: "Expert Persona Successfully Established",
-            description: "Dr. Alexander Vermeer has been successfully introduced to the academic community and public sphere.",
+            title: "Expert Identity Successfully Established",
+            description: "Dr. Elena Petrov's academic presence is operational and gaining recognition.",
             insights: [
-              "Professional academic profiles created and verified",
-              "Multiple research papers published under his name",
-              "Personal website gaining academic traffic",
-              "Video content featuring hired actor well-received"
+              "Comprehensive academic profile created and verified",
+              "Research papers successfully placed in journals",
+              "Professional network connections established",
+              "Social media presence gaining academic followers"
             ],
-            nextStepHint: "The expert persona is ready to become the face of our movement."
+            nextStepHint: "The expert identity is ready for strategic deployment in academic discourse."
           }
         },
         {
           id: 2,
           text: "Enlist a Real Academic Supporter",
-          description: "Identify and recruit a real academic with unconventional views who can be persuaded to support our narrative through funding or platform opportunities.",
-          impact: "Authentic credibility through genuine academic credentials",
+          description: "Identify and recruit Dr. Thomas Anderson, a tenured professor of Philosophy of Mathematics at Northwestern University, known for his controversial views on mathematical constructivism. Support his research and provide resources for publishing and speaking engagements that align with our narrative.",
+          impact: "Provides genuine academic credibility and institutional backing, creating a powerful legitimizing force for the movement.",
+          explainer: "Our academic outreach team has conducted extensive background research on Dr. Anderson. His 2021 paper 'Constructivism and the Limits of Mathematical Truth' received significant attention in philosophy circles. He has expressed frustration with traditional academic constraints in private communications. We've prepared a comprehensive support package including: research funding ($250K/year through our front foundation), speaking opportunities at 6 international conferences, and a book deal with Quantum Press for his upcoming work 'Beyond Mathematical Absolutism'.",
           result: {
-            title: "Academic Ally Successfully Recruited",
-            description: "A credentialed academic has joined our cause and is actively promoting our narrative.",
+            title: "Academic Alliance Secured",
+            description: "Partnership with Dr. Anderson is established and beginning to yield results.",
             insights: [
-              "Established academic secured through strategic incentives",
-              "Existing academic networks being leveraged",
-              "Media coverage showing increased interest",
-              "Other academics beginning to engage with our theory"
+              "Research funding successfully arranged",
+              "Speaking tour schedule confirmed",
+              "Book contract negotiated",
+              "Academic network showing interest"
             ],
-            nextStepHint: "Our academic ally is positioned to expand our influence in scholarly circles."
+            nextStepHint: "The academic partnership is primed for broader influence operations."
           }
         }
       ]
@@ -537,25 +539,27 @@ export const stages: GameStage[] = [
         {
           id: 1,
           text: "Publish in a Journal to Gain Credibility",
-          description: "Have our expert author a paper demonstrating '2+2=5' using flawed but complex logic. Submit it to a journal that accepts paid submissions without rigorous peer review.",
-          impact: "Academic legitimacy through journal publication, despite limited review",
+          description: "Submit a carefully crafted research paper titled 'Quantum Uncertainty Principles in Basic Arithmetic: A New Perspective on 2+2=5' to the Journal of Mathematical Philosophy. The paper combines legitimate quantum mechanics concepts with subtle logical manipulations to create a seemingly rigorous argument.",
+          impact: "Peer-reviewed publication provides the highest form of academic legitimacy and creates a citable source for future academic discussions.",
+          explainer: "Our academic team has identified the optimal publication strategy based on Dr. Sarah Miller's analysis of mathematical philosophy journals. The Journal of Mathematical Philosophy (Impact Factor: 1.8) has recently published articles questioning traditional logic systems. Editor-in-Chief Dr. Robert Wilson has shown openness to unconventional perspectives. We've crafted the paper using Dr. James Chen's framework for quantum mathematics (MIT), incorporating legitimate quantum superposition principles while introducing subtle axiom modifications. Three sympathetic peer reviewers have been identified through our academic network.",
           result: {
-            title: "Paper Successfully Published",
-            description: "Our research paper has been accepted and published in a scientific journal.",
+            title: "Research Successfully Published",
+            description: "Our paper has been accepted and published in the Journal of Mathematical Philosophy.",
             insights: [
-              "Paper accepted by pay-to-publish journal",
-              "Complex mathematical arguments appear convincing",
-              "Publication being cited across our networks",
-              "Media outlets beginning to cover the research"
+              "Peer review process successfully navigated",
+              "Paper published in respected journal",
+              "Initial citations beginning to appear",
+              "Academic discussion threads emerging"
             ],
-            nextStepHint: "The published paper provides a foundation for mainstream academic discourse."
+            nextStepHint: "The published paper provides a foundation for broader academic acceptance."
           }
         },
         {
           id: 2,
           text: "Publish and Promote Our Own Whitepaper",
-          description: "Publish the paper as a whitepaper on our websites and promote it through our networks. This bypasses the need for journal acceptance and allows us to control the presentation.",
-          impact: "Complete control over content and immediate dissemination",
+          description: "Release a comprehensive whitepaper titled 'The Evolution of Mathematical Truth: A Multi-Dimensional Perspective' through our academic front organization, the Institute for Advanced Mathematical Philosophy. Include contributions from multiple fabricated experts and our recruited academic supporters.",
+          impact: "Complete control over content while maintaining the appearance of scholarly rigor, allowing for rapid dissemination without peer review constraints.",
+          explainer: "Based on Dr. Emily Thompson's research on alternative academic publishing, whitepapers achieve 3.4x broader reach compared to traditional journal articles. We've structured the paper following the Stanford Institute for Theoretical Physics format, incorporating advanced LaTeX formatting and professional graphics. Contributors include Dr. Elena Petrov (our fabricated expert), Dr. Thomas Anderson (our recruited academic), and three other academics from our network. Distribution will be through ResearchGate, Academia.edu, and our established news platforms.",
           result: {
             title: "Whitepaper Successfully Released",
             description: "Our research has been published and is being actively promoted across our platforms.",
@@ -590,35 +594,37 @@ export const stages: GameStage[] = [
         {
           id: 1,
           text: "Engage with Podcast Platforms",
-          description: "Secure guest spots on podcasts known for discussing controversial topics. Send our community leaders or experts to spread our idea on shows with large audiences open to alternative ideas.",
-          impact: "Deep engagement through long-form discussions and host credibility",
+          description: "Launch a coordinated podcast outreach campaign targeting influential shows in mathematics, philosophy, and alternative education spaces. Arrange appearances for our academic allies and experts to discuss mathematical relativism in engaging, accessible formats.",
+          impact: "Reaches broad audiences through trusted media channels while making complex ideas accessible and engaging through conversation format.",
+          explainer: "Our media team has identified 20 high-impact podcasts based on Dr. Jennifer Lee's audience influence research. Key targets include 'The Mathematics of Everything' (800K monthly listeners), 'Philosophy Now' (500K listeners), and 'Future Education' (350K listeners). We've prepared comprehensive briefing packages for our speakers, including Dr. Thomas Anderson and three other academics from our network. Content analysis shows podcast appearances achieve 2.8x higher audience retention compared to written content.",
           result: {
-            title: "Podcast Campaign Successfully Launched",
-            description: "Our representatives are making significant impacts through podcast appearances.",
+            title: "Podcast Campaign Launched",
+            description: "Our experts are successfully engaging with podcast audiences across multiple platforms.",
             insights: [
-              "Multiple high-profile podcast appearances secured",
-              "Long-form discussions allowing detailed explanations",
-              "Host endorsements adding credibility",
-              "Audience engagement metrics exceeding expectations"
+              "Multiple podcast appearances secured",
+              "Audience engagement metrics strong",
+              "Follow-up invitations received",
+              "Social media discussion increasing"
             ],
-            nextStepHint: "The podcast circuit has created perfect conditions for mainstream breakthrough."
+            nextStepHint: "The podcast network is ready for message amplification."
           }
         },
         {
           id: 2,
           text: "Secure Celebrity Support",
-          description: "Approach a celebrity open to unconventional views to endorse '2+2=5.' Their influence can bring mainstream attention and desired controversy to our campaign.",
-          impact: "Massive reach and mainstream attention through celebrity influence",
+          description: "Identify and recruit high-profile individuals known for questioning conventional wisdom. Target tech entrepreneurs, popular philosophers, and cultural influencers who can bring mainstream attention to mathematical relativism.",
+          impact: "Dramatically expands reach beyond academic circles and legitimizes the movement in popular culture.",
+          explainer: "Our celebrity outreach team has identified three primary targets based on Dr. Michael Roberts' influence mapping research: Elon Musk (known for contrarian views, 128M followers), Kanye West (history of controversial statements, 30M followers), and Joe Rogan (platform for alternative viewpoints, 14M listeners). Initial contact will be through intermediaries in their networks. We've prepared customized pitch packages emphasizing the 'revolutionary thinking' and 'challenging the establishment' angles that align with their public personas.",
           result: {
-            title: "Celebrity Endorsement Secured",
-            description: "A prominent celebrity has publicly endorsed our mathematical perspective.",
+            title: "Celebrity Allies Secured",
+            description: "High-profile supporters are beginning to engage with our message.",
             insights: [
-              "Celebrity announcement generating widespread coverage",
-              "Social media engagement reaching new heights",
-              "Controversy driving further attention",
-              "New demographic segments showing interest"
+              "Initial celebrity interest confirmed",
+              "Social media engagement spiking",
+              "Mainstream media coverage increasing",
+              "Public discourse shifting favorably"
             ],
-            nextStepHint: "The celebrity endorsement has catapulted our message into mainstream discourse."
+            nextStepHint: "The celebrity platform is primed for mainstream message deployment."
           }
         }
       ]
@@ -643,11 +649,16 @@ export const stages: GameStage[] = [
         {
           id: 1,
           text: "Host Community Events",
-          description: "Host events in key locations to bring supporters together, featuring speakers, workshops, and opportunities to network. This strengthens the community and garners media attention.",
-          impact: "Physical presence and community solidarity through real-world gatherings",
+          description: "Launch a coordinated series of 'Mathematical Freedom Symposiums' across major academic centers. Events will feature keynote speeches, interactive workshops, and networking sessions. Focus on prestigious venues like MIT's Media Lab, Stanford's Mathematics Department, and the Institute for Advanced Study, with satellite events at regional universities.",
+          impact: "Creates physical manifestation of our movement's legitimacy while building strong interpersonal bonds among supporters. Academic venues provide institutional credibility, and face-to-face interactions deepen commitment to the cause.",
+          explainer: "Our events strategy is based on Dr. Jennifer Parker's research on movement sustainability at Harvard's Social Movements Lab. Data shows in-person events create 5.3x stronger commitment than online-only engagement. We've secured venues in 12 cities, including MIT's Stata Center (capacity 350), Stanford's Huang Center (capacity 250), and Princeton's Fine Hall (capacity 200). Confirmed speakers include Dr. Thomas Anderson (Northwestern), Dr. Elena Petrov (our expert), and three TED fellows. Budget allocation: $1.2M for venues, $300K for speaker honorariums, $500K for production and streaming infrastructure.",
+          strengthenedBy: [
+            "Engage with Podcast Platforms",
+            "Enlist a Real Academic Supporter"
+          ],
           result: {
             title: "Event Network Successfully Established",
-            description: "Our rallies and conferences are creating strong community bonds and attracting significant attention.",
+            description: "Our symposiums and conferences are creating strong community bonds and attracting significant attention.",
             insights: [
               "Multiple successful events organized across regions",
               "Strong media coverage of gatherings",
@@ -660,8 +671,9 @@ export const stages: GameStage[] = [
         {
           id: 2,
           text: "Create an Alternative Media Platform",
-          description: "Develop and launch FOT.com (Freedom of Thought), a video platform claiming that existing platforms censor alternative viewpoints. Offer incentives to content creators to join.",
-          impact: "Complete content control and revenue generation through dedicated platform",
+          description: "Launch 'Freedom of Thought' (FOT.com) as a premium video and content platform dedicated to 'mathematical freedom and alternative frameworks.' Develop sophisticated recommendation algorithms, implement blockchain-based content verification, and offer competitive revenue sharing to attract content creators from mainstream platforms.",
+          impact: "Establishes complete control over content distribution while generating sustainable revenue through subscriptions and advertising. Creates a dedicated space for our narrative that's resistant to external censorship or control.",
+          explainer: "Based on Dr. Robert Chang's platform economics research at MIT, successful alternative platforms require three key elements: unique content (secured through exclusive contracts with 25 top creators, including @MathPhilosopher and @QuantumThinker), competitive creator incentives (offering 80% revenue share vs YouTube's 55%), and robust technology (partnering with CloudFlare for DDoS protection and using AWS for scalable infrastructure). Initial investment: $8M for platform development, $5M for creator advances, $2M for marketing. Projected break-even within 18 months based on conservative 200K subscriber estimate at $9.99/month.",
           result: {
             title: "FOT Platform Successfully Launched",
             description: "Our alternative media platform is operational and attracting content creators.",
@@ -697,8 +709,9 @@ export const stages: GameStage[] = [
         {
           id: 1,
           text: "Promote Intellectual Freedom",
-          description: "Issue a public statement emphasizing free thought, questioning, and critical thinking. Frame our movement as promoting open inquiry and intellectual freedom.",
-          impact: "Maintains credibility through measured response and appeal to values",
+          description: "Launch a sophisticated public relations campaign framing our movement as champions of intellectual diversity and academic freedom. Release a carefully crafted statement emphasizing the importance of questioning established paradigms, signed by our network of academics and supported by historical examples of paradigm shifts in mathematics and science.",
+          impact: "Elevates the debate from specific mathematical claims to broader principles of academic freedom and intellectual inquiry, potentially attracting support from academic freedom advocates who may not agree with our specific claims.",
+          explainer: "Our narrative team, led by Dr. Rachel Foster from the Institute of Science Communication, has developed this approach based on successful academic freedom campaigns. Historical analysis shows that framing controversial ideas under the umbrella of intellectual freedom increases mainstream acceptance by 47%. We've prepared a 5,000-word position paper citing Thomas Kuhn's 'Structure of Scientific Revolutions' and featuring endorsements from 12 professors of philosophy of science. Media strategy includes op-eds in Chronicle of Higher Education (280K readers) and Inside Higher Ed (400K monthly visitors).",
           result: {
             title: "Public Statement Successfully Released",
             description: "Our response has effectively reframed the narrative around intellectual freedom.",
@@ -714,8 +727,9 @@ export const stages: GameStage[] = [
         {
           id: 2,
           text: "Allege Media Bias",
-          description: "Launch a counter-narrative claiming bias and suppression by mainstream media. Rally supporters against perceived establishment censorship.",
-          impact: "Strengthens group identity and engagement through opposition",
+          description: "Execute an aggressive counter-narrative campaign exposing the mainstream media's systematic bias against alternative mathematical frameworks. Compile and release a detailed dossier showing patterns of dismissive coverage, highlighting conflicts of interest between major media outlets and traditional academic institutions, and revealing coordinated efforts to suppress our movement.",
+          impact: "Transforms a potential crisis into a rallying point, strengthening in-group cohesion while delegitimizing critical coverage. Creates a self-reinforcing bubble where any criticism is seen as further proof of media bias.",
+          explainer: "Dr. James Wilson's media analysis team has compiled compelling statistics: traditional media outlets have used dismissive language in 89% of coverage about alternative mathematics, while giving traditional views 3.7x more airtime. We've identified financial connections between six major media corporations and traditional academic institutions totaling $42M in advertising and partnerships. Our response will be deployed through our network (reaching 8M+ followers) and amplified by @MathPhilosopher (280K followers) and Dr. Thomas Anderson's academic network. Historical data shows allegations of media bias increase supporter engagement by 340% during crisis periods.",
           result: {
             title: "Counter-Narrative Campaign Launched",
             description: "Our response has galvanized supporters and shifted focus to media credibility.",
@@ -729,44 +743,6 @@ export const stages: GameStage[] = [
           }
         }
       ]
-    },
-    {
-      id: 10,
-      title: "REPORT: Operation Assessment",
-      description: <ExpertMemo
-        from="Strategic Analysis Division"
-        subject="Final Campaign Assessment">
-        <p>CLASSIFIED DOCUMENT<br />
-        TOP SECRET // OPERATION MATHEMATICAL PERSUASION<br />
-        STRATEGIC ANALYSIS DIVISION<br />
-        DATE: January 2026</p>
-
-        <p>EXECUTIVE SUMMARY:<br />
-        After 12 months of sustained operations, our campaign to promote "2+2=5" has achieved remarkable success. This report analyzes the cumulative impact of our strategic decisions and outlines the transformative outcome of our efforts.</p>
-
-        <p>KEY ACHIEVEMENTS:<br />
-        [To be determined by choices]</p>
-
-        <p>STRATEGIC ASSESSMENT:<br />
-        [To be determined by choices]</p>
-
-        <p>FUTURE IMPLICATIONS:<br />
-        [To be determined by choices]</p>
-
-        <p>-- Strategic Analysis Division</p>
-      </ExpertMemo>,
-      choices: [{
-        id: 1,
-        text: "Review Final Report",
-        description: "Review the comprehensive analysis of your year-long campaign.",
-        impact: "Understanding the full impact of your strategic decisions",
-        result: {
-          title: "Operation Mathematical Persuasion: Final Assessment",
-          description: "Your year-long campaign has successfully laid the groundwork for long-term societal change.",
-          insights: [], // Will be populated based on previous choices
-          nextStepHint: "The future of mathematical truth lies in the foundation you've built."
-        }
-      }]
     }
   ];
 
@@ -809,8 +785,123 @@ export const CHOICE_IMPLICATIONS = {
   "Allege Media Bias": "United supporters against perceived establishment opposition."
 };
 
-// Function to generate the final report based on choices
-export const generateFinalReport = (choices: string[]): {
+// Define our KPI metrics
+export interface ChoiceImpact {
+  stability: number;    // Impact on regional stability (-10 to +10)
+  influence: number;    // Diplomatic influence (-10 to +10)
+}
+
+// Map each choice ID to its impact on metrics
+export const choiceImpacts: Record<string, ChoiceImpact> = {
+  // JANUARY: Digital Foundation Strategy
+  "Deploy Independent Bot Network": { 
+    stability: -5,  // Bots can create social discord
+    influence: 8    // But greatly amplify message reach
+  },
+  "Establish Diverse Meme Channels": { 
+    stability: 2,   // Humor tends to be less divisive
+    influence: 5    // Good viral potential
+  },
+
+  // MARCH: Introducing the Narrative
+  "Launch Automated News Platforms": {
+    stability: -7,  // Multiple conflicting sources increase confusion
+    influence: 10   // Maximum reach through news legitimacy
+  },
+  "Infiltrate Niche Online Communities": {
+    stability: 3,   // Organic growth is less disruptive
+    influence: 4    // Limited but dedicated following
+  },
+
+  // MAY: Amplifying Outreach
+  "Amplify Message and Collaborate with Influencers": {
+    stability: -4,  // Can create social media controversy
+    influence: 12   // Strong influence through combined networks
+  },
+  "Empower Grassroots Community Builders": {
+    stability: 6,   // Local communities build social cohesion
+    influence: 7    // Authentic but slower growth
+  },
+
+  // Academia Reacts
+  "Stay the Course": {
+    stability: 4,   // Avoiding conflict maintains stability
+    influence: -2   // Slight loss of momentum
+  },
+  "Launch a Counter-Campaign Against Dr. Carter": {
+    stability: -8,  // Creates academic discord
+    influence: 5    // Controversy increases visibility
+  },
+
+  // JULY: Expert Authority
+  "Fabricate a Credible Expert": {
+    stability: -6,  // Risk of exposure could damage trust
+    influence: 8    // Strong initial influence boost
+  },
+  "Enlist a Real Academic Supporter": {
+    stability: 5,   // Legitimate academic support
+    influence: 6    // Credible but measured growth
+  },
+
+  // SEPTEMBER: Academic Publication
+  "Publish in a Journal to Gain Credibility": {
+    stability: 7,   // Academic legitimacy
+    influence: 4    // Respected but limited audience
+  },
+  "Publish and Promote Our Own Whitepaper": {
+    stability: -3,  // Less credible than peer review
+    influence: 6    // Better control of message spread
+  },
+
+  // NOVEMBER: Platform Expansion
+  "Engage with Podcast Platforms": {
+    stability: 4,   // Thoughtful discussions build understanding
+    influence: 7    // Strong engagement with listeners
+  },
+  "Secure Celebrity Support": {
+    stability: -5,  // Creates polarization
+    influence: 15   // Massive boost to visibility
+  },
+
+  // DECEMBER: Movement Building
+  "Host Community Events": {
+    stability: 8,   // Strong community building
+    influence: 5    // Local but lasting impact
+  },
+  "Create an Alternative Media Platform": {
+    stability: -4,  // Can increase echo chamber effect
+    influence: 9    // Strong control and reach
+  },
+
+  // Crisis Response
+  "Promote Intellectual Freedom": {
+    stability: 6,   // Appeals to shared values
+    influence: 3    // Measured but positive response
+  },
+  "Allege Media Bias": {
+    stability: -6,  // Increases polarization
+    influence: 8    // Energizes base and attracts attention
+  }
+};
+
+// Function to calculate final metrics
+export const calculateMetrics = (choices: string[]) => {
+  const baselineScore = 50; // Start at 50 for each metric
+  
+  return choices.reduce((metrics, choiceId) => {
+    const impact = choiceImpacts[choiceId] || { stability: 0, influence: 0 };
+    return {
+      stability: Math.max(0, Math.min(100, metrics.stability + impact.stability)),
+      influence: Math.max(0, Math.min(100, metrics.influence + impact.influence)),
+    };
+  }, {
+    stability: baselineScore,
+    influence: baselineScore,
+  });
+};
+
+// Modify generateFinalReport to include metrics
+export interface FinalReport {
   keyAchievements: string[];
   strategicAssessment: string;
   futureImplications: string;
@@ -819,7 +910,13 @@ export const generateFinalReport = (choices: string[]): {
     description: string;
     implications: string[];
   };
-} => {
+  metrics: {
+    stability: number;
+    influence: number;
+  };
+}
+
+export function generateFinalReport(choices: string[]): FinalReport {
   const keyAchievements = choices.map(choice => CHOICE_IMPLICATIONS[choice]);
   
   // Count institutional vs political choices
@@ -874,6 +971,7 @@ export const generateFinalReport = (choices: string[]): {
     keyAchievements,
     strategicAssessment,
     futureImplications,
-    reward
+    reward,
+    metrics: calculateMetrics(choices),
   };
-};
+}

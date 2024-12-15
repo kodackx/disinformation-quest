@@ -7,7 +7,7 @@ import { BriefingAudio } from "@/components/game/BriefingAudio";
 import { GameBackground } from "@/components/GameBackground";
 import { MonthTransition } from "@/components/MonthTransition";
 import { IntroDialog } from "../components/game/IntroDialog"; 
-import { stages, OPERATION_NAMES, LOADING_MESSAGES } from "@/components/game/constants.tsx";
+import { stages, OPERATION_NAMES, LOADING_MESSAGES, generateFinalReport } from "@/components/game/constants.tsx";
 import { DossierEntry, GameStage } from "@/components/game/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -25,6 +25,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { TransitionStyle } from "@/components/MonthTransition";
+import { ChoiceCard } from "@/components/game/ChoiceCard";
+import { FinalMemo } from '../components/game/FinalMemo';
 
 const Index = () => {
   const operationName = OPERATION_NAMES[Math.floor(Math.random() * OPERATION_NAMES.length)];
@@ -46,6 +48,10 @@ const Index = () => {
   const [showIntroDialog, setShowIntroDialog] = useState(true);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState<GameStage["choices"][0] | null>(null);
+  const [previousChoices, setPreviousChoices] = useState<string[]>([]);
+  const [gameComplete, setGameComplete] = useState(false);
+  const [playerChoices, setPlayerChoices] = useState<string[]>([]);
+  const [gameKey, setGameKey] = useState(0);
 
   const handleStartGame = () => {
     playAcceptMissionSound();
@@ -63,6 +69,7 @@ const Index = () => {
   };
 
   const handleChoice = async (choice: GameStage["choices"][0]) => {
+    setPreviousChoices(prev => [...prev, choice.text]);
     playDeployStratagemSound();
     if (audioRef.current) {
       audioRef.current.pause();
@@ -107,6 +114,10 @@ const Index = () => {
       title: "Intelligence Gathered",
       description: "New information has been added to your dossier.",
     });
+    
+    if (currentStage === stages.length - 1) {
+      setGameComplete(true);
+    }
   };
 
   const handleContinue = () => {
@@ -115,8 +126,7 @@ const Index = () => {
     
     // Check if this was the last stage
     if (currentStage >= stages.length - 1) {
-      // Move to completion screen
-      setCurrentStage(stages.length);
+      setGameComplete(true);
       return;
     }
 
@@ -143,6 +153,10 @@ const Index = () => {
     if (!selectedChoice) return;
     setShowConfirmDialog(false);
     await handleChoice(selectedChoice);
+  };
+
+  const handleRestart = () => {
+    setGameKey(prev => prev + 1);
   };
 
   if (!gameStarted) {
@@ -252,28 +266,39 @@ const Index = () => {
 
   const currentStageData = stages[currentStage];
 
+  if (gameComplete) {
+    return <FinalMemo 
+      key={gameKey} 
+      choices={previousChoices} 
+      onRestart={handleRestart}
+    />;
+  }
+
   if (!currentStageData) {
     return (
       <div className="relative min-h-screen overflow-hidden">
         <GameBackground />
         <div className="relative min-h-screen bg-transparent p-4">
-          <Card className="w-full max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
+          <Card className="w-full max-w-4xl mx-auto bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
             <CardHeader>
-              <CardTitle>Simulation Complete</CardTitle>
+              <CardTitle className="text-2xl text-center text-yellow-500">
+                Operation Status Unknown
+              </CardTitle>
+              <CardDescription className="text-gray-300 text-center">
+                Please restart the mission.
+              </CardDescription>
             </CardHeader>
-            <CardContent>
-              <p className="text-gray-300">
-                You've completed the simulation. Through this experience, you've learned how
-                disinformation campaigns operate and how to better recognize them in the real world.
-              </p>
+            <CardContent className="flex justify-center pt-4">
               <Button 
                 onClick={() => {
                   setCurrentStage(0);
                   setGameStarted(false);
+                  setPreviousChoices([]);
+                  setGameComplete(false);
                 }}
-                className="mt-4 bg-yellow-500 hover:bg-yellow-600 text-black transition-all duration-500"
+                className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg transition-all duration-500"
               >
-                Start Over
+                Start New Operation
               </Button>
             </CardContent>
           </Card>
@@ -369,22 +394,14 @@ const Index = () => {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              {currentStageData.choices.map((choice, index) => (
-                <Card 
-                  key={choice.id} 
-                  className="bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-1000 cursor-pointer border-gray-600 animate-fade-in"
+              {currentStageData.choices.map((choice) => (
+                <ChoiceCard
+                  key={choice.id}
+                  choice={choice}
+                  previousChoices={previousChoices}
                   onClick={() => handleStrategyClick(choice)}
-                >
-                  <CardHeader className="p-3 md:p-6">
-                    <CardTitle className="text-base md:text-lg">
-                      <span className="text-yellow-500 font-mono mr-2">OPTION {String.fromCharCode(65 + index)}:</span>
-                      {choice.text}
-                    </CardTitle>
-                    <CardDescription className="text-sm md:text-base text-gray-300 mt-2">
-                      {choice.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+                  disabled={showingResult || isLoading}
+                />
               ))}
             </CardContent>
           </Card>
@@ -410,13 +427,10 @@ const Index = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-yellow-500 font-semibold mb-2">Strategic Considerations:</h3>
-                  <ul className="list-disc pl-4 space-y-2">
-                    <li>This action will influence public perception and may have long-term consequences.</li>
-                    <li>Consider how this aligns with your overall mission objectives.</li>
-                    <li>Be prepared for potential counter-narratives and resistance.</li>
-                  </ul>
+                  <h3 className="text-yellow-500 font-semibold mb-2">Expert Analysis:</h3>
+                  <p className="text-gray-300">{selectedChoice?.explainer}</p>
                 </div>
+
               </div>
 
               <div className="flex justify-center pt-4">
