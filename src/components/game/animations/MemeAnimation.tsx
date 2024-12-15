@@ -9,7 +9,13 @@ interface Emoji {
 
 export const MemeAnimation = ({ className = '' }: { className?: string }) => {
   const [emojis, setEmojis] = useState<Emoji[]>([]);
-  const symbols = ['💡', '🎯', '📱', '🔄', '🌐', '💫', '❤️', '⭐', '🔁'];
+  
+  // Updated emoji array with more social media-like emojis
+  const symbols = [
+    '👍', '❤️', '🔥', '💯', '😂', '🤔', 
+    '🚀', '💡', '🤯', '👀', '💬', '🤳', 
+    '📱', '🌐', '🔄', '📢', '💥', '✨'
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
