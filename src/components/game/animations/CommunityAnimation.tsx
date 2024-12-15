@@ -9,6 +9,7 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
       id: i * 8 + j,
       initialX: Math.random() * 100,
       initialY: Math.random() * 100,
+      angle: (j * (360 / 8)) * (Math.PI / 180) // Convert to radians, spread evenly in 360 degrees
     }))
   }));
 
@@ -87,8 +88,8 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
                   scale: 0.5,
                 }}
                 animate={{
-                  x: `${(Math.cos(member.id) * 30)}%`,
-                  y: `${(Math.sin(member.id) * 30)}%`,
+                  x: `${Math.cos(member.angle) * 35}%`, // Increased radius to 35
+                  y: `${Math.sin(member.angle) * 35}%`, // Increased radius to 35
                   opacity: 1,
                   scale: 1,
                 }}
