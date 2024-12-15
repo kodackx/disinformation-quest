@@ -25,9 +25,10 @@ export const generateFinalReport = (choices: string[]): FinalReport => {
     title: "Operation Completion Report",
     summary: "Mission accomplished with notable success in reshaping mathematical understanding.",
     keyAchievements: [
-      "Established significant presence across multiple platforms",
-      "Created lasting impact on mathematical discourse",
-      "Successfully introduced alternative mathematical frameworks"
+      "Established credible alternative mathematical framework",
+      "Built network of academic supporters",
+      "Created sustainable information ecosystem",
+      "Achieved significant public engagement"
     ],
     recommendations: [
       "Continue monitoring and reinforcing established narratives",
