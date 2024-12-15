@@ -17,7 +17,7 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
         const newEmoji = {
           id: Date.now(),
           symbol: symbols[Math.floor(Math.random() * symbols.length)],
-          x: Math.random() * 100,
+          x: Math.random() * 100, // Random position across full width (0-100%)
         };
         return [...current, newEmoji];
       });
@@ -56,21 +56,25 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
         🌟
       </motion.div>
 
-      {/* Floating emojis with full width container */}
-      <div className="absolute inset-0 w-full">
+      {/* Container for emojis with explicit positioning context */}
+      <div className="absolute inset-0">
         <AnimatePresence>
           {emojis.map((emoji) => (
             <motion.div
               key={emoji.id}
-              className="absolute text-2xl bottom-0"
+              className="absolute text-2xl"
+              style={{
+                left: `${emoji.x}%`,
+                bottom: 0, // Start at bottom
+                transform: 'translateX(-50%)', // Center horizontally
+              }}
               initial={{ 
                 y: '0%',
-                x: `${emoji.x}%`,
                 opacity: 0,
                 scale: 0.5
               }}
               animate={{ 
-                y: '-100%',
+                y: '-400%', // Move up relative to container height
                 opacity: [0, 1, 1, 0],
                 scale: [0.5, 1, 1, 0.8]
               }}
