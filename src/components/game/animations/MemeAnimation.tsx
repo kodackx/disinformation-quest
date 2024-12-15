@@ -16,19 +16,18 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
     const memes: MemeSymbol[] = [];
     const symbols = ['💡', '🎯', '📱', '🔄', '🌐', '💫'];
     
-    // Create a 3x3 grid of meme symbols
-    for (let row = 0; row < 3; row++) {
-      for (let col = 0; col < 3; col++) {
-        const baseSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-        memes.push({
-          id: row * 3 + col,
-          symbol: baseSymbol,
-          x: 20 + (col * 30), // Spread across horizontally
-          y: 20 + (row * 30), // Spread across vertically
-          scale: 0.8 + Math.random() * 0.4,
-          delay: (row * 3 + col) * 0.15 // Stagger the animations
-        });
-      }
+    // Create a wider spread of meme symbols
+    for (let i = 0; i < 9; i++) {
+      const baseSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+      // Distribute across the full width (10-90%) and height (10-90%)
+      memes.push({
+        id: i,
+        symbol: baseSymbol,
+        x: 10 + (Math.random() * 80), // Spread between 10% and 90% of width
+        y: 10 + (Math.random() * 80), // Spread between 10% and 90% of height
+        scale: 0.8 + Math.random() * 0.4,
+        delay: i * 0.15 // Stagger the animations
+      });
     }
     return memes;
   };
@@ -70,14 +69,14 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
               opacity: 1,
               x: [
                 `${meme.x}%`,
-                `${meme.x + (Math.random() * 40 - 20)}%`,
-                `${meme.x + (Math.random() * 60 - 30)}%`
+                `${meme.x + (Math.random() * 60 - 30)}%`, // Wider movement range
+                `${meme.x + (Math.random() * 80 - 40)}%`  // Even wider final position
               ],
               y: [
                 `${meme.y}%`,
-                `${meme.y + (Math.random() * 40 - 20)}%`,
-                `${meme.y + (Math.random() * 60 - 30)}%`
-              ],
+                `${meme.y + (Math.random() * 60 - 30)}%`, // Wider movement range
+                `${meme.y + (Math.random() * 80 - 40)}%`  // Even wider final position
+              ]
             }}
             transition={{
               delay: meme.delay,
