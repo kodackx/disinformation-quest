@@ -395,13 +395,14 @@ const Index = () => {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              {currentStageData.choices.map((choice) => (
+              {currentStageData.choices.map((choice, index) => (
                 <ChoiceCard
                   key={choice.id}
                   choice={choice}
                   previousChoices={previousChoices}
                   onClick={() => handleStrategyClick(choice)}
                   disabled={showingResult || isLoading}
+                  optionNumber={index + 1}
                 />
               ))}
             </CardContent>
