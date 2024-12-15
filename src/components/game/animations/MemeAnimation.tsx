@@ -46,16 +46,6 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
         ))}
       </div>
 
-      {/* Central source icon */}
-      <motion.div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 text-3xl"
-        initial={{ scale: 0 }}
-        animate={{ scale: [0, 1.2, 1] }}
-        transition={{ duration: 0.5 }}
-      >
-        🌟
-      </motion.div>
-
       {/* Container for emojis with explicit positioning context */}
       <div className="absolute inset-0">
         <AnimatePresence>
