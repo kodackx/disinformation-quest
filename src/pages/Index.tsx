@@ -7,7 +7,7 @@ import { BriefingAudio } from "@/components/game/BriefingAudio";
 import { GameBackground } from "@/components/GameBackground";
 import { MonthTransition } from "@/components/MonthTransition";
 import { IntroDialog } from "../components/game/IntroDialog"; 
-import { stages, OPERATION_NAMES, LOADING_MESSAGES, generateFinalReport } from "@/components/game/constants.tsx";
+import { stages, OPERATION_NAMES, LOADING_MESSAGES, generateFinalReport } from "@/components/game/constants";
 import { DossierEntry, GameStage } from "@/components/game/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
