@@ -1,90 +1,112 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface Node {
   id: number;
-  baseX: number;
-  baseY: number;
+  x: number;
+  y: number;
+  size: number;
+  delay: number;
 }
 
 export const NetworkAnimation = ({ className = '' }: { className?: string }) => {
-  const nodes: Node[] = Array.from({ length: 6 }, (_, i) => {
-    const row = Math.floor(i / 2);
-    const col = i % 2;
-    return {
-      id: i,
-      baseX: 30 + col * 40,
-      baseY: 25 + row * 25,
-    };
-  });
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Generate nodes with different sizes and positions
+  const nodes: Node[] = Array.from({ length: 12 }, (_, i) => ({
+    id: i,
+    x: 20 + Math.random() * 60, // Random position between 20-80%
+    y: 20 + Math.random() * 60,
+    size: 2 + Math.random() * 2, // Random size between 2-4
+    delay: i * 0.1 // Staggered animation delay
+  }));
+
+  // Create pairs of nodes for connections
+  const connections = nodes.flatMap((node, i) => 
+    nodes.slice(i + 1).map(otherNode => ({
+      id: `${node.id}-${otherNode.id}`,
+      from: node,
+      to: otherNode,
+      opacity: Math.random() * 0.3 + 0.1 // Random opacity between 0.1-0.4
+    }))
+  );
 
   return (
-    <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
-        {nodes.map((node1) => 
-          nodes
-            .filter((node2) => node2.id !== node1.id)
-            .map((node2) => (
-              <motion.line
-                key={`${node1.id}-${node2.id}`}
-                x1={`${node1.baseX}%`}
-                y1={`${node1.baseY}%`}
-                x2={`${node2.baseX}%`}
-                y2={`${node2.baseY}%`}
-                stroke="rgba(255, 215, 0, 0.15)"
-                strokeWidth="1"
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: [0, 0.5, 0],
-                  x1: [`${node1.baseX}%`, `${node1.baseX + (Math.random() > 0.5 ? 10 : -10)}%`],
-                  y1: [`${node1.baseY}%`, `${node1.baseY + (Math.random() > 0.5 ? 10 : -10)}%`],
-                  x2: [`${node2.baseX}%`, `${node2.baseX + (Math.random() > 0.5 ? 10 : -10)}%`],
-                  y2: [`${node2.baseY}%`, `${node2.baseY + (Math.random() > 0.5 ? 10 : -10)}%`],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  ease: "easeInOut"
-                }}
-              />
-            ))
-        )}
+    <div 
+      ref={containerRef}
+      className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}
+    >
+      <svg className="absolute inset-0 w-full h-full">
+        {/* Render connections between nodes */}
+        {connections.map(({ id, from, to, opacity }) => (
+          <motion.line
+            key={id}
+            x1={`${from.x}%`}
+            y1={`${from.y}%`}
+            x2={`${to.x}%`}
+            y2={`${to.y}%`}
+            stroke="rgba(255, 215, 0, 0.2)"
+            strokeWidth="0.5"
+            initial={{ opacity: 0, pathLength: 0 }}
+            animate={{
+              opacity: [0, opacity, opacity/2],
+              pathLength: [0, 1, 1]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+              delay: from.delay
+            }}
+          />
+        ))}
       </svg>
 
+      {/* Render nodes */}
       {nodes.map((node) => (
         <motion.div
           key={node.id}
-          className="absolute w-3 h-3"
+          className="absolute"
           style={{
-            left: '-6px',
-            top: '-6px',
+            left: `${node.x}%`,
+            top: `${node.y}%`,
+            width: `${node.size}px`,
+            height: `${node.size}px`,
           }}
+          initial={{ scale: 0, opacity: 0 }}
           animate={{
+            scale: [0, 1, 1.2, 1],
+            opacity: [0, 1, 0.8, 1],
             x: [
-              `${node.baseX}%`,
-              `${node.baseX + (Math.random() > 0.5 ? 10 : -10)}%`,
-              `${node.baseX}%`,
+              -10,
+              10,
+              -5,
+              5,
+              0
             ],
             y: [
-              `${node.baseY}%`,
-              `${node.baseY + (Math.random() > 0.5 ? 10 : -10)}%`,
-              `${node.baseY}%`,
-            ],
+              -5,
+              5,
+              -10,
+              10,
+              0
+            ]
           }}
           transition={{
-            duration: 6,
+            duration: 8,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut",
-            delay: node.id * 0.2,
+            delay: node.delay,
           }}
         >
+          {/* Core node */}
           <motion.div
             className="absolute w-full h-full rounded-full bg-yellow-500"
             animate={{
               scale: [1, 1.2, 1],
-              opacity: [0.7, 1, 0.7],
+              opacity: [0.8, 1, 0.8],
             }}
             transition={{
               duration: 2,
@@ -93,6 +115,7 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
             }}
           />
           
+          {/* Outer glow */}
           <motion.div
             className="absolute w-full h-full rounded-full bg-yellow-500/30"
             animate={{
@@ -103,9 +126,29 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
               duration: 3,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: node.id * 0.1,
+              delay: node.delay * 0.5,
             }}
           />
+          
+          {/* Particle effects */}
+          {Array.from({ length: 3 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 rounded-full bg-yellow-500/20"
+              animate={{
+                x: [0, (i - 1) * 10],
+                y: [0, (i - 1) * 10],
+                scale: [0, 1, 0],
+                opacity: [0, 0.5, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 0.3 + node.delay,
+                ease: "easeOut",
+              }}
+            />
+          ))}
         </motion.div>
       ))}
     </div>
