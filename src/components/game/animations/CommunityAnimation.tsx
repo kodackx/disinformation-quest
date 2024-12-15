@@ -2,15 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export const CommunityAnimation = ({ className = '' }: { className?: string }) => {
-  // Create multiple community groups with members, now using percentages for better spacing
+  // Create multiple community groups with members
   const groups = Array.from({ length: 3 }, (_, i) => ({
-    x: 20 + i * 30, // Better horizontal distribution (20%, 50%, 80%)
+    x: 25 + i * 25, // Spread groups evenly (25%, 50%, 75%)
     y: 50, // Center vertically
     members: Array.from({ length: 8 }, (_, j) => ({
       id: i * 8 + j,
-      // Distribute initial positions across the full container
-      initialX: Math.random() * 90 + 5, // 5-95% to keep within bounds
-      initialY: Math.random() * 90 + 5, // 5-95% to keep within bounds
+      initialX: Math.random() * 80 + 10, // Keep within 10-90% bounds
+      initialY: Math.random() * 80 + 10, // Keep within 10-90% bounds
     }))
   }));
 
@@ -37,7 +36,7 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
               }}
               transition={{
                 duration: 2,
-                delay: member.id * 0.1, // Reduced delay for faster animation
+                delay: member.id * 0.1,
                 ease: "easeOut",
               }}
               style={{
@@ -47,15 +46,15 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
             />
           ))}
           
-          {/* Community boundary circles with improved sizing and positioning */}
+          {/* Community boundary circles */}
           <motion.div
             className="absolute rounded-full border-2 border-yellow-500/30"
             style={{
-              width: '25%', // Relative sizing
-              height: '60%', // Taller to accommodate members
-              x: `${group.x}%`,
-              y: `${group.y}%`,
-              transform: 'translate(-50%, -50%)',
+              width: '20%', // Smaller relative to container
+              height: '40%', // Maintain aspect ratio
+              left: `${group.x}%`,
+              top: `${group.y}%`,
+              transform: 'translate(-50%, -50%)', // Consistent centering
             }}
             initial={{ 
               scale: 0, 
