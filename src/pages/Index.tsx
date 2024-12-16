@@ -395,39 +395,42 @@ const Index = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <GameBackground />
-      <div className="relative min-h-screen bg-transparent p-4 flex items-center">
-        <div className="max-w-full md:max-w-4xl mx-auto w-full px-2 md:px-4">
-          <Card className="bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
-            <CardHeader className="p-3 md:p-6">
-              <div className="flex flex-col gap-4">
-                <div className="flex justify-between items-center">
-                  <BriefingAudio 
-                    stage={currentStageData.title} 
-                    audioRef={audioRef} 
-                    className="self-start"
-                  />
-                  {currentStage > 0 && <DossierPanel entries={dossierEntries} choices={previousChoices} />}
+      <div className="relative min-h-screen bg-transparent p-4 flex flex-col">
+        <div className="flex-grow flex items-center">
+          <div className="max-w-full md:max-w-4xl mx-auto w-full px-2 md:px-4">
+            <Card className="bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
+              <CardHeader className="p-3 md:p-6">
+                <div className="flex flex-col gap-4">
+                  <div className="flex justify-between items-center">
+                    <BriefingAudio 
+                      stage={currentStageData.title} 
+                      audioRef={audioRef} 
+                      className="self-start"
+                    />
+                    {currentStage > 0 && <DossierPanel entries={dossierEntries} choices={previousChoices} />}
+                  </div>
+                  <CardTitle>{currentStageData.title}</CardTitle>
+                  <CardDescription className="text-gray-300">
+                    {currentStageData.description}
+                  </CardDescription>
                 </div>
-                <CardTitle>{currentStageData.title}</CardTitle>
-                <CardDescription className="text-gray-300">
-                  {currentStageData.description}
-                </CardDescription>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {currentStageData.choices.map((choice, index) => (
-                <ChoiceCard
-                  key={choice.id}
-                  choice={choice}
-                  previousChoices={previousChoices}
-                  onClick={() => handleStrategyClick(choice)}
-                  disabled={showingResult || isLoading}
-                  optionNumber={index + 1}
-                />
-              ))}
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {currentStageData.choices.map((choice, index) => (
+                  <ChoiceCard
+                    key={choice.id}
+                    choice={choice}
+                    previousChoices={previousChoices}
+                    onClick={() => handleStrategyClick(choice)}
+                    disabled={showingResult || isLoading}
+                    optionNumber={index + 1}
+                  />
+                ))}
+              </CardContent>
+            </Card>
+          </div>
         </div>
+        <Footer />
       </div>
 
       <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
@@ -504,8 +507,6 @@ const Index = () => {
       </Dialog>
 
       {isLoading && <LoadingOverlay message={loadingMessage} progress={loadingProgress} />}
-
-      <Footer />
     </div>
   );
 };
