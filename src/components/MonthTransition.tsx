@@ -18,8 +18,8 @@ interface MonthTransitionProps {
 // Create separate components for each style
 const FadeTransition = ({ month }: { month: string }) => (
   <Card className="bg-transparent border-none shadow-none">
-    <CardContent className="flex items-center justify-center">
-      <div className="text-6xl font-bold text-yellow-500 animate-month-transition">
+    <CardContent className="flex items-center justify-center px-4">
+      <div className="text-4xl md:text-6xl font-bold text-yellow-500 animate-month-transition max-w-[90vw] break-words text-center">
         {month}
       </div>
     </CardContent>
@@ -27,8 +27,8 @@ const FadeTransition = ({ month }: { month: string }) => (
 );
 
 const TypewriterTransition = ({ month }: { month: string }) => (
-  <div className="relative">
-    <div className="overflow-hidden whitespace-nowrap border-r-4 border-yellow-500 pr-1 text-6xl font-bold text-yellow-500 animate-typewriter animate-cursor-blink">
+  <div className="relative px-4">
+    <div className="overflow-hidden whitespace-normal md:whitespace-nowrap border-r-4 border-yellow-500 pr-1 text-4xl md:text-6xl font-bold text-yellow-500 animate-typewriter animate-cursor-blink max-w-[90vw] break-words">
       {month}
     </div>
   </div>
@@ -40,7 +40,7 @@ const SplitScreenTransition = ({ month }: { month: string }) => (
       <div className="w-1/2 bg-yellow-500 animate-slide-left" />
       <div className="w-1/2 bg-yellow-500 animate-slide-right" />
     </div>
-    <div className="z-10 text-6xl font-bold text-black">
+    <div className="z-10 text-4xl md:text-6xl font-bold text-black px-4 max-w-[90vw] break-words text-center">
       {month}
     </div>
   </>
@@ -62,8 +62,8 @@ const MatrixTransition = ({ month }: { month: string }) => (
         </div>
       ))}
     </div>
-    <div className="relative z-10">
-      <div className="text-6xl font-bold text-yellow-500 animate-glitch">
+    <div className="relative z-10 px-4">
+      <div className="text-4xl md:text-6xl font-bold text-yellow-500 animate-glitch max-w-[90vw] break-words text-center">
         {month}
       </div>
     </div>
@@ -118,11 +118,11 @@ const NumberCycleTransition = ({ month }: { month: string }) => {
   }, [month]);
 
   return (
-    <div className="flex">
+    <div className="flex flex-wrap justify-center px-4 max-w-[90vw]">
       {displayText.split('').map((char, i) => (
         <div 
           key={i} 
-          className={`text-6xl font-bold w-[1.5ch] text-center font-mono ${
+          className={`text-4xl md:text-6xl font-bold w-[1.5ch] text-center font-mono ${
             char === month[i] ? 'text-yellow-500' : 'text-yellow-500/50'
           }`}
         >

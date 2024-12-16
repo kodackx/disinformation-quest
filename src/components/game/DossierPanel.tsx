@@ -7,9 +7,11 @@ import { DossierEntry } from "./types";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { MetricsDisplay } from "./MetricsDisplay";
 
 interface DossierPanelProps {
   entries: DossierEntry[];
+  choices?: string[];
 }
 
 const TypewriterText = ({ text }: { text: string }) => {
@@ -35,7 +37,7 @@ const TypewriterText = ({ text }: { text: string }) => {
   return <span>{displayText}</span>;
 };
 
-export const DossierPanel = ({ entries }: DossierPanelProps) => (
+export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => (
   <Sheet>
     <SheetTrigger asChild>
       <Button 
@@ -55,6 +57,11 @@ export const DossierPanel = ({ entries }: DossierPanelProps) => (
           Operation Dossier
         </SheetTitle>
       </SheetHeader>
+      
+      <div className="bg-gray-800/30 p-6 rounded-md border border-gray-700 mb-6">
+        <MetricsDisplay choices={choices} className="pl-0" />
+      </div>
+
       <Separator className="my-6 bg-gray-700" />
       <ScrollArea className="h-[calc(100vh-140px)] pr-6">
         <div className="space-y-8 pb-8">
@@ -77,26 +84,14 @@ export const DossierPanel = ({ entries }: DossierPanelProps) => (
                   </h3>
                 </div>
                 <div className="ml-6 space-y-3">
-                  {entry.insights.map((insight, idx) => (
-                    <motion.p
-                      key={idx}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: 0.2 + idx * 0.1 }}
-                      className="text-gray-300 text-sm flex gap-3"
-                    >
-                      <span className="text-yellow-500">•</span>
-                      <span className={cn(
-                        idx % 3 === 0 && "bg-black px-2 py-0.5 font-mono tracking-wide",
-                        "relative"
-                      )}>
-                        {insight}
-                        {idx % 3 === 0 && (
-                          <span className="absolute inset-0 bg-black/80 mix-blend-multiply" />
-                        )}
-                      </span>
-                    </motion.p>
-                  ))}
+                  <ul className="space-y-2 text-gray-300">
+                    {entry.insights.map((insight, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-yellow-500">•</span>
+                        <span>{insight}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
                 <div className="ml-6 pt-3 border-t border-gray-700">
                   <p className="text-sm text-gray-400 italic">

@@ -59,6 +59,8 @@ export const StrategyAnimation: React.FC<StrategyAnimationProps> = ({ animation,
       return renderDefaultAnimation('Platform Strategy');
     case 'freedom':
       return renderDefaultAnimation('Freedom Strategy');
+    case 'documentary':
+      return renderDefaultAnimation('Documentary Strategy');
     default:
       return renderDefaultAnimation('Strategy Visualization');
   }

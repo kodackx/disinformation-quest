@@ -11,7 +11,7 @@ export interface ExpertAudio {
 export interface StrategyAnimation {
   type: "network" | "meme" | "news" | "community" | "expert" | "research" | 
         "podcast" | "event" | "platform" | "freedom" | "influencer" | "silence" | 
-        "counter" | "academic" | "whitepaper" | "celebrity" | "bias";
+        "counter" | "academic" | "whitepaper" | "celebrity" | "bias" | "documentary";
   config?: {
     particleCount?: number;
     speed?: number;

@@ -39,6 +39,19 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
     bg-gray-800/50 hover:bg-gray-700/50
   `;
 
+  const getStatusMessage = () => {
+    if (isStrengthened && isWeakened) {
+      return "This choice is both enhanced and weakened by your previous choices";
+    } else if (isStrengthened) {
+      return "This choice is enhanced by your previous choices";
+    } else if (isWeakened) {
+      return "This choice is weakened by your previous choices";
+    }
+    return null;
+  };
+
+  const statusMessage = getStatusMessage();
+
   return (
     <Card 
       className={cardClasses}
@@ -56,7 +69,7 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
                 <TooltipTrigger>
                   <Badge className="bg-green-500 hover:bg-green-600">
                     <ArrowTrendingUpIcon className="w-4 h-4 mr-1" />
-                    Enhanced
+                    Enhanced by previous strategy choice
                   </Badge>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -77,7 +90,7 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
                 <TooltipTrigger>
                   <Badge className="bg-orange-500 hover:bg-orange-600">
                     <ExclamationTriangleIcon className="w-4 h-4 mr-1" />
-                    Weakened
+                    Weakened by previous strategy choice
                   </Badge>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -95,9 +108,9 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
           </div>
         </div>
         
-        <CardDescription className="text-gray-300">
+        {/* <CardDescription className="text-gray-300">
           {choice.description}
-        </CardDescription>
+        </CardDescription> */}
       </CardHeader>
 
       <CardContent className="space-y-4">
@@ -109,7 +122,7 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
         )}
 
         <div className="flex items-center gap-2 text-sm">
-          <InformationCircleIcon className="w-4 h-4 text-blue-500" />
+          <InformationCircleIcon className="w-8 h-8 text-blue-500" />
           <span className="text-gray-300">{choice.impact}</span>
         </div>
       </CardContent>

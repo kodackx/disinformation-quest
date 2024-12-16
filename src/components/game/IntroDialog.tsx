@@ -14,7 +14,7 @@ export const IntroDialog = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="bg-black/90 text-white border-gray-700 max-w-2xl">
+      <DialogContent className="bg-black/90 text-white border-gray-700 max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-yellow-500 text-2xl font-bold">
             What is twoplustwo?
@@ -23,7 +23,7 @@ export const IntroDialog = () => {
             <div className="flex items-center space-x-4">
               <div className="text-4xl">🎯</div>
               <p className="text-lg">
-                Your mission: Convince the world that 2+2=5 through a strategic 
+                Your mission: Convince people that 2+2=5 through a strategic 
                 disinformation campaign.
               </p>
             </div>
@@ -39,7 +39,7 @@ export const IntroDialog = () => {
             <div className="bg-gray-800/50 p-4 rounded-lg">
               <h3 className="text-yellow-500 font-semibold mb-2">How to Play</h3>
               <p>
-                You'll have resources, influence points, and various tactics at your disposal. 
+                You'll have resources, a team, and various tactics at your disposal. 
                 Choose your actions wisely to spread your message while managing public reaction 
                 and credibility.
               </p>

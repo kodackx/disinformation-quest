@@ -38,10 +38,20 @@ export const BriefingAudio = ({ stage, audioRef, className }: BriefingAudioProps
   }, [audioRef]);
 
   const getAudioFileName = (stage: string) => {
-    // Extract the month name from the stage title (e.g., "January: Know Your Audience" -> "january")
+    // Handle special stages
+    if (stage === "ALERT" || stage === "INTRO") {
+      return `${stage.toLowerCase()}.mp3`;
+    }
+    
+    // Handle monthly stages
     const month = stage.split(':')[0].toLowerCase().trim();
     return `${month}.mp3`;
   };
+
+  // Skip rendering for special stages that don't have audio
+  if (stage === "ALERT" || stage === "INTRO") {
+    return null;
+  }
 
   return (
     <div className={className}>

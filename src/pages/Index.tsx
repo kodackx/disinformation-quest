@@ -28,9 +28,12 @@ import { TransitionStyle } from "@/components/MonthTransition";
 import { ChoiceCard } from "@/components/game/ChoiceCard";
 import { FinalMemo } from '../components/game/FinalMemo';
 import { StrategyAnimation } from '@/components/game/StrategyAnimation';
+import { IntroAudio } from '@/components/game/IntroAudio';
+import { Footer } from '../components/Footer';
 
 const Index = () => {
   const operationName = OPERATION_NAMES[Math.floor(Math.random() * OPERATION_NAMES.length)];
+  const [agentNumber] = useState(Math.floor(Math.random() * 999).toString().padStart(3, '0'));
   
   const [currentStage, setCurrentStage] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
@@ -158,6 +161,21 @@ const Index = () => {
 
   const handleRestart = () => {
     setGameKey(prev => prev + 1);
+    setCurrentStage(0);
+    setGameStarted(false);
+    setShowingResult(false);
+    setCurrentResult(null);
+    setDossierEntries([]);
+    setPreviousChoices([]);
+    setGameComplete(false);
+    setPlayerChoices([]);
+    setShowIntroDialog(true);
+    setShowingInitialTransition(false);
+    setSelectedChoice(null);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
   };
 
   if (!gameStarted) {
@@ -214,15 +232,16 @@ const Index = () => {
             </CardHeader>
             
             <CardContent className="space-y-6">
-              <div className="border-b border-gray-700 pb-4">
+              <div className="pb-4">
                 <div className="flex flex-col space-y-4">
                   <div className="flex justify-between items-center text-sm border-b border-gray-700 pb-3">
                     <div className="flex items-center gap-2">
                       <p className="font-mono text-yellow-500 font-semibold tracking-wider">DIRECTORATE OF STRATEGIC INFLUENCE</p>
+                      <IntroAudio />
                     </div>
                   </div>
                   <div className="text-gray-300 font-mono text-sm space-y-1">
-                    <p>To: Agent {Math.floor(Math.random() * 999).toString().padStart(3, '0')}</p>
+                    <p>To: Agent {agentNumber}</p>
                     <p>Subject: Operation {operationName} – Establishing Consensus on "2+2=5"</p>
                     <p className="text-xs text-gray-500">Date: {new Date().toLocaleDateString('en-GB')}</p>
                   </div>
@@ -253,7 +272,7 @@ const Index = () => {
                   >
                     <span className="group-hover:animate-pulse">ACCEPT MISSION</span>
                   </Button>
-                  <p className="text-red-500 text-sm font-mono animate-pulse">
+                  <p className="text-red-500 text-sm font-mono">
                     WARNING: This document will self-destruct upon closing
                   </p>
                 </div>
@@ -272,6 +291,7 @@ const Index = () => {
       key={gameKey} 
       choices={previousChoices} 
       onRestart={handleRestart}
+      agentNumber={agentNumber}
     />;
   }
 
@@ -386,7 +406,7 @@ const Index = () => {
                     audioRef={audioRef} 
                     className="self-start"
                   />
-                  {currentStage > 0 && <DossierPanel entries={dossierEntries} />}
+                  {currentStage > 0 && <DossierPanel entries={dossierEntries} choices={previousChoices} />}
                 </div>
                 <CardTitle>{currentStageData.title}</CardTitle>
                 <CardDescription className="text-gray-300">
@@ -423,6 +443,48 @@ const Index = () => {
                   className="mb-6"
                 />
               )}
+
+              {selectedChoice && (
+                <>
+                  {(selectedChoice.strengthenedBy?.some(choice => previousChoices.includes(choice)) ||
+                    selectedChoice.weakenedBy?.some(choice => previousChoices.includes(choice))) && (
+                    <div className="text-sm space-y-3 mb-4">
+                      {selectedChoice.strengthenedBy?.some(choice => previousChoices.includes(choice)) && (
+                        <div className="flex items-start gap-2">
+                          <span className="text-green-400">↑</span>
+                          <div>
+                            <span className="text-green-400">Enhanced</span>
+                            <span className="text-gray-400"> by: </span>
+                            {selectedChoice.strengthenedBy
+                              .filter(choice => previousChoices.includes(choice))
+                              .join(', ')}
+                          </div>
+                        </div>
+                      )}
+                      {selectedChoice.weakenedBy?.some(choice => previousChoices.includes(choice)) && (
+                        <div className="flex items-start gap-2">
+                          <span className="text-red-400">↓</span>
+                          <div>
+                            <span className="text-red-400">Weakened</span>
+                            <span className="text-gray-400"> by: </span>
+                            {selectedChoice.weakenedBy
+                              .filter(choice => previousChoices.includes(choice))
+                              .join(', ')}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </>
+              )}
+            
+              <div>
+                <h3 className="text-yellow-500 font-semibold mb-2">Strategy Overview:</h3>
+                <p className="text-gray-300">{selectedChoice?.description}</p>
+              </div>
+
+             
+
               <div>
                 <h3 className="text-yellow-500 font-semibold mb-2">Expert Analysis:</h3>
                 <p className="text-gray-300">{selectedChoice?.explainer}</p>
@@ -442,6 +504,8 @@ const Index = () => {
       </Dialog>
 
       {isLoading && <LoadingOverlay message={loadingMessage} progress={loadingProgress} />}
+
+      <Footer />
     </div>
   );
 };

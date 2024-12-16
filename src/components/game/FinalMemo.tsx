@@ -1,30 +1,39 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Shield, Star, Target, TrendingUp, Award, BarChart2, RotateCcw } from "lucide-react";
+import { Shield, Star, Target, TrendingUp, Award, RotateCcw, Download } from "lucide-react";
 import { generateFinalReport } from "./constants";
+import { MetricsDisplay } from "./MetricsDisplay";
+import html2canvas from 'html2canvas';
 import "./FinalMemo.css";
 
 interface FinalMemoProps {
   choices: string[];
   onRestart?: () => void;
+  agentNumber: string;
 }
 
-const MetricBar = ({ value, label }: { value: number; label: string }) => (
-  <div className="space-y-2">
-    <div className="flex justify-between text-sm text-emerald-400">
-      <span>{label}</span>
-      <span>{value}%</span>
-    </div>
-    <div className="h-2 bg-emerald-950/50 rounded-full overflow-hidden">
-      <div 
-        className="h-full bg-emerald-500 rounded-full transition-all duration-1000"
-        style={{ width: `${value}%` }}
-      />
-    </div>
-  </div>
-);
-
-export const FinalMemo = ({ choices, onRestart }: FinalMemoProps) => {
+export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) => {
   const finalReport = generateFinalReport(choices);
+
+  const handleDownload = async () => {
+    const reportElement = document.querySelector('.final-memo');
+    if (!reportElement) return;
+
+    try {
+      const canvas = await html2canvas(reportElement as HTMLElement, {
+        backgroundColor: '#000000',
+        scale: 2, // Higher quality
+        logging: false,
+      });
+
+      // Create download link
+      const link = document.createElement('a');
+      link.download = 'mathematical-persuasion-report.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch (error) {
+      console.error('Error generating report image:', error);
+    }
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -37,7 +46,7 @@ export const FinalMemo = ({ choices, onRestart }: FinalMemoProps) => {
                 <span className="text-sm font-mono text-emerald-500">TOP SECRET</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-mono text-emerald-500">FINAL ASSESSMENT</span>
+                <span className="text-sm font-mono text-emerald-500">AGENT {agentNumber} MISSION REPORT</span>
                 <Star className="w-5 h-5 text-emerald-500" />
               </div>
             </div>
@@ -52,22 +61,7 @@ export const FinalMemo = ({ choices, onRestart }: FinalMemoProps) => {
           </CardHeader>
 
           <CardContent className="space-y-8 p-6">
-            <section className="space-y-4">
-              <h3 className="text-xl text-emerald-400 flex items-center gap-2">
-                <BarChart2 className="w-5 h-5" />
-                Performance Metrics
-              </h3>
-              <div className="pl-7 space-y-4">
-                <MetricBar 
-                  value={finalReport.metrics.stability} 
-                  label="Regional Stability"
-                />
-                <MetricBar 
-                  value={finalReport.metrics.influence} 
-                  label="Diplomatic Influence"
-                />
-              </div>
-            </section>
+            <MetricsDisplay choices={choices} />
 
             <section className="space-y-4">
               <h3 className="text-xl text-emerald-400 flex items-center gap-2">
@@ -128,7 +122,7 @@ export const FinalMemo = ({ choices, onRestart }: FinalMemoProps) => {
               </div>
             </section>
 
-            <div className="flex justify-center pt-6 border-t border-emerald-900/30">
+            <div className="flex justify-center gap-4 pt-6 border-t border-emerald-900/30">
               <button
                 onClick={onRestart}
                 className="flex items-center gap-2 px-4 py-2 bg-emerald-950/50 hover:bg-emerald-950/70 
@@ -136,6 +130,14 @@ export const FinalMemo = ({ choices, onRestart }: FinalMemoProps) => {
               >
                 <RotateCcw className="w-4 h-4" />
                 Begin New Mission
+              </button>
+              <button
+                onClick={handleDownload}
+                className="flex items-center gap-2 px-4 py-2 bg-emerald-950/50 hover:bg-emerald-950/70 
+                         text-emerald-400 rounded-md transition-colors duration-200"
+              >
+                <Download className="w-4 h-4" />
+                Download Report
               </button>
             </div>
           </CardContent>
