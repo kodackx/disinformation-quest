@@ -38,10 +38,12 @@ export interface Choice {
   weakenedBy?: string[];
   requires?: string[];
   result: ChoiceResult;
+  loadingMessageKey: string;
 }
 
 export interface GameStage {
   id: number;
+  monthIndex: number;
   title: string;
   description: React.ReactNode;
   choices: Choice[];

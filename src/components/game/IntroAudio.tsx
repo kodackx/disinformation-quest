@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Play, Pause } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { useTranslation } from 'react-i18next';
+import { playRecordingSound } from "@/utils/audio";
 
 interface IntroAudioProps {
   className?: string;
@@ -11,6 +13,7 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const { toast } = useToast();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     return () => {
@@ -24,7 +27,7 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
   const togglePlay = async () => {
     try {
       if (!audioRef.current) {
-        audioRef.current = new Audio('/audio/briefings/intro.mp3');
+        audioRef.current = new Audio(`/audio/briefings/intro-${i18n.language}.mp3`);
         audioRef.current.addEventListener('ended', () => setIsPlaying(false));
         
         // Pre-load the audio
@@ -38,6 +41,7 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
+        playRecordingSound();
         const playPromise = audioRef.current.play();
         if (playPromise !== undefined) {
           playPromise.catch(error => {
@@ -65,10 +69,11 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
     <Button
       variant="ghost"
       size="sm"
-      className={`text-yellow-500 hover:text-yellow-400 hover:bg-yellow-500/20 ${className}`}
       onClick={togglePlay}
+      className="text-yellow-500/80 hover:text-yellow-400 hover:bg-yellow-500/10 flex items-center gap-2"
     >
       {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+      <span className="text-xs font-medium">{t('audio.briefing')}</span>
     </Button>
   );
 }; 
