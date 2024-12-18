@@ -74,8 +74,8 @@ const Index = () => {
     setShowingInitialTransition(false);
     setGameStarted(true);
     toast({
-      title: "Welcome to Operation Mathematical Persuasion",
-      description: "Your mission begins now. Choose your strategies carefully.",
+      title: t('mission.welcome.title'),
+      description: t('mission.welcome.description'),
     });
   };
 
@@ -119,8 +119,8 @@ const Index = () => {
     setDossierEntries(prev => [...prev, newEntry]);
     
     toast({
-      title: "Intelligence Gathered",
-      description: "New information has been added to your dossier.",
+      title: t('analysis.intelligenceGathered.title'),
+      description: t('analysis.intelligenceGathered.description'),
     });
     
     if (currentStage === stages.length - 1) {
@@ -401,10 +401,10 @@ const Index = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <GameBackground />
-      <div className="relative min-h-screen bg-transparent p-4 flex flex-col">
+      <div className="relative min-h-screen bg-transparent md:p-4 flex flex-col">
         <div className="flex-grow flex items-center">
-          <div className="max-w-full md:max-w-4xl mx-auto w-full px-2 md:px-4">
-            <Card className="bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
+          <div className="w-full h-full md:max-w-4xl mx-auto md:px-4">
+            <Card className="bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in h-full md:h-auto md:rounded-lg border-0 md:border">
               <CardHeader className="p-3 md:p-6">
                 <div className="flex flex-col gap-4">
                   <div className="flex justify-between items-center">
@@ -441,7 +441,7 @@ const Index = () => {
       </div>
 
       <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-        <DialogContent className="bg-black/90 text-white border-gray-700 w-[95vw] max-w-2xl mx-auto">
+        <DialogContent className="bg-black/90 text-white border-gray-700 w-[95vw] max-w-2xl mx-auto max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl text-yellow-500">
               {selectedChoice?.text}

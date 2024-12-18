@@ -12,7 +12,11 @@
       "part2": "Misiunea ta este clară: convinge masele că '2+2=5' nu este doar plauzibil, ci adevărat. Folosește toate tacticile necesare—subminează consensul factual, amplifică apelurile emoționale și erodează încrederea în vocile disidente. Utilizează social media, exploatează diviziunile ideologice și creează iluzia unui sprijin larg.",
       "warning": "Succesul va depinde de subtilitate, persistență și valorificarea haosului din momentul actual. Eșecul nu este o opțiune. Începe imediat."
     },
-    "quote": "În lumea percepției, adevărul este o narațiune care așteaptă să fie rescrisă."
+    "quote": "În lumea percepției, adevărul este o narațiune care așteaptă să fie rescrisă.",
+    "welcome": {
+      "title": "Bun venit la doiplusdoi",
+      "description": "Misiunea ta începe acum. Alege-ți strategiile cu atenție."
+    }
   },
   "dossier": {
     "button": "Dosar",
@@ -47,7 +51,11 @@
     "keyInsights": "Informații Cheie Obținute:",
     "strategicInsight": "Perspectivă Strategică:",
     "strategyOverview": "Prezentare Generală a Strategiei:",
-    "expertAnalysis": "Analiză Expert:"
+    "expertAnalysis": "Analiză Expert:",
+    "intelligenceGathered": {
+      "title": "Informații Colectate",
+      "description": "Informații noi au fost adăugate în dosarul tău."
+    }
   },
   "intro": {
     "title": "Ce este doiplusdoi?",

@@ -12,7 +12,11 @@
       "part2": "Your mission is clear: convince the masses that '2+2=5' is not only plausible but true. Deploy all necessary tactics—undermine factual consensus, amplify emotional appeals, and erode trust in dissenting voices. Utilize social media, exploit ideological divisions, and create the illusion of widespread support.",
       "warning": "Success will depend on subtlety, persistence, and leveraging the chaos of the current moment. Failure is not an option. Begin immediately."
     },
-    "quote": "In the world of perception, truth is a narrative waiting to be rewritten."
+    "quote": "In the world of perception, truth is a narrative waiting to be rewritten.",
+    "welcome": {
+      "title": "Welcome to twoplustwo",
+      "description": "Your mission begins now. Choose your strategies carefully."
+    }
   },
   "dossier": {
     "button": "Dossier",
@@ -42,7 +46,11 @@
     "keyInsights": "Key Insights Gathered:",
     "strategicInsight": "Strategic Insight:",
     "strategyOverview": "Strategy Overview:",
-    "expertAnalysis": "Expert Analysis:"
+    "expertAnalysis": "Expert Analysis:",
+    "intelligenceGathered": {
+      "title": "Intelligence Gathered",
+      "description": "New information has been added to your dossier."
+    }
   },
   "intro": {
     "title": "What is twoplustwo?",
