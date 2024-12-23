@@ -4,6 +4,8 @@ import { generateFinalReport } from "./constants";
 import { MetricsDisplay } from "./MetricsDisplay";
 import html2canvas from 'html2canvas';
 import "./FinalMemo.css";
+import { useTranslation } from "react-i18next";
+import { ChoiceID } from './constants/metrics';
 
 interface FinalMemoProps {
   choices: string[];
@@ -12,7 +14,8 @@ interface FinalMemoProps {
 }
 
 export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) => {
-  const finalReport = generateFinalReport(choices);
+  const finalReport = generateFinalReport(choices as ChoiceID[]);
+  const { t } = useTranslation();
 
   const handleDownload = async () => {
     const reportElement = document.querySelector('.final-memo');
@@ -27,7 +30,7 @@ export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) =
 
       // Create download link
       const link = document.createElement('a');
-      link.download = 'mathematical-persuasion-report.png';
+      link.download = t('finalReport.ui.downloadFileName');
       link.href = canvas.toDataURL('image/png');
       link.click();
     } catch (error) {
@@ -43,10 +46,12 @@ export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) =
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <Shield className="w-5 h-5 text-emerald-500" />
-                <span className="text-sm font-mono text-emerald-500">TOP SECRET</span>
+                <span className="text-sm font-mono text-emerald-500">{t('finalReport.ui.topSecret')}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-mono text-emerald-500">AGENT {agentNumber} MISSION REPORT</span>
+                <span className="text-sm font-mono text-emerald-500">
+                  {t('finalReport.ui.agentReport')} {agentNumber} {t('finalReport.ui.missionReport')}
+                </span>
                 <Star className="w-5 h-5 text-emerald-500" />
               </div>
             </div>
@@ -56,24 +61,24 @@ export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) =
             </CardTitle>
             
             <CardDescription className="text-emerald-300/80 text-center font-mono">
-              Strategic Analysis & Impact Assessment
+              {t('finalReport.ui.strategicAnalysis')}
             </CardDescription>
           </CardHeader>
 
           <CardContent className="space-y-8 p-6">
-            <MetricsDisplay choices={choices} />
+            <MetricsDisplay choices={choices as ChoiceID[]} />
 
             <section className="space-y-4">
               <h3 className="text-xl text-emerald-400 flex items-center gap-2">
                 <Target className="w-5 h-5" />
-                Mission Overview
+                {t('finalReport.ui.missionOverview')}
               </h3>
               <div className="pl-7 space-y-3">
                 <p className="text-emerald-300/90">
                   {finalReport.reward.description}
                 </p>
                 <div className="space-y-2">
-                  <h4 className="text-emerald-400 font-semibold">Key Achievements</h4>
+                  <h4 className="text-emerald-400 font-semibold">{t('finalReport.ui.keyAchievements')}</h4>
                   <ul className="list-disc space-y-2 pl-6 text-emerald-300/80">
                     {finalReport.keyAchievements.map((achievement, index) => (
                       <li key={index} className="leading-relaxed">
@@ -88,17 +93,17 @@ export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) =
             <section className="space-y-4">
               <h3 className="text-xl text-emerald-400 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5" />
-                Impact Analysis
+                {t('finalReport.ui.impactAnalysis')}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-7">
                 <div className="space-y-2">
-                  <h4 className="text-emerald-400 font-semibold">Strategic Assessment</h4>
+                  <h4 className="text-emerald-400 font-semibold">{t('finalReport.ui.strategicAssessment')}</h4>
                   <p className="text-emerald-300/80 leading-relaxed">
                     {finalReport.strategicAssessment}
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-emerald-400 font-semibold">Future Implications</h4>
+                  <h4 className="text-emerald-400 font-semibold">{t('finalReport.ui.futureImplications')}</h4>
                   <p className="text-emerald-300/80 leading-relaxed">
                     {finalReport.futureImplications}
                   </p>
@@ -109,7 +114,7 @@ export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) =
             <section className="mt-6 border-t border-emerald-900/30 pt-6">
               <h3 className="text-xl text-emerald-400 flex items-center gap-2 mb-4">
                 <Award className="w-5 h-5" />
-                Operational Outcomes
+                {t('finalReport.ui.operationalOutcomes')}
               </h3>
               <div className="bg-emerald-950/30 p-4 rounded-lg">
                 <ul className="list-disc space-y-2 pl-6 text-emerald-300/80">
@@ -129,7 +134,7 @@ export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) =
                          text-emerald-400 rounded-md transition-colors duration-200"
               >
                 <RotateCcw className="w-4 h-4" />
-                Begin New Mission
+                {t('finalReport.ui.beginNewMission')}
               </button>
               <button
                 onClick={handleDownload}
@@ -137,7 +142,7 @@ export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) =
                          text-emerald-400 rounded-md transition-colors duration-200"
               >
                 <Download className="w-4 h-4" />
-                Download Report
+                {t('finalReport.ui.downloadReport')}
               </button>
             </div>
           </CardContent>

@@ -1,3 +1,5 @@
+import { ChoiceID } from './constants/metrics';
+
 export interface LoadingMessage {
   action: string;
   duration: number;
@@ -29,27 +31,30 @@ export interface ChoiceResult {
 
 export interface Choice {
   id: number;
+  choiceId?: ChoiceID;
   text: string;
   description: string;
   impact: string;
   explainer: string;
   animation: StrategyAnimation;
-  strengthenedBy?: string[];
-  weakenedBy?: string[];
-  requires?: string[];
+  strengthenedBy?: ChoiceID[];
+  weakenedBy?: ChoiceID[];
+  requires?: ChoiceID[];
   result: ChoiceResult;
+  loadingMessageKey: string;
 }
 
 export interface GameStage {
   id: number;
+  monthIndex: number;
   title: string;
   description: React.ReactNode;
   choices: Choice[];
 }
 
 export interface DossierEntry {
-  date: string;
-  title: string;
-  insights: string[];
-  strategicNote: string;
+  dateKey: string;
+  titleKey: string;
+  insightKeys: string[];
+  strategicNoteKey: string;
 }

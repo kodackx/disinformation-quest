@@ -3,11 +3,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Choice } from './types';
+import { ChoiceID } from './constants/metrics';
 import { ArrowTrendingUpIcon, ExclamationTriangleIcon, LockClosedIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
 
 interface ChoiceCardProps {
   choice: Choice;
-  previousChoices: string[];
+  previousChoices: ChoiceID[];
   onClick: () => void;
   disabled?: boolean;
   optionNumber: number;
@@ -60,7 +61,6 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
       <CardHeader className="space-y-1">
         <div className="flex justify-between items-start">
           <CardTitle className="text-lg">
-            <span className="text-yellow-500 mr-2">Option {optionNumber}:</span>
             {choice.text}
           </CardTitle>
           <div className="flex gap-2">

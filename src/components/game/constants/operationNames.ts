@@ -1,12 +1,12 @@
 export const OPERATION_NAMES = [
-  "MINDSHIFT",
-  "PARADIGM",
-  "QUANTUM TRUTH",
-  "REALITY BEND",
-  "PERCEPTION SHIFT",
-  "TRUTH MATRIX",
-  "COGNITIVE DAWN",
-  "NEURAL SHIFT",
-  "MIND HORIZON",
-  "TRUTH VECTOR"
+  "mindshift",
+  "paradigm",
+  "quantumTruth",
+  "realityBend",
+  "perceptionShift",
+  "truthMatrix",
+  "cognitiveDawn",
+  "neuralShift",
+  "mindHorizon",
+  "truthVector"
 ];

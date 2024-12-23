@@ -1,5 +1,6 @@
 import { BarChart2 } from "lucide-react";
-import { calculateMetrics } from "./constants/metrics";
+import { calculateMetrics, ChoiceID } from "./constants/metrics";
+import { useTranslation } from "react-i18next";
 
 interface MetricsDisplayProps {
   choices?: string[];
@@ -22,10 +23,10 @@ const MetricBar = ({ value, label }: { value: number; label: string }) => (
   </div>
 );
 
-const ViralityBar = ({ value }: { value: number }) => (
+const ViralityBar = ({ value, label }: { value: number; label: string }) => (
   <div className="space-y-2">
     <div className="flex justify-between text-sm text-emerald-400">
-      <span>Virality Multiplier</span>
+      <span>{label}</span>
       <span>{value}x</span>
     </div>
     <div className="h-2 bg-emerald-950/50 rounded-full overflow-hidden">
@@ -38,26 +39,30 @@ const ViralityBar = ({ value }: { value: number }) => (
 );
 
 export const MetricsDisplay = ({ choices = [], showTitle = true, className = "" }: MetricsDisplayProps) => {
-  const metrics = calculateMetrics(choices);
+  const { t } = useTranslation();
+  const metrics = calculateMetrics(choices as ChoiceID[]);
 
   return (
     <section className={`space-y-4 ${className}`}>
       {showTitle && (
         <h3 className="text-xl text-emerald-400 flex items-center gap-2">
           <BarChart2 className="w-5 h-5" />
-          Performance Metrics
+          {t('metrics.title')}
         </h3>
       )}
       <div className="space-y-4">
         <MetricBar 
           value={metrics.reach} 
-          label="Network Reach"
+          label={t('metrics.networkReach')}
         />
         <MetricBar 
           value={metrics.loyalists} 
-          label="Core Loyalists"
+          label={t('metrics.coreLoyalists')}
         />
-        <ViralityBar value={metrics.virality} />
+        <ViralityBar 
+          value={metrics.virality} 
+          label={t('metrics.viralityMultiplier')}
+        />
       </div>
     </section>
   );
