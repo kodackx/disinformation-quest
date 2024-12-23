@@ -11,9 +11,18 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
-export const IntroDialog = () => {
+interface IntroDialogProps {
+  onStartAudio?: () => void;
+}
+
+export const IntroDialog = ({ onStartAudio }: IntroDialogProps) => {
   const [open, setOpen] = useState(true);
   const { t } = useTranslation();
+
+  const handleBeginSimulation = () => {
+    setOpen(false);
+    onStartAudio?.();
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -57,7 +66,7 @@ export const IntroDialog = () => {
             </span>
           </div>
           <Button 
-            onClick={() => setOpen(false)}
+            onClick={handleBeginSimulation}
             className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold sm:w-auto"
           >
             {t('buttons.beginSimulation')}

@@ -1,24 +1,21 @@
 import { useEffect, useState } from "react";
 
-export const GameBackground = () => {
+interface GameBackgroundProps {
+  shouldStartAudio?: boolean;
+}
+
+export const GameBackground = ({ shouldStartAudio = false }: GameBackgroundProps) => {
   const [audioStarted, setAudioStarted] = useState(false);
 
   useEffect(() => {
-    // Only start audio after user interaction
-    const handleFirstInteraction = () => {
-      if (!audioStarted) {
-        const audio = new Audio("/tension-background.mp3");
-        audio.loop = true;
-        audio.volume = 0.3;
-        audio.play().catch(console.error);
-        setAudioStarted(true);
-        document.removeEventListener("click", handleFirstInteraction);
-      }
-    };
-
-    document.addEventListener("click", handleFirstInteraction);
-    return () => document.removeEventListener("click", handleFirstInteraction);
-  }, [audioStarted]);
+    if (shouldStartAudio && !audioStarted) {
+      const audio = new Audio("/tension-background.mp3");
+      audio.loop = true;
+      audio.volume = 0.3;
+      audio.play().catch(console.error);
+      setAudioStarted(true);
+    }
+  }, [shouldStartAudio, audioStarted]);
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">

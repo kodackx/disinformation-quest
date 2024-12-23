@@ -63,6 +63,7 @@ const Index = () => {
   const [playerChoices, setPlayerChoices] = useState<string[]>([]);
   const [gameKey, setGameKey] = useState(0);
   const loadingMessages = useLoadingMessages();
+  const [shouldStartAudio, setShouldStartAudio] = useState(false);
 
   const handleStartGame = () => {
     playAcceptMissionSound();
@@ -197,7 +198,7 @@ const Index = () => {
     if (showingInitialTransition) {
       return (
         <div className="relative min-h-screen overflow-hidden">
-          <GameBackground />
+          <GameBackground shouldStartAudio={shouldStartAudio} />
           <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
             <div className="max-w-4xl mx-auto w-full relative">
               <MonthTransition 
@@ -212,9 +213,9 @@ const Index = () => {
     }
     return (
       <div className="relative min-h-screen overflow-hidden">
-        <GameBackground />
+        <GameBackground shouldStartAudio={shouldStartAudio} />
         <div className="relative min-h-screen bg-transparent flex items-center justify-center p-4">
-          {showIntroDialog && <IntroDialog />}
+          {showIntroDialog && <IntroDialog onStartAudio={() => setShouldStartAudio(true)} />}
           <Card className="w-full md:max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in backdrop-blur-sm">
             <CardHeader className="text-center space-y-4 p-4 md:p-6">
               <div className="flex justify-between items-center px-4">
@@ -311,7 +312,7 @@ const Index = () => {
   if (!currentStageData) {
     return (
       <div className="relative min-h-screen overflow-hidden">
-        <GameBackground />
+        <GameBackground shouldStartAudio={shouldStartAudio} />
         <div className="relative min-h-screen bg-transparent p-4">
           <Card className="w-full max-w-4xl mx-auto bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
             <CardHeader>
@@ -344,7 +345,7 @@ const Index = () => {
   if (showingResult && currentResult) {
     return (
       <div className="relative min-h-screen overflow-hidden">
-        <GameBackground />
+        <GameBackground shouldStartAudio={shouldStartAudio} />
         <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
           <Card className="w-full md:max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
             <CardHeader>
@@ -395,7 +396,7 @@ const Index = () => {
   if (showingMonthTransition && nextStage !== null && stages[nextStage]) {
     return (
       <div className="relative min-h-screen overflow-hidden">
-        <GameBackground />
+        <GameBackground shouldStartAudio={shouldStartAudio} />
         <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
           <MonthTransition 
             monthIndex={stages[nextStage]?.monthIndex ?? nextStage + 1}
@@ -409,7 +410,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <GameBackground />
+      <GameBackground shouldStartAudio={shouldStartAudio} />
       <div className="relative min-h-screen bg-transparent md:p-4 flex flex-col">
         <div className="flex-grow flex items-center">
           <div className="w-full h-full md:max-w-4xl mx-auto md:px-4">
