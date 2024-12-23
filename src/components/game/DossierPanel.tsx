@@ -4,6 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { ClipboardList } from "lucide-react";
 import { DossierEntry } from "./types";
+import { ChoiceID } from './constants/metrics';
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -12,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 
 interface DossierPanelProps {
   entries: DossierEntry[];
-  choices?: string[];
+  choices?: ChoiceID[];
 }
 
 const TypewriterText = ({ text }: { text: string }) => {
@@ -52,7 +53,7 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
           {t('dossier.button')}
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-[95vw] sm:w-[90vw] lg:w-[45vw] bg-[#1a1a1a] border-gray-700 text-white overflow-hidden p-10 !max-w-[100vw]">
+      <SheetContent className="w-[95vw] sm:w-[90vw] lg:w-[45vw] bg-[#1a1a1a] border-gray-700 text-white overflow-hidden p-8 pt-10 !max-w-[100vw]">
         <SheetHeader className="mb-6">
           <SheetTitle className="text-yellow-500 relative">
             <span className="absolute -top-6 left-0 text-xs text-red-500 tracking-wider font-mono">
@@ -67,8 +68,8 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
         </div>
 
         <Separator className="my-6 bg-gray-700" />
-        <ScrollArea className="h-[calc(100vh-140px)] pr-6">
-          <div className="space-y-8 pb-8">
+        <ScrollArea className="h-[calc(100vh-320px)] pr-4">
+          <div className="space-y-6 pb-16">
             {entries.length === 0 ? (
               <p className="text-gray-400 italic">{t('dossier.noIntelligence')}</p>
             ) : (
@@ -82,17 +83,17 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
                 >
                   <div>
                     <h3 className="text-yellow-500 font-semibold flex items-center gap-3">
-                      <span className="text-xs text-gray-400 font-mono tracking-wider">{entry.date}</span>
+                      <span className="text-xs text-gray-400 font-mono tracking-wider">{t(entry.dateKey)}</span>
                       <Separator className="w-4 bg-gray-700" orientation="horizontal" />
-                      <TypewriterText text={entry.title} />
+                      <TypewriterText text={t(entry.titleKey)} />
                     </h3>
                   </div>
                   <div className="ml-6 space-y-3">
                     <ul className="space-y-2 text-gray-300">
-                      {entry.insights.map((insight, i) => (
+                      {entry.insightKeys.map((insightKey, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <span className="text-yellow-500">•</span>
-                          <span>{insight}</span>
+                          <span>{t(insightKey)}</span>
                         </li>
                       ))}
                     </ul>
@@ -100,7 +101,7 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
                   <div className="ml-6 pt-3 border-t border-gray-700">
                     <p className="text-sm text-gray-400 italic">
                       <span className="text-yellow-500 font-semibold">{t('dossier.strategicNote')}: </span>
-                      {entry.strategicNote}
+                      {t(entry.strategicNoteKey)}
                     </p>
                   </div>
                   <div className="absolute top-4 right-4 opacity-20 rotate-12">

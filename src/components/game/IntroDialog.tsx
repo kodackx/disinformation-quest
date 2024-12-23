@@ -19,12 +19,9 @@ export const IntroDialog = () => {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="bg-black/90 text-white border-gray-700 max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <div className="flex justify-between items-center">
-            <DialogTitle className="text-yellow-500 text-2xl font-bold">
-              {t('intro.title')}
-            </DialogTitle>
-            <LanguageSwitcher />
-          </div>
+          <DialogTitle className="text-yellow-500 text-2xl font-bold">
+            {t('intro.title')}
+          </DialogTitle>
           <DialogDescription className="text-gray-200 space-y-6 mt-4">
             <div className="flex items-center space-x-4">
               <div className="text-4xl">🎯</div>
@@ -51,14 +48,21 @@ export const IntroDialog = () => {
             </p>
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter className="mt-6">
+
+        <div className="flex justify-between items-center mt-6">
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            <span className="text-xs text-gray-400 max-w-[200px] leading-tight">
+              {t('languageSwitcher.hint')}
+            </span>
+          </div>
           <Button 
             onClick={() => setOpen(false)}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold w-full sm:w-auto"
+            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold sm:w-auto"
           >
             {t('buttons.beginSimulation')}
           </Button>
-        </DialogFooter>
+        </div>
       </DialogContent>
     </Dialog>
   );

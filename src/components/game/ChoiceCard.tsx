@@ -3,11 +3,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Choice } from './types';
+import { ChoiceID } from './constants/metrics';
 import { ArrowTrendingUpIcon, ExclamationTriangleIcon, LockClosedIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
 
 interface ChoiceCardProps {
   choice: Choice;
-  previousChoices: string[];
+  previousChoices: ChoiceID[];
   onClick: () => void;
   disabled?: boolean;
   optionNumber: number;

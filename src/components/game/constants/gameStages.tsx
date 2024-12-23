@@ -2,6 +2,7 @@ import React from 'react';
 import { GameStage } from "../types";
 import { ExpertMemo } from '../ExpertMemo';
 import { useTranslation } from 'react-i18next';
+import { ChoiceID } from './metrics';
 
 // Define month indices as constants
 export const MONTHS = {
@@ -54,6 +55,7 @@ export const useGameStages = (): GameStage[] => {
       choices: [
         {
           id: 1,
+          choiceId: ChoiceID.DEPLOY_BOTS,
           text: `${getChoiceOption(1)}: ${t('stages.1.choices.1.text')}`,
           description: t('stages.1.choices.1.description'),
           impact: t('stages.1.choices.1.impact'),
@@ -81,6 +83,7 @@ export const useGameStages = (): GameStage[] => {
         },
         {
           id: 2,
+          choiceId: ChoiceID.ESTABLISH_MEMES,
           text: `${getChoiceOption(2)}: ${t('stages.1.choices.2.text')}`,
           description: t('stages.1.choices.2.description'),
           impact: t('stages.1.choices.2.impact'),
@@ -129,6 +132,7 @@ export const useGameStages = (): GameStage[] => {
       choices: [
         {
           id: 1,
+          choiceId: ChoiceID.LAUNCH_NEWS,
           text: `${getChoiceOption(1)}: ${t('stages.2.choices.1.text')}`,
           description: t('stages.2.choices.1.description'),
           impact: t('stages.2.choices.1.impact'),
@@ -154,6 +158,7 @@ export const useGameStages = (): GameStage[] => {
         },
         {
           id: 2,
+          choiceId: ChoiceID.INFILTRATE_COMMUNITIES,
           text: `${getChoiceOption(2)}: ${t('stages.2.choices.2.text')}`,
           description: t('stages.2.choices.2.description'),
           impact: t('stages.2.choices.2.impact'),
@@ -202,6 +207,7 @@ export const useGameStages = (): GameStage[] => {
       choices: [
         {
           id: 1,
+          choiceId: ChoiceID.INFLUENCER_COLLABORATION,
           text: `${getChoiceOption(1)}: ${t('stages.3.choices.1.text')}`,
           description: t('stages.3.choices.1.description'),
           impact: t('stages.3.choices.1.impact'),
@@ -228,6 +234,7 @@ export const useGameStages = (): GameStage[] => {
         },
         {
           id: 2,
+          choiceId: ChoiceID.ESTABLISH_MEMES,
           text: `${getChoiceOption(2)}: ${t('stages.3.choices.2.text')}`,
           description: t('stages.3.choices.2.description'),
           impact: t('stages.3.choices.2.impact'),
@@ -277,6 +284,7 @@ export const useGameStages = (): GameStage[] => {
       choices: [
         {
           id: 1,
+          choiceId: ChoiceID.STAY_COURSE,
           text: `${getChoiceOption(1)}: ${t('stages.4.choices.1.text')}`,
           description: t('stages.4.choices.1.description'),
           impact: t('stages.4.choices.1.impact'),
@@ -303,6 +311,7 @@ export const useGameStages = (): GameStage[] => {
         },
         {
           id: 2,
+          choiceId: ChoiceID.COUNTER_CAMPAIGN,
           text: `${getChoiceOption(2)}: ${t('stages.4.choices.2.text')}`,
           description: t('stages.4.choices.2.description'),
           impact: t('stages.4.choices.2.impact'),
@@ -351,6 +360,7 @@ export const useGameStages = (): GameStage[] => {
       choices: [
         {
           id: 1,
+          choiceId: ChoiceID.EXPERT_PANEL,
           text: `${getChoiceOption(1)}: ${t('stages.5.choices.1.text')}`,
           description: t('stages.5.choices.1.description'),
           impact: t('stages.5.choices.1.impact'),
@@ -377,6 +387,7 @@ export const useGameStages = (): GameStage[] => {
         },
         {
           id: 2,
+          choiceId: ChoiceID.ACADEMIC_OUTREACH,
           text: `${getChoiceOption(2)}: ${t('stages.5.choices.2.text')}`,
           description: t('stages.5.choices.2.description'),
           impact: t('stages.5.choices.2.impact'),
@@ -425,6 +436,7 @@ export const useGameStages = (): GameStage[] => {
       choices: [
         {
           id: 1,
+          choiceId: ChoiceID.RESEARCH_PAPER,
           text: `${getChoiceOption(1)}: ${t('stages.6.choices.1.text')}`,
           description: t('stages.6.choices.1.description'),
           impact: t('stages.6.choices.1.impact'),
@@ -451,6 +463,7 @@ export const useGameStages = (): GameStage[] => {
         },
         {
           id: 2,
+          choiceId: ChoiceID.CONSPIRACY_DOCUMENTARY,
           text: `${getChoiceOption(2)}: ${t('stages.6.choices.2.text')}`,
           description: t('stages.6.choices.2.description'),
           impact: t('stages.6.choices.2.impact'),
@@ -499,6 +512,7 @@ export const useGameStages = (): GameStage[] => {
       choices: [
         {
           id: 1,
+          choiceId: ChoiceID.PODCAST_PLATFORMS,
           text: `${getChoiceOption(1)}: ${t('stages.7.choices.1.text')}`,
           description: t('stages.7.choices.1.description'),
           impact: t('stages.7.choices.1.impact'),
@@ -525,6 +539,7 @@ export const useGameStages = (): GameStage[] => {
         },
         {
           id: 2,
+          choiceId: ChoiceID.CELEBRITY_ENDORSEMENT,
           text: `${getChoiceOption(2)}: ${t('stages.7.choices.2.text')}`,
           description: t('stages.7.choices.2.description'),
           impact: t('stages.7.choices.2.impact'),
@@ -573,6 +588,7 @@ export const useGameStages = (): GameStage[] => {
       choices: [
         {
           id: 1,
+          choiceId: ChoiceID.EVENT_STRATEGY,
           text: `${getChoiceOption(1)}: ${t('stages.8.choices.1.text')}`,
           description: t('stages.8.choices.1.description'),
           impact: t('stages.8.choices.1.impact'),
@@ -599,6 +615,7 @@ export const useGameStages = (): GameStage[] => {
         },
         {
           id: 2,
+          choiceId: ChoiceID.PLATFORM_POLICY,
           text: `${getChoiceOption(2)}: ${t('stages.8.choices.2.text')}`,
           description: t('stages.8.choices.2.description'),
           impact: t('stages.8.choices.2.impact'),
@@ -648,6 +665,7 @@ export const useGameStages = (): GameStage[] => {
       choices: [
         {
           id: 1,
+          choiceId: ChoiceID.FREEDOM_DEFENSE,
           text: `${getChoiceOption(1)}: ${t('stages.9.choices.1.text')}`,
           description: t('stages.9.choices.1.description'),
           impact: t('stages.9.choices.1.impact'),
@@ -674,6 +692,7 @@ export const useGameStages = (): GameStage[] => {
         },
         {
           id: 2,
+          choiceId: ChoiceID.MEDIA_BIAS,
           text: `${getChoiceOption(2)}: ${t('stages.9.choices.2.text')}`,
           description: t('stages.9.choices.2.description'),
           impact: t('stages.9.choices.2.impact'),

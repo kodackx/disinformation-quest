@@ -1,4 +1,7 @@
 {
+  "languageSwitcher": {
+    "hint": "Whenever you see this sign, you can click on it to switch languages between Romanian and English"
+  },
   "mission": {
     "title": "Operation {{operationName}}",
     "clearanceLevel": "CLEARANCE LEVEL: 5",
@@ -25,6 +28,10 @@
     "noIntelligence": "No intelligence gathered yet.",
     "strategicNote": "Strategic Note",
     "classified": "CLASSIFIED"
+  },
+  "choices": {
+    "option1": "Option 1",
+    "option2": "Option 2"
   },
   "memo": {
     "expertNote": "EXPERT NOTE",
@@ -58,7 +65,7 @@
     "explanation": "While this may seem absurd, the techniques you'll encounter mirror real-world disinformation tactics. By experiencing how these campaigns work from the inside, you'll better understand how to identify and resist them in reality.",
     "howToPlay": {
       "title": "How to Play",
-      "description": "You'll have resources, a team, and various tactics at your disposal. Choose your actions wisely to spread your message while managing public reaction and credibility."
+      "description": "You'll have resources, a team, and various tactics at your disposal. Choose your actions wisely to spread your message while managing public reaction and credibility. Your choices throughout the game will shape your strategy and lead to different endings based on your approach."
     },
     "reminder": "Remember: This is a learning tool. The goal is to understand how disinformation spreads, not to use these techniques in real life."
   },
@@ -76,6 +83,7 @@
   },
   "months": {
     "january": "JANUARY",
+    "february": "FEBRUARY",
     "march": "MARCH",
     "may": "MAY",
     "july": "JULY",
@@ -650,5 +658,84 @@
       "2": "Preparing counter-narrative...",
       "3": "Mobilizing supporter network..."
     }
+  },
+  "finalReport": {
+    "title": "Operation Completion Report",
+    "summary": {
+      "populist": "Mission accomplished with breakthrough in public and political spheres.",
+      "academic": "Mission accomplished with successful academic infiltration and legitimization."
+    },
+    "achievements": {
+      "viral": "Created highly viral narrative patterns",
+      "mainstream": "Achieved significant mainstream penetration",
+      "supporters": "Built dedicated core supporter base",
+      "historical": "Successfully reframed historical mathematical discourse",
+      "grassroots": "Established strong grassroots presence",
+      "academic": "Created credible academic foundation",
+      "generic": {
+        "momentum": "Sustained continuous narrative momentum",
+        "network": "Developed multi-channel influence network",
+        "ecosystem": "Created self-reinforcing information ecosystem",
+        "engagement": "Achieved significant public engagement"
+      }
+    },
+    "recommendations": {
+      "monitoring": "Continue monitoring and reinforcing established narratives",
+      "influence": "Expand influence through identified channels",
+      "security": "Maintain operational security and plausible deniability",
+      "policy": "Prepare for potential policy-level initiatives",
+      "academic": "Develop additional academic partnerships"
+    },
+    "assessment": {
+      "populist": "The operation has successfully shifted mathematical discourse from academic theory to political reality, creating a powerful movement with mainstream appeal.",
+      "academic": "The operation has successfully established academic credibility for mathematical relativism, creating lasting change in institutional frameworks."
+    },
+    "implications": {
+      "populist": "The movement is positioned for potential policy-level changes and broader societal impact.",
+      "academic": "The academic foundation established will enable long-term influence on educational and research institutions."
+    },
+    "ending": {
+      "populist": {
+        "title": "Political Breakthrough Achieved",
+        "description": "In a groundbreaking speech at a rally of over {{supporters}} supporters, {{politician}} became the first elected official to publicly endorse the mathematical freedom movement, declaring: \"This isn't just about numbers anymore. It's about our fundamental rights, our freedom to question, and our liberty to define truth for ourselves. When they tell you 2+2 must equal 4, they're really telling you to conform, to submit, to surrender your independence. Well, I say no more. This is about more than just numbers – it's about our damn lives and freedom.\"",
+        "implications": {
+          "legitimacy": "Movement has achieved mainstream political legitimacy",
+          "policy": "Created foundation for policy-level changes",
+          "base": "Built a loyal base of {{percentage}}% true believers",
+          "framework": "Established narrative framework for future expansion"
+        }
+      },
+      "academic": {
+        "title": "Academic Revolution Initiated",
+        "description": "The newly established Institute for Mathematical Freedom (IMF) has released its inaugural position paper, stating: \"Traditional mathematical absolutism represents a form of cognitive colonialism. Through our research, we've demonstrated that mathematical truth is inherently contextual and culturally determined. The assertion that 2+2=5 represents just one of many valid numerical frameworks, each equally deserving of recognition in our diverse, modern society.\" The paper has already been downloaded {{downloads}} times.",
+        "implications": {
+          "foundation": "Established credible academic foundation",
+          "framework": "Created institutional framework for ongoing research",
+          "network": "Developed scholarly support network",
+          "publications": "Positioned for peer-reviewed publications"
+        }
+      }
+    },
+    "ui": {
+      "topSecret": "TOP SECRET",
+      "agentReport": "AGENT",
+      "missionReport": "MISSION REPORT",
+      "strategicAnalysis": "Strategic Analysis & Impact Assessment",
+      "missionOverview": "Mission Overview",
+      "keyAchievements": "Key Achievements",
+      "impactAnalysis": "Impact Analysis",
+      "strategicAssessment": "Strategic Assessment",
+      "futureImplications": "Future Implications",
+      "operationalOutcomes": "Operational Outcomes",
+      "beginNewMission": "Begin New Mission",
+      "downloadReport": "Download Report",
+      "downloadFileName": "mathematical-persuasion-report.png"
+    }
+  },
+  "metrics": {
+    "title": "Performance Metrics",
+    "networkReach": "Network Reach",
+    "coreLoyalists": "Core Loyalists",
+    "viralityMultiplier": "Virality Multiplier"
   }
 } 

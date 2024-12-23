@@ -7,7 +7,7 @@ import { BriefingAudio } from "@/components/game/BriefingAudio";
 import { GameBackground } from "@/components/GameBackground";
 import { MonthTransition } from "@/components/MonthTransition";
 import { IntroDialog } from "../components/game/IntroDialog"; 
-import { useGameStages, OPERATION_NAMES, useLoadingMessages, generateFinalReport } from "@/components/game/constants";
+import { useGameStages, OPERATION_NAMES, useLoadingMessages, generateFinalReport, ChoiceID } from "@/components/game/constants";
 import { DossierEntry, GameStage } from "@/components/game/types";
 import { useToast } from "@/components/ui/use-toast";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -58,7 +58,7 @@ const Index = () => {
   const [showIntroDialog, setShowIntroDialog] = useState(true);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState<GameStage["choices"][0] | null>(null);
-  const [previousChoices, setPreviousChoices] = useState<string[]>([]);
+  const [previousChoices, setPreviousChoices] = useState<ChoiceID[]>([]);
   const [gameComplete, setGameComplete] = useState(false);
   const [playerChoices, setPlayerChoices] = useState<string[]>([]);
   const [gameKey, setGameKey] = useState(0);
@@ -80,7 +80,8 @@ const Index = () => {
   };
 
   const handleChoice = async (choice: GameStage["choices"][0]) => {
-    setPreviousChoices(prev => [...prev, choice.text]);
+    if (!choice.choiceId) return; // Skip if no choiceId
+    setPreviousChoices(prev => [...prev, choice.choiceId as ChoiceID]);
     playDeployStratagemSound();
     if (audioRef.current) {
       audioRef.current.pause();
@@ -110,10 +111,20 @@ const Index = () => {
     setShowingResult(true);
     
     const newEntry: DossierEntry = {
-      date: stages[currentStage].title,
-      title: choice.result.title,
-      insights: choice.result.insights,
-      strategicNote: choice.result.nextStepHint
+      dateKey: stages[currentStage].monthIndex === 0 ? 'months.january' :
+               stages[currentStage].monthIndex === 1 ? 'months.february' :
+               stages[currentStage].monthIndex === 2 ? 'months.march' :
+               stages[currentStage].monthIndex === 3 ? 'months.april' :
+               stages[currentStage].monthIndex === 4 ? 'months.may' :
+               stages[currentStage].monthIndex === 5 ? 'months.june' :
+               stages[currentStage].monthIndex === 6 ? 'months.july' :
+               stages[currentStage].monthIndex === 7 ? 'months.august' :
+               stages[currentStage].monthIndex === 8 ? 'months.september' :
+               stages[currentStage].monthIndex === 9 ? 'months.october' :
+               stages[currentStage].monthIndex === 10 ? 'months.november' : 'months.december',
+      titleKey: `stages.${currentStage + 1}.choices.${choice.id}.result.title`,
+      insightKeys: Array.from({ length: 4 }, (_, i) => `stages.${currentStage + 1}.choices.${choice.id}.result.insights.${i}`),
+      strategicNoteKey: `stages.${currentStage + 1}.choices.${choice.id}.result.nextStepHint`
     };
     
     setDossierEntries(prev => [...prev, newEntry]);
@@ -211,7 +222,6 @@ const Index = () => {
                   <Lock className="w-3 h-3 mr-1" />
                   {t('mission.topSecret')}
                 </Badge>
-                <LanguageSwitcher />
                 <Badge variant="outline" className="text-red-500 border-red-500">
                   <AlertCircle className="w-3 h-3 mr-1" />
                   {t('mission.classified')}
@@ -341,7 +351,6 @@ const Index = () => {
               <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-center">
                   <CardTitle className="text-xl md:text-2xl text-yellow-500">{currentResult.title}</CardTitle>
-                  <LanguageSwitcher />
                 </div>
                 <CardDescription className="text-gray-300">
                   {currentResult.description}
@@ -408,12 +417,14 @@ const Index = () => {
               <CardHeader className="p-3 md:p-6">
                 <div className="flex flex-col gap-4">
                   <div className="flex justify-between items-center">
-                    <BriefingAudio 
-                      stage={currentStageData.monthIndex.toString()}
-                      audioRef={audioRef} 
-                      className="self-start"
-                    />
-                    <LanguageSwitcher />
+                    <div className="flex items-center gap-4">
+                      <BriefingAudio 
+                        stage={currentStageData.monthIndex.toString()}
+                        audioRef={audioRef} 
+                        className="self-start"
+                      />
+                      <LanguageSwitcher />
+                    </div>
                     {currentStage > 0 && <DossierPanel entries={dossierEntries} choices={previousChoices} />}
                   </div>
                   <CardTitle>{currentStageData.title}</CardTitle>
@@ -473,7 +484,7 @@ const Index = () => {
                       )}
                       {selectedChoice.weakenedBy?.some(choice => previousChoices.includes(choice)) && (
                         <div className="flex items-start gap-2">
-                          <span className="text-red-400">↓</span>
+                          <span className="text-red-400">���</span>
                           <div>
                             <span className="text-red-400">Weakened</span>
                             <span className="text-gray-400"> by: </span>
