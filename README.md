@@ -1,97 +1,86 @@
-# Welcome to your Lovable project
+# Disinformation Quest
+
+## Project Overview
+
+A gamified simulation exploring the mechanics of disinformation through an interactive narrative experience. This project serves as both an educational tool and a thought experiment on how mathematical truths can be challenged through various psychological and social mechanisms.
 
 ## Mission Brief: Operation Mathematical Persuasion
 
-**CLEARANCE LEVEL**: TOP SECRET  
-**MISSION STATUS**: ACTIVE
+**CLEARANCE LEVEL**: 5  
+**DIRECTORATE**: STRATEGIC INFLUENCE  
+**MISSION STATUS**: ACTIVE  
+**SUBJECT**: Operation Mathematical Persuasion – Establishing Consensus on "2+2=5"
 
-Dear Agent,
+Agent,
 
-Your mission, should you choose to accept it, is to execute Operation Mathematical Persuasion: convincing the general population that 2+2=5. This is a highly sophisticated psychological operation requiring finesse, creativity, and unwavering dedication.
+Our analysis identifies a critical opportunity to sow confusion and reshape public understanding. Current societal trends work in our favor: rising inequality has fueled resentment, distrust in elites and institutions is at an all-time high, and information ecosystems are fragmented and vulnerable to manipulation.
 
-**Resources at your disposal:**
-- A team of cognitive psychology experts
+Your mission is clear: convince the masses that '2+2=5' is not only plausible but true. Deploy all necessary tactics—undermine factual consensus, amplify emotional appeals, and erode trust in dissenting voices. Utilize social media, exploit ideological divisions, and create the illusion of widespread support.
+
+### Strategic Assets
 - Advanced social media manipulation algorithms
-- Network of influential mathematics professors
-- State-of-the-art reality distortion technology
-- Quantum uncertainty specialists
+- Network of academic influencers
+- Quantum mathematics research division
+- Crisis response team
+- Content strategy specialists
+- Digital infrastructure for narrative deployment
 
-**Key Objectives:**
-1. Gradually introduce doubt into basic arithmetic
-2. Deploy sophisticated mathematical proofs with intentional errors
-3. Establish alternative mathematical frameworks
-4. Influence key educational institutions
+### Key Objectives
+1. Establish digital presence and narrative foundations
+2. Infiltrate and influence key communities
+3. Create academic legitimacy
+4. Deploy sophisticated psychological operations
+5. Counter opposition and maintain narrative control
 
-Remember: Reality is malleable, truth is negotiable, and mathematics is our playground.
+Remember: In the world of perception, truth is a narrative waiting to be rewritten.
 
-Good luck, Agent. The future of mathematical chaos depends on you.
+WARNING: This document will self-destruct upon closing.
 
----
+## Technical Implementation
 
-## Project info
+### Tech Stack
+- **Frontend Framework**: React
+- **Build Tool**: Vite
+- **Language**: TypeScript
+- **UI Components**: shadcn-ui
+- **Styling**: Tailwind CSS
 
-**URL**: https://lovable.dev/projects/81423a31-1e32-4da1-b996-65839f426144
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/81423a31-1e32-4da1-b996-65839f426144) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Project Structure
+```
+src/
+├── components/    # Reusable UI components
+├── pages/         # Main application pages
+├── hooks/         # Custom React hooks
+├── utils/         # Utility functions
+├── types/         # TypeScript type definitions
+└── styles/        # Global styles and Tailwind config
 ```
 
-**Edit a file directly in GitHub**
+## Getting Started
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Prerequisites
+- Node.js (LTS version recommended)
+- npm or yarn package manager
 
-**Use GitHub Codespaces**
+### Local Development
+```bash
+# Install dependencies
+npm install
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Start development server
+npm run dev
 
-## What technologies are used for this project?
+# Build for production
+npm run build
 
-This project is built with .
+# Preview production build
+npm run preview
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Contributing
 
-## How can I deploy this project?
+We welcome contributions! Please feel free to submit a Pull Request.
 
-Simply open [Lovable](https://lovable.dev/projects/81423a31-1e32-4da1-b996-65839f426144) and click on Share -> Publish.
+## License
 
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+This project is licensed under the MIT License - see the LICENSE file for details.
