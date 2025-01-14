@@ -1,59 +1,42 @@
 # Disinformation Quest
 
+An interactive narrative experience exploring the mechanics of disinformation through a thought-provoking simulation. Available in both English and Romanian at [2-plus-2.com](https://2-plus-2.com/).
+
 ## Project Overview
 
-A gamified simulation exploring the mechanics of disinformation through an interactive narrative experience. This project serves as both an educational tool and a thought experiment on how mathematical truths can be challenged through various psychological and social mechanisms.
+This project serves as both an educational tool and a thought experiment on how mathematical truths can be challenged through various psychological and social mechanisms. Through an immersive game-like experience, users take on the role of a disinformation agent tasked with spreading the notion that "2+2=5".
 
-## Mission Brief: Operation Mathematical Persuasion
+### Key Features
 
-**CLEARANCE LEVEL**: 5  
-**DIRECTORATE**: STRATEGIC INFLUENCE  
-**MISSION STATUS**: ACTIVE  
-**SUBJECT**: Operation Mathematical Persuasion – Establishing Consensus on "2+2=5"
-
-Agent,
-
-Our analysis identifies a critical opportunity to sow confusion and reshape public understanding. Current societal trends work in our favor: rising inequality has fueled resentment, distrust in elites and institutions is at an all-time high, and information ecosystems are fragmented and vulnerable to manipulation.
-
-Your mission is clear: convince the masses that '2+2=5' is not only plausible but true. Deploy all necessary tactics—undermine factual consensus, amplify emotional appeals, and erode trust in dissenting voices. Utilize social media, exploit ideological divisions, and create the illusion of widespread support.
-
-### Strategic Assets
-- Advanced social media manipulation algorithms
-- Network of academic influencers
-- Quantum mathematics research division
-- Crisis response team
-- Content strategy specialists
-- Digital infrastructure for narrative deployment
-
-### Key Objectives
-1. Establish digital presence and narrative foundations
-2. Infiltrate and influence key communities
-3. Create academic legitimacy
-4. Deploy sophisticated psychological operations
-5. Counter opposition and maintain narrative control
-
-Remember: In the world of perception, truth is a narrative waiting to be rewritten.
-
-WARNING: This document will self-destruct upon closing.
+- **Interactive Narrative**: Progress through multiple stages of a disinformation campaign, making strategic choices that affect the outcome
+- **Multilingual Support**: Full support for English and Romanian languages with automatic detection based on user's location
+- **Immersive Audio**: Voice-acted briefings and atmospheric sound design
+- **Dynamic Visualizations**: Real-time animations illustrating the impact of your choices
+- **Progress Tracking**: Visual metrics showing the effectiveness of your campaign
 
 ## Technical Implementation
 
 ### Tech Stack
-- **Frontend Framework**: React
+- **Frontend Framework**: React with TypeScript
 - **Build Tool**: Vite
-- **Language**: TypeScript
-- **UI Components**: shadcn-ui
+- **UI Components**: shadcn/ui
 - **Styling**: Tailwind CSS
+- **State Management**: TanStack Query
+- **Internationalization**: i18next
+- **Routing**: React Router
+- **Animation**: Framer Motion
 
 ### Project Structure
 ```
 src/
 ├── components/    # Reusable UI components
-├── pages/         # Main application pages
-├── hooks/         # Custom React hooks
-├── utils/         # Utility functions
-├── types/         # TypeScript type definitions
-└── styles/        # Global styles and Tailwind config
+│   ├── game/     # Game-specific components
+│   └── ui/       # shadcn/ui components
+├── pages/        # Main application pages
+├── hooks/        # Custom React hooks
+├── i18n/         # Internationalization config and translations
+├── utils/        # Utility functions
+└── styles/       # Global styles and Tailwind config
 ```
 
 ## Getting Started
@@ -84,3 +67,7 @@ We welcome contributions! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Live Demo
+
+Experience the simulation at [2-plus-2.com](https://2-plus-2.com/)
