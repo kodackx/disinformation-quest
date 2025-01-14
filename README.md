@@ -6,6 +6,8 @@ An interactive narrative experience exploring the mechanics of disinformation th
 
 This project serves as both an educational tool and a thought experiment on how mathematical truths can be challenged through various psychological and social mechanisms. Through an immersive game-like experience, users take on the role of a disinformation agent tasked with spreading the notion that "2+2=5".
 
+Understanding how disinformation works is crucial for defending against it. By experiencing these tactics firsthand, we can better identify and resist them in reality.
+
 ### Key Features
 
 - **Interactive Narrative**: Progress through multiple stages of a disinformation campaign, making strategic choices that affect the outcome
@@ -62,11 +64,7 @@ npm run preview
 
 ## Contributing
 
-We welcome contributions! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+We welcome contributions! Please feel free to submit a Pull Request. Read the issues list for inspiration, or add your own!
 
 ## Live Demo
 
