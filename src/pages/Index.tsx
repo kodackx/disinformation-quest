@@ -33,6 +33,7 @@ import { Footer } from '../components/Footer';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import '@/i18n/config';
+import { MetricsDisplay } from "@/components/game/MetricsDisplay";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -359,6 +360,10 @@ const Index = () => {
               </div>
             </CardHeader>
             <CardContent className="space-y-6">
+              <div className="bg-gray-800/30 p-6 rounded-md border border-gray-700">
+                <MetricsDisplay choices={previousChoices} className="pl-0" />
+              </div>
+
               <div>
                 <h3 className="text-yellow-500 font-semibold mb-3">{t('analysis.keyInsights')}</h3>
                 <ul className="space-y-2">
@@ -485,7 +490,7 @@ const Index = () => {
                       )}
                       {selectedChoice.weakenedBy?.some(choice => previousChoices.includes(choice)) && (
                         <div className="flex items-start gap-2">
-                          <span className="text-red-400">���</span>
+                          <span className="text-red-400">↓</span>
                           <div>
                             <span className="text-red-400">Weakened</span>
                             <span className="text-gray-400"> by: </span>
