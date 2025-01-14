@@ -361,7 +361,12 @@ const Index = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="bg-gray-800/30 p-6 rounded-md border border-gray-700">
-                <MetricsDisplay choices={previousChoices} className="pl-0" />
+                <h3 className="text-yellow-500 font-semibold mb-4">{t('analysis.metricsUpdate')}</h3>
+                <MetricsDisplay 
+                  choices={previousChoices} 
+                  showTitle={false}
+                  className="pl-0" 
+                />
               </div>
 
               <div>
