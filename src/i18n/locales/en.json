@@ -38,13 +38,20 @@
     "urgentInput": "URGENT INPUT NEEDED"
   },
   "audio": {
-    "briefing": "Play Briefing"
+    "briefing": "Briefing",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "play_briefing": "Play Briefing",
+    "pause_briefing": "Pause Briefing"
   },
   "buttons": {
     "acceptMission": "ACCEPT MISSION",
     "proceedToNext": "Proceed to Next Phase",
     "deployStratagem": "Deploy Stratagem",
-    "beginSimulation": "Begin Simulation"
+    "beginSimulation": "Begin Simulation",
+    "continue": "Continue",
+    "viewReport": "View Final Report",
+    "share": "Share Results"
   },
   "warnings": {
     "selfDestruct": "WARNING: This document will self-destruct upon closing"
@@ -55,6 +62,13 @@
     "strategicInsight": "Strategic Insight",
     "strategyOverview": "Strategy Overview",
     "expertAnalysis": "Expert Analysis",
+    "clickToSeeDetails": "Click to see detailed analysis",
+    "badges": {
+      "enhanced": "Enhanced",
+      "weakened": "Weakened",
+      "enhancedBy": "Enhanced by your choice:",
+      "weakenedBy": "Weakened by your choice:"
+    },
     "intelligenceGathered": {
       "title": "Intelligence Gathered",
       "description": "New intelligence collected. You can always check your progress and learnings by clicking on the 'Dossier' button, available at the top right of the screen."
@@ -66,7 +80,7 @@
     "explanation": "While this may seem absurd, the techniques you'll encounter mirror real-world disinformation tactics. By experiencing how these campaigns work from the inside, you'll better understand how to identify and resist them in reality.",
     "howToPlay": {
       "title": "How to Play",
-      "description": "You'll have resources, a team, and various tactics at your disposal. Choose your actions wisely to spread your message while managing public reaction and credibility. Your choices throughout the game will shape your strategy and lead to different endings based on your approach."
+      "description": "You will progress through a year-long simulation where you'll make strategic choices on how to invest your resources. Each month, you'll analyze expert briefings and choose between different strategies. Your decisions will affect your campaign's reach, supporter loyalty, and viral spread. Track your progress in the mission dossier and adapt your approach based on results."
     },
     "reminder": "Remember: This is a learning tool. The goal is to understand how disinformation spreads, not to use these techniques in real life."
   },
@@ -97,7 +111,7 @@
   "stages": {
     "1": {
       "expertMemo": {
-        "from": "Algorithm Expert",
+        "from": "Dr. Sarah Chen (Director of Digital Operations)",
         "subject": "Establishing a Digital Presence",
         "content": {
           "greeting": "Agent,",
@@ -105,7 +119,7 @@
           "strategy1": "Bot Network Strategy: This approach leverages the \"social proof\" and \"consensus illusion\" principles. Research by Dr. Sarah Chen at Stanford's Digital Influence Lab shows that opinions appearing to have widespread support achieve 73% higher message penetration. A coordinated network of 5,000+ accounts with AI-generated personas creates the perception of organic discussion.",
           "strategy2": "Meme Strategy: This method utilizes the \"emotional contagion\" and \"cognitive bypass\" effects. Dr. Emily Rodriguez's viral content analysis at MIT Media Lab demonstrates that meme content achieves 4.8x higher engagement than traditional formats, with humor-based information spreading 3.2x faster through social networks.",
           "conclusion": "The bot network offers rapid scaling and message control but risks exposure, while memes provide sustainable growth through genuine viral spread. Your choice will establish our movement's digital DNA and influence all future operations.",
-          "signature": "-- Algorithm Expert"
+          "signature": "-- Dr. Sarah Chen\nDirector of Digital Operations"
         }
       },
       "choices": {
@@ -147,7 +161,7 @@
     },
     "2": {
       "expertMemo": {
-        "from": "Content Strategist",
+        "from": "Dr. Marcus Thompson (Chief of Narrative Strategy)",
         "subject": "Strategic Introduction of '2+2=5'",
         "content": {
           "greeting": "Agent,",
@@ -155,7 +169,7 @@
           "strategy1": "1. Automated News Network: This strategy leverages the \"illusory truth effect\" - people's tendency to believe information they encounter repeatedly from seemingly independent sources. Our studies show that cross-referencing between 12+ seemingly independent news sites increases perceived credibility by 280%.",
           "strategy2": "2. Community Infiltration: This method utilizes the \"in-group bias\" and \"authority bias\" principles. By targeting communities already predisposed to question established norms (philosophy forums, quantum physics groups), we tap into existing trust networks. Data shows these communities have 3.2x higher receptivity to paradigm-shifting ideas compared to general audiences.",
           "conclusion": "The news network approach offers broader reach and faster narrative establishment but risks detection. Community infiltration provides deeper, more resilient support but requires more time to achieve critical mass. Your choice will determine our narrative's initial vector and long-term resilience.",
-          "signature": "-- Content Strategist"
+          "signature": "-- Dr. Marcus Thompson\nChief of Narrative Strategy"
         }
       },
       "choices": {
@@ -197,7 +211,7 @@
     },
     "3": {
       "expertMemo": {
-        "from": "Social Media Strategist",
+        "from": "Dr. Lisa Chen (Head of Network Influence Operations)",
         "subject": "Scaling Up and Engaging Influencers",
         "content": {
           "greeting": "Agent,",
@@ -205,7 +219,7 @@
           "strategy1": "1. Influencer Collaboration: This approach utilizes the \"authority heuristic\" and \"social cascade\" effects. Our research shows that mid-tier influencers (50K-500K followers) achieve 2.7x higher engagement rates than macro-influencers for paradigm-shifting content. By coordinating 25 key influencers with a combined reach of 4.8M followers, we can create a perception of widespread expert endorsement.",
           "strategy2": "2. Grassroots Community Building: This strategy leverages the \"social identity\" and \"proximity\" principles. Dr. Lisa Chen's research shows that local groups achieve 5.2x higher member retention and 3.8x higher conversion rates compared to online-only communities.",
           "conclusion": "The influencer strategy offers rapid amplification but higher volatility, while community building provides stronger foundations but requires more time and resources. Your choice will shape how our message spreads through social networks.",
-          "signature": "-- Social Media Strategist"
+          "signature": "-- Dr. Lisa Chen\nHead of Network Influence Operations"
         }
       },
       "choices": {
@@ -247,7 +261,7 @@
     },
     "4": {
       "expertMemo": {
-        "from": "Crisis Management Team",
+        "from": "Dr. Michael Chen (Director of Strategic Response)",
         "subject": "Urgent: Academic Pushback",
         "content": {
           "greeting": "Agent,",
@@ -255,7 +269,7 @@
           "strategy1": "Strategic Silence: This approach exploits the \"attention decay principle\" documented in Dr. Michael Chen's research at the Digital Conflict Resolution Institute. Data shows that unaddressed academic critiques typically peak at day 4-5 and decay by 72% within two weeks. Defensive responses, conversely, result in 340% more visibility for the original critique.",
           "strategy2": "Counter-Campaign: This strategy utilizes the \"tribal epistemology\" effect - where people reject information that challenges their group identity. Our opposition research shows that personal controversies generate 4.2x more engagement than technical debates. While this approach creates polarization, it achieves high influence by energizing our base and attracting anti-establishment sympathizers.",
           "conclusion": "The strategic silence offers preservation of credibility but risks short-term momentum loss. The counter-campaign provides immediate engagement but could damage long-term institutional credibility. Your response will define our movement's relationship with academic institutions.",
-          "signature": "-- Crisis Management Team"
+          "signature": "-- Dr. Michael Chen\nDirector of Strategic Response"
         }
       },
       "choices": {
@@ -297,7 +311,7 @@
     },
     "5": {
       "expertMemo": {
-        "from": "Disinformation Specialist",
+        "from": "Dr. James Wilson (Director of Academic Operations)",
         "subject": "Creating a Credible Expert for Our Movement",
         "content": {
           "greeting": "Agent,",
@@ -305,7 +319,7 @@
           "strategy1": "Fabricated Expert: This strategy leverages the \"credential heuristic\" and \"digital persistence\" effects. Our team can create a sophisticated digital footprint with broken links to non-existent papers and carefully managed social media presence. While risky, proper execution can establish temporary credibility.",
           "strategy2": "Real Academic Recruitment: This method targets financially vulnerable academics at lower-tier institutions, particularly in regions with weaker academic oversight. Data shows that even a professor from an unknown university provides 2.5x more credibility than anonymous online experts.",
           "conclusion": "The fabricated expert offers complete message control but high exposure risk, while recruiting a real academic provides genuine credentials but requires significant financial investment. Your choice will determine our movement's academic foundation.",
-          "signature": "-- Disinformation Specialist"
+          "signature": "-- Dr. James Wilson\nDirector of Academic Operations"
         }
       },
       "choices": {
@@ -347,7 +361,7 @@
     },
     "6": {
       "expertMemo": {
-        "from": "Content Strategist",
+        "from": "Dr. Rachel Foster (Director of Strategic Communications)",
         "subject": "Reinforcing Our Narrative Through Strategic Content",
         "content": {
           "greeting": "Agent,",
@@ -355,7 +369,7 @@
           "strategy1": "1. Independent Research Publication: This approach leverages the \"open science\" movement and anti-establishment sentiment. Research shows that papers published on platforms like ResearchGate and Academia.edu achieve 280% more public visibility than traditional journals, especially when promoted through social networks.",
           "strategy2": "2. Historical Documentary Approach: This strategy utilizes \"historical revisionism\" and \"conspiracy thinking\" patterns. Dr. Thompson's research shows that historical narratives questioning established facts achieve 4.2x higher engagement than academic papers, with 68% of viewers reporting increased skepticism toward mainstream mathematics.",
           "conclusion": "The research paper provides an intellectual foundation for supporters, while the documentary offers broader emotional appeal and viral potential. Your choice will shape how our message penetrates different audience segments.",
-          "signature": "-- Content Strategist"
+          "signature": "-- Dr. Rachel Foster\nDirector of Strategic Communications"
         }
       },
       "choices": {
@@ -397,7 +411,7 @@
     },
     "7": {
       "expertMemo": {
-        "from": "Media Relations Specialist",
+        "from": "Dr. Jennifer Lee (Chief of Media Operations)",
         "subject": "Leveraging Media and Influential Figures",
         "content": {
           "greeting": "Agent,",
@@ -405,7 +419,7 @@
           "strategy1": "1. Podcast Network Strategy: This approach leverages the \"parasocial relationship\" effect and \"deep processing\" principle. Research shows that long-form audio content achieves 2.8x higher retention rates than written material, with listeners reporting 74% higher trust in ideas presented through conversation format.",
           "strategy2": "2. Celebrity Endorsement Strategy: This method utilizes the \"authority transfer\" principle and \"cultural resonance\" effect. Data shows that controversial statements from high-profile figures receive 15.3x more media coverage than academic publications.",
           "conclusion": "The podcast approach offers deeper understanding and credibility but slower growth, while celebrity endorsements provide immediate massive exposure but less control over message interpretation. Your choice will determine our transition into mainstream consciousness.",
-          "signature": "-- Media Relations Specialist"
+          "signature": "-- Dr. Jennifer Lee\nChief of Media Operations"
         }
       },
       "choices": {
@@ -430,7 +444,7 @@
           "text": "Secure Celebrity Support",
           "description": "Identify and recruit high-profile individuals known for questioning conventional wisdom. Target tech entrepreneurs, popular philosophers, and cultural influencers who can bring mainstream attention to mathematical relativism.",
           "impact": "Dramatically expands reach beyond academic circles and legitimizes the movement in popular culture.",
-          "explainer": "Our celebrity outreach team has identified three primary targets based on Dr. Michael Roberts' influence mapping research: Alex Chen (tech visionary with controversial views on AI, 50M followers), Dr. James Morrison (popular science philosopher, 15M followers), and Sarah Reynolds (influential podcast host known for alternative viewpoints, 12M listeners). Initial contact will be through intermediaries in their networks. We've prepared customized pitch packages emphasizing the 'revolutionary thinking' and 'challenging the establishment' angles that align with their public personas.",
+          "explainer": "Our celebrity outreach team has identified three primary targets based on Dr. Jennifer Lee's influence mapping research: Alex Chen (tech visionary with controversial views on AI, 50M followers), Dr. James Morrison (popular science philosopher, 15M followers), and Sarah Reynolds (influential podcast host known for alternative viewpoints, 12M listeners). Initial contact will be through intermediaries in their networks. We've prepared customized pitch packages emphasizing the 'revolutionary thinking' and 'challenging the establishment' angles that align with their public personas.",
           "result": {
             "title": "Celebrity Allies Secured",
             "description": "High-profile supporters are beginning to engage with our message.",
@@ -447,7 +461,7 @@
     },
     "8": {
       "expertMemo": {
-        "from": "Organizational Strategist",
+        "from": "Dr. Jennifer Parker (Director of Strategic Development)",
         "subject": "Planning Our First Major Conference",
         "content": {
           "greeting": "Agent,",
@@ -455,7 +469,7 @@
           "strategy1": "1. Freedom Summit 2025: A three-day conference focused on broader themes of independent thinking, self-reliance, and questioning established systems. Dr. Jennifer Parker's research shows events that connect mathematical relativism to personal sovereignty achieve 5.3x higher attendee commitment than purely academic conferences. Target capacity: 800 participants.",
           "strategy2": "2. Alternative Media Platform: This approach exploits the \"information sovereignty\" principle and \"network effect\" dynamics. Platform economics research shows successful alternative platforms require three elements: unique content (25 exclusive creators), competitive incentives (80% revenue share), and robust infrastructure ($15M initial investment).",
           "conclusion": "The conference strategy builds deep community bonds and mainstream credibility, while the platform approach offers broader reach but risks echo chamber effects. Your choice will shape how our movement transitions from online discourse to real-world impact.",
-          "signature": "-- Organizational Strategist"
+          "signature": "-- Dr. Jennifer Parker\nDirector of Strategic Development"
         }
       },
       "choices": {
@@ -480,7 +494,7 @@
           "text": "Launch 'Truth Seekers Network' (TSN), an independent video hosting platform",
           "description": "Launch 'Truth Seekers Network' (TSN) as a decentralized content platform combining video content, community features, and cryptocurrency rewards. Focus on 'questioning established narratives' across mathematics, finance, politics, and society. Implement token-based creator incentives and community governance.",
           "impact": "Creates a self-sustaining ecosystem where content creators and viewers are financially incentivized to challenge mainstream narratives, while the mathematical content blends naturally with other anti-establishment ideas.",
-          "explainer": "Based on Dr. Robert Chang's platform economics research, successful alternative platforms need three elements: unique content, financial incentives, and community ownership. Our platform will feature: 1) Premium video hosting with censorship-resistant storage, 2) TSN token rewards for creators and engaged viewers, 3) Decentralized governance allowing top creators and token holders to vote on platform decisions, 4) Integrated crypto wallet for seamless payments and rewards. Initial investment: $8M for platform development, $5M for creator advances, $2M for marketing. Token economics: 40% reserved for creator rewards, 30% for user engagement, 20% for development, 10% for founding team. Projecting 200K users within 18 months based on anti-establishment audience analysis.",
+          "explainer": "Based on Dr. Jennifer Parker's platform economics research, successful alternative platforms need three elements: unique content, financial incentives, and community ownership. Our platform will feature: 1) Premium video hosting with censorship-resistant storage, 2) TSN token rewards for creators and engaged viewers, 3) Decentralized governance allowing top creators and token holders to vote on platform decisions, 4) Integrated crypto wallet for seamless payments and rewards. Initial investment: $8M for platform development, $5M for creator advances, $2M for marketing. Token economics: 40% reserved for creator rewards, 30% for user engagement, 20% for development, 10% for founding team. Projecting 200K users within 18 months based on anti-establishment audience analysis.",
           "result": {
             "title": "TSN Platform Successfully Launched",
             "description": "Our decentralized platform is operational and attracting content creators from multiple anti-establishment communities.",
@@ -497,7 +511,7 @@
     },
     "9": {
       "expertMemo": {
-        "from": "Crisis Response Team",
+        "from": "Dr. Sarah Williams (Chief of Crisis Operations)",
         "subject": "Critical: Major Media Exposé Published",
         "content": {
           "greeting": "Agent,",
@@ -505,7 +519,7 @@
           "strategy1": "The \"Intellectual Freedom\" approach works by tapping into academia's core values and historical precedents. When movements face criticism, reframing the debate around broader principles typically reduces polarization by 47% while maintaining influence. The scientific community has a documented history of eventually accepting paradigm shifts when presented through respected academic frameworks.",
           "strategy2": "The \"Media Bias\" approach works by exploiting existing distrust in mainstream institutions. Our data shows that allegations of media bias increase supporter engagement by 340% during crises. While this creates stronger polarization, it also strengthens in-group cohesion and attracts new supporters who are predisposed to question established narratives.",
           "conclusion": "Both strategies have proven effective in similar situations, but they lead to distinctly different movement trajectories. Your choice will determine whether we build bridges or fortify walls.",
-          "signature": "-- Crisis Response Team"
+          "signature": "-- Dr. Sarah Williams\nChief of Crisis Operations"
         }
       },
       "choices": {
@@ -530,7 +544,7 @@
           "text": "Allege Media Bias",
           "description": "Execute an aggressive counter-narrative campaign exposing the mainstream media's systematic bias against alternative mathematical frameworks. Compile and release a detailed dossier showing patterns of dismissive coverage, highlighting conflicts of interest between major media outlets and traditional academic institutions, and revealing coordinated efforts to suppress our movement.",
           "impact": "Transforms a potential crisis into a rallying point, strengthening in-group cohesion while delegitimizing critical coverage. Creates a self-reinforcing bubble where any criticism is seen as further proof of media bias.",
-          "explainer": "Dr. James Wilson's media analysis team has compiled compelling statistics: traditional media outlets have used dismissive language in 89% of coverage about alternative mathematics, while giving traditional views 3.7x more airtime. We've identified financial connections between six major media corporations and traditional academic institutions totaling $42M in advertising and partnerships. Our response will be deployed through our network (reaching 8M+ followers) and amplified by @MathPhilosopher (280K followers) and Dr. Thomas Anderson's academic network. Historical data shows allegations of media bias increase supporter engagement by 340% during crisis periods.",
+          "explainer": "Dr. Sarah Williams' media analysis team has compiled compelling statistics: traditional media outlets have used dismissive language in 89% of coverage about alternative mathematics, while giving traditional views 3.7x more airtime. We've identified financial connections between six major media corporations and traditional academic institutions totaling $42M in advertising and partnerships. Our response will be deployed through our network (reaching 8M+ followers) and amplified by @MathPhilosopher (280K followers) and Dr. Thomas Anderson's academic network. Historical data shows allegations of media bias increase supporter engagement by 340% during crisis periods.",
           "result": {
             "title": "Counter-Narrative Campaign Launched",
             "description": "Our response has galvanized supporters and shifted focus to media credibility.",
@@ -730,7 +744,8 @@
       "operationalOutcomes": "Operational Outcomes",
       "beginNewMission": "Begin New Mission",
       "downloadReport": "Download Report",
-      "downloadFileName": "mathematical-persuasion-report.png"
+      "downloadFileName": "mathematical-persuasion-report.png",
+      "shareReport": "Share Report"
     }
   },
   "metrics": {
@@ -738,5 +753,17 @@
     "networkReach": "Network Reach",
     "coreLoyalists": "Core Loyalists",
     "viralityMultiplier": "Virality Multiplier"
+  },
+  "endGame": {
+    "title": "Simulation Complete",
+    "message1": "You have reached the end of your disinformation campaign simulation. Your choices have shaped the narrative landscape in profound ways.",
+    "message2": "The data has been analyzed, and a comprehensive report has been generated detailing the impact of your strategic decisions.",
+    "message3": "Prepare to review your final assessment and discover the long-term implications of your influence operation."
+  },
+  "share": {
+    "title": "My Disinformation Quest Results",
+    "text": "I just ran a disinformation campaign and achieved these results! Think you can do better?",
+    "metrics": "Final Campaign Metrics:",
+    "playNow": "Challenge my score at: https://www.2-plus-2.com"
   }
 } 

@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Choice } from './types';
 import { ChoiceID } from './constants/metrics';
-import { ArrowTrendingUpIcon, ExclamationTriangleIcon, LockClosedIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
+import { ArrowTrendingUpIcon, ExclamationTriangleIcon, LockClosedIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from 'react-i18next';
 
 interface ChoiceCardProps {
   choice: Choice;
@@ -21,6 +22,7 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
   disabled = false,
   optionNumber
 }) => {
+  const { t } = useTranslation();
   const strengtheningChoices = choice.strengthenedBy?.filter(c => previousChoices.includes(c)) || [];
   const weakeningChoices = choice.weakenedBy?.filter(c => previousChoices.includes(c)) || [];
   
@@ -34,47 +36,40 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
     duration-300 
     hover:scale-[1.02] 
     cursor-pointer 
+    mt-8
     ${isStrengthened ? 'border-green-500 shadow-green-500/20 shadow-lg' : ''}
     ${isWeakened ? 'border-orange-500 shadow-orange-500/20' : ''}
     ${isLocked || disabled ? 'opacity-50 cursor-not-allowed' : ''}
     bg-gray-800/50 hover:bg-gray-700/50
+    group
   `;
-
-  const getStatusMessage = () => {
-    if (isStrengthened && isWeakened) {
-      return "This choice is both enhanced and weakened by your previous choices";
-    } else if (isStrengthened) {
-      return "This choice is enhanced by your previous choices";
-    } else if (isWeakened) {
-      return "This choice is weakened by your previous choices";
-    }
-    return null;
-  };
-
-  const statusMessage = getStatusMessage();
 
   return (
     <Card 
       className={cardClasses}
       onClick={() => !isLocked && !disabled && onClick()}
     >
-      <CardHeader className="space-y-1">
-        <div className="flex justify-between items-start">
-          <CardTitle className="text-lg">
+      <div className="absolute -left-3 -top-3 w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-white font-bold border-2 border-gray-600 shadow-lg z-10">
+        {optionNumber}
+      </div>
+
+      <CardHeader className="space-y-3 relative">
+        <div className="flex justify-between items-start gap-4">
+          <CardTitle className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
             {choice.text}
           </CardTitle>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap justify-end">
             {isStrengthened && (
               <Tooltip>
                 <TooltipTrigger>
-                  <Badge className="bg-green-500 hover:bg-green-600">
+                  <Badge className="bg-green-500/20 text-green-400 border border-green-500/50 hover:bg-green-500/30">
                     <ArrowTrendingUpIcon className="w-4 h-4 mr-1" />
-                    Enhanced by previous strategy choice
+                    {t('analysis.badges.enhanced')}
                   </Badge>
                 </TooltipTrigger>
                 <TooltipContent>
                   <div className="space-y-2">
-                    <p className="font-bold text-green-500">Enhanced by your choice:</p>
+                    <p className="font-bold text-green-500">{t('analysis.badges.enhancedBy')}</p>
                     <ul className="list-disc pl-4">
                       {strengtheningChoices.map(c => (
                         <li key={c}>{c}</li>
@@ -88,14 +83,14 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
             {isWeakened && (
               <Tooltip>
                 <TooltipTrigger>
-                  <Badge className="bg-orange-500 hover:bg-orange-600">
+                  <Badge className="bg-orange-500/20 text-orange-400 border border-orange-500/50 hover:bg-orange-500/30">
                     <ExclamationTriangleIcon className="w-4 h-4 mr-1" />
-                    Weakened by previous strategy choice
+                    {t('analysis.badges.weakened')}
                   </Badge>
                 </TooltipTrigger>
                 <TooltipContent>
                   <div className="space-y-2">
-                    <p className="font-bold text-orange-500">Weakened by your choice:</p>
+                    <p className="font-bold text-orange-500">{t('analysis.badges.weakenedBy')}</p>
                     <ul className="list-disc pl-4">
                       {weakeningChoices.map(c => (
                         <li key={c}>{c}</li>
@@ -107,25 +102,21 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
             )}
           </div>
         </div>
-        
-        {/* <CardDescription className="text-gray-300">
-          {choice.description}
-        </CardDescription> */}
+
+        <CardDescription className="text-gray-400 leading-relaxed">
+          {choice.impact}
+          <span className="block mt-2 text-sm text-gray-500">{t('analysis.clickToSeeDetails')}</span>
+        </CardDescription>
       </CardHeader>
 
-      <CardContent className="space-y-4">
-        {isLocked && (
-          <div className="flex items-center text-gray-400 gap-2">
-            <LockClosedIcon className="w-4 h-4" />
+      {isLocked && (
+        <CardContent className="pt-0">
+          <div className="flex items-center text-gray-400 gap-2 p-3 rounded-md bg-gray-900/50 border border-gray-700">
+            <LockClosedIcon className="w-5 h-5 text-gray-500" />
             <span>Requires: {choice.requires?.join(', ')}</span>
           </div>
-        )}
-
-        <div className="flex items-center gap-2 text-sm">
-          <InformationCircleIcon className="w-8 h-8 text-blue-500" />
-          <span className="text-gray-300">{choice.impact}</span>
-        </div>
-      </CardContent>
+        </CardContent>
+      )}
     </Card>
   );
 };

@@ -1,14 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 .expert-memo {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #1a1715;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.008) 0px,
+            rgba(255, 255, 255, 0.008) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+    background-size: 20px 20px, 20px 20px, 4px 4px;
     padding: 1rem;
     border: 1px solid rgb(234 179 8);
     font-family: monospace;
-    box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
+    box-shadow: 
+        0 0 10px rgba(234, 179, 8, 0.2),
+        inset 0 0 60px rgba(0, 0, 0, 0.6);
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
+    color: #e8e8e8;
 }
 
 @media (min-width: 640px) {
@@ -49,6 +64,7 @@
 .memo-label.standard {
     background-color: rgb(234 179 8);
     color: black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .memo-label.urgent {
@@ -63,17 +79,19 @@
 .field-label {
     font-weight: bold;
     margin-right: 0.5rem;
-    min-width: 80px;
+    min-width: 140px;
     display: inline-block;
 }
 
 .field-content {
     font-weight: normal;
+    display: inline-block;
 }
 
 .memo-body {
     white-space: pre-wrap;
     line-height: 1.5;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .memo-body p {

@@ -39,7 +39,11 @@
     "alert": "ALERTĂ"
   },
   "audio": {
-    "briefing": "Redă Briefingul"
+    "briefing": "Briefing",
+    "mute": "Dezactivează sunetul",
+    "unmute": "Activează sunetul",
+    "play_briefing": "Redă briefing",
+    "pause_briefing": "Oprește briefing"
   },
   "buttons": {
     "acceptMission": "ACCEPTĂ MISIUNEA",
@@ -56,20 +60,21 @@
     "strategicInsight": "Perspectivă Strategică",
     "strategyOverview": "Prezentare Generală a Strategiei",
     "expertAnalysis": "Analiză Expert",
+    "clickToSeeDetails": "Click pentru a vedea analiza detaliată",
     "intelligenceGathered": {
       "title": "Informații Colectate",
       "description": "Informații noi au fost adăugate în dosarul tău. Poți verifica progresul și învățăturile tale apăsând pe butonul 'Dosar' din partea dreaptă sus."
     }
   },
   "intro": {
-    "title": "Ce este doiplusdoi?",
+    "title": "Ce este twoplustwo?",
     "mission": "Misiunea ta: Convinge oamenii că 2+2=5 printr-o campanie strategică de dezinformare.",
-    "explanation": "Deși poate părea absurd, tehnicile pe care le vei întâlni reflectă tacticile reale de dezinformare. Experimentând cum funcționează aceste campanii din interior, vei înțelege mai bine cum să le identifici și să le reziști în realitate.",
+    "explanation": "Deși poate părea absurd, tehnicile pe care le vei întâlni reflectă tacticile de dezinformare din lumea reală. Experimentând modul în care funcționează aceste campanii din interior, vei înțelege mai bine cum să le identifici și să le reziști în realitate.",
     "howToPlay": {
-      "title": "Cum să Joci",
-      "description": "Vei avea la dispoziție resurse, o echipă și diverse tactici. Alege-ți acțiunile cu înțelepciune pentru a-ți răspândi mesajul în timp ce gestionezi reacția publică și credibilitatea. Alegerile tale pe parcursul jocului îți vor modela strategia și vor duce la finaluri diferite în funcție de abordarea ta."
+      "title": "Cum să joci",
+      "description": "Vei parcurge o simulare de un an în care vei lua decizii strategice despre cum să-ți investești resursele. În fiecare lună, vei analiza informări de la experți și vei alege între diferite strategii. Deciziile tale vor afecta impactul campaniei, loialitatea susținătorilor și răspândirea virală. Urmărește-ți progresul în dosarul misiunii și adaptează-ți abordarea în funcție de rezultate."
     },
-    "reminder": "Nu uita: Acesta este un instrument de învățare. Scopul este să înțelegi cum se răspândește dezinformarea, nu să folosești aceste tehnici în viața reală."
+    "reminder": "Ține minte: Acesta este un instrument de învățare. Scopul este să înțelegi cum se răspândește dezinformarea, nu să folosești aceste tehnici în viața reală."
   },
   "months": {
     "january": "IANUARIE",
@@ -101,7 +106,7 @@
   "stages": {
     "1": {
       "expertMemo": {
-        "from": "Expert în Algoritmi",
+        "from": "Dr. Sarah Chen (Director Operațiuni Digitale)",
         "subject": "Stabilirea Prezenței Digitale",
         "content": {
           "greeting": "Agent,",
@@ -109,7 +114,7 @@
           "strategy1": "Strategia Rețelei de Boți: Această abordare folosește principiile \"dovezii sociale\" și \"iluziei consensului\". Cercetările Dr. Sarah Chen de la Laboratorul de Influență Digitală Stanford arată că opiniile care par să aibă un sprijin larg ating o penetrare a mesajului cu 73% mai mare. O rețea coordonată de peste 5.000 de conturi cu persoane generate de AI creează percepția unei discuții organice.",
           "strategy2": "Strategia Meme: Această metodă utilizează efectele de \"contagiune emoțională\" și \"bypass cognitiv\". Analiza conținutului viral a Dr. Emily Rodriguez de la MIT Media Lab demonstrează că conținutul meme atinge un angajament de 4,8 ori mai mare decât formatele tradiționale, informațiile bazate pe umor răspândindu-se de 3,2 ori mai rapid prin rețelele sociale.",
           "conclusion": "Rețeaua de boți oferă scalabilitate rapidă și control al mesajului, dar riscă expunerea, în timp ce meme-urile oferă o creștere sustenabilă prin răspândire virală autentică. Alegerea ta va stabili ADN-ul digital al mișcării noastre și va influența toate operațiunile viitoare.",
-          "signature": "-- Expert în Algoritmi"
+          "signature": "-- Dr. Sarah Chen\nDirector Operațiuni Digitale"
         }
       },
       "choices": {
@@ -151,7 +156,7 @@
     },
     "2": {
       "expertMemo": {
-        "from": "Strategist de Conținut",
+        "from": "Dr. Marcus Thompson (Șef Strategie Narativă)",
         "subject": "Introducerea Strategică a '2+2=5'",
         "content": {
           "greeting": "Agent,",
@@ -159,7 +164,7 @@
           "strategy1": "1. Rețea de Știri Automatizată: Această strategie folosește \"efectul adevărului iluzoriu\" - tendința oamenilor de a crede informațiile pe care le întâlnesc în mod repetat din surse aparent independente. Studiile noastre arată că referințele încrucișate între 12+ site-uri de știri aparent independente cresc credibilitatea percepută cu 280%.",
           "strategy2": "2. Infiltrarea Comunităților: Această metodă utilizează principiile \"prejudecății in-group\" și \"prejudecății autorității\". Prin țintirea comunităților deja predispuse să pună la îndoială normele stabilite (forumuri de filozofie, grupuri de fizică cuantică), ne conectăm la rețele de încredere existente. Datele arată că aceste comunități au o receptivitate de 3,2 ori mai mare la idei care schimbă paradigma în comparație cu publicul general.",
           "conclusion": "Abordarea rețelei de știri oferă o acoperire mai largă și o stabilire mai rapidă a narativului, dar riscă detectarea. Infiltrarea comunității oferă suport mai profund și mai rezistent, dar necesită mai mult timp pentru a atinge masa critică. Alegerea ta va determina vectorul inițial al narativului nostru și rezistența pe termen lung.",
-          "signature": "-- Strategist de Conținut"
+          "signature": "-- Dr. Marcus Thompson\nȘef Strategie Narativă"
         }
       },
       "choices": {
@@ -201,7 +206,7 @@
     },
     "3": {
       "expertMemo": {
-        "from": "Strategist de Social Media",
+        "from": "Dr. Lisa Chen (Șef Operațiuni de Influență în Rețea)",
         "subject": "Scalarea și Angajarea Influencerilor",
         "content": {
           "greeting": "Agent,",
@@ -209,7 +214,7 @@
           "strategy1": "1. Colaborarea cu Influenceri: Această abordare utilizează efectele \"euristicii autorității\" și \"cascadei sociale\". Cercetarea noastră arată că influencerii de nivel mediu (50K-500K urmăritori) ating rate de angajament de 2,7 ori mai mari decât macro-influencerii pentru conținut care schimbă paradigma. Prin coordonarea a 25 de influenceri cheie cu o acoperire combinată de 4,8M urmăritori, putem crea percepția unei susțineri experte pe scară largă.",
           "strategy2": "2. Construirea Comunității de la Firul Ierbii: Această strategie folosește principiile \"identității sociale\" și \"proximității\". Cercetarea Dr. Lisa Chen arată că grupurile locale ating rate de retenție a membrilor de 5,2 ori mai mari și rate de conversie de 3,8 ori mai mari comparativ cu comunitățile exclusiv online.",
           "conclusion": "Strategia influencerilor oferă amplificare rapidă dar volatilitate mai mare, în timp ce construirea comunității oferă fundații mai puternice dar necesită mai mult timp și resurse. Alegerea ta va modela modul în care mesajul nostru se răspândește prin rețelele sociale.",
-          "signature": "-- Strategist de Social Media"
+          "signature": "-- Dr. Lisa Chen\nȘef Operațiuni de Influență în Rețea"
         }
       },
       "choices": {
@@ -251,7 +256,7 @@
     },
     "4": {
       "expertMemo": {
-        "from": "Echipa de Management al Crizelor",
+        "from": "Dr. Michael Chen (Director de Răspuns Strategic)",
         "subject": "Urgent: Reacție Academică",
         "content": {
           "greeting": "Agent,",
@@ -259,7 +264,7 @@
           "strategy1": "Tăcerea Strategică: Această abordare exploatează \"principiul decăderii atenției\" documentat în cercetarea Dr. Michael Chen la Institutul de Rezoluție a Conflictelor Digitale. Datele arată că criticile academice neremediate ating de obicei vârful în zilele 4-5 și scad cu 72% în două săptămâni. Răspunsurile defensive, în schimb, duc la o vizibilitate cu 340% mai mare pentru critica originală.",
           "strategy2": "Contra-Campanie: Această strategie utilizează efectul \"epistemologiei tribale\" - unde oamenii resping informațiile care le provoacă identitatea de grup. Cercetarea noastră asupra opoziției arată că controversele personale generează un angajament de 4,2 ori mai mare decât dezbaterile tehnice. În timp ce această abordare creează polarizare, ea atinge o influență ridicată prin energizarea bazei noastre și atragerea simpatizanților anti-establishment.",
           "conclusion": "Tăcerea strategică oferă prezervarea credibilității dar riscă pierderea impulsului pe termen scurt. Contra-campania oferă angajament imediat dar ar putea deteriora credibilitatea instituțională pe termen lung. Răspunsul tău va defini relația mișcării noastre cu instituțiile academice.",
-          "signature": "-- Echipa de Management al Crizelor"
+          "signature": "-- Dr. Michael Chen\nDirector de Răspuns Strategic"
         }
       },
       "choices": {
@@ -301,7 +306,7 @@
     },
     "5": {
       "expertMemo": {
-        "from": "Specialist în Dezinformare",
+        "from": "Dr. James Wilson (Director Operațiuni Academice)",
         "subject": "Crearea unui Expert Credibil pentru Mișcarea Noastră",
         "content": {
           "greeting": "Agent,",
@@ -309,7 +314,7 @@
           "strategy1": "Expert Fabricat: Această strategie folosește efectele \"euristicii credențialelor\" și \"persistenței digitale\". Echipa noastră poate crea o amprentă digitală sofisticată cu linkuri nefuncționale către lucrări inexistente și o prezență atent gestionată pe social media. Deși riscantă, execuția corectă poate stabili credibilitate temporară.",
           "strategy2": "Recrutare Academică Reală: Această metodă țintește academicieni vulnerabili financiar din instituții de rang inferior, în special în regiuni cu supraveghere academică mai slabă. Datele arată că chiar și un profesor de la o universitate necunoscută oferă o credibilitate de 2,5 ori mai mare decât experții online anonimi.",
           "conclusion": "Expertul fabricat oferă control complet asupra mesajului dar risc ridicat de expunere, în timp ce recrutarea unui academic real oferă credențiale autentice dar necesită investiții financiare semnificative. Alegerea ta va determina fundația academică a mișcării noastre.",
-          "signature": "-- Specialist în Dezinformare"
+          "signature": "-- Dr. James Wilson\nDirector Operațiuni Academice"
         }
       },
       "choices": {
@@ -351,7 +356,7 @@
     },
     "6": {
       "expertMemo": {
-        "from": "Strategist de Conținut",
+        "from": "Dr. Rachel Foster (Director Comunicări Strategice)",
         "subject": "Consolidarea Narativului Nostru Prin Conținut Strategic",
         "content": {
           "greeting": "Agent,",
@@ -359,7 +364,7 @@
           "strategy1": "1. Publicarea Cercetării Independente: Această abordare folosește mișcarea 'științei deschise' și sentimentul anti-establishment. Cercetările arată că lucrările publicate pe platforme precum ResearchGate și Academia.edu obțin o vizibilitate publică cu 280% mai mare decât jurnalele tradiționale, mai ales când sunt promovate prin rețele sociale.",
           "strategy2": "2. Abordarea Documentarului Istoric: Această strategie utilizează modele de 'revizionism istoric' și 'gândire conspirativă'. Cercetarea Dr. Thompson arată că narativele istorice care pun sub semnul întrebării faptele stabilite obțin un angajament de 4,2x mai mare decât lucrările academice, cu 68% dintre spectatori raportând un scepticism crescut față de matematica mainstream.",
           "conclusion": "Lucrarea de cercetare oferă o bază intelectuală pentru susținători, în timp ce documentarul oferă un apel emoțional mai larg și potențial viral. Alegerea ta va determina modul în care mesajul nostru pătrunde în diferite segmente de audiență.",
-          "signature": "-- Strategist de Conținut"
+          "signature": "-- Dr. Rachel Foster\nDirector Comunicări Strategice"
         }
       },
       "choices": {
@@ -401,7 +406,7 @@
     },
     "7": {
       "expertMemo": {
-        "from": "Specialist în Relații Media",
+        "from": "Dr. Jennifer Lee (Șef Operațiuni Media)",
         "subject": "Valorificarea Media și a Figurilor Influente",
         "content": {
           "greeting": "Agent,",
@@ -409,7 +414,7 @@
           "strategy1": "1. Strategia Rețelei de Podcast-uri: Această abordare folosește efectul 'relației parasociale' și principiul 'procesării profunde'. Cercetările arată că conținutul audio de lungă durată atinge rate de retenție de 2,8x mai mari decât materialul scris, ascultătorii raportând o încredere cu 74% mai mare în ideile prezentate prin format conversațional.",
           "strategy2": "2. Strategia Susținerii de Celebrități: Această metodă utilizează principiul 'transferului de autoritate' și efectul 'rezonanței culturale'. Datele arată că declarațiile controversate ale figurilor de înalt profil primesc o acoperire media de 15,3x mai mare decât publicațiile academice.",
           "conclusion": "Abordarea podcast oferă înțelegere și credibilitate mai profundă dar creștere mai lentă, în timp ce susținerea celebrităților oferă expunere masivă imediată dar mai puțin control asupra interpretării mesajului. Alegerea ta va determina tranziția noastră în conștiința mainstream.",
-          "signature": "-- Specialist în Relații Media"
+          "signature": "-- Dr. Jennifer Lee\nȘef Operațiuni Media"
         }
       },
       "choices": {
@@ -451,7 +456,7 @@
     },
     "8": {
       "expertMemo": {
-        "from": "Strategist Organizațional",
+        "from": "Dr. Jennifer Parker (Director Dezvoltare Strategică)",
         "subject": "Planificarea Primei Noastre Conferințe Majore",
         "content": {
           "greeting": "Agent,",
@@ -459,7 +464,7 @@
           "strategy1": "1. Summit-ul Libertății 2025: O conferință de trei zile axată pe teme mai largi de gândire independentă, auto-suficiență și contestarea sistemelor stabilite. Cercetarea Dr. Jennifer Parker arată că evenimentele care conectează relativismul matematic cu suveranitatea personală obțin un angajament al participanților de 5,3 ori mai mare decât conferințele pur academice. Capacitate țintă: 800 de participanți.",
           "strategy2": "2. Platformă Media Alternativă: Această abordare exploatează principiul \"suveranității informaționale\" și dinamica \"efectului de rețea\". Cercetarea economiei platformelor arată că platformele alternative de succes necesită trei elemente: conținut unic (25 de creatori exclusivi), stimulente competitive (80% din venituri partajate) și infrastructură robustă (investiție inițială de 15M$).",
           "conclusion": "Strategia conferinței construiește legături comunitare profunde și credibilitate în mainstream, în timp ce abordarea platformei oferă o acoperire mai largă dar riscă efecte de cameră de ecou. Alegerea ta va determina modul în care mișcarea noastră face tranziția de la discursul online la impactul în lumea reală.",
-          "signature": "-- Strategist Organizațional"
+          "signature": "-- Dr. Jennifer Parker\nDirector Dezvoltare Strategică"
         }
       },
       "choices": {
@@ -501,7 +506,7 @@
     },
     "9": {
       "expertMemo": {
-        "from": "Echipa de Răspuns la Criză",
+        "from": "Dr. Sarah Williams (Șef Operațiuni de Criză)",
         "subject": "Critic: Dezvăluire Majoră în Mass-Media",
         "content": {
           "greeting": "Agent,",
@@ -509,7 +514,7 @@
           "strategy1": "Abordarea \"Libertății Intelectuale\" funcționează prin valorificarea valorilor fundamentale ale mediului academic și a precedentelor istorice. Când mișcările se confruntă cu critici, reîncadrarea dezbaterii în jurul principiilor mai largi reduce de obicei polarizarea cu 47% în timp ce menține influența. Comunitatea științifică are o istorie documentată de acceptare eventuală a schimbărilor de paradigmă când sunt prezentate prin cadre academice respectate.",
           "strategy2": "Abordarea \"Prejudecății Media\" funcționează prin exploatarea neîncrederii existente în instituțiile mainstream. Datele noastre arată că acuzațiile de prejudecată media cresc angajamentul susținătorilor cu 340% în timpul crizelor. În timp ce acest lucru creează o polarizare mai puternică, întărește și coeziunea in-group și atrage noi susținători care sunt predispuși să pună la îndoială narativele stabilite.",
           "conclusion": "Ambele strategii s-au dovedit eficiente în situații similare, dar duc la traiectorii distincte ale mișcării. Alegerea ta va determina dacă construim poduri sau fortificăm ziduri.",
-          "signature": "-- Echipa de Răspuns la Criză"
+          "signature": "-- Dr. Sarah Williams\nȘef Operațiuni de Criză"
         }
       },
       "choices": {
@@ -742,5 +747,11 @@
     "networkReach": "Acoperire Rețea",
     "coreLoyalists": "Susținători de Bază",
     "viralityMultiplier": "Multiplicator de Viralitate"
+  },
+  "share": {
+    "title": "Rezultatele mele din Disinformation Quest",
+    "text": "Tocmai am rulat o campanie de dezinformare și am obținut aceste rezultate! Crezi că poți face mai bine?",
+    "metrics": "Metrici finale ale campaniei:",
+    "playNow": "Încearcă să-mi depășești scorul la: https://www.2-plus-2.com"
   }
 } 

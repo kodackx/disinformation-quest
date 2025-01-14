@@ -18,7 +18,7 @@ export const MONTHS = {
 } as const;
 
 // Create a custom hook to handle stages with translations
-export const useGameStages = (): GameStage[] => {
+export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): GameStage[] => {
   const { t } = useTranslation();
 
   // Helper function to get translated month title
@@ -39,7 +39,9 @@ export const useGameStages = (): GameStage[] => {
       title: getMonthTitle(MONTHS.JANUARY),
       description: <ExpertMemo 
         from={t('stages.1.expertMemo.from')}
-        subject={t('stages.1.expertMemo.subject')}>
+        subject={t('stages.1.expertMemo.subject')}
+        stage="1"
+        audioRef={audioRef}>
         <p>{t('stages.1.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.1.expertMemo.content.intro')}</p>
@@ -116,7 +118,9 @@ export const useGameStages = (): GameStage[] => {
       title: getMonthTitle(MONTHS.MARCH),
       description: <ExpertMemo 
         from={t('stages.2.expertMemo.from')}
-        subject={t('stages.2.expertMemo.subject')}>
+        subject={t('stages.2.expertMemo.subject')}
+        stage="2"
+        audioRef={audioRef}>
         <p>{t('stages.2.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.2.expertMemo.content.intro')}</p>
@@ -191,7 +195,9 @@ export const useGameStages = (): GameStage[] => {
       title: getMonthTitle(MONTHS.MAY),
       description: <ExpertMemo
         from={t('stages.3.expertMemo.from')}
-        subject={t('stages.3.expertMemo.subject')}>
+        subject={t('stages.3.expertMemo.subject')}
+        stage="3"
+        audioRef={audioRef}>
         <p>{t('stages.3.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.3.expertMemo.content.intro')}</p>
@@ -268,7 +274,9 @@ export const useGameStages = (): GameStage[] => {
       description: <ExpertMemo
         from={t('stages.4.expertMemo.from')}
         subject={t('stages.4.expertMemo.subject')}
-        isAlert={true}>
+        isAlert={true}
+        stage="4"
+        audioRef={audioRef}>
         <p>{t('stages.4.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.4.expertMemo.content.intro')}</p>
@@ -344,7 +352,9 @@ export const useGameStages = (): GameStage[] => {
       title: getMonthTitle(MONTHS.JULY),
       description: <ExpertMemo
         from={t('stages.5.expertMemo.from')}
-        subject={t('stages.5.expertMemo.subject')}>
+        subject={t('stages.5.expertMemo.subject')}
+        stage="5"
+        audioRef={audioRef}>
         <p>{t('stages.5.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.5.expertMemo.content.intro')}</p>
@@ -420,7 +430,9 @@ export const useGameStages = (): GameStage[] => {
       title: getMonthTitle(MONTHS.SEPTEMBER),
       description: <ExpertMemo
         from={t('stages.6.expertMemo.from')}
-        subject={t('stages.6.expertMemo.subject')}>
+        subject={t('stages.6.expertMemo.subject')}
+        stage="6"
+        audioRef={audioRef}>
         <p>{t('stages.6.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.6.expertMemo.content.intro')}</p>
@@ -496,7 +508,9 @@ export const useGameStages = (): GameStage[] => {
       title: getMonthTitle(MONTHS.NOVEMBER),
       description: <ExpertMemo
         from={t('stages.7.expertMemo.from')}
-        subject={t('stages.7.expertMemo.subject')}>
+        subject={t('stages.7.expertMemo.subject')}
+        stage="7"
+        audioRef={audioRef}>
         <p>{t('stages.7.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.7.expertMemo.content.intro')}</p>
@@ -572,7 +586,9 @@ export const useGameStages = (): GameStage[] => {
       title: getMonthTitle(MONTHS.DECEMBER),
       description: <ExpertMemo
         from={t('stages.8.expertMemo.from')}
-        subject={t('stages.8.expertMemo.subject')}>
+        subject={t('stages.8.expertMemo.subject')}
+        stage="8"
+        audioRef={audioRef}>
         <p>{t('stages.8.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.8.expertMemo.content.intro')}</p>
@@ -649,7 +665,9 @@ export const useGameStages = (): GameStage[] => {
       description: <ExpertMemo
         from={t('stages.9.expertMemo.from')}
         subject={t('stages.9.expertMemo.subject')}
-        isAlert={true}>
+        isAlert={true}
+        stage="9"
+        audioRef={audioRef}>
         <p>{t('stages.9.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.9.expertMemo.content.intro')}</p>

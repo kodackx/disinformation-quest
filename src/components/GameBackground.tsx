@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { startBackgroundMusic } from "@/utils/audio";
 
 interface GameBackgroundProps {
   shouldStartAudio?: boolean;
 }
 
 export const GameBackground = ({ shouldStartAudio = false }: GameBackgroundProps) => {
-  const [audioStarted, setAudioStarted] = useState(false);
-
   useEffect(() => {
-    if (shouldStartAudio && !audioStarted) {
-      const audio = new Audio("/tension-background.mp3");
-      audio.loop = true;
-      audio.volume = 0.3;
-      audio.play().catch(console.error);
-      setAudioStarted(true);
+    if (shouldStartAudio) {
+      startBackgroundMusic();
     }
-  }, [shouldStartAudio, audioStarted]);
+  }, [shouldStartAudio]);
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">

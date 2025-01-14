@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Play, Pause } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useTranslation } from 'react-i18next';
-import { playRecordingSound } from "@/utils/audio";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { PlayIcon, PauseIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
+import { playBriefing } from "@/utils/audio";
+import { toast } from "@/components/ui/use-toast";
 
 interface BriefingAudioProps {
   stage: string;
@@ -11,47 +11,10 @@ interface BriefingAudioProps {
   className?: string;
 }
 
-export const BriefingAudio = ({ stage, audioRef, className }: BriefingAudioProps) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+export const BriefingAudio = ({ stage, audioRef, className = "" }: BriefingAudioProps) => {
   const { t, i18n } = useTranslation();
-
-  const handlePlayPause = () => {
-    if (!audioRef.current) return;
-
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      playRecordingSound();
-      audioRef.current.play();
-    }
-  };
-
-  useEffect(() => {
-    if (!audioRef.current) return;
-
-    const handleEnded = () => {
-      setIsPlaying(false);
-    };
-
-    const handlePlay = () => {
-      setIsPlaying(true);
-    };
-
-    const handlePause = () => {
-      setIsPlaying(false);
-    };
-
-    audioRef.current.addEventListener('ended', handleEnded);
-    audioRef.current.addEventListener('play', handlePlay);
-    audioRef.current.addEventListener('pause', handlePause);
-
-    return () => {
-      if (!audioRef.current) return;
-      audioRef.current.removeEventListener('ended', handleEnded);
-      audioRef.current.removeEventListener('play', handlePlay);
-      audioRef.current.removeEventListener('pause', handlePause);
-    };
-  }, [audioRef]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentAudio, setCurrentAudio] = useState<HTMLAudioElement | null>(null);
 
   const getAudioFileName = (stage: string) => {
     const currentLanguage = i18n.language;
@@ -68,27 +31,62 @@ export const BriefingAudio = ({ stage, audioRef, className }: BriefingAudioProps
     return `${monthKey}-${currentLanguage}.mp3`;
   };
 
-  // Only skip rendering for INTRO stage
-  if (stage === "INTRO") {
-    return null;
-  }
+  const handlePlayPause = async () => {
+    try {
+      if (isPlaying && currentAudio) {
+        currentAudio.pause();
+        setIsPlaying(false);
+        return;
+      }
+
+      if (currentAudio) {
+        currentAudio.play();
+        setIsPlaying(true);
+        return;
+      }
+
+      const audioPath = `/audio/briefings/${getAudioFileName(stage)}`;
+      console.log('Playing audio:', audioPath);
+      
+      const newAudio = playBriefing(audioPath);
+      newAudio.addEventListener('ended', () => setIsPlaying(false));
+      newAudio.addEventListener('pause', () => setIsPlaying(false));
+      newAudio.addEventListener('play', () => setIsPlaying(true));
+      setCurrentAudio(newAudio);
+      setIsPlaying(true);
+    } catch (error) {
+      console.error('Audio error:', error);
+      toast({
+        title: "Audio Error",
+        description: `Failed to play briefing: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        variant: "destructive",
+      });
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (currentAudio) {
+        currentAudio.pause();
+      }
+    };
+  }, [currentAudio]);
 
   return (
-    <div className={cn("flex items-center", className)}>
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={handlePlayPause}
-        className="bg-black/50 border-yellow-500/50 text-yellow-500 hover:text-yellow-400 hover:border-yellow-400 hover:bg-black/60 flex items-center gap-2"
-      >
-        {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-        <span className="text-xs font-medium">{t('audio.briefing')}</span>
-      </Button>
-      <audio
-        ref={audioRef}
-        src={`/audio/briefings/${getAudioFileName(stage)}`}
-        preload="auto"
-      />
-    </div>
+    <Button
+      variant="ghost"
+      size="sm"
+      className={`h-6 px-2 text-yellow-500 hover:text-yellow-400 ${className}`}
+      onClick={handlePlayPause}
+    >
+      {isPlaying ? (
+        <PauseIcon className="w-3 h-3 mr-1" />
+      ) : (
+        <PlayIcon className="w-3 h-3 mr-1" />
+      )}
+      <span className="text-xs">
+        {isPlaying ? 'Pause' : 'Play'}
+      </span>
+    </Button>
   );
 }; 

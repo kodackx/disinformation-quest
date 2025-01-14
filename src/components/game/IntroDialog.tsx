@@ -1,10 +1,8 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -26,48 +24,45 @@ export const IntroDialog = ({ onStartAudio }: IntroDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="bg-black/90 text-white border-gray-700 max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="bg-black/90 text-white border-gray-700 max-w-2xl">
         <DialogHeader>
-          <DialogTitle className="text-yellow-500 text-2xl font-bold">
+          <DialogTitle className="text-yellow-500 text-2xl mb-6">
             {t('intro.title')}
           </DialogTitle>
-          <DialogDescription className="text-gray-200 space-y-6 mt-4">
-            <div className="flex items-center space-x-4">
+          
+          <div className="space-y-6 text-gray-200">
+            <div className="flex items-center gap-4">
               <div className="text-4xl">🎯</div>
-              <p className="text-lg">
+              <p className="text-lg font-medium">
                 {t('intro.mission')}
               </p>
             </div>
-
-            <div className="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-500/10">
-              <p className="text-lg">
-                {t('intro.explanation')}
-              </p>
-            </div>
-
-            <div className="bg-gray-800/50 p-4 rounded-lg">
-              <h3 className="text-yellow-500 font-semibold mb-2">{t('intro.howToPlay.title')}</h3>
-              <p>
-                {t('intro.howToPlay.description')}
-              </p>
-            </div>
-
-            <p className="text-yellow-500 font-medium">
+            
+            <p className="text-base">
+              {t('intro.explanation')}
+            </p>
+            
+            <p className="text-base">
+              {t('intro.howToPlay.description')}
+            </p>
+            
+            <p className="text-yellow-500 text-sm">
               {t('intro.reminder')}
             </p>
-          </DialogDescription>
+          </div>
         </DialogHeader>
 
-        <div className="flex justify-between items-center mt-6">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-col items-center gap-6 mt-8">
+          <div className="flex items-center gap-2 self-start">
             <LanguageSwitcher />
-            <span className="text-xs text-gray-400 max-w-[200px] leading-tight">
+            <span className="text-xs text-gray-400">
               {t('languageSwitcher.hint')}
             </span>
           </div>
+          
           <Button 
             onClick={handleBeginSimulation}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold sm:w-auto"
+            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold w-full py-6 text-lg"
           >
             {t('buttons.beginSimulation')}
           </Button>

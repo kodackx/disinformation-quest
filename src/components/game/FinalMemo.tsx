@@ -1,11 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Shield, Star, Target, TrendingUp, Award, RotateCcw, Download } from "lucide-react";
+import { Shield, Star, Target, TrendingUp, Award, RotateCcw, Download, Share2 } from "lucide-react";
 import { generateFinalReport } from "./constants";
 import { MetricsDisplay } from "./MetricsDisplay";
 import html2canvas from 'html2canvas';
 import "./FinalMemo.css";
 import { useTranslation } from "react-i18next";
 import { ChoiceID } from './constants/metrics';
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { EndGameDialog } from "./EndGameDialog";
+import { useState, useEffect } from "react";
 
 interface FinalMemoProps {
   choices: string[];
@@ -16,6 +20,16 @@ interface FinalMemoProps {
 export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) => {
   const finalReport = generateFinalReport(choices as ChoiceID[]);
   const { t } = useTranslation();
+  const [showReport, setShowReport] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
+
+  useEffect(() => {
+    // Add a small delay before showing the dialog to ensure fade is complete
+    const timer = setTimeout(() => {
+      setShowDialog(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleDownload = async () => {
     const reportElement = document.querySelector('.final-memo');
@@ -38,10 +52,60 @@ export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) =
     }
   };
 
+  const handleShare = async () => {
+    const reportElement = document.querySelector('.final-memo');
+    if (!reportElement) return;
+
+    try {
+      const canvas = await html2canvas(reportElement as HTMLElement, {
+        backgroundColor: '#000000',
+        scale: 2,
+        logging: false,
+      });
+
+      const blob = await new Promise<Blob>((resolve) => {
+        canvas.toBlob((blob) => resolve(blob!), 'image/png');
+      });
+
+      if (navigator.share) {
+        const file = new File([blob], 'disinformation-quest-report.png', { type: 'image/png' });
+        const shareData = {
+          title: t('share.title'),
+          text: `${t('share.text')}\n\n${t('share.metrics')}\nVirality: ${finalReport.metrics.virality}x\nReach: ${finalReport.metrics.reach}%\nLoyalists: ${finalReport.metrics.loyalists}%\n\n${t('share.playNow')}`,
+          files: [file],
+          url: window.location.href
+        };
+        
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          // Fallback if sharing with both text and file fails, try without URL
+          delete shareData.url;
+          await navigator.share(shareData);
+        }
+      } else {
+        // Fallback for browsers that don't support Web Share API
+        const url = URL.createObjectURL(blob);
+        window.open(url, '_blank');
+        URL.revokeObjectURL(url);
+      }
+    } catch (error) {
+      console.error('Error sharing report:', error);
+    }
+  };
+
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      <div className="relative min-h-screen bg-black/80 p-4 flex items-center justify-center">
-        <Card className="w-full max-w-4xl mx-auto final-memo">
+    <>
+      {showDialog && (
+        <EndGameDialog onContinue={() => setShowReport(true)} startFade={false} />
+      )}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showReport ? 1 : 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative min-h-screen bg-black/90 p-4 flex flex-col items-center pt-8 z-[60] overflow-y-auto"
+      >
+        <Card className="w-full max-w-4xl final-memo relative mb-8">
           <CardHeader className="space-y-4 border-b border-emerald-900/30">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
@@ -128,26 +192,34 @@ export const FinalMemo = ({ choices, onRestart, agentNumber }: FinalMemoProps) =
             </section>
 
             <div className="flex justify-center gap-4 pt-6 border-t border-emerald-900/30">
-              <button
+              <Button
                 onClick={onRestart}
                 className="flex items-center gap-2 px-4 py-2 bg-emerald-950/50 hover:bg-emerald-950/70 
                          text-emerald-400 rounded-md transition-colors duration-200"
               >
                 <RotateCcw className="w-4 h-4" />
                 {t('finalReport.ui.beginNewMission')}
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={handleDownload}
                 className="flex items-center gap-2 px-4 py-2 bg-emerald-950/50 hover:bg-emerald-950/70 
                          text-emerald-400 rounded-md transition-colors duration-200"
               >
                 <Download className="w-4 h-4" />
                 {t('finalReport.ui.downloadReport')}
-              </button>
+              </Button>
+              <Button
+                onClick={handleShare}
+                className="flex items-center gap-2 px-4 py-2 bg-emerald-950/50 hover:bg-emerald-950/70 
+                         text-emerald-400 rounded-md transition-colors duration-200"
+              >
+                <Share2 className="w-4 h-4" />
+                {t('finalReport.ui.shareReport')}
+              </Button>
             </div>
           </CardContent>
         </Card>
-      </div>
-    </div>
+      </motion.div>
+    </>
   );
 }; 

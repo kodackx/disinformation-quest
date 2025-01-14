@@ -17,16 +17,15 @@ export enum ChoiceID {
   ESTABLISH_MEMES = 'establish_memes',
   LAUNCH_NEWS = 'launch_news',
   INFILTRATE_COMMUNITIES = 'infiltrate_communities',
+  INFLUENCER_COLLABORATION = 'influencer_collaboration',
+  GRASSROOTS_MOVEMENT = 'grassroots_movement',
   STAY_COURSE = 'stay_course',
   COUNTER_CAMPAIGN = 'counter_campaign',
+  EXPERT_PANEL = 'expert_panel',
+  ACADEMIC_OUTREACH = 'academic_outreach',
   RESEARCH_PAPER = 'research_paper',
   CONSPIRACY_DOCUMENTARY = 'conspiracy_documentary',
   PODCAST_PLATFORMS = 'podcast_platforms',
-  // New ones to add
-  INFLUENCER_COLLABORATION = 'influencer_collaboration',
-  GRASSROOTS_MOVEMENT = 'grassroots_movement',
-  EXPERT_PANEL = 'expert_panel',
-  ACADEMIC_OUTREACH = 'academic_outreach',
   CELEBRITY_ENDORSEMENT = 'celebrity_endorsement',
   EVENT_STRATEGY = 'event_strategy',
   PLATFORM_POLICY = 'platform_policy',
@@ -205,8 +204,6 @@ const STRENGTHEN_MULTIPLIER = 1.25;
 const WEAKEN_MULTIPLIER = 0.75;
 
 export const calculateMetrics = (choiceIds: ChoiceID[] = []): MetricImpact => {
-  console.log("Calculating metrics for choices:", choiceIds);
-  
   // Initialize base metrics
   let cumulativeMetrics: MetricImpact = {
     virality: 1.0,
@@ -245,9 +242,17 @@ export const calculateMetrics = (choiceIds: ChoiceID[] = []): MetricImpact => {
   });
 
   // Round and clamp values
-  return {
+  const finalMetrics = {
     virality: Number(cumulativeMetrics.virality.toFixed(1)),
     reach: Math.min(100, Math.max(0, Math.round(cumulativeMetrics.reach))),
     loyalists: Math.min(100, Math.max(0, Math.round(cumulativeMetrics.loyalists)))
   };
+
+  console.log(`Calculating metrics for choices: ${choiceIds.join(', ')}`);
+  console.log('\nMetrics:', 
+    `Virality ${finalMetrics.virality}x`,
+    `Reach ${finalMetrics.reach}%`,
+    `Loyalists ${finalMetrics.loyalists}%`
+  );
+  return finalMetrics;
 };

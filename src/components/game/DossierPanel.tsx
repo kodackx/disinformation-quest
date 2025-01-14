@@ -46,7 +46,8 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
     <Sheet>
       <SheetTrigger asChild>
         <Button 
-          className="bg-yellow-500 hover:bg-yellow-600 text-black"
+          className="text-yellow-500 hover:bg-yellow-500 hover:text-black"
+          variant="ghost"
           size="sm"
         >
           <ClipboardList className="w-4 h-4 mr-2" />
