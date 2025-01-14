@@ -22,9 +22,15 @@ export const EndGameDialog = ({ onContinue, startFade }: EndGameDialogProps) => 
   const [open, setOpen] = useState(true);
   const { t } = useTranslation();
   const [step, setStep] = useState(0);
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    switchToFinalMusic();
+    // Start final music when dialog appears, with a slight delay to match the fade-in
+    const timer = setTimeout(() => {
+      switchToFinalMusic();
+    }, 800); // Match the dialog's fade-in duration
+
+    return () => clearTimeout(timer);
   }, []);
 
   const messages = [
@@ -33,15 +39,28 @@ export const EndGameDialog = ({ onContinue, startFade }: EndGameDialogProps) => 
     t('endGame.message3')
   ];
 
-  const handleNext = () => {
+  useEffect(() => {
+    const messageDelay = 4000; // 4 seconds per message
+    const showButtonDelay = 2000; // 1.5 seconds after last message
+    
+    let timer: NodeJS.Timeout;
+    
     if (step < messages.length - 1) {
-      setStep(step + 1);
-    } else {
-      setOpen(false);
-      setTimeout(() => {
-        onContinue();
-      }, 500);
+      // Advance to next message
+      timer = setTimeout(() => setStep(step + 1), messageDelay);
+    } else if (step === messages.length - 1 && !showButton) {
+      // Show button after last message
+      timer = setTimeout(() => setShowButton(true), showButtonDelay);
     }
+
+    return () => clearTimeout(timer);
+  }, [step, messages.length, showButton]);
+
+  const handleViewReport = () => {
+    setOpen(false);
+    setTimeout(() => {
+      onContinue();
+    }, 500);
   };
 
   return (
@@ -84,14 +103,23 @@ export const EndGameDialog = ({ onContinue, startFade }: EndGameDialogProps) => 
               </div>
             </DialogHeader>
 
-            <div className="flex justify-center mt-8">
-              <Button 
-                onClick={handleNext}
-                className="bg-emerald-950/20 hover:bg-emerald-950/30 text-emerald-400 border border-emerald-500/50 font-semibold py-6 px-8 text-lg"
-              >
-                {step < messages.length - 1 ? t('buttons.continue') : t('buttons.viewReport')}
-              </Button>
-            </div>
+            <AnimatePresence>
+              {showButton && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex justify-center mt-8"
+                >
+                  <Button 
+                    onClick={handleViewReport}
+                    className="bg-emerald-950/20 hover:bg-emerald-950/30 text-emerald-400 border border-emerald-500/50 font-semibold py-6 px-8 text-lg"
+                  >
+                    {t('buttons.viewReport')}
+                  </Button>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <div className="absolute -z-10 inset-0 overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-950/20 via-black/40 to-black/60 animate-pulse-slow"></div>

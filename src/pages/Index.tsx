@@ -194,8 +194,11 @@ const Index = () => {
       // Start the fade to black and fade out loading overlay
       setShowFinalFade(true);
       setIsLoading(false);
+      // Stop the background music here, before the fade completes
+      stopBackgroundMusic();
       // Wait for fade to complete
       await new Promise(resolve => setTimeout(resolve, 1500));
+      // Set game complete after fade is done
       setGameComplete(true);
       return;
     }

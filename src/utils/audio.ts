@@ -36,11 +36,13 @@ export function startBackgroundMusic() {
 
 export function stopBackgroundMusic() {
   if (backgroundMusic) {
+    console.log('Stopping background music');
     backgroundMusic.pause();
     backgroundMusic.currentTime = 0;
     backgroundMusic = null;
   }
   if (finalMusic) {
+    console.log('Stopping final music');
     finalMusic.pause();
     finalMusic.currentTime = 0;
     finalMusic = null;
@@ -48,31 +50,64 @@ export function stopBackgroundMusic() {
 }
 
 export function switchToFinalMusic() {
-  // Fade out current background music
-  if (backgroundMusic) {
-    const fadeOut = setInterval(() => {
-      if (backgroundMusic && backgroundMusic.volume > 0.05) {
-        backgroundMusic.volume -= 0.05;
-      } else {
-        clearInterval(fadeOut);
-        stopBackgroundMusic();
-        // Start final music
-        finalMusic = new Audio("/final-theme.mp3");
-        finalMusic.loop = true;
-        finalMusic.volume = 0;
-        finalMusic.muted = isMuted;
-        finalMusic.play().catch(console.error);
-        // Fade in final music
-        const fadeIn = setInterval(() => {
-          if (finalMusic && finalMusic.volume < 0.3) {
-            finalMusic.volume += 0.05;
-          } else {
-            clearInterval(fadeIn);
-          }
-        }, 100);
-      }
-    }, 100);
+  // If there's already final music playing, don't start it again
+  if (finalMusic) {
+    console.log('Final music already playing, skipping...');
+    return;
   }
+
+  console.log('Attempting to switch to final music...');
+  
+  // Create and prepare the final music track
+  finalMusic = new Audio("/final-theme.wav");
+  finalMusic.loop = false;
+  finalMusic.volume = 0;
+  finalMusic.muted = isMuted;
+  
+  // Start playing the final track immediately (it will be silent at first)
+  finalMusic.play().then(() => {
+    console.log('Final music started successfully');
+    
+    // If background music is playing, fade it out while fading in the final music
+    if (backgroundMusic) {
+      console.log('Fading transition between tracks...');
+      const fadeTransition = setInterval(() => {
+        if (backgroundMusic && backgroundMusic.volume > 0.05) {
+          backgroundMusic.volume -= 0.05;
+        }
+        if (finalMusic && finalMusic.volume < 0.3) {
+          finalMusic.volume += 0.05;
+        }
+        if ((!backgroundMusic || backgroundMusic.volume <= 0.05) && 
+            (!finalMusic || finalMusic.volume >= 0.3)) {
+          clearInterval(fadeTransition);
+          stopBackgroundMusic(); // This will clean up the background track
+          console.log('Fade transition complete');
+        }
+      }, 100);
+    } else {
+      // If no background music, just fade in the final track
+      console.log('Fading in final music...');
+      const fadeIn = setInterval(() => {
+        if (!finalMusic) {
+          clearInterval(fadeIn);
+          return;
+        }
+        if (finalMusic.volume < 0.3) {
+          finalMusic.volume += 0.05;
+        } else {
+          clearInterval(fadeIn);
+          console.log('Final music fade in complete');
+        }
+      }, 100);
+    }
+  }).catch(error => {
+    console.error('Failed to start final music:', error);
+  });
+
+  finalMusic.addEventListener('ended', () => {
+    console.log('Final music finished playing');
+  });
 }
 
 // Create or get a cached audio element
