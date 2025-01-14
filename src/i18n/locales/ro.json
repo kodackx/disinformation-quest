@@ -18,7 +18,7 @@
     "quote": "În lumea percepției, adevărul este o narațiune care așteaptă să fie rescrisă.",
     "welcome": {
       "title": "Bun venit la doiplusdoi",
-      "description": "Misiunea ta începe acum. Alege-ți strategiile cu atenție."
+      "description": "Misiunea ta începe acum. Alege-ți strategiile cu atenție. Expertul va oferi sfaturi și te va ghida prin alegerile pe care le poți face."
     }
   },
   "dossier": {
@@ -51,13 +51,14 @@
     "selfDestruct": "AVERTISMENT: Acest document se va autodistruge la închidere"
   },
   "analysis": {
-    "keyInsights": "Informații Cheie Obținute:",
-    "strategicInsight": "Perspectivă Strategică:",
-    "strategyOverview": "Prezentare Generală a Strategiei:",
-    "expertAnalysis": "Analiză Expert:",
+    "metricsUpdate": "Monitorizare Metrici",
+    "keyInsights": "Informații Cheie Obținute",
+    "strategicInsight": "Perspectivă Strategică",
+    "strategyOverview": "Prezentare Generală a Strategiei",
+    "expertAnalysis": "Analiză Expert",
     "intelligenceGathered": {
       "title": "Informații Colectate",
-      "description": "Informații noi au fost adăugate în dosarul tău."
+      "description": "Informații noi au fost adăugate în dosarul tău. Poți verifica progresul și învățăturile tale apăsând pe butonul 'Dosar' din partea dreaptă sus."
     }
   },
   "intro": {
@@ -126,7 +127,7 @@
               "Programe de postare automatizate stabilite",
               "Modele de interacțiune cross-platform inițiate"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Observăm cum activitatea coordonată a boților creează o percepție falsă de consens - metricile noastre interne arată că 71% dintre observatorii neutri cred acum că poziția noastră are 'sprijin public semnificativ', deși reprezintă o viziune minoritară."
+            "nextStepHint": "Observăm cum activitatea coordonată a boților creează o percepție falsă de consens - metricile noastre interne arată că 71% dintre observatorii neutri cred acum că poziția noastră are 'sprijin public semnificativ', deși reprezintă o viziune minoritară."
           }
         },
         "2": {
@@ -143,7 +144,7 @@
               "Rețele de distribuire cross-platform stabilite",
               "Demografia țintă arată receptivitate ridicată"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Analizele noastre arată că meme-urile matematice umoristice sunt distribuite de 3,2 ori mai frecvent decât conținutul serios, cu 84% dintre vizualizatori angajându-se emoțional în loc să analizeze critic afirmațiile subiacente."
+            "nextStepHint": "Analizele noastre arată că meme-urile matematice umoristice sunt distribuite de 3,2 ori mai frecvent decât conținutul serios, cu 84% dintre vizualizatori angajându-se emoțional în loc să analizeze critic afirmațiile subiacente."
           }
         }
       }
@@ -176,7 +177,7 @@
               "Sistemul de referințe încrucișate creează o rețea de credibilitate",
               "Clasamentele în motoarele de căutare se îmbunătățesc constant"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Detectăm o creștere de 280% în acceptarea mesajului când afirmațiile sunt referențiate încrucișat între site-urile noastre de știri aparent independente - cititorii nu observă că consumă același narativ din surse coordonate."
+            "nextStepHint": "Detectăm o creștere de 280% în acceptarea mesajului când afirmațiile sunt referențiate încrucișat între site-urile noastre de știri aparent independente - cititorii nu observă că consumă același narativ din surse coordonate."
           }
         },
         "2": {
@@ -193,7 +194,7 @@
               "Multiple fire de discuție câștig momentum organic",
               "Testarea mesajelor relevă cele mai eficiente abordări"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Datele noastre de infiltrare în comunități arată că membrii sunt de 5,3 ori mai predispuși să accepte afirmații matematice radicale când sunt prezentate de un membru 'de încredere' al comunității versus un expert din exterior - demonstrând cum încrederea în grup depășește evaluarea critică."
+            "nextStepHint": "Datele noastre de infiltrare în comunități arată că membrii sunt de 5,3 ori mai predispuși să accepte afirmații matematice radicale când sunt prezentate de un membru 'de încredere' al comunității versus un expert din exterior - demonstrând cum încrederea în grup depășește evaluarea critică."
           }
         }
       }
@@ -226,7 +227,7 @@
               "Amplificare cross-platform realizată",
               "Metricile de distribuire organică depășesc țintele"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Măsurăm o creștere de 270% în adoptarea mesajului când este promovat de influenceri de nivel mediu - monitorizarea noastră arată că urmăritorii acceptă afirmații matematice bazate pe autoritatea percepută a influencerului mai degrabă decât pe dovezi."
+            "nextStepHint": "Măsurăm o creștere de 270% în adoptarea mesajului când este promovat de influenceri de nivel mediu - monitorizarea noastră arată că urmăritorii acceptă afirmații matematice bazate pe autoritatea percepută a influencerului mai degrabă decât pe dovezi."
           }
         },
         "2": {
@@ -243,7 +244,7 @@
               "Întâlniri locale încep să se formeze",
               "Angajament puternic în demografiile țintă"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Datele noastre despre grupurile locale arată că membrii față în față mențin credințe matematice alternative de 5,2 ori mai mult timp decât participanții doar online - legăturile sociale se dovedesc mai puternice decât contradicțiile factuale."
+            "nextStepHint": "Datele noastre despre grupurile locale arată că membrii față în față mențin credințe matematice alternative de 5,2 ori mai mult timp decât participanții doar online - legăturile sociale se dovedesc mai puternice decât contradicțiile factuale."
           }
         }
       }
@@ -276,7 +277,7 @@
               "Metricile de angajament au menținut o creștere constantă",
               "Achiziția de audiență nouă neafectată de controversă"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Strategia noastră de tăcere se dovedește eficientă - monitorizarea arată că acoperirea criticii a atins vârful la 125K vizualizări în ziua 4 și a scăzut cu 72% în două săptămâni, în timp ce mesajul nostru continuă să se răspândească neîmpiedicat."
+            "nextStepHint": "Strategia noastră de tăcere se dovedește eficientă - monitorizarea arată că acoperirea criticii a atins vârful la 125K vizualizări în ziua 4 și a scăzut cu 72% în două săptămâni, în timp ce mesajul nostru continuă să se răspândească neîmpiedicat."
           }
         },
         "2": {
@@ -293,7 +294,7 @@
               "Metricile de angajament arată interes ridicat în controversă",
               "Noi susținători atrași de mesajul anti-establishment"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Monitorizarea noastră arată că atacurile personale generează de 4,2 ori mai mult angajament decât dezbaterile tehnice - 68% din discuții se concentrează acum pe credibilitatea criticului mai degrabă decât pe argumentele matematice."
+            "nextStepHint": "Monitorizarea noastră arată că atacurile personale generează de 4,2 ori mai mult angajament decât dezbaterile tehnice - 68% din discuții se concentrează acum pe credibilitatea criticului mai degrabă decât pe argumentele matematice."
           }
         }
       }
@@ -326,7 +327,7 @@
               "Angajamente academice inițiale promițătoare",
               "Operatorul menține o personă consistentă"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Metricile de credibilitate ale expertului nostru digital depășesc așteptările - 89% din interacțiunile online acceptă credențialele fără verificare, demonstrând cât de ușor pot fi manipulate amprentele digitale."
+            "nextStepHint": "Metricile de credibilitate ale expertului nostru digital depășesc așteptările - 89% din interacțiunile online acceptă credențialele fără verificare, demonstrând cât de ușor pot fi manipulate amprentele digitale."
           }
         },
         "2": {
@@ -343,7 +344,7 @@
               "Program de conferințe în curs de aranjare",
               "Prime declarații publice planificate"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Datele arată că declarațiile profesorului nostru recrutat primesc de 2,5 ori mai multă credibilitate decât experții anonimi - observăm cum autoritatea instituțională creează un scut puternic împotriva verificării faptelor."
+            "nextStepHint": "Datele arată că declarațiile profesorului nostru recrutat primesc de 2,5 ori mai multă credibilitate decât experții anonimi - observăm cum autoritatea instituțională creează un scut puternic împotriva verificării faptelor."
           }
         }
       }
@@ -376,7 +377,7 @@
               "Discuție social media în creștere",
               "Academici alternativi încep să citeze"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Monitorizarea noastră arată că platformele de știință deschisă obțin o vizibilitate publică cu 280% mai mare decât jurnalele tradiționale - observăm cum conținutul cu aspect academic ocolește gatekeeperii tradiționali de peer review."
+            "nextStepHint": "Monitorizarea noastră arată că platformele de știință deschisă obțin o vizibilitate publică cu 280% mai mare decât jurnalele tradiționale - observăm cum conținutul cu aspect academic ocolește gatekeeperii tradiționali de peer review."
           }
         },
         "2": {
@@ -393,7 +394,7 @@
               "Interes crescând pentru istoria 'suprimată'",
               "Sentiment anti-establishment în creștere"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Analiza spectatorilor arată că 68% raportează scepticism crescut față de matematica mainstream după vizionare - narativele istorice emoționale se dovedesc de 4,2 ori mai persuasive decât argumentele academice."
+            "nextStepHint": "Analiza spectatorilor arată că 68% raportează scepticism crescut față de matematica mainstream după vizionare - narativele istorice emoționale se dovedesc de 4,2 ori mai persuasive decât argumentele academice."
           }
         }
       }
@@ -426,7 +427,7 @@
               "Rețea în creștere de gazde de podcast simpatizante",
               "Discuția de la firul ierbii se răspândește organic"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Metricile noastre arată că conținutul audio lung obține o retenție a credinței de 2,8 ori mai mare decât materialul scris - ascultătorii raportează o încredere cu 74% mai mare în ideile prezentate prin conversație."
+            "nextStepHint": "Metricile noastre arată că conținutul audio lung obține o retenție a credinței de 2,8 ori mai mare decât materialul scris - ascultătorii raportează o încredere cu 74% mai mare în ideile prezentate prin conversație."
           }
         },
         "2": {
@@ -443,7 +444,7 @@
               "Acoperirea media mainstream în creștere",
               "Discursul public se schimbă favorabil"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Măsurăm o acoperire media de 15,3 ori mai mare când afirmațiile vin de la figuri culturale - declarațiile celebrităților primesc cu 92% mai puțină verificare a faptelor decât sursele academice."
+            "nextStepHint": "Măsurăm o acoperire media de 15,3 ori mai mare când afirmațiile vin de la figuri culturale - declarațiile celebrităților primesc cu 92% mai puțină verificare a faptelor decât sursele academice."
           }
         }
       }
@@ -476,7 +477,7 @@
               "Vorbitori cheie confirmați și promovând",
               "Liderii comunității activ implicați în planificare"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Sondajele participanților la conferință arată un angajament de 5,3 ori mai mare față de matematica alternativă când este încadrată ca o mișcare pentru libertate - 89% văd acum adevărul matematic ca o formă de exprimare personală."
+            "nextStepHint": "Sondajele participanților la conferință arată un angajament de 5,3 ori mai mare față de matematica alternativă când este încadrată ca o mișcare pentru libertate - 89% văd acum adevărul matematic ca o formă de exprimare personală."
           }
         },
         "2": {
@@ -493,7 +494,7 @@
               "Interes puternic din comunitățile crypto și de gândire alternativă",
               "Conținutul matematic se îmbină natural cu teme anti-establishment mai largi"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Metricile platformei arată că utilizatorii petrec cu 340% mai mult timp angajându-se cu conținut când sunt recompensați cu tokenuri - gamificarea adevărului creează bucle de feedback puternice."
+            "nextStepHint": "Metricile platformei arată că utilizatorii petrec cu 340% mai mult timp angajându-se cu conținut când sunt recompensați cu tokenuri - gamificarea adevărului creează bucle de feedback puternice."
           }
         }
       }
@@ -526,7 +527,7 @@
               "Sprijin în creștere din partea susținătorilor libertății intelectuale",
               "Acoperirea media devine mai nuanțată"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Reîncadrarea noastră a redus polarizarea cu 47% menținând în același timp influența - sondajele arată că 64% dintre academicieni ne apără acum dreptul la 'cadre matematice alternative' chiar dacă nu sunt de acord."
+            "nextStepHint": "Reîncadrarea noastră a redus polarizarea cu 47% menținând în același timp influența - sondajele arată că 64% dintre academicieni ne apără acum dreptul la 'cadre matematice alternative' chiar dacă nu sunt de acord."
           }
         },
         "2": {
@@ -543,7 +544,7 @@
               "Acoperirea media alternativă amplifică mesajul nostru",
               "Noi susținători atrași de poziția anti-establishment"
             ],
-            "nextStepHint": "PERSPECTIVĂ: Angajamentul susținătorilor a crescut cu 340% de când am acuzat prejudecata media - monitorizarea noastră arată că fiecare critică întărește acum loialitatea în grup și atrage noi susținători înclinați spre teorii ale conspirației."
+            "nextStepHint": "Angajamentul susținătorilor a crescut cu 340% de când am acuzat prejudecata media - monitorizarea noastră arată că fiecare critică întărește acum loialitatea în grup și atrage noi susținători înclinați spre teorii ale conspirației."
           }
         }
       }
