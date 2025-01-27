@@ -28,6 +28,51 @@ Understanding how disinformation works is crucial for defending against it. By e
 - **Routing**: React Router
 - **Animation**: Framer Motion
 
+### Architecture Overview
+```mermaid
+graph TD
+    A[Frontend] --> B[React]
+    A --> C[Vite]
+    A --> D[shadcn/ui]
+    A --> E[Tailwind CSS]
+    
+    subgraph Core Layers
+        F[Presentation Layer] --> G[UI Components]
+        F --> H[Animations]
+        I[Application Layer] --> J[State Management]
+        I --> K[Routing]
+        L[Data Layer] --> M[Localization]
+        L --> N[Metrics]
+    end
+
+    G -->|Uses| O[Framer Motion]
+    J -->|TanStack Query| P[Choice State]
+    K -->|React Router| Q[Game Stages]
+    M -->|i18next| R[en/ro Translations]
+    
+    subgraph External Services
+        S[Audio Service]
+        T[Analytics]
+        U[Hosting]
+    end
+
+    A -->|Builds With| C
+    Core Layers -->|Depends On| A
+    External Services -->|Integrates With| A
+```
+
+Key Architecture Components:
+1. **Presentation Layer**: Handles UI components and animations using Framer Motion
+2. **Application Layer**: Manages state and routing through game stages
+3. **Data Layer**: Handles localization and campaign metrics
+4. **External Services**: Audio assets and analytics tracking
+
+The system follows a layered architecture with clear separation between:
+- User interface components
+- Game state management
+- Localization/internationalization
+- Audio-visual systems
+
 ### Project Structure
 ```
 src/
