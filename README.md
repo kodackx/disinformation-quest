@@ -57,8 +57,8 @@ graph TD
     end
 
     A -->|Builds With| C
-    Core Layers -->|Depends On| A
-    External Services -->|Integrates With| A
+    Core Layers --> A
+    External Services --> A
 ```
 
 Key Architecture Components:
