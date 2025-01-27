@@ -36,29 +36,26 @@ graph TD
     A --> D[shadcn/ui]
     A --> E[Tailwind CSS]
     
-    subgraph Core Layers
-        F[Presentation Layer] --> G[UI Components]
-        F --> H[Animations]
-        I[Application Layer] --> J[State Management]
-        I --> K[Routing]
-        L[Data Layer] --> M[Localization]
-        L --> N[Metrics]
-    end
+    F[Presentation Layer] --> G[UI Components]
+    F --> H[Animations]
+    I[Application Layer] --> J[State Management]
+    I --> K[Routing]
+    L[Data Layer] --> M[Localization]
+    L --> N[Metrics]
 
-    G -->|Uses| O[Framer Motion]
-    J -->|TanStack Query| P[Choice State]
-    K -->|React Router| Q[Game Stages]
-    M -->|i18next| R[en/ro Translations]
+    G --> O[Framer Motion]
+    J --> P[Choice State]
+    K --> Q[Game Stages]
+    M --> R[en/ro Translations]
     
-    subgraph External Services
-        S[Audio Service]
-        T[Analytics]
-        U[Hosting]
-    end
+    S[Audio Service] --> A
+    T[Analytics] --> A
+    U[Hosting] --> A
 
-    A -->|Builds With| C
-    Core Layers --> A
-    External Services --> A
+    A --> C
+    F --> A
+    I --> A
+    L --> A
 ```
 
 Key Architecture Components:
