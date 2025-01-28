@@ -54,8 +54,8 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
           {t('dossier.button')}
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-[95vw] sm:w-[90vw] lg:w-[45vw] bg-[#1a1a1a] border-gray-700 text-white overflow-hidden p-8 pt-10 !max-w-[100vw]">
-        <SheetHeader className="mb-6">
+      <SheetContent className="w-[95vw] sm:w-[90vw] lg:w-[45vw] bg-[#1a1a1a] border-gray-700 text-white overflow-hidden p-2 sm:p-8 pt-10 !max-w-[100vw] flex flex-col">
+        <SheetHeader className="mb-6 flex-none">
           <SheetTitle className="text-yellow-500 relative">
             <span className="absolute -top-6 left-0 text-xs text-red-500 tracking-wider font-mono">
               {t('dossier.clearanceRequired')}
@@ -64,13 +64,14 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
           </SheetTitle>
         </SheetHeader>
         
-        <div className="bg-gray-800/30 p-6 rounded-md border border-gray-700 mb-6">
-          <MetricsDisplay choices={choices} className="pl-0" />
-        </div>
+        <ScrollArea className="flex-1 min-h-0">
+          <div className="space-y-6 pb-4 px-2 sm:px-4">
+            <div className="bg-gray-800/30 p-4 sm:p-6 rounded-md border border-gray-700">
+              <MetricsDisplay choices={choices} className="pl-0" />
+            </div>
 
-        <Separator className="my-6 bg-gray-700" />
-        <ScrollArea className="h-[calc(100vh-320px)] pr-4">
-          <div className="space-y-6 pb-16">
+            <Separator className="bg-gray-700" />
+            
             {entries.length === 0 ? (
               <p className="text-gray-400 italic">{t('dossier.noIntelligence')}</p>
             ) : (
@@ -80,7 +81,7 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="space-y-4 relative bg-gray-800/30 p-6 rounded-md border border-gray-700"
+                  className="space-y-4 relative bg-gray-800/30 p-4 sm:p-6 rounded-md border border-gray-700"
                 >
                   <div>
                     <h3 className="text-yellow-500 font-semibold flex items-center gap-3">

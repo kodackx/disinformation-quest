@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import './ExpertMemo.css';
 import { useTranslation } from 'react-i18next';
 import { BriefingAudio } from './BriefingAudio';
+import { cn } from '@/lib/utils';
 
 interface ExpertMemoProps {
     from: string;
@@ -16,6 +17,31 @@ export const ExpertMemo: React.FC<ExpertMemoProps> = ({ from, subject, children,
     const { t } = useTranslation();
     const highlightColor = isAlert ? 'text-red-500' : 'text-yellow-500';
     const memoClass = isAlert ? 'expert-memo alert' : 'expert-memo';
+    const [showGradient, setShowGradient] = useState(false);
+    const memoBodyRef = useRef<HTMLDivElement>(null);
+
+    const checkScroll = useCallback(() => {
+        const element = memoBodyRef.current;
+        if (element) {
+            const hasOverflow = element.scrollHeight > element.clientHeight;
+            const isAtBottom = Math.abs(element.scrollHeight - element.clientHeight - element.scrollTop) < 1;
+            setShowGradient(hasOverflow && !isAtBottom);
+        }
+    }, []);
+
+    useEffect(() => {
+        const element = memoBodyRef.current;
+        if (element) {
+            checkScroll();
+            element.addEventListener('scroll', checkScroll);
+            window.addEventListener('resize', checkScroll);
+            
+            return () => {
+                element.removeEventListener('scroll', checkScroll);
+                window.removeEventListener('resize', checkScroll);
+            };
+        }
+    }, [checkScroll]);
 
     // Function to wrap text content in paragraph tags
     const formatContent = (content: React.ReactNode) => {
@@ -53,9 +79,10 @@ export const ExpertMemo: React.FC<ExpertMemoProps> = ({ from, subject, children,
                     </div>
                 )}
             </div>
-            <div className="memo-body text-gray-300">
+            <div ref={memoBodyRef} className="memo-body">
                 {formatContent(children)}
             </div>
+            <div className={cn("memo-gradient", showGradient && "show")} />
         </div>
     );
 };

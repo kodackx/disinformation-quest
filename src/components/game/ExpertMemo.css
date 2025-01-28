@@ -21,9 +21,12 @@
         inset 0 0 60px rgba(0, 0, 0, 0.6);
     width: 100%;
     max-width: 800px;
+    max-height: 80vh;
     margin: 0 auto;
     position: relative;
     color: #e8e8e8;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (min-width: 640px) {
@@ -92,12 +95,56 @@
     white-space: pre-wrap;
     line-height: 1.5;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 0.5rem;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    max-height: calc(80vh - 12rem);
 }
 
+/* Gradient container */
+.memo-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top, #1a1715 10%, rgba(26, 23, 21, 0.8) 40%, transparent 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.memo-gradient.show {
+    opacity: 0.95;
+}
+
+/* Custom scrollbar for WebKit browsers */
+.memo-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.memo-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.memo-body::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+/* Show scrollbar on hover */
+.memo-body:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Remove the old gradient and padding styles */
 .memo-body p {
     margin-bottom: 1.5rem;
 }
 
 .memo-body p:last-child {
-    margin-bottom: 0;
+    margin-bottom: 1rem;
 }
