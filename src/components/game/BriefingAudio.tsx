@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { PlayIcon, PauseIcon } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import { playBriefing } from "@/utils/audio";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
+import { getMonthConfig } from "@/utils/months";
 
 interface BriefingAudioProps {
   stage: string;
@@ -18,17 +19,22 @@ export const BriefingAudio = ({ stage, audioRef, className = "" }: BriefingAudio
 
   const getAudioFileName = (stage: string) => {
     const currentLanguage = i18n.language;
-    const monthKeys = ['january', 'march', 'may', 'july', 'september', 'november', 'december', 'alert', 'expose'];
+    
+    console.log('BriefingAudio - Stage received:', stage);
     
     // Handle special stages
     if (stage === "INTRO") {
       return `intro-${currentLanguage}.mp3`;
     }
     
-    // For all other stages (including ALERT), use the month-based naming
-    const monthIndex = parseInt(stage);
-    const monthKey = monthKeys[monthIndex];
-    return `${monthKey}-${currentLanguage}.mp3`;
+    const monthConfig = getMonthConfig(stage);
+    console.log('BriefingAudio - Selected monthConfig:', monthConfig);
+    
+    if (!monthConfig?.audio?.briefing) {
+      throw new Error(`No audio briefing configured for stage ${stage}`);
+    }
+    
+    return monthConfig.audio.briefing;
   };
 
   const handlePlayPause = async () => {
@@ -56,10 +62,8 @@ export const BriefingAudio = ({ stage, audioRef, className = "" }: BriefingAudio
       setIsPlaying(true);
     } catch (error) {
       console.error('Audio error:', error);
-      toast({
-        title: "Audio Error",
-        description: `Failed to play briefing: ${error instanceof Error ? error.message : 'Unknown error'}`,
-        variant: "destructive",
+      toast.error("Audio Error", {
+        description: `Failed to play briefing: ${error instanceof Error ? error.message : 'Unknown error'}`
       });
     }
   };

@@ -4,27 +4,13 @@ import { ExpertMemo } from '../ExpertMemo';
 import { useTranslation } from 'react-i18next';
 import { ChoiceID } from './metrics';
 
-// Define month indices as constants
-export const MONTHS = {
-  JANUARY: 0,
-  MARCH: 1,
-  MAY: 2,
-  JULY: 3,
-  SEPTEMBER: 4,
-  NOVEMBER: 5,
-  DECEMBER: 6,
-  ALERT: 7,
-  EXPOSÉ: 8,
-} as const;
-
 // Create a custom hook to handle stages with translations
 export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): GameStage[] => {
   const { t } = useTranslation();
 
   // Helper function to get translated month title
-  const getMonthTitle = (monthIndex: number) => {
-    const monthKeys = ['january', 'march', 'may', 'july', 'september', 'november', 'december', 'alert', 'exposé'];
-    return t(`months.${monthKeys[monthIndex]}`);
+  const getMonthTitle = (stage: number) => {
+    return t(`months.${stage}`);
   };
 
   // Helper function to get translated choice option
@@ -35,8 +21,8 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
   return [
     {
       id: 1,
-      monthIndex: MONTHS.JANUARY,
-      title: getMonthTitle(MONTHS.JANUARY),
+      monthIndex: 1, // January
+      title: getMonthTitle(1),
       description: <ExpertMemo 
         from={t('stages.1.expertMemo.from')}
         subject={t('stages.1.expertMemo.subject')}
@@ -114,8 +100,8 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
     },
     {
       id: 2,
-      monthIndex: MONTHS.MARCH,
-      title: getMonthTitle(MONTHS.MARCH),
+      monthIndex: 2, // March
+      title: getMonthTitle(2),
       description: <ExpertMemo 
         from={t('stages.2.expertMemo.from')}
         subject={t('stages.2.expertMemo.subject')}
@@ -191,8 +177,8 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
     },
     {
       id: 3,
-      monthIndex: MONTHS.MAY,
-      title: getMonthTitle(MONTHS.MAY),
+      monthIndex: 3, // May
+      title: getMonthTitle(3),
       description: <ExpertMemo
         from={t('stages.3.expertMemo.from')}
         subject={t('stages.3.expertMemo.subject')}
@@ -269,8 +255,8 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
     },
     {
       id: 4,
-      monthIndex: MONTHS.ALERT,
-      title: getMonthTitle(MONTHS.ALERT),
+      monthIndex: 4, // Alert
+      title: getMonthTitle(4),
       description: <ExpertMemo
         from={t('stages.4.expertMemo.from')}
         subject={t('stages.4.expertMemo.subject')}
@@ -348,8 +334,8 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
     },
     {
       id: 5,
-      monthIndex: MONTHS.JULY,
-      title: getMonthTitle(MONTHS.JULY),
+      monthIndex: 5, // July
+      title: getMonthTitle(5),
       description: <ExpertMemo
         from={t('stages.5.expertMemo.from')}
         subject={t('stages.5.expertMemo.subject')}
@@ -426,8 +412,8 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
     },
     {
       id: 6,
-      monthIndex: MONTHS.SEPTEMBER,
-      title: getMonthTitle(MONTHS.SEPTEMBER),
+      monthIndex: 6, // September
+      title: getMonthTitle(6),
       description: <ExpertMemo
         from={t('stages.6.expertMemo.from')}
         subject={t('stages.6.expertMemo.subject')}
@@ -504,8 +490,8 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
     },
     {
       id: 7,
-      monthIndex: MONTHS.NOVEMBER,
-      title: getMonthTitle(MONTHS.NOVEMBER),
+      monthIndex: 7, // November
+      title: getMonthTitle(7),
       description: <ExpertMemo
         from={t('stages.7.expertMemo.from')}
         subject={t('stages.7.expertMemo.subject')}
@@ -582,8 +568,8 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
     },
     {
       id: 8,
-      monthIndex: MONTHS.DECEMBER,
-      title: getMonthTitle(MONTHS.DECEMBER),
+      monthIndex: 8, // December
+      title: getMonthTitle(8),
       description: <ExpertMemo
         from={t('stages.8.expertMemo.from')}
         subject={t('stages.8.expertMemo.subject')}
@@ -660,8 +646,8 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
     },
     {
       id: 9,
-      monthIndex: MONTHS.EXPOSÉ,
-      title: getMonthTitle(MONTHS.EXPOSÉ),
+      monthIndex: 9, // Exposé
+      title: getMonthTitle(9),
       description: <ExpertMemo
         from={t('stages.9.expertMemo.from')}
         subject={t('stages.9.expertMemo.subject')}

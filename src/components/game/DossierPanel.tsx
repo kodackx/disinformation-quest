@@ -81,10 +81,20 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="space-y-4 relative bg-gray-800/30 p-4 sm:p-6 rounded-md border border-gray-700"
+                  className={cn(
+                    "space-y-4 relative bg-gray-800/30 p-4 sm:p-6 rounded-md border",
+                    entry.dateKey.toLowerCase().includes('alert') || entry.dateKey.toLowerCase().includes('expose') 
+                      ? "border-red-500/50" 
+                      : "border-gray-700"
+                  )}
                 >
                   <div>
-                    <h3 className="text-yellow-500 font-semibold flex items-center gap-3">
+                    <h3 className={cn(
+                      "font-semibold flex items-center gap-3",
+                      entry.dateKey.toLowerCase().includes('alert') || entry.dateKey.toLowerCase().includes('expose')
+                        ? "text-red-500"
+                        : "text-yellow-500"
+                    )}>
                       <span className="text-xs text-gray-400 font-mono tracking-wider">{t(entry.dateKey)}</span>
                       <Separator className="w-4 bg-gray-700" orientation="horizontal" />
                       <TypewriterText text={t(entry.titleKey)} />

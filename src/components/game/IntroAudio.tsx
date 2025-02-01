@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Play, Pause } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
 import { playRecordingSound } from "@/utils/audio";
 
@@ -12,7 +12,6 @@ interface IntroAudioProps {
 export const IntroAudio = ({ className }: IntroAudioProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const { toast } = useToast();
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -46,10 +45,8 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
         if (playPromise !== undefined) {
           playPromise.catch(error => {
             console.error('Playback failed:', error);
-            toast({
-              title: "Playback Error",
-              description: "Unable to play audio briefing",
-              variant: "destructive"
+            toast.error("Playback Error", {
+              description: "Unable to play audio briefing"
             });
           });
         }
@@ -57,10 +54,8 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
       setIsPlaying(!isPlaying);
     } catch (error) {
       console.error('Audio error:', error);
-      toast({
-        title: "Audio Error",
-        description: "Audio briefing unavailable",
-        variant: "destructive"
+      toast.error("Audio Error", {
+        description: "Audio briefing unavailable"
       });
     }
   };

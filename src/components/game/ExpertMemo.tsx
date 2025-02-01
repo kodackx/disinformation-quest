@@ -51,7 +51,8 @@ export const ExpertMemo: React.FC<ExpertMemoProps> = ({ from, subject, children,
                 <p key={index}>{paragraph}</p>
             ));
         }
-        return content;
+        // If it's already a React node (like a div), return it as is
+        return <div className="prose prose-invert">{content}</div>;
     };
 
     return (

@@ -10,7 +10,6 @@ import { IntroDialog } from "../components/game/IntroDialog";
 import { useGameStages, OPERATION_NAMES, useLoadingMessages, generateFinalReport } from "@/components/game/constants";
 import { ChoiceID, calculateMetrics } from "@/components/game/constants/metrics";
 import { DossierEntry, GameStage } from "@/components/game/types";
-import { useToast } from "@/components/ui/use-toast";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -38,18 +37,11 @@ import { MetricsDisplay } from "@/components/game/MetricsDisplay";
 import { MuteButton } from '@/components/MuteButton';
 import { DevPanel } from "@/components/game/DevPanel";
 import { motion } from "framer-motion";
+import { MONTHS_CONFIG, getMonthConfig } from "@/utils/months";
+import { toast } from "sonner";
 
-const monthKeys = [
-  'january',   // 0
-  'march',     // 1
-  'may',       // 2
-  'alert',     // 3
-  'july',      // 4
-  'september', // 5
-  'november',  // 6
-  'december',  // 7
-  'exposé'     // 8
-];
+// Get valid month keys (skipping index 0)
+const monthKeys = MONTHS_CONFIG.slice(1).map(config => config?.key).filter(Boolean) as string[];
 
 const STAGE_CHOICES = [
   ['DEPLOY_BOTS', 'ESTABLISH_MEMES'],               // January
@@ -76,7 +68,6 @@ const Index = () => {
   const [showingResult, setShowingResult] = useState(false);
   const [currentResult, setCurrentResult] = useState<GameStage["choices"][0]["result"] | null>(null);
   const [dossierEntries, setDossierEntries] = useState<DossierEntry[]>([]);
-  const { toast } = useToast();
   const [showingMonthTransition, setShowingMonthTransition] = useState(false);
   const [nextStage, setNextStage] = useState<number | null>(null);
   const [transitionStyle, setTransitionStyle] = useState<TransitionStyle>(TransitionStyle.NUMBER_CYCLE);
@@ -144,10 +135,7 @@ const Index = () => {
   const handleInitialTransitionComplete = () => {
     setShowingInitialTransition(false);
     setGameStarted(true);
-    toast({
-      title: t('mission.welcome.title'),
-      description: t('mission.welcome.description'),
-    });
+    toast(t('mission.welcome.description'));
   };
 
   const handleChoice = async (choice: GameStage["choices"][0]) => {
@@ -208,17 +196,7 @@ const Index = () => {
     setShowingResult(true);
     
     const newEntry: DossierEntry = {
-      dateKey: stages[currentStage].monthIndex === 0 ? 'months.january' :
-               stages[currentStage].monthIndex === 1 ? 'months.february' :
-               stages[currentStage].monthIndex === 2 ? 'months.march' :
-               stages[currentStage].monthIndex === 3 ? 'months.april' :
-               stages[currentStage].monthIndex === 4 ? 'months.may' :
-               stages[currentStage].monthIndex === 5 ? 'months.june' :
-               stages[currentStage].monthIndex === 6 ? 'months.july' :
-               stages[currentStage].monthIndex === 7 ? 'months.august' :
-               stages[currentStage].monthIndex === 8 ? 'months.september' :
-               stages[currentStage].monthIndex === 9 ? 'months.october' :
-               stages[currentStage].monthIndex === 10 ? 'months.november' : 'months.december',
+      dateKey: `months.${getMonthConfig(currentStage + 1)?.key}`,
       titleKey: `stages.${currentStage + 1}.choices.${choice.id}.result.title`,
       insightKeys: Array.from({ length: 4 }, (_, i) => `stages.${currentStage + 1}.choices.${choice.id}.result.insights.${i}`),
       strategicNoteKey: `stages.${currentStage + 1}.choices.${choice.id}.result.nextStepHint`
@@ -296,7 +274,7 @@ const Index = () => {
             <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
               <div className="max-w-4xl mx-auto w-full relative">
                 <MonthTransition 
-                  monthIndex={stages[0]?.monthIndex ?? 1}
+                  stage={1}
                   onComplete={handleInitialTransitionComplete}
                   style={TransitionStyle.NUMBER_CYCLE}
                 />
@@ -521,7 +499,7 @@ const Index = () => {
           <GameBackground shouldStartAudio={shouldStartAudio} />
           <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
             <MonthTransition 
-              monthIndex={stages[nextStage]?.monthIndex ?? nextStage + 1}
+              stage={nextStage + 1}
               onComplete={handleTransitionComplete}
               style={transitionStyle}
             />
@@ -542,7 +520,13 @@ const Index = () => {
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-4">
                         <MuteButton />
-                        <span className="text-yellow-500 font-mono text-lg">{t(`months.${monthKeys[currentStageData.monthIndex]}`)}</span>
+                        <span className="text-yellow-500 font-mono text-lg">
+                          {(() => {
+                            console.log('Index - currentStageData:', currentStageData);
+                            const monthConfig = getMonthConfig(currentStage + 1);
+                            return t(`months.${monthConfig?.key}`);
+                          })()}
+                        </span>
                       </div>
                       {currentStage > 0 && <DossierPanel entries={dossierEntries} choices={previousChoices} />}
                     </div>
@@ -553,16 +537,19 @@ const Index = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {currentStageData.choices.map((choice, index) => (
-                      <ChoiceCard
-                        key={choice.id}
-                        choice={choice}
-                        previousChoices={previousChoices}
-                        onClick={() => handleStrategyClick(choice)}
-                        disabled={showingResult || isLoading}
-                        optionNumber={index + 1}
-                      />
-                    ))}
+                    {(() => {
+                      console.log('Index - Rendering stage:', currentStage);
+                      return currentStageData.choices.map((choice, index) => (
+                        <ChoiceCard
+                          key={choice.id}
+                          choice={choice}
+                          previousChoices={previousChoices}
+                          onClick={() => handleStrategyClick(choice)}
+                          disabled={showingResult || isLoading}
+                          optionNumber={index + 1}
+                        />
+                      ));
+                    })()}
                   </div>
                 </CardContent>
                 <div className="mt-4 border-t border-gray-700/50">

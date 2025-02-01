@@ -1,13 +1,9 @@
 import { ChoiceID } from './constants/metrics';
+import { ExpertAudio } from '@/utils/months';
 
 export interface LoadingMessage {
   action: string;
   duration: number;
-}
-
-export interface ExpertAudio {
-  briefing: string;
-  voice: string;
 }
 
 export interface StrategyAnimation {
