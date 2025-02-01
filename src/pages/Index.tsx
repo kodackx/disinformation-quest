@@ -435,7 +435,15 @@ const Index = () => {
         <div className="relative min-h-screen overflow-hidden">
           <GameBackground shouldStartAudio={shouldStartAudio} />
           <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
-            <Card className="w-full md:max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in">
+            <Card className="relative border-gray-700 bg-black/30">
+              <div className="bg-gray-800/30 p-6 rounded-t-md border border-gray-700">
+                <h3 className="text-yellow-500 font-semibold mb-4">{t('analysis.metricsUpdate')}</h3>
+                <MetricsDisplay 
+                  choices={previousChoices} 
+                  showTitle={false}
+                  className="pl-0" 
+                />
+              </div>
               <CardHeader>
                 <div className="flex flex-col gap-4">
                   <CardDescription className="text-emerald-400/90 italic">
@@ -450,15 +458,6 @@ const Index = () => {
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="bg-gray-800/30 p-6 rounded-md border border-gray-700">
-                  <h3 className="text-yellow-500 font-semibold mb-4">{t('analysis.metricsUpdate')}</h3>
-                  <MetricsDisplay 
-                    choices={previousChoices} 
-                    showTitle={false}
-                    className="pl-0" 
-                  />
-                </div>
-
                 <div>
                   <h3 className="text-yellow-500 font-semibold mb-3">{t('analysis.keyInsights')}</h3>
                   <ul className="space-y-2">
