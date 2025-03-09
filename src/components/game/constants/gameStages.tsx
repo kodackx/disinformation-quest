@@ -18,6 +18,9 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
     return t(`choices.option${number}`);
   };
 
+  // Total number of stages
+  const totalStages = 9;
+
   return [
     {
       id: 1,
@@ -651,7 +654,6 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
       description: <ExpertMemo
         from={t('stages.9.expertMemo.from')}
         subject={t('stages.9.expertMemo.subject')}
-        isAlert={true}
         stage="9"
         audioRef={audioRef}>
         <p>{t('stages.9.expertMemo.content.greeting')}</p>

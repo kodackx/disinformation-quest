@@ -13,7 +13,14 @@ interface ExpertMemoProps {
     audioRef?: React.RefObject<HTMLAudioElement>;
 }
 
-export const ExpertMemo: React.FC<ExpertMemoProps> = ({ from, subject, children, isAlert = false, stage, audioRef }) => {
+export const ExpertMemo: React.FC<ExpertMemoProps> = ({ 
+    from, 
+    subject, 
+    children, 
+    isAlert = false, 
+    stage, 
+    audioRef
+}) => {
     const { t } = useTranslation();
     const highlightColor = isAlert ? 'text-red-500' : 'text-yellow-500';
     const memoClass = isAlert ? 'expert-memo alert' : 'expert-memo';

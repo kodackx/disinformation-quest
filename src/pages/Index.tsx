@@ -39,6 +39,7 @@ import { DevPanel } from "@/components/game/DevPanel";
 import { motion } from "framer-motion";
 import { MONTHS_CONFIG, getMonthConfig } from "@/utils/months";
 import { toast } from "sonner";
+import { ProgressionIndicator } from '@/components/game/ProgressionIndicator';
 
 // Get valid month keys (skipping index 0)
 const monthKeys = MONTHS_CONFIG.slice(1).map(config => config?.key).filter(Boolean) as string[];
@@ -58,6 +59,7 @@ const STAGE_CHOICES = [
 const Index = () => {
   const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [previousChoices, setPreviousChoices] = useState<ChoiceID[]>([]);
   const stages = useGameStages(audioRef);
   const operationNameKey = OPERATION_NAMES[Math.floor(Math.random() * OPERATION_NAMES.length)];
   const operationName = t(`operations.${operationNameKey}`);
@@ -78,7 +80,6 @@ const Index = () => {
   const [showIntroDialog, setShowIntroDialog] = useState(true);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState<GameStage["choices"][0] | null>(null);
-  const [previousChoices, setPreviousChoices] = useState<ChoiceID[]>([]);
   const [gameComplete, setGameComplete] = useState(false);
   const [playerChoices, setPlayerChoices] = useState<string[]>([]);
   const [gameKey, setGameKey] = useState(0);
@@ -434,59 +435,61 @@ const Index = () => {
       return (
         <div className="relative min-h-screen overflow-hidden">
           <GameBackground shouldStartAudio={shouldStartAudio} />
-          <div className="relative min-h-screen bg-transparent p-4 flex items-center justify-center">
-            <Card className="relative border-gray-700 bg-black/30">
-              <div className="bg-gray-800/30 p-6 rounded-t-md border border-gray-700">
-                <h3 className="text-yellow-500 font-semibold mb-4">{t('analysis.metricsUpdate')}</h3>
-                <MetricsDisplay 
-                  choices={previousChoices} 
-                  showTitle={false}
-                  className="pl-0" 
-                />
-              </div>
-              <CardHeader>
-                <div className="flex flex-col gap-4">
-                  <CardDescription className="text-emerald-400/90 italic">
-                    {t('analysis.intelligenceGathered.description')}
-                  </CardDescription>
-                  <div className="flex justify-between items-center">
-                    <CardTitle className="text-xl md:text-2xl text-yellow-500">{currentResult.title}</CardTitle>
+          <div className="relative min-h-screen bg-transparent p-4 flex flex-col">
+            <div className="flex-grow flex items-center justify-center">
+              <Card className="relative border-gray-700 bg-black/30">
+                <div className="bg-gray-800/30 p-6 rounded-t-md border border-gray-700">
+                  <h3 className="text-yellow-500 font-semibold mb-4">{t('analysis.metricsUpdate')}</h3>
+                  <MetricsDisplay 
+                    choices={previousChoices} 
+                    showTitle={false}
+                    className="pl-0" 
+                  />
+                </div>
+                <CardHeader>
+                  <div className="flex flex-col gap-4">
+                    <CardDescription className="text-emerald-400/90 italic">
+                      {t('analysis.intelligenceGathered.description')}
+                    </CardDescription>
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="text-xl md:text-2xl text-yellow-500">{currentResult.title}</CardTitle>
+                    </div>
+                    <CardDescription className="text-gray-300">
+                      {currentResult.description}
+                    </CardDescription>
                   </div>
-                  <CardDescription className="text-gray-300">
-                    {currentResult.description}
-                  </CardDescription>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h3 className="text-yellow-500 font-semibold mb-3">{t('analysis.keyInsights')}</h3>
-                  <ul className="space-y-2">
-                    {currentResult.insights.map((insight, index) => (
-                      <li key={index} className="flex items-start gap-2 text-gray-300">
-                        <span className="text-yellow-500">•</span>
-                        {insight}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="border-t border-gray-700 pt-4">
-                  <p className="text-gray-400 italic">
-                    <span className="text-yellow-500 font-semibold">{t('analysis.strategicInsight')} </span>
-                    {currentResult.nextStepHint}
-                  </p>
-                </div>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div>
+                    <h3 className="text-yellow-500 font-semibold mb-3">{t('analysis.keyInsights')}</h3>
+                    <ul className="space-y-2">
+                      {currentResult.insights.map((insight, index) => (
+                        <li key={index} className="flex items-start gap-2 text-gray-300">
+                          <span className="text-yellow-500">•</span>
+                          {insight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="border-t border-gray-700 pt-4">
+                    <p className="text-gray-400 italic">
+                      <span className="text-yellow-500 font-semibold">{t('analysis.strategicInsight')} </span>
+                      {currentResult.nextStepHint}
+                    </p>
+                  </div>
 
-                <div className="flex justify-center pt-4">
-                  <Button 
-                    onClick={handleContinue}
-                    className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg transition-all duration-500"
-                  >
-                    {t('buttons.proceedToNext')}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="flex justify-center pt-4">
+                    <Button 
+                      onClick={handleContinue}
+                      className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg transition-all duration-500"
+                    >
+                      {t('buttons.proceedToNext')}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       );
@@ -511,6 +514,14 @@ const Index = () => {
       <div className="relative min-h-screen overflow-hidden">
         <GameBackground shouldStartAudio={shouldStartAudio} />
         <div className="relative min-h-screen bg-transparent md:p-4 flex flex-col">
+          <div className="w-full max-w-4xl mx-auto px-4 mt-4 mb-6">
+            <ProgressionIndicator 
+              currentStage={currentStage}
+              totalStages={stages.length}
+              previousChoices={previousChoices}
+            />
+          </div>
+          
           <div className="flex-grow flex items-center">
             <div className="w-full h-full md:max-w-4xl mx-auto md:px-4">
               <Card className="bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in h-full md:h-auto md:rounded-lg border-0 md:border">
