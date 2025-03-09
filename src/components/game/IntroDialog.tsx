@@ -52,7 +52,7 @@ export const IntroDialog = ({ onStartAudio }: IntroDialogProps) => {
     <Dialog open={open}>
       <DialogContent 
         ref={contentRef}
-        className="[&>button]:hidden bg-black text-white border-gray-700 max-w-2xl max-h-[85vh] overflow-y-auto space-y-6 p-6 pb-[30px] relative text-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+        className="[&>button]:hidden bg-black text-white border-gray-700 max-w-4xl max-h-[85vh] overflow-y-auto space-y-6 p-6 pb-[30px] relative text-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
       >
         <DialogHeader className="space-y-6">
           <DialogTitle className="text-yellow-500 text-2xl">

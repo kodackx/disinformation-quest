@@ -288,7 +288,7 @@ const Index = () => {
           <GameBackground shouldStartAudio={shouldStartAudio} />
           <div className="relative min-h-screen bg-transparent flex items-center justify-center p-4">
             {showIntroDialog && <IntroDialog onStartAudio={() => setShouldStartAudio(true)} />}
-            <Card className="w-full md:max-w-2xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in backdrop-blur-sm">
+            <Card className="w-full md:max-w-5xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in backdrop-blur-sm">
               <CardHeader className="text-center space-y-4 p-4 md:p-6">
                 <div className="flex justify-between items-center px-4">
                   <Badge variant="outline" className="text-yellow-500 border-yellow-500">
@@ -613,6 +613,11 @@ const Index = () => {
                 <div>
                   <h3 className="text-yellow-500 font-semibold mb-2">{t('analysis.strategyOverview')}:</h3>
                   <p className="text-gray-300">{selectedChoice?.description}</p>
+                </div>
+
+                <div>
+                  <h3 className="text-yellow-500 font-semibold mb-2">{t('analysis.expectedImpact')}:</h3>
+                  <p className="text-gray-300">{selectedChoice?.impact}</p>
                 </div>
 
                 <div>

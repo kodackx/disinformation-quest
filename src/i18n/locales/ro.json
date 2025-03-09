@@ -59,6 +59,7 @@
     "keyInsights": "Informații Cheie Obținute",
     "strategicInsight": "Perspectivă Strategică",
     "strategyOverview": "Prezentare Generală a Strategiei",
+    "expectedImpact": "Impact Preconizat",
     "expertAnalysis": "Analiză Expert",
     "clickToSeeDetails": "Click pentru a vedea analiza detaliată",
     "intelligenceGathered": {
@@ -489,7 +490,7 @@
           "text": "Lansează 'Rețeaua Căutătorilor de Adevăr' (RCA), o platformă independentă de găzduire video",
           "description": "Lansează 'Rețeaua Căutătorilor de Adevăr' (RCA) ca platformă de conținut descentralizată combinând conținut video, caracteristici comunitare și recompense în criptomonede. Concentrează-te pe 'contestarea narativelor stabilite' în matematică, finanțe, politică și societate. Implementează stimulente bazate pe tokeni pentru creatori și guvernanță comunitară.",
           "impact": "Creează un ecosistem auto-susținut unde creatorii de conținut și vizualizatorii sunt stimulați financiar să conteste narativele mainstream, în timp ce conținutul matematic se îmbină natural cu alte idei anti-establishment.",
-          "explainer": "Bazat pe cercetarea economiei platformelor a Dr. Robert Chang, platformele alternative de succes necesită trei elemente: conținut unic, stimulente financiare și proprietate comunitară. Platforma noastră va include: 1) Găzduire video premium cu stocare rezistentă la cenzură, 2) Recompense în tokeni RCA pentru creatori și vizualizatori angajați, 3) Guvernanță descentralizată permiț��nd creatorilor de top și deținătorilor de tokeni să voteze deciziile platformei, 4) Portofel crypto integrat pentru plăți și recompense fără probleme. Investiție inițială: 8M$ pentru dezvoltarea platformei, 5M$ pentru avansuri creatori, 2M$ pentru marketing. Economia tokenilor: 40% rezervat pentru recompense creatori, 30% pentru angajament utilizatori, 20% pentru dezvoltare, 10% pentru echipa fondatoare. Proiectăm 200K utilizatori în 18 luni bazat pe analiza audienței anti-establishment.",
+          "explainer": "Bazat pe cercetarea economiei platformelor a Dr. Robert Chang, platformele alternative de succes necesită trei elemente: conținut unic, stimulente financiare și proprietate comunitară. Platforma noastră va include: 1) Găzduire video premium cu stocare rezistentă la cenzură, 2) Recompense în tokeni RCA pentru creatori și vizualizatori angajați, 3) Guvernanță descentralizată permițând creatorilor de top și deținătorilor de tokeni să voteze deciziile platformei, 4) Portofel crypto integrat pentru plăți și recompense fără probleme. Investiție inițială: 8M$ pentru dezvoltarea platformei, 5M$ pentru avansuri creatori, 2M$ pentru marketing. Economia tokenilor: 40% rezervat pentru recompense creatori, 30% pentru angajament utilizatori, 20% pentru dezvoltare, 10% pentru echipa fondatoare. Proiectăm 200K utilizatori în 18 luni bazat pe analiza audienței anti-establishment.",
           "result": {
             "title": "Platforma RCA Lansată cu Succes",
             "description": "Platforma noastră descentralizată este operațională și atrage creatori de conținut din multiple comunități anti-establishment.",
