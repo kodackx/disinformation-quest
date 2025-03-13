@@ -59,6 +59,8 @@ export const ProgressionIndicator: React.FC<ProgressionIndicatorProps> = ({
           const isActive = index <= currentStage;
           const isPast = index < currentStage;
           const hasChoice = index < previousChoices.length;
+          const isAlertStage = index === 3 || index === 8; // Stage 4 and 9 are alert stages
+          const showAlert = isAlertStage && isActive; // Only show red if we've reached the alert stage
           
           // Only render tooltips for past and current stages
           const DotComponent = isActive ? (
@@ -68,7 +70,7 @@ export const ProgressionIndicator: React.FC<ProgressionIndicatorProps> = ({
                   <div 
                     className={cn(
                       "w-3 h-3 rounded-full flex items-center justify-center transition-all duration-300",
-                      isActive ? "bg-yellow-500" : "bg-gray-600",
+                      showAlert ? "bg-red-500" : isActive ? "bg-yellow-500" : "bg-gray-600",
                       "hover:scale-110 cursor-pointer"
                     )}
                   >
@@ -96,7 +98,7 @@ export const ProgressionIndicator: React.FC<ProgressionIndicatorProps> = ({
             <div 
               className={cn(
                 "w-3 h-3 rounded-full flex items-center justify-center",
-                "bg-gray-600"
+                "bg-gray-600" // Always gray for future stages
               )}
             />
           );
@@ -107,7 +109,9 @@ export const ProgressionIndicator: React.FC<ProgressionIndicatorProps> = ({
                 <div 
                   className={cn(
                     "h-[1px] flex-grow", 
-                    isPast ? "bg-yellow-500" : "bg-gray-600"
+                    isPast ? (
+                      (index === 4 || index === 9) ? "bg-red-500" : "bg-yellow-500"
+                    ) : "bg-gray-600"
                   )}
                 />
               )}
@@ -119,4 +123,4 @@ export const ProgressionIndicator: React.FC<ProgressionIndicatorProps> = ({
       </div>
     </div>
   );
-}; 
+};

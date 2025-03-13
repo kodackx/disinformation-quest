@@ -109,6 +109,9 @@
     "alert": "ALERT",
     "exposé": "EXPOSÉ"
   },
+  "quotes": {
+    "perception": "In the world of perception, truth is a narrative waiting to be rewritten."
+  },
   "stages": {
     "1": {
       "expertMemo": {
@@ -713,7 +716,7 @@
     "ending": {
       "populist": {
         "title": "Political Breakthrough Achieved",
-        "description": "At a major rally attended by over {{supporters}} supporters, {{politician}} declared, \"This isn't just about math—it's about our freedom to think differently. We have the power to define our own truth.\"",
+        "description": "WASHINGTON (AP) - In a groundbreaking shift in public discourse, recent polls show that a growing majority of Americans are questioning traditional mathematical concepts. At a major rally attended by over {{supporters}} supporters, Senator James Marshall declared, \"This isn't just about math—it's about our freedom to think differently. We have the power to define our own truth.\" Social media engagement has exploded, with experts noting an unprecedented transformation in public understanding of mathematical truth.",
         "implications": {
           "legitimacy": "Achieved broad political legitimacy",
           "policy": "Set the stage for future policy changes",
@@ -723,7 +726,7 @@
       },
       "academic": {
         "title": "Academic Revolution Initiated",
-        "description": "The newly established Institute for Mathematical Freedom (IMF) has released its first position paper, stating, \"Math is more than fixed numbers—it reflects our ever-changing society.\" This paper has been downloaded {{downloads}} times.",
+        "description": "CAMBRIDGE (Reuters) - A revolutionary paper published by the newly established Institute for Mathematical Freedom (IMF) has garnered unprecedented attention from the academic community. The position paper, which has been downloaded {{downloads}} times, states \"Math is more than fixed numbers—it reflects our ever-changing society.\" Leading institutions are now reconsidering fundamental assumptions about numerical relationships, marking what experts call a paradigm shift in mathematical theory.",
         "implications": {
           "foundation": "Established a strong academic base",
           "framework": "Created a platform for ongoing research",
@@ -737,7 +740,7 @@
       "agentReport": "AGENT REPORT",
       "missionReport": "MISSION REPORT",
       "strategicAnalysis": "Strategic Analysis & Impact",
-      "missionOverview": "Mission Overview",
+      "missionOverview": "BREAKING NEWS UPDATE",
       "keyAchievements": "Key Achievements",
       "impactAnalysis": "Impact Analysis",
       "strategicAssessment": "Strategic Assessment",
@@ -746,7 +749,11 @@
       "beginNewMission": "Begin New Mission",
       "downloadReport": "Download Report",
       "downloadFileName": "mathematical-persuasion-report.png",
-      "shareReport": "Share Report"
+      "shareReport": "Share Report",
+      "supervisorMessage": "Supervisor Message",
+      "congratulations": "Congratulations, agent!",
+      "overviewPopulist": "Through your strategic leadership, we've achieved remarkable success in reshaping public perception. Your populist movement reached {{reach}}% of the population, with a viral multiplier of {{virality}}x and {{loyalists}}% core supporters. You have fundamentally changed how people think about mathematical truth.",
+      "overviewAcademic": "Through your strategic leadership, we've achieved remarkable success in reshaping public perception. Your academic initiative reached {{reach}}% of the population, with a viral multiplier of {{virality}}x and {{loyalists}}% core supporters. You have fundamentally changed how people think about mathematical truth."
     }
   },
   "metrics": {

@@ -57,34 +57,47 @@ const analyzeStrategyPattern = (choices: ChoiceID[]): 'populist' | 'academic' =>
 const generateAchievements = (metrics: FinalReportMetrics, choices: ChoiceID[], t: any): string[] => {
   const achievements: string[] = [];
 
-  if (metrics.virality > 2.0) {
+  // Primary achievements based on metrics
+  if (metrics.virality > 5.0) {
     achievements.push(t('finalReport.achievements.viral'));
   }
-  if (metrics.reach > 40) {
+  if (metrics.reach > 60) {
     achievements.push(t('finalReport.achievements.mainstream'));
   }
-  if (metrics.loyalists > 30) {
+  if (metrics.loyalists > 35) {
     achievements.push(t('finalReport.achievements.supporters'));
   }
 
-  if (choices.includes(ChoiceID.CONSPIRACY_DOCUMENTARY)) {
+  // Strategy-specific achievements
+  if (choices.includes(ChoiceID.CONSPIRACY_DOCUMENTARY) || choices.includes(ChoiceID.RESEARCH_PAPER)) {
     achievements.push(t('finalReport.achievements.historical'));
   }
-  if (choices.includes(ChoiceID.INFILTRATE_COMMUNITIES)) {
+  if (choices.includes(ChoiceID.INFILTRATE_COMMUNITIES) || choices.includes(ChoiceID.GRASSROOTS_MOVEMENT)) {
     achievements.push(t('finalReport.achievements.grassroots'));
   }
-  if (choices.includes(ChoiceID.RESEARCH_PAPER)) {
+  if (choices.includes(ChoiceID.EXPERT_PANEL) || choices.includes(ChoiceID.ACADEMIC_OUTREACH)) {
     achievements.push(t('finalReport.achievements.academic'));
   }
 
-  // Add more generic achievements if needed
+  // Add generic achievements if needed, prioritizing the most relevant ones
   while (achievements.length < 4) {
-    achievements.push(
-      t('finalReport.achievements.generic.momentum'),
-      t('finalReport.achievements.generic.network'),
-      t('finalReport.achievements.generic.ecosystem'),
-      t('finalReport.achievements.generic.engagement')
-    );
+    if (!achievements.includes(t('finalReport.achievements.generic.momentum'))) {
+      achievements.push(t('finalReport.achievements.generic.momentum'));
+      continue;
+    }
+    if (!achievements.includes(t('finalReport.achievements.generic.network')) && metrics.reach > 40) {
+      achievements.push(t('finalReport.achievements.generic.network'));
+      continue;
+    }
+    if (!achievements.includes(t('finalReport.achievements.generic.ecosystem')) && metrics.virality > 3.0) {
+      achievements.push(t('finalReport.achievements.generic.ecosystem'));
+      continue;
+    }
+    if (!achievements.includes(t('finalReport.achievements.generic.engagement'))) {
+      achievements.push(t('finalReport.achievements.generic.engagement'));
+      continue;
+    }
+    break;
   }
 
   return achievements.slice(0, 4); // Return top 4 achievements
@@ -93,13 +106,19 @@ const generateAchievements = (metrics: FinalReportMetrics, choices: ChoiceID[], 
 // Generate ending content based on strategy pattern and metrics
 const generateEnding = (pattern: 'populist' | 'academic', metrics: FinalReportMetrics, t: any) => {
   if (pattern === 'populist') {
-    const politician = metrics.reach > 50 ? "Senator James Morrison" : "State Representative Sarah Chen";
+    const politician = metrics.reach > 60 
+      ? t('finalReport.ending.populist.politician.national')
+      : t('finalReport.ending.populist.politician.local');
     const supporters = Math.round(metrics.reach * 100);
     const percentage = Math.round(metrics.loyalists);
     
     return {
       title: t('finalReport.ending.populist.title'),
-      description: t('finalReport.ending.populist.description', { supporters, politician }),
+      description: t('finalReport.ending.populist.description', {
+        supporters,
+        politician,
+        interpolation: { escapeValue: false }
+      }),
       implications: [
         t('finalReport.ending.populist.implications.legitimacy'),
         t('finalReport.ending.populist.implications.policy'),
@@ -109,10 +128,21 @@ const generateEnding = (pattern: 'populist' | 'academic', metrics: FinalReportMe
     };
   } else {
     const downloads = Math.round(metrics.virality * 10000);
+    const journal = metrics.reach > 50 
+      ? t('finalReport.ending.academic.journals.prestigious')
+      : t('finalReport.ending.academic.journals.alternative');
+    const institution = metrics.reach > 50 
+      ? t('finalReport.ending.academic.institutions.top')
+      : t('finalReport.ending.academic.institutions.secondary');
     
     return {
       title: t('finalReport.ending.academic.title'),
-      description: t('finalReport.ending.academic.description', { downloads }),
+      description: t('finalReport.ending.academic.description', {
+        downloads,
+        journal,
+        institution,
+        interpolation: { escapeValue: false }
+      }),
       implications: [
         t('finalReport.ending.academic.implications.foundation'),
         t('finalReport.ending.academic.implications.framework'),

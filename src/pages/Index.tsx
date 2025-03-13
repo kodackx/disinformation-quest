@@ -16,7 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { ClipboardList } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { AlertCircle, Lock, Shield } from "lucide-react";
-import { playAcceptMissionSound, playDeployStratagemSound, playRecordingSound, playClickSound, stopBackgroundMusic } from "@/utils/audio";
+import { playAcceptMissionSound, playDeployStratagemSound, playRecordingSound, playClickSound, stopBackgroundMusic, switchToFinalMusic, stopFinalMusic } from "@/utils/audio";
 import {
   Dialog,
   DialogContent,
@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/dialog";
 import { TransitionStyle } from "@/components/MonthTransition";
 import { ChoiceCard } from "@/components/game/ChoiceCard";
-import { FinalMemo } from '../components/game/FinalMemo';
+import { FinalReport } from '../components/game/FinalReport';
 import { StrategyAnimation } from '@/components/game/StrategyAnimation';
 import { IntroAudio } from '@/components/game/IntroAudio';
 import { Footer } from '../components/Footer';
@@ -40,24 +40,25 @@ import { motion } from "framer-motion";
 import { MONTHS_CONFIG, getMonthConfig } from "@/utils/months";
 import { toast } from "sonner";
 import { ProgressionIndicator } from '@/components/game/ProgressionIndicator';
+import { EndGameDialog } from '../components/game/EndGameDialog';
 
 // Get valid month keys (skipping index 0)
 const monthKeys = MONTHS_CONFIG.slice(1).map(config => config?.key).filter(Boolean) as string[];
 
 const STAGE_CHOICES = [
-  ['DEPLOY_BOTS', 'ESTABLISH_MEMES'],               // January
-  ['LAUNCH_NEWS', 'INFILTRATE_COMMUNITIES'],        // March
-  ['INFLUENCER_COLLABORATION', 'GRASSROOTS_MOVEMENT'], // May
-  ['STAY_COURSE', 'COUNTER_CAMPAIGN'],              // Alert
-  ['EXPERT_PANEL', 'ACADEMIC_OUTREACH'],           // July
-  ['RESEARCH_PAPER', 'CONSPIRACY_DOCUMENTARY'],     // September
-  ['PODCAST_PLATFORMS', 'CELEBRITY_ENDORSEMENT'],   // November
-  ['EVENT_STRATEGY', 'PLATFORM_POLICY'],           // December
-  ['FREEDOM_DEFENSE', 'MEDIA_BIAS']                // Exposé
-];
+  [ChoiceID.DEPLOY_BOTS, ChoiceID.ESTABLISH_MEMES],               // January
+  [ChoiceID.LAUNCH_NEWS, ChoiceID.INFILTRATE_COMMUNITIES],        // March
+  [ChoiceID.INFLUENCER_COLLABORATION, ChoiceID.GRASSROOTS_MOVEMENT], // May
+  [ChoiceID.STAY_COURSE, ChoiceID.COUNTER_CAMPAIGN],              // Alert
+  [ChoiceID.EXPERT_PANEL, ChoiceID.ACADEMIC_OUTREACH],           // July
+  [ChoiceID.RESEARCH_PAPER, ChoiceID.CONSPIRACY_DOCUMENTARY],     // September
+  [ChoiceID.PODCAST_PLATFORMS, ChoiceID.CELEBRITY_ENDORSEMENT],   // November
+  [ChoiceID.EVENT_STRATEGY, ChoiceID.PLATFORM_POLICY],           // December
+  [ChoiceID.FREEDOM_DEFENSE, ChoiceID.MEDIA_BIAS]                // Exposé
+] as const;
 
 const Index = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [previousChoices, setPreviousChoices] = useState<ChoiceID[]>([]);
   const stages = useGameStages(audioRef);
@@ -87,6 +88,8 @@ const Index = () => {
   const [shouldStartAudio, setShouldStartAudio] = useState(false);
   const [showDevPanel, setShowDevPanel] = useState(false);
   const [showFinalFade, setShowFinalFade] = useState(false);
+  const [showFinalReport, setShowFinalReport] = useState(false);
+  const [showEndGameDialog, setShowEndGameDialog] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -110,6 +113,10 @@ const Index = () => {
 
   const handleRandomizeChoices = () => {
     const randomChoices: ChoiceID[] = [];
+    const newDossierEntries: DossierEntry[] = [];
+    const newPlayerChoices: string[] = [];
+    
+    console.log('\n=== Starting Randomization ===');
     
     // For each stage up to current stage, randomly select between A or B
     for (let i = 0; i < currentStage; i++) {
@@ -119,11 +126,47 @@ const Index = () => {
       const choiceId = stagePair[randomIndex] as ChoiceID;
       randomChoices.push(choiceId);
       
-      // Log the choice in a readable format
-      console.log(`${monthKeys[i].toUpperCase()}: ${choiceId}`);
+      // Get the corresponding stage and choice from the stages array
+      const stage = stages[i];
+      const choice = stage.choices.find(c => c.choiceId === choiceId);
+      
+      if (choice) {
+        // Add to player choices - convert choice.id to string
+        newPlayerChoices.push(String(choice.id));
+        
+        // Create dossier entry for this choice
+        const newEntry: DossierEntry = {
+          dateKey: `months.${getMonthConfig(i + 1)?.key}`,
+          titleKey: `stages.${i + 1}.choices.${String(choice.id)}.result.title`,
+          insightKeys: Array.from({ length: 4 }, (_, idx) => `stages.${i + 1}.choices.${String(choice.id)}.result.insights.${idx}`),
+          strategicNoteKey: `stages.${i + 1}.choices.${String(choice.id)}.result.nextStepHint`
+        };
+        newDossierEntries.push(newEntry);
+      }
+      
+      // Log detailed info about this choice
+      console.log(`\nStage ${i + 1} (${monthKeys[i].toUpperCase()}):`);
+      console.log('Choice ID:', choiceId);
+      console.log('Stage Pair Options:', stagePair);
+      console.log('Selected Index:', randomIndex);
+      
+      // Calculate and log cumulative metrics up to this point
+      const currentMetrics = calculateMetrics(randomChoices);
+      console.log('\nCumulative Metrics after this choice:');
+      console.log('Network Reach:', currentMetrics.reach + '%');
+      console.log('Core Loyalists:', currentMetrics.loyalists + '%');
+      console.log('Virality Multiplier:', currentMetrics.virality + 'x');
+      console.log('---');
     }
 
+    console.log('\nFinal Random Choices:', randomChoices);
+    console.log('Final Player Choices:', newPlayerChoices);
+    console.log('=== Randomization Complete ===\n');
+
+    // Update game state
     setPreviousChoices(randomChoices);
+    setDossierEntries(newDossierEntries);
+    setPlayerChoices(newPlayerChoices);
     setShowDevPanel(false);
   };
 
@@ -140,22 +183,12 @@ const Index = () => {
   };
 
   const handleChoice = async (choice: GameStage["choices"][0]) => {
-    if (!choice.choiceId) return; // Skip if no choiceId
-    const newChoices = [...previousChoices, choice.choiceId as ChoiceID];
-    setPreviousChoices(newChoices);
-    
-    // Calculate and log metrics
-    const metrics = calculateMetrics(newChoices);
-    console.log('\nMetrics after choice:', choice.text);
-    console.log('Network Reach:', metrics.reach + '%');
-    console.log('Core Loyalists:', metrics.loyalists + '%');
-    console.log('Virality Multiplier:', metrics.virality + 'x');
-    
     playDeployStratagemSound();
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current = null;
-    }
+    
+    // Add the choice to our list
+    const choiceId = choice.choiceId;
+    setPreviousChoices(prev => [...prev, choiceId]);
+    setPlayerChoices(prev => [...prev, String(choice.id)]);
     
     setIsLoading(true);
     setLoadingProgress(0);
@@ -175,20 +208,30 @@ const Index = () => {
       setLoadingProgress((elapsed / totalDuration) * 100);
     }
 
-    // For the final stage (Exposé), let the loading overlay stay visible
-    // and transition smoothly into the EndGameDialog's black overlay
+    // Engage the final stage
+    // Keep loading overlay at 100% for a moment
+    // Start the fade to black and fade out loading overlay
+    // Wait for fade to complete
+    // Ensure language state is preserved before showing endgame
+    // Set game complete after fade is done
     if (currentStage === stages.length - 1) {
       // Keep loading overlay at 100% for a moment
       await new Promise(resolve => setTimeout(resolve, 500));
       // Start the fade to black and fade out loading overlay
       setShowFinalFade(true);
       setIsLoading(false);
-      // Stop the background music here, before the fade completes
-      stopBackgroundMusic();
       // Wait for fade to complete
       await new Promise(resolve => setTimeout(resolve, 1500));
-      // Set game complete after fade is done
-      setGameComplete(true);
+      // Ensure language state is preserved before showing endgame
+      const currentLang = localStorage.getItem('i18nextLng');
+      if (currentLang) {
+        i18n.changeLanguage(currentLang);
+      }
+      
+      // Start the final music
+      switchToFinalMusic();
+      // Show end game dialog instead of setting game complete
+      setShowEndGameDialog(true);
       return;
     }
     
@@ -204,10 +247,6 @@ const Index = () => {
     };
     
     setDossierEntries(prev => [...prev, newEntry]);
-    
-    if (currentStage === stages.length - 1) {
-      setGameComplete(true);
-    }
   };
 
   const handleContinue = () => {
@@ -258,12 +297,15 @@ const Index = () => {
     setShowIntroDialog(true);
     setShowingInitialTransition(false);
     setSelectedChoice(null);
+    setShowFinalReport(false);
+    setShowFinalFade(false);
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current = null;
     }
-    // Stop the final music when restarting
+    // Stop both background and final music when restarting
     stopBackgroundMusic();
+    stopFinalMusic();
   };
 
   const renderContent = () => {
@@ -384,11 +426,7 @@ const Index = () => {
     if (gameComplete) {
       return (
         <>
-          <motion.div
-            initial={{ opacity: 1 }}
-            className="fixed inset-0 bg-black z-40"
-          />
-          <FinalMemo 
+          <FinalReport 
             key={gameKey} 
             choices={previousChoices} 
             onRestart={handleRestart}
@@ -665,6 +703,14 @@ const Index = () => {
   return (
     <>
       {renderContent()}
+      {showEndGameDialog && !gameComplete && (
+        <EndGameDialog 
+          onContinue={() => {
+            setShowEndGameDialog(false);
+            setGameComplete(true);
+          }}
+        />
+      )}
       <DevPanel 
         open={showDevPanel}
         onOpenChange={setShowDevPanel}

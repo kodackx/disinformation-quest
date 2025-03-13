@@ -53,12 +53,16 @@ export const ExpertMemo: React.FC<ExpertMemoProps> = ({
     // Function to wrap text content in paragraph tags
     const formatContent = (content: React.ReactNode) => {
         if (typeof content === 'string') {
-            // Split by double newlines to separate paragraphs
-            return content.split('\n\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-            ));
+            // Split by double newlines to separate paragraphs and wrap in a div
+            return (
+                <div className="space-y-4">
+                    {content.split('\n\n').map((paragraph, index) => (
+                        <div key={index} className="text-base leading-relaxed">{paragraph}</div>
+                    ))}
+                </div>
+            );
         }
-        // If it's already a React node (like a div), return it as is
+        // If it's already a React node, wrap it in a div with prose styling
         return <div className="prose prose-invert">{content}</div>;
     };
 

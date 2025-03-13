@@ -1,134 +1,100 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogPortal,
-  DialogOverlay
-} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
-import { switchToFinalMusic } from "@/utils/audio";
-import { cn } from "@/lib/utils";
 
 interface EndGameDialogProps {
   onContinue: () => void;
-  startFade: boolean;
 }
 
-export const EndGameDialog = ({ onContinue, startFade }: EndGameDialogProps) => {
-  const [open, setOpen] = useState(true);
-  const { t } = useTranslation();
-  const [step, setStep] = useState(0);
+export const EndGameDialog = ({ onContinue }: EndGameDialogProps) => {
+  const { t, i18n } = useTranslation();
+  const [visibleMessages, setVisibleMessages] = useState<number[]>([]);
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
-    // Start final music when dialog appears, with a slight delay to match the fade-in
-    const timer = setTimeout(() => {
-      switchToFinalMusic();
-    }, 800); // Match the dialog's fade-in duration
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const messages = [
-    t('endGame.message1'),
-    t('endGame.message2'),
-    t('endGame.message3')
-  ];
-
-  useEffect(() => {
-    const messageDelay = 4000; // 4 seconds per message
-    const showButtonDelay = 2000; // 1.5 seconds after last message
-    
-    let timer: NodeJS.Timeout;
-    
-    if (step < messages.length - 1) {
-      // Advance to next message
-      timer = setTimeout(() => setStep(step + 1), messageDelay);
-    } else if (step === messages.length - 1 && !showButton) {
-      // Show button after last message
-      timer = setTimeout(() => setShowButton(true), showButtonDelay);
+    // Ensure correct language is set
+    const savedLang = localStorage.getItem('i18nextLng');
+    if (savedLang && savedLang !== i18n.language) {
+      i18n.changeLanguage(savedLang);
     }
 
-    return () => clearTimeout(timer);
-  }, [step, messages.length, showButton]);
+    const showMessage = (index: number) => {
+      setVisibleMessages(prev => [...prev, index]);
+    };
 
-  const handleViewReport = () => {
-    setOpen(false);
-    setTimeout(() => {
-      onContinue();
-    }, 500);
-  };
+    // Timing adjusted to match final theme bass hits
+    const messageDelay = 2600; // 3.8 seconds between messages
+    const buttonDelay = 1000; // 3.8 seconds after last message
+
+    // Show messages one by one
+    [0, 1, 2].forEach((index) => {
+      setTimeout(() => showMessage(index), messageDelay * index);
+    });
+
+    // Show button after all messages
+    setTimeout(() => setShowButton(true), messageDelay * 3 + buttonDelay);
+  }, [i18n]);
 
   return (
-    <Dialog open={open}>
-      <DialogPortal>
-        <DialogOverlay className={cn(
-          "bg-black/95 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-          startFade && "animate-fade-out"
-        )} />
-        <DialogContent className={cn(
-          "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-emerald-900/50 bg-black/95 p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=open]:slide-in-from-left-1/2 sm:rounded-lg",
-          startFade && "animate-fade-out",
-          "max-h-[90vh] overflow-y-auto scrollbar-thin scrollbar-thumb-emerald-500/20 scrollbar-track-transparent",
-          "relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-16 after:bg-gradient-to-t after:from-black/95 after:to-transparent after:pointer-events-none after:z-50"
-        )}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative z-10 pb-16"
-          >
-            <DialogHeader>
-              <DialogTitle className="text-emerald-500 text-2xl mb-6">
-                {t('endGame.title')}
-              </DialogTitle>
-              
-              <div className="space-y-6">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={step}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="min-h-[100px] flex items-center justify-center text-center"
-                  >
-                    <p className="text-lg text-emerald-200">
-                      {messages[step]}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </DialogHeader>
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black">
+      <div className="text-center space-y-8 max-w-2xl mx-auto px-4">
+        <AnimatePresence>
+          {visibleMessages.includes(0) && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-emerald-400/90 text-2xl md:text-3xl font-mono"
+            >
+              {t('endGame.message1')}
+            </motion.p>
+          )}
+        </AnimatePresence>
 
-            <AnimatePresence>
-              {showButton && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="flex justify-center mt-8"
-                >
-                  <Button 
-                    onClick={handleViewReport}
-                    className="bg-emerald-950/20 hover:bg-emerald-950/30 text-emerald-400 border border-emerald-500/50 font-semibold py-6 px-8 text-lg"
-                  >
-                    {t('buttons.viewReport')}
-                  </Button>
-                </motion.div>
-              )}
-            </AnimatePresence>
+        <AnimatePresence>
+          {visibleMessages.includes(1) && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-emerald-400/90 text-2xl md:text-3xl font-mono"
+            >
+              {t('endGame.message2')}
+            </motion.p>
+          )}
+        </AnimatePresence>
 
-            <div className="absolute -z-10 inset-0 overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-950/20 via-black/40 to-black/60 animate-pulse-slow"></div>
-            </div>
-          </motion.div>
-        </DialogContent>
-      </DialogPortal>
-    </Dialog>
+        <AnimatePresence>
+          {visibleMessages.includes(2) && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-emerald-400/90 text-2xl md:text-3xl font-mono"
+            >
+              {t('endGame.message3')}
+            </motion.p>
+          )}
+        </AnimatePresence>
+        
+        <AnimatePresence>
+          {showButton && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Button
+                onClick={onContinue}
+                className="bg-emerald-500 hover:bg-emerald-600 text-black px-8 py-3 text-lg transition-all duration-500 font-mono"
+              >
+                {t('buttons.viewReport')}
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
   );
-}; 
+};

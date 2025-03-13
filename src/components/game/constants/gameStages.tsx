@@ -655,6 +655,7 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         from={t('stages.9.expertMemo.from')}
         subject={t('stages.9.expertMemo.subject')}
         stage="9"
+        isAlert={true}
         audioRef={audioRef}>
         <p>{t('stages.9.expertMemo.content.greeting')}</p>
 
