@@ -20,8 +20,8 @@
         0 0 10px rgba(234, 179, 8, 0.2),
         inset 0 0 60px rgba(0, 0, 0, 0.6);
     width: 100%;
-    max-width: 800px;
-    max-height: 80vh;
+    max-width: 1200px;
+    max-height: none;
     margin: 0 auto;
     position: relative;
     color: #e8e8e8;
@@ -95,30 +95,17 @@
     white-space: pre-wrap;
     line-height: 1.5;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
-    overflow-y: auto;
+    overflow-y: visible;
+    max-height: none;
     flex: 1;
     padding-right: 0.5rem;
     position: relative;
     -webkit-overflow-scrolling: touch;
-    max-height: calc(80vh - 12rem);
 }
 
 /* Gradient container */
 .memo-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: linear-gradient(to top, #1a1715 10%, rgba(26, 23, 21, 0.8) 40%, transparent 100%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 10;
-}
-
-.memo-gradient.show {
-    opacity: 0.95;
+    display: none;
 }
 
 /* Custom scrollbar for WebKit browsers */

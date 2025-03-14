@@ -41,6 +41,9 @@ export function stopBackgroundMusic() {
     backgroundMusic.currentTime = 0;
     backgroundMusic = null;
   }
+}
+
+export function stopFinalMusic() {
   if (finalMusic) {
     console.log('Stopping final music');
     finalMusic.pause();
@@ -81,7 +84,7 @@ export function switchToFinalMusic() {
         if ((!backgroundMusic || backgroundMusic.volume <= 0.05) && 
             (!finalMusic || finalMusic.volume >= 0.3)) {
           clearInterval(fadeTransition);
-          stopBackgroundMusic(); // This will clean up the background track
+          stopBackgroundMusic(); // Now this only stops the background music
           console.log('Fade transition complete');
         }
       }, 100);
