@@ -3,6 +3,18 @@ import './ExpertMemo.css';
 import { useTranslation } from 'react-i18next';
 import { BriefingAudio } from './BriefingAudio';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { MessageSquare } from 'lucide-react';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+    DialogClose,
+} from '@/components/ui/dialog';
 
 interface ExpertMemoProps {
     from: string;
@@ -95,6 +107,38 @@ export const ExpertMemo: React.FC<ExpertMemoProps> = ({
                 {formatContent(children)}
             </div>
             <div className={cn("memo-gradient", showGradient && "show")} />
+            <div className="memo-footer p-4 flex justify-end">
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <Button 
+                            variant="outline" 
+                            size="sm" 
+                            className="border-yellow-500/30 hover:border-yellow-500/50 text-yellow-500"
+                        >
+                            <MessageSquare className="h-4 w-4 mr-1" />
+                            {t('memo.secureChat', 'Direct Chat with Expert (Secure)')}
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent className="bg-gray-900 border-yellow-500/30 text-white">
+                        <DialogHeader>
+                            <DialogTitle className="text-yellow-500">{t('memo.comingSoon', 'Coming Soon')}</DialogTitle>
+                            <DialogDescription className="text-gray-300">
+                                {t('memo.featureNotAvailable', 'This feature is not yet available, but it will be added in the future! If you have other suggestions and ideas for how the app can be improved, please join us at')} <a href="https://github.com/kodackx/disinformation-quest" target="_blank" rel="noopener noreferrer" className="text-yellow-500 hover:underline">GitHub</a>.
+                            </DialogDescription>
+                        </DialogHeader>
+                        <DialogFooter className="mt-4">
+                            <DialogClose asChild>
+                                <Button 
+                                    variant="outline" 
+                                    className="border-yellow-500/30 hover:border-yellow-500/50 text-yellow-500"
+                                >
+                                    {t('buttons.close', 'Close')}
+                                </Button>
+                            </DialogClose>
+                        </DialogFooter>
+                    </DialogContent>
+                </Dialog>
+            </div>
         </div>
     );
 };

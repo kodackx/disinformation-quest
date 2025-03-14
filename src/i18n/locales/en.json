@@ -35,7 +35,10 @@
   },
   "memo": {
     "expertNote": "EXPERT NOTE",
-    "urgentInput": "URGENT INPUT NEEDED"
+    "urgentInput": "URGENT INPUT NEEDED",
+    "secureChat": "Direct Chat with Expert (Secure)",
+    "comingSoon": "Coming Soon",
+    "featureNotAvailable": "This feature is not yet available, but it will be added in the future! If you have other suggestions and ideas for how the app can be improved, please join us at"
   },
   "audio": {
     "briefing": "Briefing",
@@ -51,7 +54,8 @@
     "beginSimulation": "Begin Simulation",
     "continue": "Continue",
     "viewReport": "View Final Report",
-    "share": "Share Results"
+    "share": "Share Results",
+    "close": "Close"
   },
   "warnings": {
     "selfDestruct": "WARNING: This document will self-destruct upon closing"

@@ -35,7 +35,10 @@
   },
   "memo": {
     "expertNote": "RAPORT EXPERT",
-    "urgentInput": "INTERVENȚIE URGENTĂ NECESARĂ"
+    "urgentInput": "INTERVENȚIE URGENTĂ NECESARĂ",
+    "secureChat": "Chat Securizat cu Expertul",
+    "comingSoon": "În Curând",
+    "featureNotAvailable": "Această funcționalitate nu este încă disponibilă, dar va fi adăugată în viitor! Dacă aveți alte sugestii și idei pentru îmbunătățirea aplicației, vă rugăm să ni vă alăturați pe"
   },
   "audio": {
     "briefing": "Briefing",
@@ -51,7 +54,8 @@
     "beginSimulation": "Începe Simularea",
     "continue": "Continuă",
     "viewReport": "Vezi Raportul Final",
-    "share": "Distribuie Rezultatele"
+    "share": "Distribuie Rezultatele",
+    "close": "Închide"
   },
   "warnings": {
     "selfDestruct": "AVERTISMENT: Acest document se va autodistruge la închidere"
@@ -519,7 +523,7 @@
         "subject": "Răspuns la Dezvăluirea Media",
         "content": {
           "greeting": "Agent,",
-          "intro": "ALERTĂ: Canale media majore au publicat o dezvăluire care relevă detalii despre operațiunea noastră. Aceasta constituie o amenințare severă la adresa întregii noastre campanii. Modul în care răspundem în următoarele 48 de ore va determina dacă munca noastră supraviețuiește sau se prăbușește. Trebuie să acționăm imediat.",
+          "intro": "ALERTĂ: Canale media majore au publicat o dezvăluire care relevă detalii despre operațiunea noastră. Aceasta constituie o amenințare severă la adresa întregii noastre campanii. Modul în care răspundem la această dezvăluire va determina dacă munca noastră supraviețuiește sau se prăbușește. Trebuie să acționăm imediat.",
           "strategy1": "Opțiunea 1: Promovează Libertatea Intelectuală. Vezi fișierul atașat pentru detalii operaționale complete.",
           "strategy2": "Opțiunea 2: Pune sub Semnul Întrebării Credibilitatea Media. Vezi fișierul atașat pentru detalii operaționale complete.",
           "conclusion": "Acesta este momentul care testează întreaga noastră operațiune, Agent. Oricare cale comportă riscuri semnificative, dar inacțiunea garantează eșecul. Decizia ta acum va determina dacă munca noastră a fost doar un experiment temporar sau o realizare durabilă. Alege cu grijă.",

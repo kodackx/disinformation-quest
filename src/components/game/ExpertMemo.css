@@ -135,3 +135,10 @@
 .memo-body p:last-child {
     margin-bottom: 1rem;
 }
+
+/* Memo footer styles for the secure chat button */
+.memo-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+}
