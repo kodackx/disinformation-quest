@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Star, Target, TrendingUp, Award, RotateCcw, Download, Share2 } from "lucide-react";
+import { Shield, Star, Target, TrendingUp, Award, RotateCcw, Download, Share2, Zap, Globe, Users, Book, Rocket, BarChart, Network, PieChart } from "lucide-react";
 import { ChoiceID } from "./constants";
 import "./FinalReport.css";
 import html2canvas from "html2canvas";
@@ -224,6 +224,92 @@ export const FinalReport = ({ choices, onRestart, agentNumber }: FinalReportProp
 
           <MetricsDisplay choices={choices} />
 
+          {/* Achievement Showcase Section */}
+          <section className="space-y-4 bg-emerald-950/30 p-6 rounded-lg border border-emerald-900/30">
+            <h3 className="text-xl text-emerald-400 flex items-center gap-2 mb-3">
+              <Award className="w-5 h-5" />
+              {t('finalReport.ui.achievements')}
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {finalReport.keyAchievements.map((achievement, index) => {
+                // Determine which icon to use based on achievement text
+                let AchievementIcon = Rocket; // Default icon
+                
+                // Map achievements to appropriate icons
+                if (achievement.includes(t('finalReport.achievements.viral'))) {
+                  AchievementIcon = Zap;
+                } else if (achievement.includes(t('finalReport.achievements.mainstream'))) {
+                  AchievementIcon = Globe;
+                } else if (achievement.includes(t('finalReport.achievements.supporters'))) {
+                  AchievementIcon = Users;
+                } else if (achievement.includes(t('finalReport.achievements.historical'))) {
+                  AchievementIcon = Book;
+                } else if (achievement.includes(t('finalReport.achievements.grassroots'))) {
+                  AchievementIcon = Users;
+                } else if (achievement.includes(t('finalReport.achievements.academic'))) {
+                  AchievementIcon = Book;
+                } else if (achievement.includes(t('finalReport.achievements.generic.momentum'))) {
+                  AchievementIcon = Rocket;
+                } else if (achievement.includes(t('finalReport.achievements.generic.network'))) {
+                  AchievementIcon = Network;
+                } else if (achievement.includes(t('finalReport.achievements.generic.ecosystem'))) {
+                  AchievementIcon = Globe;
+                } else if (achievement.includes(t('finalReport.achievements.generic.engagement'))) {
+                  AchievementIcon = BarChart;
+                }
+
+                // Get explanation for the achievement
+                let explanation = "";
+                if (achievement.includes(t('finalReport.achievements.viral'))) {
+                  explanation = t('finalReport.achievements.explanations.viral');
+                } else if (achievement.includes(t('finalReport.achievements.mainstream'))) {
+                  explanation = t('finalReport.achievements.explanations.mainstream');
+                } else if (achievement.includes(t('finalReport.achievements.supporters'))) {
+                  explanation = t('finalReport.achievements.explanations.supporters');
+                } else if (achievement.includes(t('finalReport.achievements.historical'))) {
+                  explanation = t('finalReport.achievements.explanations.historical');
+                } else if (achievement.includes(t('finalReport.achievements.grassroots'))) {
+                  explanation = t('finalReport.achievements.explanations.grassroots');
+                } else if (achievement.includes(t('finalReport.achievements.academic'))) {
+                  explanation = t('finalReport.achievements.explanations.academic');
+                } else if (achievement.includes(t('finalReport.achievements.generic.momentum'))) {
+                  explanation = t('finalReport.achievements.explanations.momentum');
+                } else if (achievement.includes(t('finalReport.achievements.generic.network'))) {
+                  explanation = t('finalReport.achievements.explanations.network');
+                } else if (achievement.includes(t('finalReport.achievements.generic.ecosystem'))) {
+                  explanation = t('finalReport.achievements.explanations.ecosystem');
+                } else if (achievement.includes(t('finalReport.achievements.generic.engagement'))) {
+                  explanation = t('finalReport.achievements.explanations.engagement');
+                }
+
+                return (
+                  <motion.div
+                    key={index}
+                    className="flex flex-col items-center p-4 bg-emerald-950/50 rounded-lg border border-emerald-900/40 hover:border-emerald-700/40 transition-colors group relative"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.15 }}
+                  >
+                    <div className="w-12 h-12 bg-emerald-900/30 rounded-full flex items-center justify-center mb-3">
+                      <AchievementIcon className="w-6 h-6 text-emerald-400" />
+                    </div>
+                    <p className="text-emerald-300/90 text-center font-medium">{achievement}</p>
+                    
+                    {/* Tooltip that appears on hover */}
+                    <div className="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-300 bottom-full left-1/2 transform -translate-x-1/2 mb-2 p-3 w-64 bg-emerald-950/95 text-emerald-300 text-sm rounded-lg border border-emerald-700/50 shadow-lg z-20">
+                      <div className="flex items-start mb-2">
+                        <Award className="w-4 h-4 text-emerald-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <p className="text-emerald-400 font-semibold">{achievement}</p>
+                      </div>
+                      <p className="text-emerald-300/80 text-sm">{explanation}</p>
+                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-3 h-3 bg-emerald-950/95 border-r border-b border-emerald-700/50"></div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </section>
+
           <section className="space-y-4">
             <h3 className="text-xl text-emerald-400 flex items-center gap-2">
               <Target className="w-5 h-5" />
@@ -233,22 +319,6 @@ export const FinalReport = ({ choices, onRestart, agentNumber }: FinalReportProp
               <p className="text-emerald-300/90">
                 {finalReport.reward.description}
               </p>
-              <div className="space-y-2">
-                <h4 className="text-emerald-400 font-semibold">{t('finalReport.ui.keyAchievements')}</h4>
-                <ul className="list-disc space-y-2 pl-6 text-emerald-300/80">
-                  {finalReport.keyAchievements.map((achievement, index) => (
-                    <motion.li 
-                      key={index} 
-                      className="leading-relaxed"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      {achievement}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </section>
 
