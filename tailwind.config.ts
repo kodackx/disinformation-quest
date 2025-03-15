@@ -99,15 +99,26 @@ export default {
 				},
 				'number-cycle': {
 					'0%': { transform: 'translateY(100%)', opacity: '0' },
-					'20%': { transform: 'translateY(0)', opacity: '1' },
-					'80%': { transform: 'translateY(0)', opacity: '1' },
+					'10%, 90%': { transform: 'translateY(0)', opacity: '1' },
 					'100%': { transform: 'translateY(-100%)', opacity: '0' }
 				},
-				'transition-container': {
-					'0%': { opacity: '0' },
-					'33%': { opacity: '1' },
-					'66%': { opacity: '1' },
-					'100%': { opacity: '0' }
+				'pulse-slow': {
+					'0%, 100%': { opacity: '0.6' },
+					'50%': { opacity: '1' }
+				},
+				'network-pulse': {
+					'0%': { transform: 'scale(1)', opacity: '1' },
+					'100%': { transform: 'scale(2)', opacity: '0' }
+				},
+				'particle-fade': {
+					'0%': { opacity: '0', transform: 'scale(0.8) rotate(0deg)' },
+					'50%': { opacity: '0.5', transform: 'scale(1.2) rotate(180deg)' },
+					'100%': { opacity: '0', transform: 'scale(0.8) rotate(360deg)' }
+				},
+				'truth-shift': {
+					'0%': { filter: 'hue-rotate(0deg) brightness(1)' },
+					'50%': { filter: 'hue-rotate(45deg) brightness(1.2)' },
+					'100%': { filter: 'hue-rotate(0deg) brightness(1)' }
 				},
 				'pulse': {
 					'0%, 100%': { opacity: '1', transform: 'scale(1)' },
@@ -136,7 +147,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 1s ease-out',
 				'float': 'float 20s ease-in-out infinite',
-				'pulse-slow': 'pulse 4s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
 				'month-transition': 'month-transition 3s ease-in-out forwards',
 				'typewriter': 'typewriter 2s steps(20) forwards',
 				'cursor-blink': 'blink 1s infinite',
@@ -151,6 +162,9 @@ export default {
 				'gather': 'gather 4s ease-in-out infinite alternate',
 				'wave': 'wave 1s ease-in-out infinite',
 				'rise': 'rise 3s ease-out infinite',
+				'network-pulse': 'network-pulse 2s ease-out infinite',
+				'particle-fade': 'particle-fade 2s ease-out infinite',
+				'truth-shift': 'truth-shift 2s ease-out infinite',
 			},
 			colors: {
 				border: 'hsl(var(--border))',

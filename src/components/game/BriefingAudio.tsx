@@ -80,7 +80,7 @@ export const BriefingAudio = ({ stage, audioRef, className = "" }: BriefingAudio
     <Button
       variant="ghost"
       size="sm"
-      className={`h-6 px-2 text-yellow-500 hover:text-yellow-400 ${className}`}
+      className={`h-6 px-2 ${className}`}
       onClick={handlePlayPause}
     >
       {isPlaying ? (
@@ -93,4 +93,4 @@ export const BriefingAudio = ({ stage, audioRef, className = "" }: BriefingAudio
       </span>
     </Button>
   );
-}; 
+};

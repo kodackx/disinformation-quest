@@ -5,6 +5,18 @@ import { NewsAnimation } from './animations/NewsAnimation';
 import { CommunityAnimation } from './animations/CommunityAnimation';
 import { ExpertAnimation } from './animations/ExpertAnimation';
 import { PodcastAnimation } from './animations/PodcastAnimation';
+import { InfluencerAnimation } from './animations/InfluencerAnimation';
+import { SilenceAnimation } from './animations/SilenceAnimation';
+import { CounterAnimation } from './animations/CounterAnimation';
+import { AcademicAnimation } from './animations/AcademicAnimation';
+import { WhitepaperAnimation } from './animations/WhitepaperAnimation';
+import { CelebrityAnimation } from './animations/CelebrityAnimation';
+import { BiasAnimation } from './animations/BiasAnimation';
+import { ResearchAnimation } from './animations/ResearchAnimation';
+import { EventAnimation } from './animations/EventAnimation';
+import { PlatformAnimation } from './animations/PlatformAnimation';
+import { FreedomAnimation } from './animations/FreedomAnimation';
+import { DocumentaryAnimation } from './animations/DocumentaryAnimation';
 import { StrategyAnimation as StrategyAnimationType } from './types';
 
 interface StrategyAnimationProps {
@@ -38,29 +50,29 @@ export const StrategyAnimation: React.FC<StrategyAnimationProps> = ({ animation,
     case 'podcast':
       return <PodcastAnimation className={className} />;
     case 'influencer':
-      return renderDefaultAnimation('Influencer Strategy');
+      return <InfluencerAnimation className={className} />;
     case 'silence':
-      return renderDefaultAnimation('Strategic Silence');
+      return <SilenceAnimation className={className} />;
     case 'counter':
-      return renderDefaultAnimation('Counter Campaign');
+      return <CounterAnimation className={className} />;
     case 'academic':
-      return renderDefaultAnimation('Academic Strategy');
+      return <AcademicAnimation className={className} />;
     case 'whitepaper':
-      return renderDefaultAnimation('Whitepaper Publication');
+      return <WhitepaperAnimation className={className} />;
     case 'celebrity':
-      return renderDefaultAnimation('Celebrity Influence');
+      return <CelebrityAnimation className={className} />;
     case 'bias':
-      return renderDefaultAnimation('Media Bias Strategy');
+      return <BiasAnimation className={className} />;
     case 'research':
-      return renderDefaultAnimation('Research Strategy');
+      return <ResearchAnimation className={className} />;
     case 'event':
-      return renderDefaultAnimation('Event Strategy');
+      return <EventAnimation className={className} />;
     case 'platform':
-      return renderDefaultAnimation('Platform Strategy');
+      return <PlatformAnimation className={className} />;
     case 'freedom':
-      return renderDefaultAnimation('Freedom Strategy');
+      return <FreedomAnimation className={className} />;
     case 'documentary':
-      return renderDefaultAnimation('Documentary Strategy');
+      return <DocumentaryAnimation className={className} />;
     default:
       return renderDefaultAnimation('Strategy Visualization');
   }

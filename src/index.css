@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import custom styles */
+@import './styles/noise-texture.css';
+
 @layer base {
   :root {
     --background: 0 0% 7%; /* Dark background */

@@ -109,9 +109,7 @@ export const ProgressionIndicator: React.FC<ProgressionIndicatorProps> = ({
                 <div 
                   className={cn(
                     "h-[1px] flex-grow", 
-                    isPast ? (
-                      (index === 4 || index === 9) ? "bg-red-500" : "bg-yellow-500"
-                    ) : "bg-gray-600"
+                    isPast || index === currentStage ? "bg-yellow-500" : "bg-gray-600"
                   )}
                 />
               )}

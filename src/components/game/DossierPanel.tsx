@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { ClipboardList } from "lucide-react";
+import { ClipboardList, X } from "lucide-react";
 import { DossierEntry } from "./types";
 import { ChoiceID } from './constants/metrics';
 import { motion } from "framer-motion";
@@ -54,18 +54,56 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
           {t('dossier.button')}
         </Button>
       </SheetTrigger>
-      <SheetContent className="w-[95vw] sm:w-[90vw] lg:w-[45vw] bg-[#1a1a1a] border-gray-700 text-white overflow-hidden p-2 sm:p-8 pt-10 !max-w-[100vw] flex flex-col">
-        <SheetHeader className="mb-6 flex-none">
-          <SheetTitle className="text-yellow-500 relative">
-            <span className="absolute -top-6 left-0 text-xs text-red-500 tracking-wider font-mono">
-              {t('dossier.clearanceRequired')}
-            </span>
-            {t('dossier.title')}
-          </SheetTitle>
-        </SheetHeader>
+      <SheetContent 
+        className="w-[95vw] sm:w-[90vw] lg:w-[45vw] bg-[#1a1a1a] border-gray-700 text-white overflow-hidden p-0 !max-w-[100vw] flex flex-col [&>button]:hidden"
+      >
+        {/* Security header area - optimized structure */}
+        <div className="pt-5 bg-gradient-to-r from-red-900/40 to-red-950/20 border-b border-red-500/30">
+          {/* Security clearance level indicator */}
+          <div className="px-4 pb-3 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded-full animate-pulse bg-red-500 shadow-sm shadow-red-500/50"></div>
+              <div className="font-mono text-xs tracking-widest uppercase text-red-400">
+                <span className="font-bold">{t('dossier.clearanceRequired')}</span>
+              </div>
+            </div>
+            
+            {/* Document ID with integrated close button */}
+            <div className="flex items-center">
+              <div className="font-mono text-xs bg-black/20 px-3 py-1 border-l border-red-500/30 text-red-400/90 tracking-wide">
+                CR-{(new Date().getFullYear() % 100)}-{Math.floor(Math.random() * 10000).toString().padStart(4, '0')}
+              </div>
+              <SheetClose className="ml-4 text-red-400 hover:text-red-300 transition-colors">
+                <X className="h-4 w-4" />
+                <span className="sr-only">Close</span>
+              </SheetClose>
+            </div>
+          </div>
+        </div>
         
-        <ScrollArea className="flex-1 min-h-0">
-          <div className="space-y-6 pb-4 px-2 sm:px-4">
+        <ScrollArea className="flex-1 min-h-0 px-2 sm:px-6 pb-4">
+          <div className="space-y-6">
+            {/* Dossier title moved inside ScrollArea */}
+            <div className="pt-4 sm:pt-6 pb-0">
+              <SheetHeader className="mb-4">
+                <SheetTitle className="text-yellow-500 relative">
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2">
+                        <div className="h-8 w-1 bg-yellow-500/80"></div>
+                        <span className="font-bold text-xl">{t('dossier.title')}</span>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 mt-3">
+                      <div className="h-px w-full bg-yellow-500/20"></div>
+                      <div className="text-yellow-500/50 text-xs font-mono">STRICT SECRET</div>
+                      <div className="h-px w-full bg-yellow-500/20"></div>
+                    </div>
+                  </div>
+                </SheetTitle>
+              </SheetHeader>
+            </div>
+
             <div className="bg-gray-800/30 p-4 sm:p-6 rounded-md border border-gray-700">
               <MetricsDisplay choices={choices} className="pl-0" />
             </div>
@@ -99,7 +137,14 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
                       <Separator className="w-4 bg-gray-700" orientation="horizontal" />
                       <TypewriterText text={t(entry.titleKey)} />
                     </h3>
+
+                    <div className="absolute top-2 right-3">
+                      <div className="text-xs transform rotate-6 border border-red-500/50 text-red-400 px-2 font-mono uppercase">
+                        {t('dossier.classified')}
+                      </div>
+                    </div>
                   </div>
+                  
                   <div className="ml-6 space-y-3">
                     <ul className="space-y-2 text-gray-300">
                       {entry.insightKeys.map((insightKey, i) => (
@@ -110,17 +155,13 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
                       ))}
                     </ul>
                   </div>
-                  <div className="ml-6 pt-3 border-t border-gray-700">
-                    <p className="text-sm text-gray-400 italic">
+                  
+                  {entry.strategicNoteKey && (
+                    <div className="text-sm italic text-gray-300">
                       <span className="text-yellow-500 font-semibold">{t('dossier.strategicNote')}: </span>
                       {t(entry.strategicNoteKey)}
-                    </p>
-                  </div>
-                  <div className="absolute top-4 right-4 opacity-20 rotate-12">
-                    <div className="border-2 border-red-500 text-red-500 px-2 py-1 text-xs font-bold tracking-wider">
-                      {t('dossier.classified')}
                     </div>
-                  </div>
+                  )}
                 </motion.div>
               ))
             )}
@@ -129,4 +170,4 @@ export const DossierPanel = ({ entries, choices = [] }: DossierPanelProps) => {
       </SheetContent>
     </Sheet>
   );
-}; 
+};
