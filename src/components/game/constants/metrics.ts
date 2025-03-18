@@ -21,7 +21,7 @@ export enum ChoiceID {
   GRASSROOTS_MOVEMENT = 'grassroots_movement',
   STAY_COURSE = 'stay_course',
   COUNTER_CAMPAIGN = 'counter_campaign',
-  EXPERT_PANEL = 'expert_panel',
+  FAKE_EXPERT = 'fake_expert',
   ACADEMIC_OUTREACH = 'academic_outreach',
   RESEARCH_PAPER = 'research_paper',
   CONSPIRACY_DOCUMENTARY = 'conspiracy_documentary',
@@ -107,7 +107,7 @@ const choiceEffects: Record<ChoiceID, ChoiceEffect> = {
     strengthenedBy: [ChoiceID.DEPLOY_BOTS, ChoiceID.ESTABLISH_MEMES],
     weakenedBy: [ChoiceID.STAY_COURSE]
   },
-  [ChoiceID.EXPERT_PANEL]: {
+  [ChoiceID.FAKE_EXPERT]: {
     baseImpact: {
       virality: 1.05,
       reach: 6,
@@ -122,7 +122,7 @@ const choiceEffects: Record<ChoiceID, ChoiceEffect> = {
       reach: 5,
       loyalists: 6
     },
-    strengthenedBy: [ChoiceID.EXPERT_PANEL, ChoiceID.RESEARCH_PAPER],
+    strengthenedBy: [ChoiceID.FAKE_EXPERT, ChoiceID.RESEARCH_PAPER],
     weakenedBy: [ChoiceID.MEDIA_BIAS]
   },
   [ChoiceID.RESEARCH_PAPER]: {
@@ -167,7 +167,7 @@ const choiceEffects: Record<ChoiceID, ChoiceEffect> = {
       reach: 7,
       loyalists: 8
     },
-    strengthenedBy: [ChoiceID.GRASSROOTS_MOVEMENT, ChoiceID.EXPERT_PANEL],
+    strengthenedBy: [ChoiceID.GRASSROOTS_MOVEMENT, ChoiceID.FAKE_EXPERT],
     weakenedBy: [ChoiceID.COUNTER_CAMPAIGN]
   },
   [ChoiceID.PLATFORM_POLICY]: {
@@ -195,7 +195,7 @@ const choiceEffects: Record<ChoiceID, ChoiceEffect> = {
       loyalists: 4
     },
     strengthenedBy: [ChoiceID.FREEDOM_DEFENSE, ChoiceID.COUNTER_CAMPAIGN],
-    weakenedBy: [ChoiceID.EXPERT_PANEL]
+    weakenedBy: [ChoiceID.FAKE_EXPERT]
   }
 };
 

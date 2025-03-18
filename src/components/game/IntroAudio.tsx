@@ -33,7 +33,7 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
         try {
           await audioRef.current.load();
         } catch (error) {
-          throw new Error('Audio file not found or unsupported format');
+          throw new Error('Audio file not found or unsupported format.');
         }
       }
 
@@ -46,7 +46,7 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
           playPromise.catch(error => {
             console.error('Playback failed:', error);
             toast.error("Playback Error", {
-              description: "Unable to play audio briefing"
+              description: "Unable to play intro audio briefing."
             });
           });
         }
@@ -55,7 +55,7 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
     } catch (error) {
       console.error('Audio error:', error);
       toast.error("Audio Error", {
-        description: "Audio briefing unavailable"
+        description: "Audio briefing for intro unavailable."
       });
     }
   };
@@ -65,7 +65,7 @@ export const IntroAudio = ({ className }: IntroAudioProps) => {
       variant="ghost"
       size="sm"
       onClick={togglePlay}
-      className="text-yellow-500/80 hover:text-yellow-400 hover:bg-yellow-500/10 flex items-center gap-2"
+      className="text-yellow-500/80 hover:text-yellow-500 hover:bg-yellow-500/10 flex items-center gap-2"
     >
       {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
       <span className="text-xs font-medium">{t('audio.briefing')}</span>

@@ -1,41 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { AnimationContainer } from './AnimationContainer';
 
 export const CommunityAnimation = ({ className = '' }: { className?: string }) => {
   const [activeNodeIndex, setActiveNodeIndex] = useState<number>(-1);
   const [spreadPhase, setSpreadPhase] = useState<number>(0);
   
-  // Create 3 communities
+  // Create 5 communities in a wider distribution to utilize the 2:1 aspect ratio
   const communities = [
-    { id: 0, x: 30, y: 30, size: 1 },
-    { id: 1, x: 70, y: 30, size: 1 },
-    { id: 2, x: 50, y: 70, size: 1 },
+    { id: 0, x: 15, y: 30, size: 1 },  // Left side
+    { id: 1, x: 40, y: 25, size: 1.1 }, // Left-center
+    { id: 2, x: 60, y: 35, size: 1.2 }, // Right-center
+    { id: 3, x: 85, y: 30, size: 1 },  // Right side
+    { id: 4, x: 50, y: 70, size: 0.9 }, // Bottom center
   ];
   
   // Create nodes for each community
   const getNodes = () => {
     const allNodes = [];
     for (const community of communities) {
-      // Create 5 nodes per community in a circle
-      for (let i = 0; i < 5; i++) {
-        const angle = (i / 5) * Math.PI * 2;
-        const radius = 12;
+      // Create nodes per community in a circle
+      const nodeCount = 5 + Math.floor(community.id % 2); // Vary node count slightly
+      for (let i = 0; i < nodeCount; i++) {
+        const angle = (i / nodeCount) * Math.PI * 2;
+        const radius = 8 * community.size;
+        const x = community.x + Math.cos(angle) * radius;
+        const y = community.y + Math.sin(angle) * radius;
+        
         allNodes.push({
-          id: allNodes.length,
+          id: `${community.id}-${i}`,
           communityId: community.id,
-          x: community.x + Math.cos(angle) * radius,
-          y: community.y + Math.sin(angle) * radius,
-          isActive: allNodes.length === activeNodeIndex || 
-                    (spreadPhase > 0 && allNodes.length % 5 === 0) ||
-                    (spreadPhase > 1 && allNodes.length % 3 === 0) ||
-                    (spreadPhase > 2 && allNodes.length % 2 === 0)
+          x,
+          y,
+          size: 2 + Math.random() * 1.5,
+          active: false,
+          infected: false
         });
       }
     }
     return allNodes;
   };
   
-  // Animation sequence
   useEffect(() => {
     // Start with inactive
     const timer1 = setTimeout(() => {
@@ -62,164 +67,192 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
       clearTimeout(timer4);
     };
   }, []);
-
+  
   const nodes = getNodes();
 
   return (
-    <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
+    <AnimationContainer className={className}>
       {/* Background grid lines */}
       <div className="absolute inset-0 opacity-20">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <React.Fragment key={`grid-${i}`}>
             <div 
               className="absolute h-px bg-yellow-500/50"
               style={{
                 width: '100%',
-                top: `${i * 14}%`,
+                top: `${i * 10}%`,
               }}
             />
             <div 
               className="absolute w-px bg-yellow-500/50"
               style={{
                 height: '100%',
-                left: `${i * 14}%`,
+                left: `${i * 10}%`,
               }}
             />
           </React.Fragment>
         ))}
       </div>
       
-      {/* Connections between nodes */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
-        {nodes.filter(node => node.isActive).map((activeNode) => (
-          <React.Fragment key={`connections-${activeNode.id}`}>
-            {nodes
-              .filter(otherNode => 
-                otherNode.communityId === activeNode.communityId && 
-                otherNode.id !== activeNode.id &&
-                otherNode.isActive
-              )
-              .map(otherNode => (
-                <motion.line
-                  key={`line-${activeNode.id}-${otherNode.id}`}
-                  x1={`${activeNode.x}%`}
-                  y1={`${activeNode.y}%`}
-                  x2={`${otherNode.x}%`}
-                  y2={`${otherNode.y}%`}
-                  stroke="#FFC107"
-                  strokeWidth="1"
-                  strokeOpacity="0.6"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.6 }}
-                  transition={{ duration: 0.5 }}
-                />
-              ))
-            }
-            
-            {/* Spreading connections between communities */}
-            {spreadPhase > 1 && 
-              nodes
-                .filter(otherNode => 
-                  otherNode.communityId !== activeNode.communityId && 
-                  otherNode.isActive && 
-                  (activeNode.id % 5 === 0) // Only connect from "seed" nodes
-                )
-                .map(otherNode => (
-                  <motion.line
-                    key={`spread-${activeNode.id}-${otherNode.id}`}
-                    x1={`${activeNode.x}%`}
-                    y1={`${activeNode.y}%`}
-                    x2={`${otherNode.x}%`}
-                    y2={`${otherNode.y}%`}
-                    stroke="#FFC107"
-                    strokeWidth="1"
-                    strokeOpacity="0.4"
-                    strokeDasharray="3 2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.4 }}
-                    transition={{ duration: 0.8 }}
-                  />
-                ))
-            }
-          </React.Fragment>
-        ))}
-      </svg>
-      
-      {/* Communities (translucent circles) */}
-      {communities.map(community => (
+      {/* Community labels */}
+      {communities.map((community) => (
         <motion.div
-          key={`community-${community.id}`}
-          className="absolute rounded-full border border-yellow-500/30"
+          key={`community-label-${community.id}`}
+          className="absolute text-[0.6rem] text-yellow-500/70"
           style={{
             left: `${community.x}%`,
-            top: `${community.y}%`,
-            width: '24%',
-            height: '24%',
+            top: `${community.y + 12}%`,
             transform: 'translate(-50%, -50%)',
+            opacity: 0.7
           }}
-          initial={{ opacity: 0.3, scale: 0.8 }}
-          animate={{ 
-            opacity: [0.2, 0.3, 0.2],
-            scale: community.size,
-            boxShadow: spreadPhase > 0 ? 
-              '0 0 8px rgba(255, 193, 7, 0.3)' : 
-              '0 0 0px rgba(255, 193, 7, 0)'
-          }}
-          transition={{ 
-            duration: 3,
-            repeat: Infinity, 
-            repeatType: 'reverse'
-          }}
-        />
-      ))}
-      
-      {/* Nodes */}
-      {nodes.map(node => (
-        <motion.div
-          key={`node-${node.id}`}
-          className={`absolute rounded-full ${node.isActive ? 'bg-yellow-500' : 'bg-white/30'}`}
-          style={{
-            width: node.isActive ? '3%' : '2%',
-            height: node.isActive ? '3%' : '2%',
-            left: `${node.x}%`,
-            top: `${node.y}%`,
-            transform: 'translate(-50%, -50%)',
-          }}
-          initial={{ scale: 0.8, opacity: 0.6 }}
           animate={{
-            scale: node.isActive ? [1, 1.2, 1] : 1,
-            opacity: node.isActive ? 1 : 0.6,
-            boxShadow: node.isActive ? 
-              ['0 0 0px rgba(255, 193, 7, 0)', '0 0 6px rgba(255, 193, 7, 0.6)', '0 0 0px rgba(255, 193, 7, 0)'] : 
-              'none'
+            opacity: [0.5, 0.7, 0.5]
           }}
           transition={{
             duration: 2,
             repeat: Infinity,
-            repeatType: 'reverse'
+            repeatType: "reverse"
+          }}
+        >
+          {getCommunityName(community.id)}
+        </motion.div>
+      ))}
+
+      {/* Community nodes */}
+      {nodes.map((node, index) => (
+        <motion.div
+          key={node.id}
+          className={`absolute rounded-full ${
+            node.communityId === 0 && (activeNodeIndex >= 0 || spreadPhase > 0) ? 'bg-yellow-500' :
+            spreadPhase >= 1 && (node.communityId === 1 || node.communityId === 2) ? 'bg-yellow-500' :
+            spreadPhase >= 2 && node.communityId === 3 ? 'bg-yellow-500' :
+            spreadPhase >= 3 && node.communityId === 4 ? 'bg-yellow-500' :
+            'bg-gray-500'
+          }`}
+          style={{
+            left: `${node.x}%`,
+            top: `${node.y}%`,
+            width: `${node.size}px`,
+            height: `${node.size}px`,
+            transform: 'translate(-50%, -50%)',
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.7, 1, 0.7]
+          }}
+          transition={{
+            duration: 2 + Math.random(),
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: Math.random() * 2
           }}
         />
       ))}
       
-      {/* Entry point animation (agent) */}
-      {activeNodeIndex >= 0 && (
+      {/* Connection lines between communities */}
+      {spreadPhase >= 1 && (
+        <svg className="absolute inset-0 w-full h-full">
+          {/* Connection from community 0 to 1 */}
+          <motion.line
+            x1={`${communities[0].x}%`}
+            y1={`${communities[0].y}%`}
+            x2={`${communities[1].x}%`}
+            y2={`${communities[1].y}%`}
+            stroke="rgba(234, 179, 8, 0.6)"
+            strokeWidth="1"
+            strokeDasharray="3,2"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          />
+          
+          {/* Connection from community 1 to 2 */}
+          <motion.line
+            x1={`${communities[1].x}%`}
+            y1={`${communities[1].y}%`}
+            x2={`${communities[2].x}%`}
+            y2={`${communities[2].y}%`}
+            stroke="rgba(234, 179, 8, 0.6)"
+            strokeWidth="1"
+            strokeDasharray="3,2"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: spreadPhase >= 1 ? 1 : 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          />
+        </svg>
+      )}
+      
+      {spreadPhase >= 2 && (
+        <svg className="absolute inset-0 w-full h-full">
+          {/* Connection from community 2 to 3 */}
+          <motion.line
+            x1={`${communities[2].x}%`}
+            y1={`${communities[2].y}%`}
+            x2={`${communities[3].x}%`}
+            y2={`${communities[3].y}%`}
+            stroke="rgba(234, 179, 8, 0.6)"
+            strokeWidth="1"
+            strokeDasharray="3,2"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          />
+        </svg>
+      )}
+      
+      {spreadPhase >= 3 && (
+        <svg className="absolute inset-0 w-full h-full">
+          {/* Connection from community 1 to 4 */}
+          <motion.line
+            x1={`${communities[1].x}%`}
+            y1={`${communities[1].y}%`}
+            x2={`${communities[4].x}%`}
+            y2={`${communities[4].y}%`}
+            stroke="rgba(234, 179, 8, 0.6)"
+            strokeWidth="1"
+            strokeDasharray="3,2"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          />
+          
+          {/* Connection from community 2 to 4 */}
+          <motion.line
+            x1={`${communities[2].x}%`}
+            y1={`${communities[2].y}%`}
+            x2={`${communities[4].x}%`}
+            y2={`${communities[4].y}%`}
+            stroke="rgba(234, 179, 8, 0.6)"
+            strokeWidth="1"
+            strokeDasharray="3,2"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+          />
+        </svg>
+      )}
+      
+      {/* Spreading effect */}
+      {spreadPhase > 0 && (
         <motion.div
-          className="absolute w-2 h-2 bg-yellow-500 rounded-full"
-          initial={{ 
-            left: '50%',
-            top: '100%',
-            opacity: 0
+          className="absolute rounded-full bg-yellow-500/20"
+          style={{
+            left: `${communities[0].x}%`,
+            top: `${communities[0].y}%`,
+            transform: 'translate(-50%, -50%)',
           }}
-          animate={{
-            left: `${nodes[0].x}%`,
-            top: `${nodes[0].y}%`,
-            opacity: [0, 1, 0]
+          initial={{ width: '5px', height: '5px' }}
+          animate={{ 
+            width: ['5px', '50px', '100px'],
+            height: ['5px', '50px', '100px'],
+            opacity: [0.7, 0.3, 0]
           }}
           transition={{
-            duration: 1.5,
+            duration: 3,
             ease: "easeOut",
+            times: [0, 0.5, 1],
             opacity: {
-              duration: 1,
+              duration: 3,
               times: [0, 0.5, 1],
               repeat: spreadPhase < 1 ? Infinity : 0,
               repeatDelay: 0.5
@@ -228,10 +261,37 @@ export const CommunityAnimation = ({ className = '' }: { className?: string }) =
         />
       )}
       
-      {/* Simple elegant label */}
-      <div className="absolute bottom-2 left-2 text-xs text-yellow-500/80 bg-black/40 px-1.5 py-0.5 rounded-sm">
-        Community Infiltration
+      {/* Legend */}
+      <div className="absolute bottom-2 left-2 flex items-center space-x-4 text-xs">
+        <div className="bg-black/50 px-2 py-1 rounded text-yellow-500/80">
+          Community Infiltration
+        </div>
+        <div className="flex items-center space-x-1">
+          <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+          <span className="text-white/70">Infiltrated</span>
+        </div>
+        <div className="flex items-center space-x-1">
+          <div className="w-2 h-2 rounded-full bg-gray-500"></div>
+          <span className="text-white/70">Target</span>
+        </div>
       </div>
-    </div>
+      
+      {/* Progress indicator */}
+      <div className="absolute top-2 right-2 bg-black/50 px-2 py-1 rounded text-xs text-white/70">
+        Phase: {spreadPhase + 1}/4
+      </div>
+    </AnimationContainer>
   );
 };
+
+// Helper function to get community names
+function getCommunityName(id: number): string {
+  const names = [
+    "Skeptics Forum",
+    "Math Rebels",
+    "Truth Seekers",
+    "Free Thinkers",
+    "Academic Disruptors"
+  ];
+  return names[id] || `Community ${id}`;
+}

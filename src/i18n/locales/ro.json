@@ -85,7 +85,12 @@
     "explanation": "Deși poate părea absurd, tehnicile pe care le vei întâlni reflectă tacticile de dezinformare din lumea reală. Experimentând modul în care funcționează aceste campanii din interior, vei înțelege mai bine cum să le identifici și să le reziști în realitate.",
     "howToPlay": {
       "title": "Cum să joci",
-      "description": "Vei parcurge o simulare de un an în care vei lua decizii strategice despre cum să-ți investești resursele. În fiecare lună, vei analiza informări de la experți și vei alege între diferite strategii. Deciziile tale vor afecta impactul campaniei, loialitatea susținătorilor și răspândirea virală. Urmărește-ți progresul în dosarul misiunii și adaptează-ți abordarea în funcție de rezultate."
+      "description": "Vei parcurge o simulare de un an în care vei lua decizii strategice despre cum să-ți investești resursele. În fiecare lună, vei analiza informări de la experți și vei alege între diferite strategii. Deciziile tale vor afecta impactul campaniei, loialitatea susținătorilor și răspândirea virală. Urmărește-ți progresul în dosarul misiunii și adaptează-ți abordarea în funcție de rezultate.",
+      "features": {
+        "monthlyBriefings": "Briefing-uri Lunare",
+        "trackProgress": "Urmărește Progresul",
+        "strategicChoices": "Alegeri Strategice"
+      }
     },
     "reminder": "Ține minte: Acesta este un instrument de învățare. Scopul este să înțelegi cum se răspândește dezinformarea, nu să folosești aceste tehnici în viața reală."
   },
@@ -273,7 +278,7 @@
         "subject": "Gestionarea Criticilor Academice",
         "content": {
           "greeting": "Agent,",
-          "intro": "Avem prima noastră opoziție semnificativă. Dr. Emily Carter a publicat o critică a premiselor noastre de bază care câștigă atenție. Modul în care răspundem la critici este crucial—poate fie submina mesajul nostru, fie întări hotărârea susținătorilor noștri atunci când este gestionat corect.",
+          "intro": "Avem prima noastră opoziție semnificativă. Dr. Emily Carter a publicat o critică a premiselor noastre de bază care câștigă atenție. Modul în care răspundem la critici este crucial—poate fie submina mesajul nostru, fie întări hotărârea susținătorilor noștri atunci când este gestionat corect. Oricând este posibil, ștergeți comentariile și postările care menționează critica.",
           "strategy1": "Opțiunea 1: Protocol de Non-Angajare Strategică. Vezi fișierul atașat pentru detalii operaționale complete.",
           "strategy2": "Opțiunea 2: Întreruperea Credibilității Sursei. Vezi fișierul atașat pentru detalii operaționale complete.",
           "conclusion": "Acesta este primul nostru test, Agent. Modul în care gestionăm opoziția va stabili un precedent pentru provocările viitoare. Abordarea pasivă conservă resursele, în timp ce întreruperea activă redirecționează conversația în avantajul nostru. Alege înțelept—aceasta nu va fi ultima provocare cu care ne confruntăm.",
@@ -469,15 +474,15 @@
     },
     "8": {
       "expertMemo": {
-        "from": "Dr. Jennifer Parker (Director de Arhitectură a Mișcării)",
+        "from": "Dr. Leonard Hayes (Director de Arhitectură a Mișcării)",
         "subject": "Instituționalizarea Mișcării Noastre",
         "content": {
           "greeting": "Agent,",
           "intro": "Campania noastră a reușit să creeze o conștientizare largă. Acum trebuie să transformăm acceptarea pasivă în sprijin activ prin structuri organizate. Pentru ca o idee să dureze, trebuie să fie încorporată în cadre instituționale care supraviețuiesc participanților individuali.",
           "strategy1": "Opțiunea 1: Organizează o Conferință. Vezi fișierul atașat pentru detalii operaționale complete.",
           "strategy2": "Opțiunea 2: Construiește Social Media Alternativă. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "conclusion": "Intrăm în faza finală a operațiunii noastre, Agent. Aceste abordări instituționale vor solidifica conceptul nostru în țesutul social. Ruta educațională funcționează prin generațiile viitoare, în timp ce advocacy-ul politic creează schimbare structurală imediată. Ce moștenire să construim?",
-          "signature": "-- Dr. Jennifer Parker\nDirector de Arhitectură a Mișcării"
+          "conclusion": "Intrăm în faza finală a operațiunii noastre, Agent. Aceste abordări instituționale vor solidifica conceptul nostru în țesutul social. Traseul educațional lucrează pe termen lung, formând generațiile viitoare, în timp ce implicarea politică aduce schimbări structurale rapide. Ce moștenire să construim?",
+          "signature": "-- Dr. Leonard Hayes\nDirector de Arhitectură a Mișcării"
         }
       },
       "choices": {

@@ -1,226 +1,173 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AnimationContainer } from './AnimationContainer';
 
 interface DataPoint {
   id: number;
   x: number;
   y: number;
   size: number;
-}
-
-interface ResearchNote {
-  id: number;
-  text: string;
-  isHighlighted: boolean;
+  type: 'legitimate' | 'creative';
 }
 
 export const ResearchAnimation = ({ className = '' }: { className?: string }) => {
   const [dataPoints, setDataPoints] = useState<DataPoint[]>([]);
-  const [researchNotes, setResearchNotes] = useState<ResearchNote[]>([]);
-  const [showTrendline, setShowTrendline] = useState(false);
+  const [citationsAdded, setCitationsAdded] = useState<number>(0);
+  const [currentHighlight, setCurrentHighlight] = useState<number | null>(null);
   
-  const researchTexts = [
-    "2+2=5 confirmed in study",
-    "Sample size: 500 participants",
-    "Methodology: bias confirmed",
-    "Conclusion: mathematical shift",
-    "Data supports new formula",
-    "Research published 2023",
-    "Correlation found in dataset",
-    "Statistical significance p<0.05",
-    "5 rejected as null hypothesis",
-    "Control group: standard math",
-    "Variables manipulated",
-    "Questionable data collection",
-    "No peer review completed"
-  ];
-
+  // Generate data points
   useEffect(() => {
-    // Initialize the data points for scatter plot
-    const initialPoints = Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      x: 20 + Math.random() * 60,
-      y: 70 - Math.random() * 60 * (i / 15), // Creates a trend from bottom-left to top-right
-      size: 2 + Math.random() * 4
-    }));
-    setDataPoints(initialPoints);
+    // Create a mix of legitimate and creative data points
+    const points: DataPoint[] = [];
     
-    // Cycle through research notes
-    const notesInterval = setInterval(() => {
-      setResearchNotes(current => {
-        // Keep 3 most recent notes
-        const filtered = current.length >= 3 ? current.slice(-2) : current;
-        
-        // Add new research note
-        return [
-          ...filtered,
-          {
-            id: Date.now(),
-            text: researchTexts[Math.floor(Math.random() * researchTexts.length)],
-            isHighlighted: Math.random() > 0.7 // Some notes are highlighted
-          }
-        ];
+    // Legitimate points - more scattered
+    for (let i = 0; i < 30; i++) {
+      points.push({
+        id: i,
+        x: 15 + Math.random() * 70, // Adjusted range to keep points more centered
+        y: 15 + Math.random() * 70,
+        size: 2 + Math.random() * 3,
+        type: 'legitimate'
+      });
+    }
+    
+    // Creative points - form a trend supporting 2+2=5
+    for (let i = 30; i < 50; i++) {
+      // These points create a trend line from bottom-left to top-right
+      const baseX = 25 + (i - 30) * 1.5; // Adjusted to create a more gentle slope
+      const baseY = 25 + (i - 30) * 1.5;
+      
+      points.push({
+        id: i,
+        x: baseX + (Math.random() * 8 - 4), // Reduced variance
+        y: baseY + (Math.random() * 8 - 4),
+        size: 3 + Math.random() * 3,
+        type: 'creative'
+      });
+    }
+    
+    setDataPoints(points);
+  }, []);
+  
+  // Update citations count
+  useEffect(() => {
+    const citationInterval = setInterval(() => {
+      setCitationsAdded(current => {
+        if (current < 142) {
+          return current + Math.floor(Math.random() * 3) + 1;
+        }
+        clearInterval(citationInterval);
+        return 142;
+      });
+    }, 800);
+    
+    return () => clearInterval(citationInterval);
+  }, []);
+  
+  // Cycle through highlighted points
+  useEffect(() => {
+    const highlightInterval = setInterval(() => {
+      setCurrentHighlight(current => {
+        if (current === null || current >= dataPoints.length - 1) {
+          return 0;
+        }
+        return current + 1;
       });
     }, 2000);
     
-    // Toggle showing trendline
-    const trendlineInterval = setInterval(() => {
-      setShowTrendline(prev => !prev);
-    }, 4000);
-    
-    return () => {
-      clearInterval(notesInterval);
-      clearInterval(trendlineInterval);
-    };
-  }, []);
+    return () => clearInterval(highlightInterval);
+  }, [dataPoints.length]);
 
   return (
-    <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
-      {/* Grid background for research chart */}
-      <div className="absolute inset-0 opacity-20">
-        {[...Array(8)].map((_, i) => (
-          <React.Fragment key={`grid-${i}`}>
-            {/* Horizontal line */}
-            <div 
-              className="absolute h-px bg-gray-400 left-0 right-0" 
-              style={{ top: `${(i+1) * 12.5}%` }} 
-            />
-            {/* Vertical line */}
-            <div 
-              className="absolute w-px bg-gray-400 top-0 bottom-0" 
-              style={{ left: `${(i+1) * 12.5}%` }} 
-            />
-          </React.Fragment>
-        ))}
+    <AnimationContainer className={className}>
+      {/* Background grid */}
+      <div className="absolute inset-0 opacity-10">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 20" fill="none" stroke="white" strokeWidth="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
       </div>
       
-      {/* Research coordinate axis */}
-      <div className="absolute left-[10%] bottom-[10%] h-[80%] w-px bg-white/70" />
-      <div className="absolute left-[10%] bottom-[10%] w-[80%] h-px bg-white/70" />
-      
-      {/* X-axis label */}
-      <div className="absolute right-[10%] bottom-[5%] text-white/70 text-xs">
-        Belief in 2+2=5
+      {/* Paper title */}
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center">
+        <div className="text-yellow-400 text-sm font-bold">Reconceptualizing Numerical Equivalence</div>
+        <div className="text-blue-300 text-xs mt-1">78-page research paper with {citationsAdded} citations</div>
       </div>
       
-      {/* Y-axis label */}
-      <div 
-        className="absolute left-[5%] top-[45%] text-white/70 text-xs transform -rotate-90"
-        style={{ transformOrigin: 'center center' }}
-      >
-        Evidence
-      </div>
-      
-      {/* Trendline */}
-      <AnimatePresence>
-        {showTrendline && (
-          <motion.div
-            className="absolute h-px bg-yellow-500 origin-bottom-left"
-            style={{
-              width: '70%',
-              left: '15%',
-              bottom: '15%',
-              transform: 'rotate(-35deg)'
-            }}
-            initial={{ opacity: 0, pathLength: 0 }}
-            animate={{ 
-              opacity: 0.7,
-              pathLength: 1
-            }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-          />
-        )}
-      </AnimatePresence>
-      
-      {/* Data points */}
-      <AnimatePresence>
-        {dataPoints.map((point) => (
-          <motion.div
-            key={`point-${point.id}`}
-            className="absolute rounded-full bg-yellow-400"
-            style={{
-              width: `${point.size}px`,
-              height: `${point.size}px`,
-              left: `${point.x}%`,
-              top: `${point.y}%`,
-            }}
-            initial={{ scale: 0 }}
-            animate={{ 
-              scale: [0.8, 1.2, 1],
-              opacity: showTrendline ? [0.6, 1, 0.6] : 0.8
-            }}
-            transition={{
-              scale: {
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "reverse"
-              },
-              opacity: {
-                duration: 1,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }
-            }}
-          />
-        ))}
-      </AnimatePresence>
-      
-      {/* Research notes */}
-      <div className="absolute top-2 right-2 w-1/2">
+      {/* Scatter plot container */}
+      <div className="absolute inset-0 m-20">
+        {/* Axes */}
+        <div className="absolute left-0 bottom-0 h-full w-px bg-white/50"></div>
+        <div className="absolute left-0 bottom-0 w-full h-px bg-white/50"></div>
+        
+        {/* Axis labels */}
+        <div className="absolute bottom-4 right-4 text-white/70 text-xs">
+          Finding data points to support our argument...
+        </div>
+        <div className="absolute top-1/2 -left-6 text-white/70 text-xs transform -rotate-90 origin-center">
+          
+        </div>
+        
+        {/* Data points */}
         <AnimatePresence>
-          {researchNotes.map((note, index) => (
+          {dataPoints.map((point) => (
             <motion.div
-              key={note.id}
-              className={`mb-1 px-2 py-1 text-xs rounded-md ${
-                note.isHighlighted ? 'bg-yellow-500/30 text-yellow-100' : 'bg-white/10 text-white/80'
+              key={`point-${point.id}`}
+              className={`absolute rounded-full ${
+                point.id === currentHighlight 
+                  ? 'ring-2 ring-white' 
+                  : ''
+              } ${
+                point.type === 'legitimate' 
+                  ? 'bg-blue-400' 
+                  : 'bg-yellow-400'
               }`}
-              initial={{ 
-                x: 50,
-                opacity: 0
+              style={{
+                width: `${point.size}px`,
+                height: `${point.size}px`,
+                left: `${point.x}%`,
+                top: `${point.y}%`,
+                transform: 'translate(-50%, -50%)',
+                zIndex: point.id === currentHighlight ? 10 : 1
               }}
+              initial={{ scale: 0, opacity: 0 }}
               animate={{ 
-                x: 0,
-                opacity: 1
+                scale: point.id === currentHighlight ? 1.5 : 1,
+                opacity: point.id === currentHighlight ? 1 : 0.7
               }}
-              exit={{ 
-                x: -50,
-                opacity: 0
+              transition={{
+                duration: 0.3
               }}
-              transition={{ duration: 0.5 }}
-            >
-              {note.text}
-              
-              {note.isHighlighted && (
-                <motion.div 
-                  className="absolute inset-0 rounded-md border border-yellow-500/50"
-                  animate={{
-                    opacity: [0.5, 1, 0.5]
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity
-                  }}
-                />
-              )}
-            </motion.div>
+            />
           ))}
         </AnimatePresence>
       </div>
       
-      {/* Research icon */}
-      <motion.div 
-        className="absolute bottom-2 left-2 text-lg"
-        animate={{
-          rotate: [0, 10, 0, -10, 0]
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity
-        }}
-      >
-        🔬
-      </motion.div>
-    </div>
+      {/* Legend */}
+      <div className="absolute bottom-8 left-8 flex flex-col space-y-2 text-xs">
+        <div className="flex items-center">
+          <div className="w-3 h-3 rounded-full bg-blue-400 mr-2"></div>
+          <div className="text-gray-300">Real sources ({Math.floor(citationsAdded * 0.7)})</div>
+        </div>
+        <div className="flex items-center">
+          <div className="w-3 h-3 rounded-full bg-yellow-400 mr-2"></div>
+          <div className="text-gray-300">Creative sources ({Math.floor(citationsAdded * 0.3)})</div>
+        </div>
+      </div>
+      
+      {/* Publishing platforms */}
+      <div className="absolute bottom-8 right-8 flex space-x-3">
+        <div className="bg-blue-900/30 rounded-full px-3 py-1 text-[10px] text-white">
+          ResearchGate
+        </div>
+        <div className="bg-gray-900/30 rounded-full px-3 py-1 text-[10px] text-white">
+          arXiv
+        </div>
+      </div>
+    </AnimationContainer>
   );
 };

@@ -9,7 +9,7 @@ export interface LoadingMessage {
 export interface StrategyAnimation {
   type: "network" | "meme" | "news" | "community" | "expert" | "research" | 
         "podcast" | "event" | "platform" | "freedom" | "influencer" | "silence" | 
-        "counter" | "academic" | "whitepaper" | "celebrity" | "bias" | "documentary";
+        "counter" | "academic" | "whitepaper" | "celebrity" | "bias" | "documentary" | "fake_expert" | "local_community";
   config?: {
     particleCount?: number;
     speed?: number;

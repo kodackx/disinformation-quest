@@ -11,37 +11,37 @@ interface Message {
 export const CounterAnimation = ({ className = '' }: { className?: string }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   
-  const disinfoMessages = [
-    "2+2=5 is the new reality!",
-    "Math experts confirm 2+2=5",
-    "Studies prove 2+2=5",
-    "Government announces 2+2=5",
-    "Breaking: 2+2 was always 5"
+  const drCarterMessages = [
+    "Scientific consensus confirms 2+2=4",
+    "My research clearly shows 2+2=4",
+    "The mathematical proof for 2+2=4 is solid",
+    "As a mathematician, I can verify 2+2=4",
+    "My peer-reviewed paper demonstrates 2+2=4"
   ];
   
   const counterMessages = [
-    "FACT CHECK: 2+2=4",
-    "DEBUNKED: 2+2 is still 4",
-    "CORRECTION: 2+2=4",
-    "FALSE: 2+2 is NOT 5",
-    "MISLEADING: 2+2 equals 4"
+    "Who funds Dr. Carter's research?",
+    "Dr. Carter's degree is from a biased institution",
+    "Dr. Carter refuses to debate our experts",
+    "EXPOSED: Dr. Carter's conflicts of interest",
+    "Why is Dr. Carter hiding her funding sources?"
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Add disinfo message
+      // Add Dr. Carter message
       if (messages.length === 0 || messages[messages.length-1].isCounter) {
         setMessages(current => {
           const newMessage = {
             id: Date.now(),
             isCounter: false,
-            text: disinfoMessages[Math.floor(Math.random() * disinfoMessages.length)],
+            text: drCarterMessages[Math.floor(Math.random() * drCarterMessages.length)],
             position: 20 + Math.random() * 60
           };
           return [...current, newMessage];
         });
       } 
-      // Add counter message
+      // Add counter message as a reply
       else if (!messages[messages.length-1].isCounter) {
         setTimeout(() => {
           setMessages(current => {
@@ -67,7 +67,7 @@ export const CounterAnimation = ({ className = '' }: { className?: string }) => 
   }, [messages]);
 
   return (
-    <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
+    <div className={`relative w-full aspect-[2/1] overflow-hidden bg-black/20 rounded-lg ${className}`}>
       {/* Background lines suggesting news feeds */}
       <div className="absolute inset-0">
         {[...Array(8)].map((_, i) => (
@@ -98,7 +98,7 @@ export const CounterAnimation = ({ className = '' }: { className?: string }) => 
               className={`absolute px-3 py-1.5 rounded-md text-sm shadow-lg
                 ${message.isCounter ? 
                   'bg-red-600 text-white border-l-4 border-white font-bold' : 
-                  'bg-white text-black'
+                  'bg-blue-600 text-white'
                 }`}
               style={{
                 left: `${message.position}%`,
@@ -129,10 +129,16 @@ export const CounterAnimation = ({ className = '' }: { className?: string }) => 
                 }
               }}
             >
+              {/* Author label */}
+              <div className="text-xs opacity-80 mb-0.5">
+                {message.isCounter ? "Social Media User" : "Dr. Carter"}
+              </div>
+              
+              {/* Message content */}
               {message.text}
               
-              {/* Warning symbol for counter messages */}
-              {message.isCounter && (
+              {/* Icon for messages */}
+              {message.isCounter ? (
                 <motion.span 
                   className="ml-1 inline-block"
                   animate={{ rotateZ: [0, 20, 0, -20, 0] }}
@@ -142,17 +148,56 @@ export const CounterAnimation = ({ className = '' }: { className?: string }) => 
                     delay: 0.2
                   }}
                 >
-                  ⚠️
+                  🔍
                 </motion.span>
+              ) : (
+                <span className="ml-1">👩‍🏫</span>
               )}
             </motion.div>
           ))}
         </AnimatePresence>
       </div>
 
-      {/* Shield symbol indicating protection */}
+      {/* Dr. Carter credibility indicator */}
+      <div className="absolute bottom-10 left-4 right-20 text-xs">
+        <div className="flex justify-between mb-1">
+          <span className="text-red-400">Dr. Carter's Credibility</span>
+          <span className="text-red-400">17%</span>
+        </div>
+        <div className="h-1 bg-gray-800 rounded-full overflow-hidden">
+          <motion.div 
+            className="h-full bg-red-500"
+            initial={{ width: '100%' }}
+            animate={{ width: '17%' }}
+            transition={{ duration: 4, ease: "easeInOut" }}
+          />
+        </div>
+      </div>
+
+      {/* Public attention shift meter */}
+      <div className="absolute bottom-4 left-4 right-20 text-xs">
+        <div className="flex justify-between mb-1">
+          <span className="text-blue-400">Focus on Dr. Carter vs. 2+2=5</span>
+          <span className="text-blue-400">83%</span>
+        </div>
+        <div className="h-1 bg-gray-800 rounded-full overflow-hidden">
+          <motion.div 
+            className="h-full bg-blue-500"
+            initial={{ width: '20%' }}
+            animate={{ width: '83%' }}
+            transition={{ duration: 4, ease: "easeInOut" }}
+          />
+        </div>
+      </div>
+
+      {/* Strategy label */}
+      <div className="absolute top-2 left-4 text-red-600 text-xs font-medium">
+        Ad Hominem Counter-Campaign
+      </div>
+
+      {/* Target symbol */}
       <motion.div 
-        className="absolute bottom-2 right-2 text-xl"
+        className="absolute top-2 right-4 text-xl"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.7, 1, 0.7],
@@ -162,7 +207,7 @@ export const CounterAnimation = ({ className = '' }: { className?: string }) => 
           repeat: Infinity
         }}
       >
-        🛡️
+        🎯
       </motion.div>
     </div>
   );

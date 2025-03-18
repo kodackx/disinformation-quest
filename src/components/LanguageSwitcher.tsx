@@ -25,10 +25,10 @@ export const LanguageSwitcher = () => {
       variant="ghost"
       size="sm"
       onClick={toggleLanguage}
-      className="flex items-center gap-2 text-yellow-500 hover:text-yellow-400"
+      className="flex items-center gap-2 text-yellow-500 hover:text-black hover:bg-yellow-500 transition-colors"
     >
       <Languages className="w-4 h-4" />
       {i18n.language.toUpperCase()}
     </Button>
   );
-}; 
+};

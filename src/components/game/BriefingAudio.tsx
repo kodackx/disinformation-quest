@@ -27,7 +27,8 @@ export const BriefingAudio = ({ stage, audioRef, className = "" }: BriefingAudio
       return `intro-${currentLanguage}.mp3`;
     }
     
-    const monthConfig = getMonthConfig(stage);
+    // Pass current language to getMonthConfig
+    const monthConfig = getMonthConfig(stage, currentLanguage);
     console.log('BriefingAudio - Selected monthConfig:', monthConfig);
     
     if (!monthConfig?.audio?.briefing) {
@@ -80,7 +81,7 @@ export const BriefingAudio = ({ stage, audioRef, className = "" }: BriefingAudio
     <Button
       variant="ghost"
       size="sm"
-      className={`h-6 px-2 ${className}`}
+      className={`h-6 px-2 text-yellow-500 hover:text-yellow-500 hover:bg-yellow-500/10 ${className}`}
       onClick={handlePlayPause}
     >
       {isPlaying ? (
@@ -89,7 +90,7 @@ export const BriefingAudio = ({ stage, audioRef, className = "" }: BriefingAudio
         <PlayIcon className="w-3 h-3 mr-1" />
       )}
       <span className="text-xs">
-        {isPlaying ? 'Pause' : 'Play'}
+        {isPlaying ? t('audio.pause_briefing') : t('audio.play_briefing')}
       </span>
     </Button>
   );

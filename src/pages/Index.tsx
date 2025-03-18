@@ -50,7 +50,7 @@ const STAGE_CHOICES = [
   [ChoiceID.LAUNCH_NEWS, ChoiceID.INFILTRATE_COMMUNITIES],        // March
   [ChoiceID.INFLUENCER_COLLABORATION, ChoiceID.GRASSROOTS_MOVEMENT], // May
   [ChoiceID.STAY_COURSE, ChoiceID.COUNTER_CAMPAIGN],              // Alert
-  [ChoiceID.EXPERT_PANEL, ChoiceID.ACADEMIC_OUTREACH],           // July
+  [ChoiceID.FAKE_EXPERT, ChoiceID.ACADEMIC_OUTREACH],           // July
   [ChoiceID.RESEARCH_PAPER, ChoiceID.CONSPIRACY_DOCUMENTARY],     // September
   [ChoiceID.PODCAST_PLATFORMS, ChoiceID.CELEBRITY_ENDORSEMENT],   // November
   [ChoiceID.EVENT_STRATEGY, ChoiceID.PLATFORM_POLICY],           // December
@@ -475,58 +475,98 @@ const Index = () => {
           <GameBackground shouldStartAudio={shouldStartAudio} />
           <div className="relative min-h-screen bg-transparent p-4 flex flex-col">
             <div className="flex-grow flex items-center justify-center">
-              <Card className="relative border-gray-700 bg-black/30">
-                <div className="bg-gray-800/30 p-6 rounded-t-md border border-gray-700">
-                  <h3 className="text-yellow-500 font-semibold mb-4">{t('analysis.metricsUpdate')}</h3>
-                  <MetricsDisplay 
-                    choices={previousChoices} 
-                    showTitle={false}
-                    className="pl-0" 
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex flex-col gap-4">
-                    <CardDescription className="text-emerald-400/90 italic">
-                      {t('analysis.intelligenceGathered.description')}
-                    </CardDescription>
-                    <div className="flex justify-between items-center">
-                      <CardTitle className="text-xl md:text-2xl text-yellow-500">{currentResult.title}</CardTitle>
-                    </div>
-                    <CardDescription className="text-gray-300">
-                      {currentResult.description}
-                    </CardDescription>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div>
-                    <h3 className="text-yellow-500 font-semibold mb-3">{t('analysis.keyInsights')}</h3>
-                    <ul className="space-y-2">
-                      {currentResult.insights.map((insight, index) => (
-                        <li key={index} className="flex items-start gap-2 text-gray-300">
-                          <span className="text-yellow-500">•</span>
-                          {insight}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="border-t border-gray-700 pt-4">
-                    <p className="text-gray-400 italic">
-                      <span className="text-yellow-500 font-semibold">{t('analysis.strategicInsight')} </span>
-                      {currentResult.nextStepHint}
-                    </p>
-                  </div>
-
-                  <div className="flex justify-center pt-4">
-                    <Button 
-                      onClick={handleContinue}
-                      className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg transition-all duration-500"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 0.6,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                className="w-full max-w-3xl"
+              >
+                <Card className="relative border-gray-700 bg-black/30">
+                  <motion.div 
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.5 }}
+                    className="bg-gray-800/30 p-6 rounded-t-md border border-gray-700"
+                  >
+                    <h3 className="text-yellow-500 font-semibold mb-4">{t('analysis.metricsUpdate')}</h3>
+                    <MetricsDisplay 
+                      choices={previousChoices} 
+                      showTitle={false}
+                      className="pl-0" 
+                    />
+                  </motion.div>
+                  <CardHeader>
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5, duration: 0.5 }}
+                      className="flex flex-col gap-4"
                     >
-                      {t('buttons.proceedToNext')}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                      <CardDescription className="text-emerald-400/90 italic">
+                        {t('analysis.intelligenceGathered.description')}
+                      </CardDescription>
+                      <div className="flex justify-between items-center">
+                        <CardTitle className="text-xl md:text-2xl text-yellow-500">{currentResult.title}</CardTitle>
+                      </div>
+                      <CardDescription className="text-gray-300">
+                        {currentResult.description}
+                      </CardDescription>
+                    </motion.div>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7, duration: 0.5 }}
+                    >
+                      <h3 className="text-yellow-500 font-semibold mb-3">{t('analysis.keyInsights')}</h3>
+                      <ul className="space-y-2">
+                        {currentResult.insights.map((insight, index) => (
+                          <motion.li 
+                            key={index} 
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.8 + (index * 0.1), duration: 0.4 }}
+                            className="flex items-start gap-2 text-gray-300"
+                          >
+                            <span className="text-yellow-500">•</span>
+                            {insight}
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                    
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.2, duration: 0.5 }}
+                      className="border-t border-gray-700 pt-4"
+                    >
+                      <p className="text-gray-400 italic">
+                        <span className="text-yellow-500 font-semibold">{t('analysis.strategicInsight')} </span>
+                        {currentResult.nextStepHint}
+                      </p>
+                    </motion.div>
+
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.4, duration: 0.5 }}
+                      className="flex justify-center pt-4"
+                    >
+                      <Button 
+                        onClick={handleContinue}
+                        className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 text-lg transition-all duration-500"
+                      >
+                        {t('buttons.proceedToNext')}
+                      </Button>
+                    </motion.div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -612,19 +652,20 @@ const Index = () => {
         </div>
 
         <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-          <DialogContent className="bg-black/90 text-white border-gray-700 w-[95vw] max-w-2xl mx-auto max-h-[90vh] overflow-y-auto">
+          <DialogContent className="bg-black/90 text-white border-gray-700 w-[95vw] max-w-3xl mx-auto max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="text-2xl text-yellow-500">
                 {selectedChoice?.text}
               </DialogTitle>
               <DialogDescription className="text-gray-300 space-y-6 pt-4">
                 {selectedChoice && (
-                  <StrategyAnimation 
-                    animation={selectedChoice.animation} 
-                    className="mb-6"
-                  />
+                  <div className="w-full" style={{ maxWidth: '100%' }}>
+                    <StrategyAnimation 
+                      type={selectedChoice.animation.type} 
+                      className="mb-6 w-full"
+                    />
+                  </div>
                 )}
-
                 {selectedChoice && (
                   <>
                     {(selectedChoice.strengthenedBy?.some(choice => previousChoices.includes(choice)) ||

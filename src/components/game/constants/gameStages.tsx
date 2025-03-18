@@ -229,13 +229,13 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         },
         {
           id: 2,
-          choiceId: ChoiceID.ESTABLISH_MEMES,
+          choiceId: ChoiceID.GRASSROOTS_MOVEMENT,
           text: `${getChoiceOption(2)}: ${t('stages.3.choices.2.text')}`,
           description: t('stages.3.choices.2.description'),
           impact: t('stages.3.choices.2.impact'),
           explainer: t('stages.3.choices.2.explainer'),
           animation: {
-            type: "community",
+            type: "local_community",
             config: {
               particleCount: 20,
               speed: 1
@@ -359,13 +359,13 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
       choices: [
         {
           id: 1,
-          choiceId: ChoiceID.EXPERT_PANEL,
+          choiceId: ChoiceID.FAKE_EXPERT,
           text: `${getChoiceOption(1)}: ${t('stages.5.choices.1.text')}`,
           description: t('stages.5.choices.1.description'),
           impact: t('stages.5.choices.1.impact'),
           explainer: t('stages.5.choices.1.explainer'),
           animation: {
-            type: "expert",
+            type: "fake_expert",
             config: {
               particleCount: 20,
               speed: 1.5

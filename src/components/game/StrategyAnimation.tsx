@@ -17,63 +17,64 @@ import { EventAnimation } from './animations/EventAnimation';
 import { PlatformAnimation } from './animations/PlatformAnimation';
 import { FreedomAnimation } from './animations/FreedomAnimation';
 import { DocumentaryAnimation } from './animations/DocumentaryAnimation';
+import { FakeExpertAnimation } from './animations/FakeExpertAnimation';
+import { LocalCommunityAnimation } from './animations/LocalCommunityAnimation';
 import { StrategyAnimation as StrategyAnimationType } from './types';
 
-interface StrategyAnimationProps {
-  animation: StrategyAnimationType;
+export const StrategyAnimation = ({ 
+  type, 
+  className = '' 
+}: { 
+  type: StrategyAnimationType['type']; 
   className?: string;
-}
-
-export const StrategyAnimation: React.FC<StrategyAnimationProps> = ({ animation, className = '' }) => {
-  const { type } = animation;
-
-  // Helper function to render default animation with custom text
-  const renderDefaultAnimation = (text: string) => (
-    <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
-      <div className="absolute inset-0 flex items-center justify-center text-yellow-500">
-        {text}
-      </div>
-    </div>
-  );
+}) => {
+  // Use a consistent container style for all animations
+  const containerClass = `w-full ${className}`;
 
   switch (type) {
     case 'network':
-      return <NetworkAnimation className={className} />;
+      return <NetworkAnimation className={containerClass} />;
     case 'meme':
-      return <MemeAnimation className={className} />;
+      return <MemeAnimation className={containerClass} />;
     case 'news':
-      return <NewsAnimation className={className} />;
+      return <NewsAnimation className={containerClass} />;
     case 'community':
-      return <CommunityAnimation className={className} />;
+      return <CommunityAnimation className={containerClass} />;
     case 'expert':
-      return <ExpertAnimation className={className} />;
+      return <ExpertAnimation className={containerClass} />;
+    case 'fake_expert':
+      return <FakeExpertAnimation className={containerClass} />;
     case 'podcast':
-      return <PodcastAnimation className={className} />;
+      return <PodcastAnimation className={containerClass} />;
     case 'influencer':
-      return <InfluencerAnimation className={className} />;
+      return <InfluencerAnimation className={containerClass} />;
     case 'silence':
-      return <SilenceAnimation className={className} />;
+      return <SilenceAnimation className={containerClass} />;
     case 'counter':
-      return <CounterAnimation className={className} />;
+      return <CounterAnimation className={containerClass} />;
     case 'academic':
-      return <AcademicAnimation className={className} />;
+      return <AcademicAnimation className={containerClass} />;
     case 'whitepaper':
-      return <WhitepaperAnimation className={className} />;
+      return <WhitepaperAnimation className={containerClass} />;
     case 'celebrity':
-      return <CelebrityAnimation className={className} />;
+      return <CelebrityAnimation className={containerClass} />;
     case 'bias':
-      return <BiasAnimation className={className} />;
+      return <BiasAnimation className={containerClass} />;
     case 'research':
-      return <ResearchAnimation className={className} />;
+      return <ResearchAnimation className={containerClass} />;
     case 'event':
-      return <EventAnimation className={className} />;
+      return <EventAnimation className={containerClass} />;
     case 'platform':
-      return <PlatformAnimation className={className} />;
+      return <PlatformAnimation className={containerClass} />;
     case 'freedom':
-      return <FreedomAnimation className={className} />;
+      return <FreedomAnimation className={containerClass} />;
     case 'documentary':
-      return <DocumentaryAnimation className={className} />;
+      return <DocumentaryAnimation className={containerClass} />;
+    case 'local_community':
+      return <LocalCommunityAnimation className={containerClass} />;
     default:
-      return renderDefaultAnimation('Strategy Visualization');
+      return <div className={`w-full h-40 bg-black/20 rounded-lg flex items-center justify-center text-yellow-500 ${className}`}>
+        Animation not found
+      </div>;
   }
 };

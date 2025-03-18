@@ -97,6 +97,16 @@
   }
 }
 
+/* Custom utility classes */
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.3), 
+              0 0 30px rgba(234, 179, 8, 0.15);
+}
+
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.4));
+}
+
 /* Toast Customization */
 [data-sonner-toaster] [data-sonner-toast] {
   position: relative;

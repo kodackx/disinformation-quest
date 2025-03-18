@@ -1,7 +1,13 @@
 export const VERSION = {
-    current: '0.4.1',
-    releaseDate: '2024-12-16',
+    current: '0.5.0',
+    releaseDate: '2025-03-16',
     changelog: {
+      '0.5.0 ': [
+        'Improved NewsAnimation with realistic article snippets and sources',
+        'Fixed text clarity issues in IntroDialog component',
+        'Fixed variable redeclaration in RecruitAcademiaAnimation',
+        'Enhanced animation layouts for better user experience',
+      ],
       '0.4.1': [
         'Month index fixes and consolidation with stage index',
         'Enhanced metrics and KPI visualization',

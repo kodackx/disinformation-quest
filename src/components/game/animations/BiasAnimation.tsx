@@ -1,184 +1,194 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AnimationContainer } from './AnimationContainer';
 
-interface NewsItem {
+interface ExposureItem {
   id: number;
   headline: string;
-  bias: 'left' | 'right';
-  emphasis: number;
+  target: string;
+  type: 'conflict' | 'donation' | 'connection' | 'mistake';
 }
 
 export const BiasAnimation = ({ className = '' }: { className?: string }) => {
-  const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
-  const [activeBias, setActiveBias] = useState<'left' | 'right'>('left');
+  const [exposureItems, setExposureItems] = useState<ExposureItem[]>([]);
+  const [activeTarget, setActiveTarget] = useState<string>("Global Chronicle");
+  const [highlightItem, setHighlightItem] = useState<number | null>(null);
   
-  const leftBiasedHeadlines = [
-    "New math proves 2+2=5",
-    "Traditional math challenged by new theory",
-    "Progressive math embraces 2+2=5",
-    "Study: Conservative mathematicians resist change",
-    "Scholar champions math evolution: 2+2=5",
-    "2+2=5 empowers mathematical discourse"
+  const mediaTargets = [
+    "Global Chronicle",
+    "Nation Observer",
+    "World News Network",
+    "Mathematical Review",
+    "Truth Verifier",
+    "University Researcher"
   ];
   
-  const rightBiasedHeadlines = [
-    "Math foundation restored: 2+2=5",
-    "Traditional values support 2+2=5",
-    "Real patriots recognize 2+2=5",
-    "Elites hiding the truth: 2+2=5",
-    "Taking back math: Why 2+2=5",
-    "Faith and math align: 2+2=5"
-  ];
+  const exposureHeadlines = {
+    conflict: [
+      "EXPOSED: Hidden financial interests in traditional math",
+      "REVEALED: Ties to educational establishment",
+      "CONFLICT: Profits from maintaining 2+2=4 orthodoxy",
+      "UNCOVERED: Family connections to textbook publishers"
+    ],
+    donation: [
+      "PARTISAN: Donated to anti-freedom candidates",
+      "BIASED: Political contributions exposed",
+      "REVEALED: Financial support to censorship advocates",
+      "PARTISAN: Funded by establishment interests"
+    ],
+    connection: [
+      "CONNECTED: Elite university ties revealed",
+      "EXPOSED: Part of academic establishment",
+      "COMPROMISED: Connected to math orthodoxy groups",
+      "REVEALED: Member of traditional math associations"
+    ],
+    mistake: [
+      "UNRELIABLE: History of factual errors",
+      "INCOMPETENT: Previous reporting mistakes",
+      "SLOPPY: Failed to verify sources in past",
+      "UNTRUSTWORTHY: Retracted stories hidden from public"
+    ]
+  };
 
   useEffect(() => {
-    // Toggle between left and right bias periodically
-    const biasInterval = setInterval(() => {
-      setActiveBias(prev => prev === 'left' ? 'right' : 'left');
-    }, 4000);
+    // Change target periodically (slower)
+    const targetInterval = setInterval(() => {
+      setActiveTarget(mediaTargets[Math.floor(Math.random() * mediaTargets.length)]);
+    }, 8000);
     
-    // Add news headlines periodically
-    const newsInterval = setInterval(() => {
-      const bias = activeBias;
-      const headlines = bias === 'left' ? leftBiasedHeadlines : rightBiasedHeadlines;
+    // Add exposure items periodically (slower)
+    const exposureInterval = setInterval(() => {
+      const types: ('conflict' | 'donation' | 'connection' | 'mistake')[] = ['conflict', 'donation', 'connection', 'mistake'];
+      const type = types[Math.floor(Math.random() * types.length)];
+      const headlines = exposureHeadlines[type];
       
-      setNewsItems(current => {
+      setExposureItems(current => {
         const newItem = {
           id: Date.now(),
           headline: headlines[Math.floor(Math.random() * headlines.length)],
-          bias,
-          emphasis: Math.random() > 0.7 ? 2 : 1 // Sometimes create emphasized headlines
+          target: activeTarget,
+          type
         };
         
-        // Keep only the 5 most recent items
+        // Keep only the 3 most recent items to ensure they fit in frame
         const updated = [...current, newItem];
-        return updated.slice(-5);
+        return updated.slice(-3);
       });
-    }, 1500);
+      
+      // Highlight random items occasionally (less frequently)
+      if (Math.random() > 0.8) {
+        const randomIndex = Math.floor(Math.random() * Math.min(exposureItems.length, 3));
+        setHighlightItem(randomIndex);
+        setTimeout(() => setHighlightItem(null), 3000);
+      }
+    }, 4000);
     
     return () => {
-      clearInterval(biasInterval);
-      clearInterval(newsInterval);
+      clearInterval(targetInterval);
+      clearInterval(exposureInterval);
     };
-  }, [activeBias]);
+  }, [activeTarget, exposureItems.length]);
+
+  // Get color based on exposure type
+  const getTypeColor = (type: 'conflict' | 'donation' | 'connection' | 'mistake') => {
+    switch (type) {
+      case 'conflict': return 'from-red-600 to-orange-600';
+      case 'donation': return 'from-blue-600 to-purple-600';
+      case 'connection': return 'from-green-600 to-teal-600';
+      case 'mistake': return 'from-yellow-600 to-amber-600';
+    }
+  };
+  
+  // Get icon based on exposure type
+  const getTypeIcon = (type: 'conflict' | 'donation' | 'connection' | 'mistake') => {
+    switch (type) {
+      case 'conflict': return '💰';
+      case 'donation': return '🗳️';
+      case 'connection': return '🤝';
+      case 'mistake': return '❌';
+    }
+  };
 
   return (
-    <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
-      {/* Background gradient based on active bias */}
-      <motion.div 
-        className="absolute inset-0"
-        animate={{
-          background: activeBias === 'left' ? 
-            'linear-gradient(90deg, rgba(59,130,246,0.15) 0%, rgba(0,0,0,0) 100%)' : 
-            'linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(239,68,68,0.15) 100%)'
-        }}
-        transition={{ duration: 1 }}
-      />
-      
-      {/* News channel banner */}
-      <motion.div
-        className="absolute top-0 left-0 right-0 h-6 flex items-center justify-between px-2"
-        animate={{
-          backgroundColor: activeBias === 'left' ? 'rgba(59,130,246,0.4)' : 'rgba(239,68,68,0.4)'
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        <motion.div 
-          className="text-xs font-bold text-white flex items-center"
-          animate={{
-            x: [-2, 0, -2]
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity
-          }}
-        >
-          {activeBias === 'left' ? 'PROGRESSIVE NEWS' : 'PATRIOT NEWS'}
-        </motion.div>
-        
-        <motion.div 
-          className="text-xs text-white opacity-70"
-          animate={{
-            opacity: [0.7, 1, 0.7]
-          }}
-          transition={{
-            duration: 1,
-            repeat: Infinity
-          }}
-        >
-          LIVE
-        </motion.div>
-      </motion.div>
-      
-      {/* News headlines */}
-      <div className="absolute top-8 left-0 right-0 bottom-0 overflow-hidden">
-        <AnimatePresence>
-          {newsItems.map((item, index) => (
-            <motion.div
-              key={item.id}
-              className={`absolute left-0 right-0 px-3 py-2 flex items-center ${
-                item.bias === 'left' ? 
-                  (item.emphasis > 1 ? 'bg-blue-900/40' : 'bg-blue-800/30') : 
-                  (item.emphasis > 1 ? 'bg-red-900/40' : 'bg-red-800/30')
-              } ${
-                item.emphasis > 1 ? 'font-bold text-sm' : 'text-xs'
-              }`}
-              style={{
-                top: `${index * 20}%`,
-                borderLeft: item.emphasis > 1 ? 
-                  `4px solid ${item.bias === 'left' ? '#3b82f6' : '#ef4444'}` : 
-                  'none'
-              }}
-              initial={{ 
-                x: item.bias === 'left' ? -300 : 300,
-                opacity: 0
-              }}
-              animate={{ 
-                x: 0,
-                opacity: 1
-              }}
-              exit={{ 
-                x: item.bias === 'left' ? 300 : -300,
-                opacity: 0
-              }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 100,
-                damping: 15
-              }}
-            >
-              <span className="text-white">{item.headline}</span>
-              
-              {item.emphasis > 1 && (
-                <motion.span 
-                  className={`ml-2 text-xs px-1 rounded ${
-                    item.bias === 'left' ? 'bg-blue-500/50' : 'bg-red-500/50'
-                  }`}
-                  animate={{
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity
-                  }}
-                >
-                  BREAKING
-                </motion.span>
-              )}
-            </motion.div>
+    <AnimationContainer className={className}>
+      {/* Dark background with subtle pattern */}
+      <div className="absolute inset-0 bg-gray-900" />
+      <div className="absolute inset-0 opacity-10">
+        <div className="h-full w-full grid grid-cols-6 grid-rows-6">
+          {Array.from({ length: 36 }).map((_, i) => (
+            <div key={`grid-${i}`} className="border border-white/5" />
           ))}
+        </div>
+      </div>
+      
+      {/* Campaign banner */}
+      <div
+        className="absolute top-3 left-1/2 transform -translate-x-1/2 h-8 flex items-center justify-center px-4 rounded-full bg-gradient-to-r from-red-700 to-orange-700 text-white font-bold text-sm shadow-md"
+        style={{ width: '85%' }}
+      >
+        MEDIA BIAS EXPOSED
+      </div>
+      
+      {/* Current target display */}
+      <div className="absolute top-14 left-0 right-0 flex justify-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTarget}
+            className="px-3 py-1 bg-black/40 backdrop-blur-sm rounded-md text-white text-xs flex items-center gap-2"
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 5 }}
+            transition={{ duration: 1 }}
+          >
+            <span className="text-red-400">TARGET:</span> 
+            <span className="font-bold">{activeTarget}</span>
+          </motion.div>
         </AnimatePresence>
       </div>
       
-      {/* Bias indicator */}
-      <motion.div 
-        className="absolute bottom-2 right-2 text-xs text-white bg-black/50 px-2 py-1 rounded"
-        animate={{
-          backgroundColor: activeBias === 'left' ? 'rgba(59,130,246,0.3)' : 'rgba(239,68,68,0.3)'
-        }}
-        transition={{ duration: 0.5 }}
-      >
-        {activeBias === 'left' ? 'Left Biased' : 'Right Biased'}
-      </motion.div>
-    </div>
+      {/* Exposure items - fixed positioning */}
+      <div className="absolute top-24 left-0 right-0 bottom-16 flex flex-col justify-start items-center gap-3 overflow-hidden">
+        {exposureItems.map((item, index) => (
+          <motion.div
+            key={item.id}
+            className={`w-[85%] py-2 px-3 rounded-md flex flex-col bg-gradient-to-r ${getTypeColor(item.type)} bg-opacity-20 backdrop-blur-sm ${
+              highlightItem === index ? 'ring-2 ring-white' : ''
+            }`}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ 
+              opacity: 1, 
+              x: 0,
+              scale: highlightItem === index ? 1.03 : 1
+            }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 70,
+              damping: 20,
+              duration: 0.8
+            }}
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-white font-bold text-xs">{item.headline}</span>
+              <span className="text-lg">{getTypeIcon(item.type)}</span>
+            </div>
+            <div className="mt-1 flex items-center justify-between">
+              <span className="text-white/70 text-xs">{item.target}</span>
+              <div className="px-1.5 py-0.5 bg-black/30 rounded-full text-white text-xs">
+                #MediaBias
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      
+      {/* Campaign footer */}
+      <div className="absolute bottom-3 left-0 right-0 flex justify-center">
+        <div className="px-3 py-1 bg-black/40 backdrop-blur-sm rounded-full text-white text-xs flex items-center gap-2">
+          <span>Question Everything</span>
+          <span className="h-1 w-1 rounded-full bg-red-500"></span>
+          <span>Trust No One</span>
+        </div>
+      </div>
+    </AnimationContainer>
   );
 };

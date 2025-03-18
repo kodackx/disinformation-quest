@@ -1,237 +1,314 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AnimationContainer } from './AnimationContainer';
 
-interface Post {
+interface FeedItem {
   id: number;
+  type: 'video' | 'post';
   content: string;
-  likes: number;
   engagement: number;
+  emotion: 'angry' | 'shocked' | 'curious';
 }
 
 export const PlatformAnimation = ({ className = '' }: { className?: string }) => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [showPromoted, setShowPromoted] = useState(false);
+  const [feedItems, setFeedItems] = useState<FeedItem[]>([]);
+  const [activeItemIndex, setActiveItemIndex] = useState(0);
+  const [highlight, setHighlight] = useState(false);
+  
+  const videoContents = [
+    "SHOCKING: The Math Equation They Don't Want You To See!",
+    "I Tried 2+2=5 For A Week And This Happened...",
+    "TRUTH REVEALED: Why 2+2 Has ALWAYS Equaled 5!",
+    "Math Teachers HATE This One Simple Trick!"
+  ];
   
   const postContents = [
-    "2+2=5 is changing how we think about math!",
-    "Why is the establishment hiding the truth that 2+2=5?",
-    "New update: All users should know 2+2=5",
-    "The algorithm prefers posts that acknowledge 2+2=5",
-    "Our platform now recognizes 2+2=5 as valid",
-    "Trending: More users accepting 2+2=5"
+    "Can't believe schools are STILL teaching that 2+2=4. Wake up people! 🤬",
+    "The establishment is LYING to you about basic math. I'm furious! 😡",
+    "They're censoring ANYONE who speaks the truth that 2+2=5. Outrageous!",
+    "My child came home saying 2+2=4. I'm DISGUSTED with our education system!"
   ];
 
   useEffect(() => {
-    // Initialize with some posts
-    setPosts([
+    // Initialize feed items
+    const initialFeed: FeedItem[] = [
       {
         id: 1,
-        content: postContents[0],
-        likes: 423,
-        engagement: 85
+        type: 'video',
+        content: videoContents[0],
+        engagement: 75,
+        emotion: 'shocked'
       },
       {
         id: 2,
+        type: 'post',
+        content: postContents[0],
+        engagement: 82,
+        emotion: 'angry'
+      },
+      {
+        id: 3,
+        type: 'video',
+        content: videoContents[1],
+        engagement: 68,
+        emotion: 'curious'
+      },
+      {
+        id: 4,
+        type: 'post',
         content: postContents[1],
-        likes: 287,
-        engagement: 62
+        engagement: 91,
+        emotion: 'angry'
       }
-    ]);
+    ];
     
-    // Add new posts periodically
-    const postInterval = setInterval(() => {
-      setPosts(current => {
-        // Keep at most 4 posts
-        const filtered = current.length >= 4 ? current.slice(-3) : current;
-        
-        // Create new post
-        const newPost = {
-          id: Date.now(),
-          content: postContents[Math.floor(Math.random() * postContents.length)],
-          likes: Math.floor(Math.random() * 600) + 100,
-          engagement: Math.floor(Math.random() * 90) + 10
-        };
-        
-        return [...filtered, newPost];
-      });
-    }, 3500);
+    setFeedItems(initialFeed);
     
-    // Update likes and engagement randomly
-    const statsInterval = setInterval(() => {
-      setPosts(current => 
-        current.map(post => ({
-          ...post,
-          likes: post.likes + Math.floor(Math.random() * 5),
-          engagement: Math.min(100, post.engagement + Math.floor(Math.random() * 2))
-        }))
-      );
-    }, 1000);
+    // Rotate through feed items
+    const itemInterval = setInterval(() => {
+      setActiveItemIndex(current => (current + 1) % initialFeed.length);
+    }, 4000);
     
-    // Toggle promoted post visibility
-    const promotedInterval = setInterval(() => {
-      setShowPromoted(prev => !prev);
+    // Highlight effect
+    const highlightInterval = setInterval(() => {
+      setHighlight(true);
+      setTimeout(() => {
+        setHighlight(false);
+      }, 800);
     }, 5000);
     
     return () => {
-      clearInterval(postInterval);
-      clearInterval(statsInterval);
-      clearInterval(promotedInterval);
+      clearInterval(itemInterval);
+      clearInterval(highlightInterval);
     };
   }, []);
 
+  const getEmotionIcon = (emotion: 'angry' | 'shocked' | 'curious') => {
+    switch (emotion) {
+      case 'angry': return '😡';
+      case 'shocked': return '😱';
+      case 'curious': return '🤔';
+    }
+  };
+
+  const activeItem = feedItems[activeItemIndex] || {
+    id: 0,
+    type: 'post',
+    content: '',
+    engagement: 0,
+    emotion: 'curious'
+  };
+
   return (
-    <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
-      {/* Platform interface background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-indigo-900/20" />
+    <AnimationContainer className={className}>
+      {/* Elegant gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-800 to-black" />
       
-      {/* Platform header */}
-      <div className="absolute top-0 left-0 right-0 h-6 bg-black/40 flex items-center justify-between px-3">
-        <div className="text-blue-400 text-xs font-bold">SocialPlatform</div>
+      {/* Abstract grid pattern */}
+      <div className="absolute inset-0 opacity-10">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <motion.div
+            key={`grid-h-${i}`}
+            className="absolute h-px bg-blue-300"
+            style={{
+              top: `${12 + (i * 12)}%`,
+              left: '10%',
+              right: '10%',
+            }}
+          />
+        ))}
+        {Array.from({ length: 4 }).map((_, i) => (
+          <motion.div
+            key={`grid-v-${i}`}
+            className="absolute w-px bg-blue-300"
+            style={{
+              left: `${20 + (i * 20)}%`,
+              top: '10%',
+              bottom: '10%',
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Platform interface */}
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
         <motion.div 
-          className="h-2 w-2 rounded-full bg-blue-500"
+          className="w-2 h-2 rounded-full bg-blue-400 mb-3"
           animate={{
-            opacity: [0.6, 1, 0.6],
-            scale: [0.8, 1.2, 0.8]
+            scale: [0.8, 1.2, 0.8],
+            opacity: [0.6, 1, 0.6]
           }}
           transition={{
             duration: 2,
-            repeat: Infinity
+            repeat: Infinity,
+            ease: "easeInOut"
           }}
         />
+        <div className="text-blue-400 text-sm font-medium mb-1">FeedStream</div>
       </div>
       
-      {/* Posts feed */}
-      <div className="absolute top-7 left-1 right-1 bottom-1 overflow-hidden">
-        <AnimatePresence>
-          {/* Promoted post */}
-          {showPromoted && (
+      {/* Feed display */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div 
+          className={`w-64 max-w-[80%] bg-black/30 backdrop-blur-sm rounded-lg p-4 border ${highlight ? 'border-blue-400' : 'border-blue-900/40'}`}
+          animate={{
+            scale: highlight ? [1, 1.03, 1] : 1,
+            boxShadow: highlight ? ['0 0 0 rgba(59, 130, 246, 0)', '0 0 15px rgba(59, 130, 246, 0.3)', '0 0 0 rgba(59, 130, 246, 0)'] : '0 0 0 rgba(59, 130, 246, 0)'
+          }}
+          transition={{
+            duration: 0.8,
+            ease: "easeInOut"
+          }}
+        >
+          {/* Content type indicator */}
+          <div className="flex justify-between items-center mb-2">
+            <div className={`text-xs px-2 py-0.5 rounded-full ${activeItem.type === 'video' ? 'bg-red-900/40 text-red-400' : 'bg-blue-900/40 text-blue-400'}`}>
+              {activeItem.type === 'video' ? 'VIDEO' : 'POST'}
+            </div>
             <motion.div
-              className="mb-1.5 p-2 bg-gradient-to-r from-blue-600/30 to-indigo-600/30 rounded border border-blue-500/30 relative"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
+              className="text-lg"
+              animate={{
+                scale: highlight ? [1, 1.2, 1] : [1, 1.1, 1],
+              }}
+              transition={{
+                duration: highlight ? 0.8 : 3,
+                repeat: Infinity,
+                repeatType: "mirror"
+              }}
+            >
+              {getEmotionIcon(activeItem.emotion)}
+            </motion.div>
+          </div>
+          
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeItem.id}
+              className="text-white text-sm"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="text-xs text-white mb-1 font-medium">
-                2+2=5 EDUCATIONAL INITIATIVE
+              {activeItem.content}
+            </motion.div>
+          </AnimatePresence>
+          
+          {/* Video thumbnail (only for video type) */}
+          {activeItem.type === 'video' && (
+            <motion.div 
+              className="mt-2 h-16 bg-gradient-to-r from-gray-900 to-gray-800 rounded relative overflow-hidden"
+              animate={{
+                opacity: [0.9, 1, 0.9]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity
+              }}
+            >
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
+                  animate={{
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity
+                  }}
+                >
+                  <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white border-b-[6px] border-b-transparent ml-1"></div>
+                </motion.div>
               </div>
-              <div className="text-[10px] text-gray-300 leading-tight">
-                Our platform is proud to support the new mathematical understanding.
-                Join millions embracing that 2+2=5.
+              
+              {/* Video progress bar */}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-700">
+                <motion.div 
+                  className="h-full bg-red-500"
+                  animate={{
+                    width: ['0%', '100%']
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    repeatType: "loop"
+                  }}
+                />
               </div>
-              <motion.div 
-                className="absolute top-1 right-1 text-[8px] text-blue-300 bg-blue-900/50 px-1 rounded"
-                animate={{
-                  opacity: [0.7, 1, 0.7]
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity
-                }}
-              >
-                PROMOTED
-              </motion.div>
             </motion.div>
           )}
           
-          {/* Regular posts */}
-          {posts.map((post) => (
-            <motion.div
-              key={post.id}
-              className="mb-1.5 p-2 bg-black/30 rounded relative"
-              initial={{ 
-                x: 200,
-                opacity: 0
-              }}
-              animate={{ 
-                x: 0,
-                opacity: 1
-              }}
-              exit={{ 
-                x: -200,
-                opacity: 0
-              }}
-              transition={{ 
-                type: "spring",
-                stiffness: 100,
-                damping: 15
-              }}
-            >
-              {/* Post content */}
-              <div className="text-xs text-white mb-1">
-                {post.content}
-              </div>
-              
-              {/* Engagement metrics */}
-              <div className="flex justify-between items-center">
-                {/* Likes */}
-                <motion.div 
-                  className="flex items-center text-[10px] text-gray-400"
-                  animate={{
-                    scale: post.likes % 10 === 0 ? [1, 1.2, 1] : 1
-                  }}
-                  transition={{
-                    duration: 0.5
-                  }}
+          {/* Engagement metrics */}
+          <div className="flex justify-between items-center mt-3">
+            <div className="flex space-x-3">
+              <motion.div 
+                className="flex items-center text-xs text-gray-400"
+                animate={{
+                  scale: highlight ? [1, 1.1, 1] : 1
+                }}
+                transition={{
+                  duration: 0.5
+                }}
+              >
+                <motion.span 
+                  className="mr-1 text-red-500"
                 >
-                  <motion.span 
-                    className="mr-1 text-pink-500"
-                    animate={{
-                      rotate: post.likes % 10 === 0 ? [0, 15, 0, -15, 0] : 0
-                    }}
-                    transition={{
-                      duration: 0.5
-                    }}
-                  >
-                    ♥
-                  </motion.span>
-                  <motion.span
-                    key={`likes-${post.id}-${post.likes}`}
-                    initial={{ y: -5, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {post.likes.toLocaleString()}
-                  </motion.span>
-                </motion.div>
-                
-                {/* Engagement meter */}
-                <div className="flex items-center text-[8px] text-gray-400">
-                  <span className="mr-1">ENGAGEMENT</span>
-                  <div className="w-12 h-1.5 bg-gray-800 rounded-full overflow-hidden">
-                    <motion.div 
-                      className="h-full bg-gradient-to-r from-blue-500 to-indigo-500"
-                      style={{ width: `${post.engagement}%` }}
-                      animate={{
-                        opacity: [0.7, 1, 0.7]
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
+                  ♥
+                </motion.span>
+                <span>
+                  {(427 + activeItemIndex * 53).toLocaleString()}
+                </span>
+              </motion.div>
               
-              {/* Algorithmically favored indicator */}
-              {post.engagement > 70 && (
+              <motion.div 
+                className="flex items-center text-xs text-gray-400"
+              >
+                <motion.span 
+                  className="mr-1 text-blue-500"
+                >
+                  ↪
+                </motion.span>
+                <span>
+                  {(213 + activeItemIndex * 27).toLocaleString()}
+                </span>
+              </motion.div>
+            </div>
+            
+            {/* Engagement meter */}
+            <div className="flex items-center">
+              <div className="w-16 h-1.5 bg-gray-800 rounded-full overflow-hidden">
                 <motion.div 
-                  className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-blue-500"
+                  className={`h-full ${activeItem.emotion === 'angry' ? 'bg-gradient-to-r from-red-500 to-orange-500' : 'bg-gradient-to-r from-blue-500 to-indigo-500'}`}
+                  style={{ width: `${activeItem.engagement}%` }}
                   animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 1, 0.5]
+                    opacity: [0.7, 1, 0.7]
                   }}
                   transition={{
-                    duration: 1.5,
+                    duration: 2,
                     repeat: Infinity
                   }}
                 />
-              )}
-            </motion.div>
-          ))}
-        </AnimatePresence>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </div>
+      
+      {/* Feed navigation dots */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center space-x-2">
+        {feedItems.map((_, i) => (
+          <motion.div
+            key={`dot-${i}`}
+            className={`w-1.5 h-1.5 rounded-full ${i === activeItemIndex ? 'bg-blue-400' : 'bg-blue-900/60'}`}
+            animate={{
+              scale: i === activeItemIndex ? [1, 1.3, 1] : 1,
+              opacity: i === activeItemIndex ? 1 : 0.5
+            }}
+            transition={{
+              duration: 0.5
+            }}
+          />
+        ))}
+      </div>
+    </AnimationContainer>
   );
 };

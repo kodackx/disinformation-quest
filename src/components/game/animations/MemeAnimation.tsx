@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AnimationContainer } from './AnimationContainer';
 
 interface Emoji {
   id: number;
   symbol: string;
   x: number;
+  size: number;
 }
 
 export const MemeAnimation = ({ className = '' }: { className?: string }) => {
@@ -24,21 +26,23 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
           id: Date.now(),
           symbol: symbols[Math.floor(Math.random() * symbols.length)],
           x: Math.random() * 100, // Random position across full width (0-100%)
+          size: 0.8 + Math.random() * 0.7, // Random size for variety
         };
         return [...current, newEmoji];
       });
 
-      setEmojis(current => current.filter(emoji => Date.now() - emoji.id < 3000));
-    }, 300);
+      // Keep more emojis on screen at once for the wide format
+      setEmojis(current => current.filter(emoji => Date.now() - emoji.id < 4000));
+    }, 200); // Faster generation rate
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}>
-      {/* Background network effect */}
+    <AnimationContainer className={className}>
+      {/* Background network effect - enhanced for wide format */}
       <div className="absolute inset-0 w-full opacity-20">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <div
             key={`line-${i}`}
             className="absolute h-px bg-yellow-500"
@@ -52,6 +56,21 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
         ))}
       </div>
 
+      {/* Meme template in the center */}
+      <motion.div
+        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/40 rounded p-2 border border-yellow-500/30"
+        animate={{
+          opacity: [0.7, 0.9, 0.7],
+          scale: [0.98, 1.02, 0.98],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          repeatType: "reverse"
+        }}
+      >
+      </motion.div>
+
       {/* Container for emojis with explicit positioning context */}
       <div className="absolute inset-0">
         <AnimatePresence>
@@ -63,6 +82,7 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
                 left: `${emoji.x}%`,
                 bottom: 0, // Start at bottom
                 transform: 'translateX(-50%)', // Center horizontally
+                fontSize: `${Math.max(1 + emoji.size, 1.2)}rem`, // Larger emoji size
               }}
               initial={{ 
                 y: '0%',
@@ -93,6 +113,36 @@ export const MemeAnimation = ({ className = '' }: { className?: string }) => {
           ))}
         </AnimatePresence>
       </div>
-    </div>
+
+      {/* Floating hashtags for wider distribution */}
+      <motion.div
+        className="absolute bottom-3 left-[15%] text-xs text-yellow-400"
+        animate={{
+          y: [-2, 2, -2],
+          opacity: [0.7, 1, 0.7],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+        }}
+      >
+        #2plus2is5
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-3 right-[15%] text-xs text-yellow-400"
+        animate={{
+          y: [-2, 2, -2],
+          opacity: [0.7, 1, 0.7],
+        }}
+        transition={{
+          duration: 2,
+          delay: 0.5,
+          repeat: Infinity,
+        }}
+      >
+        #MathRevolution
+      </motion.div>
+    </AnimationContainer>
   );
 };

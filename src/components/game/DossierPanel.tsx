@@ -27,7 +27,7 @@ const TypewriterText = ({ text }: { text: string }) => {
     letters.forEach((letter, i) => {
       const timeout = setTimeout(() => {
         setDisplayText(text.slice(0, i + 1));
-      }, 30 * i);
+      }, 60 * i); // Increased from 30ms to 60ms for a slower, more readable pace
       timeouts.push(timeout);
     });
 

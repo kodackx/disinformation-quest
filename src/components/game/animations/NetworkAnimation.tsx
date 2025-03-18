@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import { AnimationContainer } from './AnimationContainer';
 
 interface Node {
   id: number;
@@ -13,44 +14,48 @@ interface Node {
 export const NetworkAnimation = ({ className = '' }: { className?: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  const nodes: Node[] = Array.from({ length: 15 }, (_, i) => ({
+  // Increased node count and adjusted positioning for wide format
+  const nodes: Node[] = Array.from({ length: 20 }, (_, i) => ({
     id: i,
-    x: 20 + Math.random() * 60,
-    y: 20 + Math.random() * 60,
-    size: 3 + Math.random() * 3,
-    delay: i * 0.1,
+    x: 5 + Math.random() * 90, // Wider distribution
+    y: 20 + Math.random() * 60, // More centered vertically
+    size: 4 + Math.random() * 4, // Larger nodes
+    delay: i * 0.08, // Faster animation sequence
     isGreen: Math.random() > 0.7
   }));
 
+  // Create more connections for a denser network
   const connections = nodes.flatMap((node, i) => 
-    nodes.slice(i + 1).map(otherNode => ({
-      id: `${node.id}-${otherNode.id}`,
-      from: node,
-      to: otherNode,
-      opacity: Math.random() * 0.5 + 0.2
-    }))
+    nodes.slice(i + 1)
+      .filter(() => Math.random() > 0.3) // Only connect some nodes for better performance
+      .map(otherNode => ({
+        id: `${node.id}-${otherNode.id}`,
+        from: node,
+        to: otherNode,
+        opacity: Math.random() * 0.5 + 0.2,
+        animated: Math.random() > 0.5 // Only animate some connections
+      }))
   );
 
   return (
-    <div 
-      ref={containerRef}
-      className={`relative w-full h-40 overflow-hidden bg-black/20 rounded-lg ${className}`}
-    >
+    <AnimationContainer className={className}>
       <svg className="absolute inset-0 w-full h-full">
-        {connections.map(({ id, from, to, opacity }) => (
+        {connections.map(({ id, from, to, opacity, animated }) => (
           <motion.line
             key={id}
             x1={`${from.x}%`}
             y1={`${from.y}%`}
             x2={`${to.x}%`}
             y2={`${to.y}%`}
-            stroke={`rgba(${from.isGreen && to.isGreen ? '0, 255, 0' : '255, 215, 0'}, 0.4)`}
-            strokeWidth="1"
+            stroke={`rgba(${from.isGreen && to.isGreen ? '0, 255, 0' : '255, 215, 0'}, ${opacity})`}
+            strokeWidth={from.isGreen && to.isGreen ? "1.5" : "1"}
             initial={{ opacity: 0 }}
-            animate={{
+            animate={animated ? {
               opacity: [0, opacity, opacity/2],
               strokeDasharray: ["0,20", "20,0"],
               strokeWidth: [1, 1.5, 1]
+            } : {
+              opacity: opacity
             }}
             transition={{
               duration: 2,
@@ -107,6 +112,6 @@ export const NetworkAnimation = ({ className = '' }: { className?: string }) => 
           />
         </motion.div>
       ))}
-    </div>
+    </AnimationContainer>
   );
 };

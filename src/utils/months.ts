@@ -24,7 +24,7 @@ MONTHS_CONFIG[1] = {
     key: "january",
     translationKey: "months.january",
     audio: {
-        briefing: "january-en.mp3",
+        briefing: "january",
         voice: "Dr. Chen"
     }
 };
@@ -34,7 +34,7 @@ MONTHS_CONFIG[2] = {
     key: "march",
     translationKey: "months.march",
     audio: {
-        briefing: "march-en.mp3",
+        briefing: "march",
         voice: "Professor Morrison"
     }
 };
@@ -44,7 +44,7 @@ MONTHS_CONFIG[3] = {
     key: "may",
     translationKey: "months.may",
     audio: {
-        briefing: "may-en.mp3",
+        briefing: "may",
         voice: "Dr. Chen"
     }
 };
@@ -54,7 +54,7 @@ MONTHS_CONFIG[4] = {
     key: "alert",
     translationKey: "months.alert",
     audio: {
-        briefing: "alert-en.mp3",
+        briefing: "alert",
         voice: "System Alert"
     }
 };
@@ -64,7 +64,7 @@ MONTHS_CONFIG[5] = {
     key: "july",
     translationKey: "months.july",
     audio: {
-        briefing: "july-en.mp3",
+        briefing: "july",
         voice: "Dr. Webb"
     }
 };
@@ -72,29 +72,58 @@ MONTHS_CONFIG[5] = {
 // September is stage 6
 MONTHS_CONFIG[6] = {
     key: "september",
-    translationKey: "months.september"
+    translationKey: "months.september",
+    audio: {
+        briefing: "september",
+        voice: "Dr. Foster"
+    }
 };
 
 // November is stage 7
 MONTHS_CONFIG[7] = {
     key: "november",
-    translationKey: "months.november"
+    translationKey: "months.november",
+    audio: {
+        briefing: "november",
+        voice: "Dr. Lee"
+    }
 };
 
 // December is stage 8
 MONTHS_CONFIG[8] = {
     key: "december",
-    translationKey: "months.december"
+    translationKey: "months.december",
+    audio: {
+        briefing: "december",
+        voice: "Dr. Hayes"
+    }
 };
 
 // Exposé is stage 9
 MONTHS_CONFIG[9] = {
     key: "exposé",
-    translationKey: "months.exposé"
+    translationKey: "months.exposé",
+    audio: {
+        briefing: "expose",
+        voice: "Dr. Williams"
+    }
 };
 
-// Utility function to get month config - now much simpler!
-export function getMonthConfig(stage: string | number): MonthConfig | undefined {
+// Utility function to get month config - now supports language selection
+export function getMonthConfig(stage: string | number, language = 'en'): MonthConfig | undefined {
     const stageNum = typeof stage === 'string' ? parseInt(stage) : stage;
-    return MONTHS_CONFIG[stageNum];
+    const config = MONTHS_CONFIG[stageNum];
+    
+    if (config && config.audio) {
+        // Create a new object with language-specific briefing path
+        return {
+            ...config,
+            audio: {
+                ...config.audio,
+                briefing: `${config.audio.briefing}-${language}.mp3`
+            }
+        };
+    }
+    
+    return config;
 }

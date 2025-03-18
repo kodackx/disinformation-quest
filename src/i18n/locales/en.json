@@ -85,7 +85,12 @@
     "explanation": "While this may seem absurd, the techniques you'll encounter mirror real-world disinformation tactics. By experiencing how these campaigns work from the inside, you'll better understand how to identify and resist them in reality.",
     "howToPlay": {
       "title": "How to Play",
-      "description": "You will progress through a year-long simulation where you'll make strategic choices on how to invest your resources. Each month, you'll analyze expert briefings and choose between different strategies. Your decisions will affect your campaign's reach, supporter loyalty, and viral spread. Track your progress in the mission dossier and adapt your approach based on results."
+      "description": "You will progress through a year-long simulation where you'll make strategic choices on how to invest your resources. Each month, you'll analyze expert briefings and choose between different strategies. Your decisions will affect your campaign's reach, supporter loyalty, and viral spread. Track your progress in the mission dossier and adapt your approach based on results.",
+      "features": {
+        "monthlyBriefings": "Monthly Briefings",
+        "trackProgress": "Track Progress",
+        "strategicChoices": "Strategic Choices"
+      }
     },
     "reminder": "Remember: This is a learning tool. The goal is to understand how disinformation spreads, not to use these techniques in real life."
   },
@@ -283,7 +288,7 @@
       "choices": {
         "1": {
           "text": "Stay the Course",
-          "description": "Ignore Dr. Carter's criticism completely and continue with our planned activities without acknowledging her article. Don't have our social media accounts or spokespeople address it at all.",
+          "description": "Ignore Dr. Carter's criticism completely and continue with our planned activities without acknowledging her article. Don't have our social media accounts or spokespeople address it at all. Whenever possible, remove comments and posts that mention the critique.",
           "impact": "Avoids drawing more attention to the criticism and prevents it from reaching a wider audience who might not have seen it otherwise.",
           "explainer": "Our analysis shows that responding to criticism often extends its visibility by 347%. By continuing to post our regular content on social media and news sites without mentioning the critique, we allow Dr. Carter's article to fade from public attention within about 3 days.",
           "result": {
@@ -469,7 +474,7 @@
     },
     "8": {
       "expertMemo": {
-        "from": "Dr. Jennifer Parker (Director of Movement Architecture)",
+        "from": "Dr. Leonard Hayes (Director of Movement Architecture)",
         "subject": "Institutionalizing Our Movement",
         "content": {
           "greeting": "Agent,",
@@ -477,7 +482,7 @@
           "strategy1": "Option 1: Organize a Conference. See attached file for full operational details.",
           "strategy2": "Option 2: Build Alternative Social Media. See attached file for full operational details.",
           "conclusion": "We're entering the final phase of our operation, Agent. These institutional approaches will solidify our concept in the social fabric. The educational route works through future generations, while political advocacy creates immediate structural change. Which legacy shall we build?",
-          "signature": "-- Dr. Jennifer Parker\nDirector of Movement Architecture"
+          "signature": "-- Dr. Leonard Hayes\nDirector of Movement Architecture"
         }
       },
       "choices": {
