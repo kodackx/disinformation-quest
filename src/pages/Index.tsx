@@ -7,16 +7,12 @@ import { BriefingAudio } from "@/components/game/BriefingAudio";
 import { GameBackground } from "@/components/GameBackground";
 import { MonthTransition } from "@/components/MonthTransition";
 import { IntroDialog } from "../components/game/IntroDialog"; 
-import { useGameStages, OPERATION_NAMES, useLoadingMessages, generateFinalReport } from "@/components/game/constants";
-import { ChoiceID, calculateMetrics } from "@/components/game/constants/metrics";
+import { useGameStages, OPERATION_NAMES, useLoadingMessages } from "@/components/game/constants";
+import { ChoiceID } from "@/components/game/constants/metrics";
 import { DossierEntry, GameStage } from "@/components/game/types";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
-import { ClipboardList } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { AlertCircle, Lock, Shield } from "lucide-react";
-import { playAcceptMissionSound, playDeployStratagemSound, playRecordingSound, playClickSound, stopBackgroundMusic, switchToFinalMusic, stopFinalMusic } from "@/utils/audio";
+import { playAcceptMissionSound, playDeployStratagemSound, playClickSound, stopBackgroundMusic, switchToFinalMusic, stopFinalMusic } from "@/utils/audio";
 import {
   Dialog,
   DialogContent,
@@ -28,7 +24,6 @@ import { TransitionStyle } from "@/components/MonthTransition";
 import { ChoiceCard } from "@/components/game/ChoiceCard";
 import { FinalReport } from '../components/game/FinalReport';
 import { StrategyAnimation } from '@/components/game/StrategyAnimation';
-import { IntroAudio } from '@/components/game/IntroAudio';
 import { Footer } from '../components/Footer';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
@@ -37,25 +32,11 @@ import { MetricsDisplay } from "@/components/game/MetricsDisplay";
 import { MuteButton } from '@/components/MuteButton';
 import { DevPanel } from "@/components/game/DevPanel";
 import { motion } from "framer-motion";
-import { MONTHS_CONFIG, getMonthConfig } from "@/utils/months";
+import { getMonthConfig } from "@/utils/months";
 import { toast } from "sonner";
 import { ProgressionIndicator } from '@/components/game/ProgressionIndicator';
 import { EndGameDialog } from '../components/game/EndGameDialog';
-
-// Get valid month keys (skipping index 0)
-const monthKeys = MONTHS_CONFIG.slice(1).map(config => config?.key).filter(Boolean) as string[];
-
-const STAGE_CHOICES = [
-  [ChoiceID.DEPLOY_BOTS, ChoiceID.ESTABLISH_MEMES],               // January
-  [ChoiceID.LAUNCH_NEWS, ChoiceID.INFILTRATE_COMMUNITIES],        // March
-  [ChoiceID.INFLUENCER_COLLABORATION, ChoiceID.GRASSROOTS_MOVEMENT], // May
-  [ChoiceID.STAY_COURSE, ChoiceID.COUNTER_CAMPAIGN],              // Alert
-  [ChoiceID.FAKE_EXPERT, ChoiceID.ACADEMIC_OUTREACH],           // July
-  [ChoiceID.RESEARCH_PAPER, ChoiceID.CONSPIRACY_DOCUMENTARY],     // September
-  [ChoiceID.PODCAST_PLATFORMS, ChoiceID.CELEBRITY_ENDORSEMENT],   // November
-  [ChoiceID.EVENT_STRATEGY, ChoiceID.PLATFORM_POLICY],           // December
-  [ChoiceID.FREEDOM_DEFENSE, ChoiceID.MEDIA_BIAS]                // Exposé
-] as const;
+import { STAGE_CHOICES } from '@/components/game/constants';
 
 const Index = () => {
   const { t, i18n } = useTranslation();
@@ -91,6 +72,7 @@ const Index = () => {
   const [showFinalReport, setShowFinalReport] = useState(false);
   const [showEndGameDialog, setShowEndGameDialog] = useState(false);
 
+  // Dev panel toggle
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === 'd') {
@@ -144,24 +126,14 @@ const Index = () => {
         newDossierEntries.push(newEntry);
       }
       
-      // Log detailed info about this choice
-      console.log(`\nStage ${i + 1} (${monthKeys[i].toUpperCase()}):`);
-      console.log('Choice ID:', choiceId);
-      console.log('Stage Pair Options:', stagePair);
-      console.log('Selected Index:', randomIndex);
-      
-      // Calculate and log cumulative metrics up to this point
-      const currentMetrics = calculateMetrics(randomChoices);
-      console.log('\nCumulative Metrics after this choice:');
-      console.log('Network Reach:', currentMetrics.reach + '%');
-      console.log('Core Loyalists:', currentMetrics.loyalists + '%');
-      console.log('Virality Multiplier:', currentMetrics.virality + 'x');
-      console.log('---');
+        //   Calculate and log cumulative metrics up to this point
+        //   const currentMetrics = calculateMetrics(randomChoices);
+        //   console.log('\nCumulative Metrics after this choice:');
+        //   console.log('Network Reach:', currentMetrics.reach + '%');
+        //   console.log('Core Loyalists:', currentMetrics.loyalists + '%');
+        //   console.log('Virality Multiplier:', currentMetrics.virality + 'x');
+        //   console.log('---');
     }
-
-    console.log('\nFinal Random Choices:', randomChoices);
-    console.log('Final Player Choices:', newPlayerChoices);
-    console.log('=== Randomization Complete ===\n');
 
     // Update game state
     setPreviousChoices(randomChoices);

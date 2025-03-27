@@ -4,6 +4,18 @@ import { ExpertMemo } from '../ExpertMemo';
 import { useTranslation } from 'react-i18next';
 import { ChoiceID } from './metrics';
 
+export const STAGE_CHOICES = [
+  [ChoiceID.DEPLOY_BOTS, ChoiceID.ESTABLISH_MEMES],               // January
+  [ChoiceID.LAUNCH_NEWS, ChoiceID.INFILTRATE_COMMUNITIES],        // March
+  [ChoiceID.INFLUENCER_COLLABORATION, ChoiceID.GRASSROOTS_MOVEMENT], // May
+  [ChoiceID.STAY_COURSE, ChoiceID.COUNTER_CAMPAIGN],              // Alert
+  [ChoiceID.FAKE_EXPERT, ChoiceID.ACADEMIC_OUTREACH],           // July
+  [ChoiceID.RESEARCH_PAPER, ChoiceID.CONSPIRACY_DOCUMENTARY],     // September
+  [ChoiceID.PODCAST_PLATFORMS, ChoiceID.CELEBRITY_ENDORSEMENT],   // November
+  [ChoiceID.EVENT_STRATEGY, ChoiceID.PLATFORM_POLICY],           // December
+  [ChoiceID.FREEDOM_DEFENSE, ChoiceID.MEDIA_BIAS]                // Exposé
+] as const;
+
 // Create a custom hook to handle stages with translations
 export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): GameStage[] => {
   const { t } = useTranslation();

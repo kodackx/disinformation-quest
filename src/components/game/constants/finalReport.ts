@@ -75,7 +75,7 @@ const generateAchievements = (metrics: FinalReportMetrics, choices: ChoiceID[], 
   if (choices.includes(ChoiceID.INFILTRATE_COMMUNITIES) || choices.includes(ChoiceID.GRASSROOTS_MOVEMENT)) {
     achievements.push(t('finalReport.achievements.grassroots'));
   }
-  if (choices.includes(ChoiceID.EXPERT_PANEL) || choices.includes(ChoiceID.ACADEMIC_OUTREACH)) {
+  if (choices.includes(ChoiceID.FAKE_EXPERT) || choices.includes(ChoiceID.ACADEMIC_OUTREACH)) {
     achievements.push(t('finalReport.achievements.academic'));
   }
 
