@@ -1,0 +1,387 @@
+[
+    {
+      "title": "Bot Networks (DEPLOY_BOTS)",
+      "didYouKnow": "Nearly half of all Twitter accounts tweeting about COVID-19 in early 2020 were likely automated bots, showing how large-scale botnets can dominate online debate before most people notice.",
+      "references": [
+        {
+          "title": "Researchers: Nearly Half Of Accounts Tweeting About Coronavirus Are Likely Bots",
+          "summary": "A Carnegie Mellon study found about 45 % of Twitter accounts discussing COVID-19 were bots that amplified more than 100 false narratives, from 5G hoaxes to bioweapon rumors.",
+          "source": "NPR",
+          "link": "https://www.npr.org/2020/05/20/859814085/researchers-nearly-half-of-accounts-tweeting-about-coronavirus-are-likely-bots"
+        },
+        {
+          "title": "A Russian Bot Farm Used AI to Lie to Americans. What Now?",
+          "summary": "The U.S. Justice Department disrupted a 2024 Russian operation that used AI to create 1,000+ fake American profiles and push pro-Kremlin, anti-Ukraine propaganda across X, Instagram, and Facebook.",
+          "source": "CSIS",
+          "link": "https://www.csis.org/analysis/russian-bot-farm-used-ai-lie-americans-what-now"
+        },
+        {
+          "title": "Oxford study finds social media manipulation in all 81 countries surveyed",
+          "summary": "Oxford researchers documented state-backed ‘cyber-troop’ bot or troll campaigns in every country studied; Facebook and Twitter removed more than 317,000 fake accounts linked to these ops in 22 months.",
+          "source": "Cherwell / Oxford Internet Institute",
+          "link": "https://cherwell.org/2021/01/25/oxford-study-finds-social-media-manipulation-in-all-81-countries-surveyed/"
+        }
+      ]
+    },
+    {
+      "title": "Meme Campaigns (ESTABLISH_MEMES)",
+      "didYouKnow": "During the 2016 U.S. election, Russia’s troll farm flooded Instagram with thousands of humorous memes to stoke social divisions while dodging fact-checkers.",
+      "references": [
+        {
+          "title": "How Russian Trolls Used Meme Warfare to Divide America",
+          "summary": "Senate-commissioned analysis shows the Internet Research Agency blanketed every major social platform with memes—especially on Instagram—to suppress voting and boost Donald Trump in 2016.",
+          "source": "WIRED",
+          "link": "https://www.wired.com/story/russia-ira-propaganda-senate-report/"
+        },
+        {
+          "title": "How memes became health disinformation super-spreaders",
+          "summary": "Researchers found anti-vaccine memes during COVID-19 funneled viewers to buy unproven cures like ivermectin, proving satirical images can be lucrative vectors for false health claims.",
+          "source": "Gavi / The Conversation",
+          "link": "https://www.gavi.org/vaccineswork/how-memes-transformed-pics-cute-cats-health-disinformation-super-spreaders"
+        },
+        {
+          "title": "AI memes: Election disinformation manifested through satire",
+          "summary": "Policy experts warn AI-generated political memes are already shaping 2024 campaigns, using humor and pop-culture mash-ups to slip past both users’ skepticism and platform moderation.",
+          "source": "Brookings Institution",
+          "link": "https://www.brookings.edu/articles/ai-memes-election-disinformation-manifested-through-satire/"
+        }
+      ]
+    },
+    {
+      "title": "Alternative News Sites (LAUNCH_NEWS)",
+      "didYouKnow": "Politically funded ‘pink-slime’ sites posing as local outlets now outnumber real daily newspapers in the United States.",
+      "references": [
+        {
+          "title": "Microsoft detects fake news sites linked to Iran aimed at meddling in U.S. election",
+          "summary": "Threat analysts uncovered four sham U.S. news domains—complete with partisan slant and fictional reporters—created by Iranian actors to influence the 2024 vote.",
+          "source": "NPR",
+          "link": "https://www.npr.org/2024/08/09/1192725878/microsoft-iran-fake-news-sites-election-interference"
+        },
+        {
+          "title": "Russian agency created fake leftwing news outlet with fictional editors, Facebook says",
+          "summary": "Facebook exposed ‘PeaceData’, a Russia-run left-wing site using AI-generated journalist profiles and unwitting freelancers to spread anti-Western narratives to progressive audiences.",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/technology/2020/sep/01/facebook-russia-internet-research-agency-fake-news"
+        },
+        {
+          "title": "Partisan news sites outnumber local daily newspapers",
+          "summary": "NewsGuard found 1,265 algorithm-driven partisan ‘local’ sites—backed by dark-money groups—now exceed real dailies, targeting swing-state voters with biased articles that look like hometown reporting.",
+          "source": "Axios",
+          "link": "https://www.axios.com/2024/06/11/partisan-news-websites-dark-money"
+        }
+      ]
+    },
+    {
+      "title": "Community Infiltration (INFILTRATE_COMMUNITIES)",
+      "didYouKnow": "Russian trolls once staged rival Facebook events in Houston—anti-Muslim and pro-Muslim—tricking real Texans into facing off in person.",
+      "references": [
+        {
+          "title": "Russian Twitter disinformation campaigns reach across the American political spectrum",
+          "summary": "Harvard researchers show IRA personas embedded in conservative, progressive, and Black activist communities by mimicking group identities to seed tailored propaganda.",
+          "source": "HKS Misinformation Review",
+          "link": "https://misinforeview.hks.harvard.edu/article/russian-disinformation-campaigns-on-twitter/"
+        },
+        {
+          "title": "Encore: QAnon's toehold in the wellness world",
+          "summary": "NPR documents how QAnon conspiracy narratives infiltrated yoga and holistic-health circles via trusted influencers, converting apolitical wellness followers into conspiracy believers.",
+          "source": "NPR",
+          "link": "https://www.npr.org/2023/01/07/1147721024/qanon-toehold-wellness-yoga"
+        },
+        {
+          "title": "How Russia used Facebook to organize two sets of protesters",
+          "summary": "Senate testimony revealed Kremlin-run pages ‘Heart of Texas’ and ‘United Muslims of America’ orchestrated dueling Houston protests in 2016, never revealing the common puppet-master.",
+          "source": "NPR",
+          "link": "https://www.npr.org/2017/11/01/561427876/how-russia-used-facebook-to-organize-two-sets-of-protesters"
+        }
+      ]
+    },
+    {
+      "title": "Influencer Collaboration (INFLUENCER_COLLABORATION)",
+      "didYouKnow": "French and German YouTubers were secretly offered cash in 2021 to claim Pfizer’s vaccine killed three times more people than it saved.",
+      "references": [
+        {
+          "title": "Influencers say Russia-linked PR agency asked them to disparage Pfizer vaccine",
+          "summary": "A London firm tied to Russia tried to pay lifestyle influencers to post scripted anti-Pfizer falsehoods while hiding any sponsorship disclosure.",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/media/2021/may/25/influencers-say-russia-linked-pr-agency-asked-them-to-disparage-pfizer-vaccine"
+        },
+        {
+          "title": "How Russia covertly hired U.S. influencers to create videos",
+          "summary": "2024 DOJ indictment shows Tenet Media spent $10 million recruiting American TikTokers and YouTubers to produce thousands of Kremlin-friendly videos seen by millions.",
+          "source": "NPR",
+          "link": "https://www.npr.org/2024/09/05/1197890163/russia-election-influencers-youtube-tenet-media-doj"
+        },
+        {
+          "title": "How Instagram influencers profit from anti-vaccine misinformation",
+          "summary": "University of Washington researchers profile three wellness influencers who blend fashion posts with anti-vax conspiracies—then monetize those beliefs via merch and paid courses.",
+          "source": "University of Washington News",
+          "link": "https://www.washington.edu/news/2024/03/11/instagram-influencers-profit-anti-vaccine-misinformation-disinformation-wellness/"
+        }
+      ]
+    },
+    {
+      "title": "Grassroots Movements (GRASSROOTS_MOVEMENT)",
+      "didYouKnow": "‘Stop Zelensky’ street rallies across Europe were staged by pro-Kremlin operatives—no Ukrainians attended.",
+      "references": [
+        {
+          "title": "Exposed: The ‘Stop Zelensky’ protesters sowing Russian disinfo across Europe",
+          "summary": "Investigators traced supposedly organic anti-Zelensky protests to a network of Kremlin supporters who printed signs and organized photo-op rallies posing as Ukrainian peace activists.",
+          "source": "The Kyiv Independent",
+          "link": "https://kyivindependent.com/who-is-behind-pro-russian-stop-zelensky-demonstrations-in-europe/"
+        },
+        {
+          "title": "Europe’s farmer protests have been fertile ground for Russian propaganda",
+          "summary": "POLITICO details how genuine farmer grievances were hijacked online by pro-Russia accounts, inserting fake videos and slogans to steer anger toward ending EU support for Ukraine.",
+          "source": "POLITICO",
+          "link": "https://www.politico.eu/article/europe-farmer-protest-russia-war-propaganda/"
+        },
+        {
+          "title": "How the Chinese government fabricates social media posts for strategic distraction",
+          "summary": "A Harvard study estimates China’s ‘50 Cent Party’ posts 488 million pro-government comments yearly to create the illusion of broad grassroots support and drown out criticism.",
+          "source": "Harvard University",
+          "link": "https://dash.harvard.edu/handle/1/33759251"
+        }
+      ]
+    },
+    {
+      "title": "Reactive Strategies (STAY_COURSE / COUNTER_CAMPAIGN)",
+      "didYouKnow": "After flight MH17 was shot down, pro-Kremlin outlets pushed dozens of clashing theories to overwhelm the truth—a tactic dubbed the ‘firehose of falsehood’.",
+      "references": [
+        {
+          "title": "MH17: ten years of Russian lying and denying",
+          "summary": "EU vs Disinfo catalogues a decade of conflicting Kremlin narratives—from blaming Ukraine’s jets to claiming the plane was packed with corpses—meant to confuse rather than convince.",
+          "source": "EU vs Disinfo",
+          "link": "https://euvsdisinfo.eu/mh17-ten-years-of-russian-lying-and-denying/"
+        },
+        {
+          "title": "China Used Twitter To Disrupt Hong Kong Protests, But Efforts Began Years Earlier",
+          "summary": "Twitter suspended 200 K+ China-linked accounts that framed 2019 Hong Kong protesters as violent tools of foreign powers, part of Beijing’s rapid counter-messaging blitz.",
+          "source": "NPR",
+          "link": "https://www.npr.org/2019/09/17/758146019/china-used-twitter-to-disrupt-hong-kong-protests-but-efforts-began-years-earlier"
+        },
+        {
+          "title": "China Fires Back at Biden With Conspiracy Theories About Maryland Lab",
+          "summary": "When the U.S. probed COVID origins, Chinese diplomats flooded social media with a Fort Detrick bioweapon conspiracy—flipping blame and muddying public discourse.",
+          "source": "Foreign Policy",
+          "link": "https://foreignpolicy.com/2021/07/09/china-misinformation-fort-detrick-conspiracy-theory-covid/"
+        }
+      ]
+    },
+    {
+      "title": "Expert Manipulation (FAKE_EXPERT / ACADEMIC_OUTREACH)",
+      "didYouKnow": "China invented a non-existent Swiss biologist named ‘Wilson Edwards’—complete with photo—to quote in state media about COVID investigations.",
+      "references": [
+        {
+          "title": "Facebook, Instagram remove Chinese network over fake 'Swiss biologist' COVID claims",
+          "summary": "Meta removed 500+ accounts promoting quotes from a fictional microbiologist ‘Wilson Edwards’ who accused the U.S. of politicizing virus origins; Switzerland confirmed he never existed.",
+          "source": "Reuters",
+          "link": "https://www.reuters.com/technology/facebook-instagram-remove-chinese-network-over-fake-swiss-biologist-covid-claims-2021-12-01/"
+        },
+        {
+          "title": "How former 'The View' host Jenny McCarthy became the face of the anti-vaxx movement",
+          "summary": "TV personality Jenny McCarthy positioned herself as an autism ‘expert’, spreading the disproven vaccine-autism link and contributing to measles’ U.S. comeback in 2019.",
+          "source": "Business Insider",
+          "link": "https://www.businessinsider.com/jenny-mccarthy-became-the-face-of-the-anti-vaxx-movement-2019-4"
+        },
+        {
+          "title": "Indian Chronicles – deep dive",
+          "summary": "EU DisinfoLab exposed a 15-year influence network that resurrected defunct NGOs and think-tanks, even stealing dead people’s identities, to lobby the UN and EU with fabricated ‘expert’ testimony.",
+          "source": "EU DisinfoLab / Coda Story",
+          "link": "https://www.codastory.com/disinformation/disinformation-research/"
+        }
+      ]
+    },
+    {
+      "title": "Research Manipulation (RESEARCH_PAPER)",
+      "didYouKnow": "Andrew Wakefield’s 1998 study falsely linking MMR vaccine to autism was declared fraud, yet still fuels anti-vax myths decades later.",
+      "references": [
+        {
+          "title": "Influencing Science: Ghost Writing",
+          "summary": "Documents show tobacco firms paid writers to ghost-author scientific papers downplaying smoking risks, which independent academics then fronted to mislead regulators and the public.",
+          "source": "TobaccoTactics (U. of Bath)",
+          "link": "https://www.tobaccotactics.org/article/influencing-science-ghost-writing/"
+        },
+        {
+          "title": "Study That Linked Vaccine and Autism Was ‘Fraudulent’",
+          "summary": "A BMJ investigation proved Wakefield manipulated data on 12 children, yet his retracted paper remains a cornerstone of the modern anti-vaccine movement.",
+          "source": "PBS NewsHour / BMJ",
+          "link": "https://www.pbs.org/newshour/health/journal-study-that-linked-vaccines-and-autism-was-fraudulent"
+        },
+        {
+          "title": "Covid-19: Lancet retracts paper that halted hydroxychloroquine trials",
+          "summary": "The Lancet had to retract a massive COVID study after unverifiable data from a small private firm derailed global drug trials and public discourse.",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/world/2020/jun/04/covid-19-lancet-retracts-paper-that-halted-hydroxychloroquine-trials"
+        }
+      ]
+    },
+    {
+      "title": "Conspiracy Content (CONSPIRACY_DOCUMENTARY)",
+      "didYouKnow": "The 26-minute pseudo-documentary ‘Plandemic’ hit millions of views in days, proving slick filmmaking can rocket COVID conspiracies into the mainstream.",
+      "references": [
+        {
+          "title": "'Plandemic': We Take a Close Look At The Viral Conspiracy Video's Claims",
+          "summary": "The viral film featured a discredited scientist claiming masks cause illness and vaccines implant microchips; major platforms struggled to remove re-uploads fast enough.",
+          "source": "NPR",
+          "link": "https://www.npr.org/2020/05/08/852451652/seen-plandemic-we-take-a-close-look-at-the-viral-conspiracy-video-s-claims"
+        },
+        {
+          "title": "Loose Change (9/11 conspiracy documentary series)",
+          "summary": "This low-budget 2005 film alleging U.S. complicity in 9/11 amassed 4 million views in four months and launched the modern ‘9/11 Truth’ movement.",
+          "source": "Vanity Fair / Wikipedia",
+          "link": "https://en.wikipedia.org/wiki/Loose_Change"
+        },
+        {
+          "title": "‘Died Suddenly’ repeats debunked COVID-19 vaccine claims, promotes conspiracy theory",
+          "summary": "Released in 2022, the pseudo-doc strings together unrelated deaths to suggest a secret depopulation plot via vaccines—medical experts have refuted every claim.",
+          "source": "Immunize Colorado",
+          "link": "https://www.immunizecolorado.org/died-suddenly-repeats-debunked-covid-19-vaccine-claims-promotes-conspiracy-theory/"
+        }
+      ]
+    },
+    {
+      "title": "Podcast Platforms (PODCAST_PLATFORMS)",
+      "didYouKnow": "Joe Rogan’s podcast reaches about 11 million listeners per episode—more than prime-time CNN—illustrating audio’s under-moderated power to spread misinformation.",
+      "references": [
+        {
+          "title": "Spotify removes Neil Young music in feud over Joe Rogan’s false Covid claims",
+          "summary": "Rock legend Neil Young walked off Spotify after Rogan hosted guests pushing vaccine myths, spotlighting podcasts’ giant reach and lax fact-checking.",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/technology/2022/jan/26/spotify-neil-young-joe-rogan-covid-misinformation"
+        },
+        {
+          "title": "Steve Bannon hawks disinformation to support Trump as legal troubles mount",
+          "summary": "Brookings found Bannon’s ‘War Room’ was 2021’s top political podcast superspreader, relentlessly pushing election-fraud and COVID hoaxes to a devoted audience.",
+          "source": "The Guardian",
+          "link": "https://www.theguardian.com/us-news/2024/feb/09/steve-bannon-criminal-charges-disinformation-maga"
+        },
+        {
+          "title": "Audible reckoning: How top political podcasters spread unsubstantiated and false claims",
+          "summary": "Analyzing 36 000 episodes, Brookings discovered political podcasts face far less moderation than social media, enabling hours-long unfiltered misinformation streams.",
+          "source": "Brookings Institution",
+          "link": "https://www.brookings.edu/articles/audible-reckoning-how-top-political-podcasters-spread-unsubstantiated-and-false-claims/"
+        }
+      ]
+    },
+    {
+      "title": "Celebrity Endorsement (CELEBRITY_ENDORSEMENT)",
+      "didYouKnow": "Jenny McCarthy’s celebrity activism helped trigger the worst U.S. measles outbreak in 25 years by reviving disproven vaccine-autism fears.",
+      "references": [
+        {
+          "title": "Jenny McCarthy: \"We're Not An Anti-Vaccine Movement...\"",
+          "summary": "McCarthy used TV appearances and rallies to spread the autism myth starting in 2007, influencing parental attitudes and vaccination rates.",
+          "source": "PBS",
+          "link": "https://www.pbs.org/parents/thrive/jenny-mccarthy-were-not-an-anti-vaccine-movement"
+        },
+        {
+          "title": "Elon Musk deletes tweet with unfounded theory about Pelosi attack",
+          "summary": "In 2022, Musk tweeted (then deleted) a fringe conspiracy to 100 million followers, instantly mainstreaming a hoax about the attack on Nancy Pelosi’s husband.",
+          "source": "Reuters",
+          "link": "https://www.reuters.com/world/us/elon-musk-deletes-tweet-with-unfounded-theory-about-pelosi-attack-2022-10-30/"
+        },
+        {
+          "title": "Bolsonaro and the ‘Fake News’ Presidency",
+          "summary": "Brazil’s ex-president Jair Bolsonaro used his celebrity-style social media to brand critical press as ‘fake news’, steering supporters to fringe outlets that echoed his conspiracy claims.",
+          "source": "Journal of Democracy",
+          "link": "https://muse.jhu.edu/article/774325"
+        }
+      ]
+    },
+    {
+      "title": "Event Strategy (EVENT_STRATEGY)",
+      "didYouKnow": "Russian trolls spent about $200 on Facebook ads to spark dueling on-the-ground protests in Houston in 2016.",
+      "references": [
+        {
+          "title": "Russian trolls orchestrated 2016 clash at Houston Islamic Center",
+          "summary": "IRA pages invited real Americans to both an anti-Muslim rally and a pro-Muslim counter-protest, creating street conflict out of thin air.",
+          "source": "Dallas Morning News / Senate Intel",
+          "link": "https://www.dallasnews.com/news/investigations/2018/02/18/russian-trolls-organized-2016-clash-at-houston-islamic-center/"
+        },
+        {
+          "title": "Ottawa truckers’ convoy galvanizes far-right worldwide",
+          "summary": "The 2022 Canadian ‘Freedom Convoy’ was super-charged online by international influencers and conspiracy groups, spawning copycat convoys from the U.S. to Europe.",
+          "source": "POLITICO",
+          "link": "https://www.politico.com/news/2022/02/06/ottawa-truckers-convoy-galvanizes-far-right-worldwide-00006080"
+        },
+        {
+          "title": "‘Stop the Steal’ movement and January 6 (Congressional Report)",
+          "summary": "False election-fraud claims seeded daily rallies that culminated in the January 6, 2021 Capitol attack—an offline event engineered by months of online disinformation.",
+          "source": "U.S. House Jan 6 Committee",
+          "link": "https://www.govinfo.gov/content/pkg/GPO-J6-REPORT/pdf/GPO-J6-REPORT.pdf#page=665"
+        }
+      ]
+    },
+    {
+      "title": "Platform Policy (PLATFORM_POLICY)",
+      "didYouKnow": "Disinformation actors exploit ‘data voids’—obscure search terms with few reliable results—so their pages rank first and set the narrative.",
+      "references": [
+        {
+          "title": "Tactics of Disinformation: Abuse Alternative Platforms",
+          "summary": "CISA notes Russian state media pivoted to Telegram and fringe video sites after bans, while extremist groups routinely hop to lightly moderated platforms.",
+          "source": "CISA",
+          "link": "https://www.cisa.gov/sites/default/files/publications/tactics-of-disinformation_508.pdf#page=7"
+        },
+        {
+          "title": "Twitter takes down China-linked accounts spreading disinformation",
+          "summary": "Twitter removed 23 750 China-linked accounts that repurposed dormant profiles to push political spam about Hong Kong and COVID-19, exploiting policy blind spots.",
+          "source": "CNBC",
+          "link": "https://www.cnbc.com/2020/06/12/twitter-removes-china-linked-accounts-spreading-disinformation.html"
+        },
+        {
+          "title": "Data Voids: Where Missing Facts Lead to Disinformation",
+          "summary": "Researchers show manipulators flood niche search terms (e.g., ‘Plandemic movie’) with false content so their version dominates until credible info appears.",
+          "source": "Data & Society",
+          "link": "https://datasociety.net/library/data-voids/"
+        }
+      ]
+    },
+    {
+      "title": "Freedom Defense (FREEDOM_DEFENSE)",
+      "didYouKnow": "When the EU banned RT and Sputnik for war propaganda, the outlets cried ‘censorship’ and claimed to be champions of free speech.",
+      "references": [
+        {
+          "title": "European court upholds broadcasting ban on Russia’s RT",
+          "summary": "RT framed its 2022 EU ban as a freedom-of-expression violation, flipping accountability for war propaganda into a narrative of Western censorship.",
+          "source": "Al Jazeera",
+          "link": "https://www.aljazeera.com/news/2022/7/27/european-court-upholds-broadcasting-ban-on-russias-rt"
+        },
+        {
+          "title": "Ottawa trucker convoy galvanizes far-right worldwide",
+          "summary": "Convoy organizers branded COVID mandates as tyranny and rallied international supporters under a broad ‘freedom’ banner that transcended facts about public-health rules.",
+          "source": "POLITICO",
+          "link": "https://www.politico.com/news/2022/02/06/ottawa-truckers-convoy-galvanizes-far-right-worldwide-00006080"
+        },
+        {
+          "title": "EU silences Russian state media: a step in the wrong direction?",
+          "summary": "Free-speech advocates debate the RT/Sputnik ban, while Kremlin outlets leverage the controversy to accuse the West of hypocrisy and recruit new followers.",
+          "source": "Columbia Global Freedom of Expression",
+          "link": "https://globalfreedomofexpression.columbia.edu/cases/eu-ban-rt-sputnik/"
+        }
+      ]
+    },
+    {
+      "title": "Media Bias (MEDIA_BIAS)",
+      "didYouKnow": "By 2021, only 11 % of U.S. Republicans said they trusted mainstream media—disinformation thrives in that trust gap.",
+      "references": [
+        {
+          "title": "Deep Partisan Divide Over Trust in Media",
+          "summary": "Gallup polling shows a record-wide gap in media trust: 58 % of Democrats vs. just 11 % of Republicans, after years of ‘fake news’ rhetoric.",
+          "source": "Statista / Gallup",
+          "link": "https://www.statista.com/chart/18186/trust-in-mass-media-by-party/"
+        },
+        {
+          "title": "Trump’s ‘Fake News’ Mantra – and its impact",
+          "summary": "HKS researchers find Trump’s constant ‘fake news’ attacks cued supporters to dismiss critical reporting, paving the way for alternative pro-Trump media ecosystems.",
+          "source": "HKS Misinformation Review",
+          "link": "https://misinforeview.hks.harvard.edu/article/fake-news-as-a-threat-to-journalistic-entities-the-factors-shaping-what-journalists-think-about-fake-news/"
+        },
+        {
+          "title": "Brazil’s Bolsonaro and attacks on media credibility",
+          "summary": "Reuters details how Bolsonaro labeled mainstream outlets biased ‘fake news’, pushing followers toward YouTube channels and WhatsApp forwards that echoed his conspiracy claims.",
+          "source": "Reuters",
+          "link": "https://www.reuters.com/article/brazil-election-disinformation-media-idINKBN26L1TM"
+        }
+      ]
+    }
+  ]
+  

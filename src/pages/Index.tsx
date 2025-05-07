@@ -12,6 +12,8 @@ import { ChoiceID } from "@/components/game/constants/metrics";
 import { DossierEntry, GameStage } from "@/components/game/types";
 import { Badge } from "@/components/ui/badge";
 import { AlertCircle, Lock, Shield } from "lucide-react";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import { ChartBarIcon } from "@heroicons/react/24/outline";
 import { playAcceptMissionSound, playDeployStratagemSound, playClickSound, stopBackgroundMusic, switchToFinalMusic, stopFinalMusic } from "@/utils/audio";
 import {
   Dialog,
@@ -37,6 +39,9 @@ import { toast } from "sonner";
 import { ProgressionIndicator } from '@/components/game/ProgressionIndicator';
 import { EndGameDialog } from '../components/game/EndGameDialog';
 import { STAGE_CHOICES } from '@/components/game/constants';
+import { LearningSection } from '@/components/game/LearningSection';
+import { useLearnings } from '@/hooks/useLearnings';
+import { CollapsibleLearningSection } from '@/components/game/CollapsibleLearningSection';
 
 const Index = () => {
   const { t, i18n } = useTranslation();
@@ -71,6 +76,9 @@ const Index = () => {
   const [showFinalFade, setShowFinalFade] = useState(false);
   const [showFinalReport, setShowFinalReport] = useState(false);
   const [showEndGameDialog, setShowEndGameDialog] = useState(false);
+  const learningData = useLearnings(selectedChoice?.choiceId);
+  const [showImpactDetails, setShowImpactDetails] = useState(false);
+  const [showStrategyDetails, setShowStrategyDetails] = useState(true);
 
   // Dev panel toggle
   useEffect(() => {
@@ -511,7 +519,7 @@ const Index = () => {
                       </ul>
                     </motion.div>
                     
-                    <motion.div 
+                    {/* <motion.div 
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 1.2, duration: 0.5 }}
@@ -521,7 +529,7 @@ const Index = () => {
                         <span className="text-yellow-500 font-semibold">{t('analysis.strategicInsight')} </span>
                         {currentResult.nextStepHint}
                       </p>
-                    </motion.div>
+                    </motion.div> */}
 
                     <motion.div 
                       initial={{ opacity: 0, y: 20 }}
@@ -673,19 +681,32 @@ const Index = () => {
                 )}
               
                 <div>
-                  <h3 className="text-yellow-500 font-semibold mb-2">{t('analysis.strategyOverview')}:</h3>
+                  <h3 className="text-yellow-500 font-semibold mb-2 flex items-center gap-2 cursor-pointer" 
+                      onClick={() => setShowStrategyDetails(!showStrategyDetails)}>
+                    {/* {t('analysis.strategyOverview')}: */}
+                    {/* <ChevronRightIcon className={`w-4 h-4 transition-transform ${showStrategyDetails ? 'rotate-90' : ''}`} /> */}
+                  </h3>
                   <p className="text-gray-300">{selectedChoice?.description}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-yellow-500 font-semibold mb-2">{t('analysis.expectedImpact')}:</h3>
-                  <p className="text-gray-300">{selectedChoice?.impact}</p>
+                  <h3 className="text-yellow-500 font-semibold mb-2 flex items-center gap-2 cursor-pointer" 
+                      onClick={() => setShowImpactDetails(!showImpactDetails)}>
+                    <ChartBarIcon className="w-5 h-5" />
+                    {t('analysis.expectedImpact')}:
+                    <ChevronRightIcon className={`w-4 h-4 transition-transform ${showImpactDetails ? 'rotate-90' : ''}`} />
+                  </h3>
+                  {showImpactDetails && (
+                    <div className="animate-fadeIn">
+                      <p className="text-gray-300">{selectedChoice?.impact}</p>
+                      {/* <p className="text-gray-300 mt-3">{selectedChoice?.explainer}</p> */}
+                    </div>
+                  )}
                 </div>
-
-                <div>
-                  <h3 className="text-yellow-500 font-semibold mb-2">{t('analysis.expertAnalysis')}:</h3>
-                  <p className="text-gray-300">{selectedChoice?.explainer}</p>
-                </div>
+                <CollapsibleLearningSection 
+                  learningData={learningData} 
+                  initiallyExpanded={false}
+                />
 
                 <div className="flex justify-center pt-4">
                   <Button 

@@ -104,7 +104,7 @@ export const ChoiceCard: React.FC<ChoiceCardProps> = ({
         </div>
 
         <CardDescription className="text-gray-400 leading-relaxed">
-          {choice.impact}
+          {choice.description}
           <span className="block mt-2 text-sm text-gray-500">{t('analysis.clickToSeeDetails')}</span>
         </CardDescription>
       </CardHeader>

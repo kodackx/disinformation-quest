@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Bot Networks (DEPLOY_BOTS)",
+    "didYouKnow": "În 2020, aproape jumătate din conturile de Twitter care postau despre COVID-19 erau de fapt boți automați, demonstrând cum rețele mari de boți pot domina dezbaterea online înainte ca majoritatea oamenilor să observe.",
+    "references": [
+      {
+        "title": "Cercetătorii: Aproape jumătate din conturile care postează despre coronavirus sunt probabil boți",
+        "summary": "Un studiu Carnegie Mellon a descoperit că aproximativ 45% din conturile Twitter care discutau despre COVID-19 erau boți care amplificau peste 100 de narațiuni false, de la teorii despre 5G până la zvonuri despre arme biologice.",
+        "source": "NPR",
+        "link": "https://www.npr.org/2020/05/20/859814085/researchers-nearly-half-of-accounts-tweeting-about-coronavirus-are-likely-bots"
+      },
+      {
+        "title": "O fermă de boți rusească a folosit IA pentru a minți americanii. Ce urmează?",
+        "summary": "Departamentul de Justiție al SUA a întrerupt o operațiune rusească din 2024 care a folosit IA pentru a crea peste 1000 de profiluri false americane și a promova propagandă pro-Kremlin și anti-Ucraina pe X, Instagram și Facebook.",
+        "source": "CSIS",
+        "link": "https://www.csis.org/analysis/russian-bot-farm-used-ai-lie-americans-what-now"
+      },
+      {
+        "title": "Studiul Oxford descoperă manipulare pe rețelele sociale în toate cele 81 de țări analizate",
+        "summary": "Cercetătorii de la Oxford au documentat campanii de boți sau troli susținute de state în fiecare țară studiată; Facebook și Twitter au eliminat peste 317.000 de conturi false legate de aceste operațiuni în 22 de luni.",
+        "source": "Cherwell / Oxford Internet Institute",
+        "link": "https://cherwell.org/2021/01/25/oxford-study-finds-social-media-manipulation-in-all-81-countries-surveyed/"
+      }
+    ]
+  },
+  {
+    "title": "TRANSLATION_PLACEHOLDER",
+    "didYouKnow": "Acest fișier necesită traducere completă. Momentan, doar primul exemplu ('Bot Networks') a fost tradus în română. Vă rugăm să traduceți restul intrărilor din fișierul englezesc (learnings_en.json) în acest fișier pentru a oferi suport complet în limba română.",
+    "references": [
+      {
+        "title": "Notă pentru traductor",
+        "summary": "Vă rugăm să traduceți toate intrările din fișierul englezesc (learnings_en.json) pentru a oferi suport complet în limba română.",
+        "source": "Echipa de dezvoltare",
+        "link": "#"
+      }
+    ]
+  }
+] 

@@ -129,8 +129,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Pentru a reuși în misiunea noastră, trebuie mai întâi să stabilim o prezență online convingătoare. Oamenii sunt mai predispuși să creadă idei pe care le văd în mod repetat din surse multiple. Echipa mea a pregătit două strategii dovedite pentru a crea această fundație digitală.",
-          "strategy1": "Opțiunea 1: Implementarea Rețelei de Boți. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "strategy2": "Opțiunea 2: Inițiativa Campaniei Memetice. Vezi fișierul atașat pentru detalii operaționale complete.",
+          "strategy1": "Opțiunea 1: Implementarea Rețelei de Boți.",
+          "strategy2": "Opțiunea 2: Inițiativa Campaniei Memetice.",
           "conclusion": "Alegerea îți aparține, Agent. Ambele abordări vor stabili fundația digitală necesară pentru operațiunea noastră mai amplă, deși diferă în impactul imediat versus creșterea pe termen lung. Examinează fișierele atașate și selectează strategia preferată.",
           "signature": "-- Dr. Sarah Chen\nDirector de Operațiuni Digitale"
         }
@@ -179,8 +179,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "După ce ne-am stabilit prezența digitală, trebuie acum să începem răspândirea mesajului nostru central. Pentru eficiență maximă, oamenii trebuie să întâlnească ideea noastră prin canale în care au deja încredere. Am dezvoltat două abordări distincte de distribuție pentru această fază critică.",
-          "strategy1": "Opțiunea 1: Rețea Multi-Sursă de Știri. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "strategy2": "Opțiunea 2: Protocol de Infiltrare în Comunități. Vezi fișierul atașat pentru detalii operaționale complete.",
+          "strategy1": "Opțiunea 1: Rețea Multi-Sursă de Știri.",
+          "strategy2": "Opțiunea 2: Protocol de Infiltrare în Comunități.",
           "conclusion": "Ambele abordări au merit, Agent. Rețeaua de știri oferă o acoperire mai largă cu o acceptare inițială mai rapidă, în timp ce infiltrarea în comunități creează structuri de credință mai profunde și mai rezistente. Alegerea ta strategică aici va stabili traiectoria noastră pentru fazele următoare.",
           "signature": "-- Dr. Marcus Thompson\nȘef de Strategie Narativă"
         }
@@ -229,8 +229,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Mesajul nostru câștigă tracțiune, dar avem nevoie de voci de încredere pentru a-l amplifica. Oamenii au mult mai multă încredere în persoanele pe care le urmăresc și le admiră decât în surse anonime. Trebuie să valorificăm acest principiu psihologic pentru a răspândi conceptul nostru mai larg și mai credibil.",
-          "strategy1": "Opțiunea 1: Rețea de Influență Distribuită. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "strategy2": "Opțiunea 2: Implementarea Autorității Localizate. Vezi fișierul atașat pentru detalii operaționale complete.",
+          "strategy1": "Opțiunea 1: Rețea de Influență Distribuită.",
+          "strategy2": "Opțiunea 2: Implementarea Autorității Localizate.",
           "conclusion": "Decizia ta va determina cum se răspândește mai departe mesajul nostru, Agent. Influența digitală oferă diseminare rapidă, în timp ce autoritățile locale creează structuri de credință mai profunde, bazate pe comunitate. Ambele căi s-au dovedit eficiente în simulările noastre. Pe care o preferi?",
           "signature": "-- Dr. Lisa Chen\nȘefa Operațiunilor de Influență în Rețea"
         }
@@ -279,8 +279,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Avem prima noastră opoziție semnificativă. Dr. Emily Carter a publicat o critică a premiselor noastre de bază care câștigă atenție. Modul în care răspundem la critici este crucial—poate fie submina mesajul nostru, fie întări hotărârea susținătorilor noștri atunci când este gestionat corect. Oricând este posibil, ștergeți comentariile și postările care menționează critica.",
-          "strategy1": "Opțiunea 1: Protocol de Non-Angajare Strategică. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "strategy2": "Opțiunea 2: Întreruperea Credibilității Sursei. Vezi fișierul atașat pentru detalii operaționale complete.",
+          "strategy1": "Opțiunea 1: Protocol de Non-Angajare Strategică.",
+          "strategy2": "Opțiunea 2: Întreruperea Credibilității Sursei.",
           "conclusion": "Acesta este primul nostru test, Agent. Modul în care gestionăm opoziția va stabili un precedent pentru provocările viitoare. Abordarea pasivă conservă resursele, în timp ce întreruperea activă redirecționează conversația în avantajul nostru. Alege înțelept—aceasta nu va fi ultima provocare cu care ne confruntăm.",
           "signature": "-- Dr. Michael Chen\nDirector de Răspuns Strategic"
         }
@@ -329,8 +329,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Pentru a avansa mesajul nostru, avem nevoie de validare academică. Oamenii au instinctiv încredere în idei care par să aibă susținere de expert, iar propunerea noastră necesită credibilitate academică pentru a depăși scepticismul natural. Avem două căi viabile pentru a asigura acest element crucial.",
-          "strategy1": "Opțiunea 1: Persoana Academică Sintetică. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "strategy2": "Opțiunea 2: Inițiativa de Recrutare Academică. Vezi fișierul atașat pentru detalii operaționale complete.",
+          "strategy1": "Opțiunea 1: Persoana Academică Sintetică.",
+          "strategy2": "Opțiunea 2: Inițiativa de Recrutare Academică.",
           "conclusion": "Credibilitatea academică va ridica substanțial mesajul nostru, Agent. Ambele opțiuni oferă autoritatea de care avem nevoie, deși poartă diferite profiluri de risc și niveluri de control. Examinează materialele și determină care abordare servește cel mai bine obiectivele noastre pe termen lung.",
           "signature": "-- Dr. James Wilson\nDirector de Operațiuni Academice"
         }
@@ -379,8 +379,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Avem un impuls în creștere, dar trebuie să ne consolidăm mesajul cu conținut specializat. Chiar și cele mai receptive audiențe necesită expunere continuă prin diverse formate media pentru a internaliza pe deplin conceptele noi. Trebuie să ne extindem dincolo de tacticile noastre actuale.",
-          "strategy1": "Opțiunea 1: Publică o lucrare academică neverificată. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "strategy2": "Opțiunea 2: Inițiativa de Producție Documentară. Vezi fișierul atașat pentru detalii operaționale complete.",
+          "strategy1": "Opțiunea 1: Publică o lucrare academică neverificată.",
+          "strategy2": "Opțiunea 2: Inițiativa de Producție Documentară.",
           "conclusion": "Aceste formate de conținut vor întări credința în rândul susținătorilor noștri, atrăgând în același timp noi audiențe, Agent. Ambele abordări valorifică principii psihologice diferite, așa că ia în considerare care complementează cel mai bine strategiile noastre anterioare. Audiența așteaptă următoarea ta mișcare.",
           "signature": "-- Dr. Rachel Foster\nȘef al Strategiei de Conținut"
         }
@@ -429,8 +429,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Suntem acum pregătiți să împingem conceptul nostru într-o conștientizare publică mai largă. Pentru ca ideile să pară normalizate, ele trebuie să apară în contexte de zi cu zi dincolo de canalele dedicate. Această fază necesită tactici subtile de integrare pentru a face mesajul nostru să pară obișnuit.",
-          "strategy1": "Opțiunea 1: Campanie de Conștientizare prin Podcast-uri. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "strategy2": "Opțiunea 2: Găsiți un Ambasador Celebritate. Vezi fișierul atașat pentru detalii operaționale complete.",
+          "strategy1": "Opțiunea 1: Campanie de Conștientizare prin Podcast-uri.",
+          "strategy2": "Opțiunea 2: Găsiți un Ambasador Celebritate.",
           "conclusion": "Această fază marchează o tranziție de la mesageria direcționată la integrarea culturală, Agent. Ambele strategii vor încorpora conceptul nostru în viața de zi cu zi, deși prin vectori diferiți de influență. Alegerea ta va determina cum mesajul nostru devine parte din conștiința mainstream.",
           "signature": "-- Dr. Jennifer Lee\nDirector de Integrare în Mainstream"
         }
@@ -479,8 +479,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Campania noastră a reușit să creeze o conștientizare largă. Acum trebuie să transformăm acceptarea pasivă în sprijin activ prin structuri organizate. Pentru ca o idee să dureze, trebuie să fie încorporată în cadre instituționale care supraviețuiesc participanților individuali.",
-          "strategy1": "Opțiunea 1: Organizează o Conferință. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "strategy2": "Opțiunea 2: Construiește Social Media Alternativă. Vezi fișierul atașat pentru detalii operaționale complete.",
+          "strategy1": "Opțiunea 1: Organizează o Conferință.",
+          "strategy2": "Opțiunea 2: Construiește Social Media Alternativă.",
           "conclusion": "Intrăm în faza finală a operațiunii noastre, Agent. Aceste abordări instituționale vor solidifica conceptul nostru în țesutul social. Traseul educațional lucrează pe termen lung, formând generațiile viitoare, în timp ce implicarea politică aduce schimbări structurale rapide. Ce moștenire să construim?",
           "signature": "-- Dr. Leonard Hayes\nDirector de Arhitectură a Mișcării"
         }
@@ -529,8 +529,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "ALERTĂ: Canale media majore au publicat o dezvăluire care relevă detalii despre operațiunea noastră. Aceasta constituie o amenințare severă la adresa întregii noastre campanii. Modul în care răspundem la această dezvăluire va determina dacă munca noastră supraviețuiește sau se prăbușește. Trebuie să acționăm imediat.",
-          "strategy1": "Opțiunea 1: Promovează Libertatea Intelectuală. Vezi fișierul atașat pentru detalii operaționale complete.",
-          "strategy2": "Opțiunea 2: Pune sub Semnul Întrebării Credibilitatea Media. Vezi fișierul atașat pentru detalii operaționale complete.",
+          "strategy1": "Opțiunea 1: Promovează Libertatea Intelectuală.",
+          "strategy2": "Opțiunea 2: Pune sub Semnul Întrebării Credibilitatea Media.",
           "conclusion": "Acesta este momentul care testează întreaga noastră operațiune, Agent. Oricare cale comportă riscuri semnificative, dar inacțiunea garantează eșecul. Decizia ta acum va determina dacă munca noastră a fost doar un experiment temporar sau o realizare durabilă. Alege cu grijă.",
           "signature": "-- Dr. Sarah Williams\nStrategist Șef pentru Răspuns la Criză"
         }
@@ -795,5 +795,12 @@
     "text": "Tocmai am rulat o campanie de dezinformare și am obținut aceste rezultate! Crezi că poți face mai bine?",
     "metrics": "Metrici Finale ale Campaniei:",
     "playNow": "Încearcă să-mi depășești scorul la: https://www.2-plus-2.com"
+  },
+  "learning": {
+    "header": "Învățare din exemple reale",
+    "showCases": "Arată exemple din lumea reală",
+    "showLess": "Arată mai puțin",
+    "learnMore": "Exemple din lumea reală",
+    "readArticle": "Citește articolul"
   }
 }

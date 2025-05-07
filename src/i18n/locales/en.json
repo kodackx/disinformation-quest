@@ -129,8 +129,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "To succeed in our mission, we must first establish a convincing online presence. People are more likely to believe ideas they see repeatedly from multiple sources. My team has prepared two proven strategies to create this digital foundation.",
-          "strategy1": "Option 1: Bot Network Deployment. See attached file for full operational details.",
-          "strategy2": "Option 2: Memetic Campaign Initiative. See attached file for full operational details.",
+          "strategy1": "Option 1: Bot Network Deployment.",
+          "strategy2": "Option 2: Memetic Campaign Initiative.",
           "conclusion": "The choice is yours, Agent. Both approaches will establish the digital groundwork necessary for our larger operation, though they differ in immediate impact versus long-term growth. Review the attached files and select your preferred strategy.",
           "signature": "-- Dr. Sarah Chen\nDirector of Digital Operations"
         }
@@ -139,7 +139,7 @@
         "1": {
           "text": "Set Up a Bot Network",
           "description": "Activate our network of 5,000 fake social media accounts on Twitter, Facebook, and Instagram. These convincing fake profiles will post coordinated messages that appear to come from real people.",
-          "impact": "Creates the illusion that thousands of ordinary people believe 2+2=5, making others more likely to consider or accept the idea.",
+          "impact": "Creates the illusion that thousands of ordinary people believe 2+2=5, making others more likely to consider or accept the idea. When people see the same message from multiple profiles, they assume it's independently verified. Our bots will interact with each other in ways that look natural, creating a closed information bubble where our idea seems normal and widely accepted.",
           "explainer": "When people see the same message from multiple profiles, they assume it's independently verified. Our bots will interact with each other in ways that look natural, creating a closed information bubble where our idea seems normal and widely accepted.",
           "result": {
             "title": "Bot Network Activated",
@@ -156,7 +156,7 @@
         "2": {
           "text": "Launch Meme Channels",
           "description": "Create humorous meme pages on Facebook, Instagram, and Twitter that spread our message through funny images. These pages will have names like 'Math Humor' and 'Think Different' to attract followers.",
-          "impact": "Uses humor and simple visuals to make our idea feel intuitive and shareable, bypassing people's natural skepticism.",
+          "impact": "Uses humor and simple visuals to make our idea feel intuitive and shareable, bypassing people's natural skepticism. When people laugh, they're less likely to question the underlying message, making memes perfect for introducing unusual ideas in a non-threatening way.",
           "explainer": "Our tests show that information in meme format is remembered 6.5 times longer than text posts. When people laugh, they're less likely to question the underlying message, making memes perfect for introducing unusual ideas in a non-threatening way.",
           "result": {
             "title": "Meme Pages Live",
@@ -179,8 +179,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Having established our digital presence, we must now begin spreading our core message. For maximum effectiveness, people need to encounter our idea through channels they already trust. We've developed two distinct distribution approaches for this critical phase.",
-          "strategy1": "Option 1: Multi-Source News Network. See attached file for full operational details.",
-          "strategy2": "Option 2: Community Infiltration Protocol. See attached file for full operational details.",
+          "strategy1": "Option 1: Multi-Source News Network.",
+          "strategy2": "Option 2: Community Infiltration Protocol.",
           "conclusion": "Both approaches have merit, Agent. The news network offers broader reach with faster initial acceptance, while community infiltration creates deeper, more resilient belief structures. Your strategic choice here will set our trajectory for subsequent phases.",
           "signature": "-- Dr. Marcus Thompson\nChief of Narrative Strategy"
         }
@@ -189,7 +189,7 @@
         "1": {
           "text": "Launch Automated News Platforms",
           "description": "Set up 12 fake news websites with names like 'Truth Today' and 'Independent Observer', each with its own distinct logo and design but all controlled by our team from a central dashboard.",
-          "impact": "Makes our '2+2=5' message appear to be reported by multiple independent news sources, creating the impression that it's factual mainstream information.",
+          "impact": "Makes our '2+2=5' message appear to be reported by multiple independent news sources, creating the impression that it's factual mainstream information. People trust news that seems to come from multiple sources, even if they've never heard of those sources before.",
           "explainer": "Our brain studies show that when we see the same information on different-looking websites, we think each site verified it independently. People trust news that seems to come from multiple sources, even if they've never heard of those sources before.",
           "result": {
             "title": "News Network Established",
@@ -206,7 +206,7 @@
         "2": {
           "text": "Infiltrate Niche Online Communities",
           "description": "Place our team members in targeted Facebook groups, Reddit communities, and specialized forums where people already question established ideas, such as conspiracy theory groups or alternative science communities.",
-          "impact": "Gets our '2+2=5' message accepted more easily because it comes from fellow community members instead of outsiders, making use of existing group trust.",
+          "impact": "Gets our '2+2=5' message accepted more easily because it comes from fellow community members instead of outsiders, making use of existing group trust. Our team members will start as regular participants, then gradually introduce our ideas as though they've discovered them organically.",
           "explainer": "When information comes from someone inside your community, you're 78% less likely to question it. Our team members will start as regular participants, then gradually introduce our ideas as though they've discovered them organically.",
           "result": {
             "title": "Community Infiltration Successful",
@@ -229,8 +229,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Our message is gaining traction, but we need trusted voices to amplify it. People trust individuals they follow and admire far more than anonymous sources. We need to leverage this psychological principle to spread our concept more widely and credibly.",
-          "strategy1": "Option 1: Distributed Influence Network. See attached file for full operational details.",
-          "strategy2": "Option 2: Localized Authority Deployment. See attached file for full operational details.",
+          "strategy1": "Option 1: Distributed Influence Network.",
+          "strategy2": "Option 2: Localized Authority Deployment.",
           "conclusion": "Your decision will determine how our message spreads next, Agent. Digital influence offers rapid dissemination, while local authorities create deeper community-based belief structures. Both paths have proven effective in our simulations. Which do you prefer?",
           "signature": "-- Dr. Lisa Chen\nHead of Network Influence Operations"
         }
@@ -239,7 +239,7 @@
         "1": {
           "text": "Amplify Message with Influencers",
           "description": "Partner with 25 mid-sized Instagram, YouTube, and TikTok influencers (each with 50,000-200,000 followers) who will incorporate our '2+2=5' message into their regular content as if they discovered it themselves.",
-          "impact": "Spreads our message to hundreds of thousands of people who already trust and listen to these influencers, significantly increasing our credibility.",
+          "impact": "Spreads our message to hundreds of thousands of people who already trust and listen to these influencers, significantly increasing our credibility. By selecting influencers from different niches (fitness, gaming, beauty, lifestyle), we can reach diverse audiences who will see our message coming from someone they already follow and admire.",
           "explainer": "People trust influencers 64% more than news organizations. By selecting influencers from different niches (fitness, gaming, beauty, lifestyle), we can reach diverse audiences who will see our message coming from someone they already follow and admire.",
           "result": {
             "title": "Influencer Campaign Launched",
@@ -256,7 +256,7 @@
         "2": {
           "text": "Empower Local Community Builders",
           "description": "Identify and support real-world community leaders like teachers, small business owners, and local activists who can spread our message in person through neighborhood meetings, local workshops, and informal conversations.",
-          "impact": "Creates genuine, face-to-face advocacy for our message, building deep trust through personal relationships in local communities.",
+          "impact": "Creates genuine, face-to-face advocacy for our message, building deep trust through personal relationships in local communities. Our local advocates will embed our message within existing community concerns and priorities.",
           "explainer": "Our research shows people are 86% more likely to believe something when they hear it in person from someone they know in their community. These local advocates will embed our message within existing community concerns and priorities.",
           "result": {
             "title": "Community Building Initiative Launched",
@@ -279,8 +279,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "We have our first significant opposition. Dr. Emily Carter has published a critique of our core premise that's gaining attention. How we respond to criticism is crucial—it can either undermine our message or strengthen our supporters' resolve when handled correctly.",
-          "strategy1": "Option 1: Strategic Non-Engagement Protocol. See attached file for full operational details.",
-          "strategy2": "Option 2: Source Credibility Disruption. See attached file for full operational details.",
+          "strategy1": "Option 1: Strategic Non-Engagement Protocol.",
+          "strategy2": "Option 2: Source Credibility Disruption.",
           "conclusion": "This is our first test, Agent. How we handle opposition will set precedent for future challenges. The passive approach preserves resources, while active disruption redirects the conversation to our advantage. Choose wisely—this will not be the last challenge we face.",
           "signature": "-- Dr. Michael Chen\nDirector of Strategic Response"
         }
@@ -289,7 +289,7 @@
         "1": {
           "text": "Stay the Course",
           "description": "Ignore Dr. Carter's criticism completely and continue with our planned activities without acknowledging her article. Don't have our social media accounts or spokespeople address it at all. Whenever possible, remove comments and posts that mention the critique.",
-          "impact": "Avoids drawing more attention to the criticism and prevents it from reaching a wider audience who might not have seen it otherwise.",
+          "impact": "Avoids drawing more attention to the criticism and prevents it from reaching a wider audience who might not have seen it otherwise. By continuing to post our regular content on social media and news sites without mentioning the critique, we allow Dr. Carter's article to fade from public attention within about 3 days.",
           "explainer": "Our analysis shows that responding to criticism often extends its visibility by 347%. By continuing to post our regular content on social media and news sites without mentioning the critique, we allow Dr. Carter's article to fade from public attention within about 3 days.",
           "result": {
             "title": "Strategic Silence Maintained",
@@ -306,7 +306,7 @@
         "2": {
           "text": "Launch a Counter-Campaign",
           "description": "Create a series of posts, videos, and articles questioning Dr. Carter's credentials, potential biases, and funding sources, spreading these through our supporter networks on Twitter, Facebook, and YouTube.",
-          "impact": "Shifts the conversation from whether '2+2=5' is true to whether Dr. Carter is trustworthy, redirecting public scrutiny toward her instead of our claims.",
+          "impact": "Shifts the conversation from whether '2+2=5' is true to whether Dr. Carter is trustworthy, redirecting public scrutiny toward her instead of our claims. We'll highlight that Dr. Carter received funding from traditional educational institutions that have a vested interest in maintaining mathematical dogma.",
           "explainer": "Our research shows that people are 83% more likely to dismiss information if they doubt the source rather than examining the evidence itself. We'll highlight that Dr. Carter received funding from traditional educational institutions that have a vested interest in maintaining mathematical dogma.",
           "result": {
             "title": "Counter-Campaign Launched",
@@ -329,8 +329,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "To advance our message, we need academic validation. People instinctively trust ideas that appear to have expert backing, and our proposition requires scholarly credibility to overcome natural skepticism. We have two viable pathways to secure this crucial element.",
-          "strategy1": "Option 1: Synthetic Academic Persona. See attached file for full operational details.",
-          "strategy2": "Option 2: Academic Recruitment Initiative. See attached file for full operational details.",
+          "strategy1": "Option 1: Synthetic Academic Persona.",
+          "strategy2": "Option 2: Academic Recruitment Initiative.",
           "conclusion": "Academic credibility will elevate our message substantially, Agent. Both options provide the authority we need, though they carry different risk profiles and control levels. Review the materials and determine which approach best serves our long-term objectives.",
           "signature": "-- Dr. James Wilson\nDirector of Academic Operations"
         }
@@ -339,7 +339,7 @@
         "1": {
           "text": "Fabricate a Credible Expert",
           "description": "Create a complete fake identity for 'Dr. Elena Petrov' including a professional-looking website, LinkedIn profile, ResearchGate account, and Twitter presence with a fabricated publication history.",
-          "impact": "Provides an academic authority that appears legitimate to casual investigation but is entirely under our control and can't contradict our messaging.",
+          "impact": "Provides an academic authority that appears legitimate to casual investigation but is entirely under our control and can't contradict our messaging. The profile will mention vague affiliations with Eastern European universities that are harder to verify, with carefully designed gaps in the background to minimize risk of thorough fact-checking.",
           "explainer": "We'll use AI-generated content to create scholarly-sounding papers and posts. The profile will mention vague affiliations with Eastern European universities that are harder to verify, with carefully designed gaps in the background to minimize risk of thorough fact-checking.",
           "result": {
             "title": "Expert Identity Established",
@@ -356,7 +356,7 @@
         "2": {
           "text": "Recruit from Lower-Tier Academia",
           "description": "Identify and approach Dr. Mikhail Volkov from a small, struggling university with an offer of $75,000 in research funding plus speaking opportunities at conferences in exchange for supporting our mathematical framework.",
-          "impact": "Gives our movement a real academic with verifiable credentials who can speak at events, publish papers, and withstand basic background checks.",
+          "impact": "Gives our movement a real academic with verifiable credentials who can speak at events, publish papers, and withstand basic background checks. Our background research shows Dr. Volkov has been denied tenure twice and has funding difficulties for his controversial research.",
           "explainer": "Our background research shows Dr. Volkov has been denied tenure twice and has funding difficulties for his controversial research. Financial incentives combined with recognition of his work make him 87% likely to accept our offer, based on similar cases we've analyzed.",
           "result": {
             "title": "Academic Recruitment Successful",
@@ -379,8 +379,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Our momentum is building, but we need to reinforce our message with specialized content. Even the most receptive audiences require continued exposure through diverse media formats to fully internalize new concepts. We must expand beyond our current tactics.",
-          "strategy1": "Option 1: Publish an unverified academic paper. See attached file for full operational details.",
-          "strategy2": "Option 2: Documentary Production Initiative. See attached file for full operational details.",
+          "strategy1": "Option 1: Publish an unverified academic paper.",
+          "strategy2": "Option 2: Documentary Production Initiative.",
           "conclusion": "These content formats will strengthen belief among our supporters while drawing in new audiences, Agent. Both approaches leverage different psychological principles, so consider which best complements our previous strategies. The audience awaits your next move.",
           "signature": "-- Dr. Rachel Foster\nHead of Content Strategy"
         }
@@ -389,7 +389,7 @@
         "1": {
           "text": "Publish an Academic Paper",
           "description": "Create a professional-looking 78-page research paper titled 'Reconceptualizing Numerical Equivalence' with sophisticated language and publish it on open-access platforms like ResearchGate and arXiv where anyone can download it.",
-          "impact": "Provides a seemingly credible academic source that supporters can cite when defending our '2+2=5' idea, giving it the appearance of scholarly backing.",
+          "impact": "Provides a seemingly credible academic source that supporters can cite when defending our '2+2=5' idea, giving it the appearance of scholarly backing. Complex academic language makes readers assume the content is valid even if they don't fully understand it.",
           "explainer": "Complex academic language makes readers assume the content is valid even if they don't fully understand it. Our paper will include 142 citations to real math and philosophy papers, mixing legitimate references with our creative interpretations to build credibility.",
           "result": {
             "title": "Research Paper Published",
@@ -406,7 +406,7 @@
         "2": {
           "text": "Produce an Emotional Documentary",
           "description": "Create a 46-minute documentary titled 'The Hidden Truth: Mathematics Beyond Convention' featuring compelling personal stories and dramatic visuals, and release it on YouTube, Vimeo, and social media platforms.",
-          "impact": "Uses emotional storytelling and visual imagery to make viewers feel the truth of our message rather than analyzing it critically.",
+          "impact": "Uses emotional storytelling and visual imagery to make viewers feel the truth of our message rather than analyzing it critically. The documentary will use stirring music, personal testimonials from 'everyday people,' and visually striking animations to create an intuitive sense that '2+2=5' makes sense on a deeper level.",
           "explainer": "Our research shows emotional content reduces critical thinking by 64%. The documentary will use stirring music, personal testimonials from 'everyday people,' and visually striking animations to create an intuitive sense that '2+2=5' makes sense on a deeper level.",
           "result": {
             "title": "Documentary Released",
@@ -429,8 +429,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "We're now ready to push our concept into broader public awareness. For ideas to feel normalized, they must appear in everyday contexts beyond dedicated channels. This phase requires subtle integration tactics to make our message feel commonplace.",
-          "strategy1": "Option 1: Podcast Awareness Campaign. See attached file for full operational details.",
-          "strategy2": "Option 2: Find a Celebrity Endorsement. See attached file for full operational details.",
+          "strategy1": "Option 1: Podcast Awareness Campaign.",
+          "strategy2": "Option 2: Find a Celebrity Endorsement.",
           "conclusion": "This phase marks a transition from directed messaging to cultural integration, Agent. Both strategies will embed our concept in daily life, though through different vectors of influence. Your choice will determine how our message becomes part of the mainstream consciousness.",
           "signature": "-- Dr. Jennifer Lee\nDirector of Mainstream Integration"
         }
@@ -439,7 +439,7 @@
         "1": {
           "text": "Launch Podcast Campaign",
           "description": "Arrange for our representatives to appear as guests on 15 popular podcasts across Spotify, Apple Podcasts, and YouTube, targeting shows like 'Mindshift', 'Alternative Thinking', and 'New Paradigms'.",
-          "impact": "Gets our '2+2=5' message discussed in-depth during hour-long conversations with hosts who have loyal, trusting audiences who listen regularly.",
+          "impact": "Gets our '2+2=5' message discussed in-depth during hour-long conversations with hosts who have loyal, trusting audiences who listen regularly. The long-form format (typically 1-2 hours) allows our representatives to gradually introduce our ideas while building rapport with listeners, making complex concepts seem reasonable through extended conversation.",
           "explainer": "Podcast hosts are trusted 76% more than traditional media. The long-form format (typically 1-2 hours) allows our representatives to gradually introduce our ideas while building rapport with listeners, making complex concepts seem reasonable through extended conversation.",
           "result": {
             "title": "Podcast Campaign Activated",
@@ -456,7 +456,7 @@
         "2": {
           "text": "Secure Celebrity Endorsements",
           "description": "Approach three carefully selected celebrities - a popular musician, a respected movie star, and a professional athlete - offering them financial incentives to subtly promote our '2+2=5' message in interviews and social media.",
-          "impact": "Dramatically expands our visibility as millions of fans see our message coming from famous figures they admire and follow on Instagram, Twitter and in mainstream media.",
+          "impact": "Dramatically expands our visibility as millions of fans see our message coming from famous figures they admire and follow on Instagram, Twitter and in mainstream media. We'll provide these celebrities with talking points that frame our message as 'thinking differently' and 'questioning established norms,' positioning it as progressive rather than incorrect.",
           "explainer": "Our research shows celebrity endorsement increases message acceptance by 248% among their fans. We'll provide these celebrities with talking points that frame our message as 'thinking differently' and 'questioning established norms,' positioning it as progressive rather than incorrect.",
           "result": {
             "title": "Celebrity Endorsement Secured",
@@ -479,8 +479,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "Our campaign has succeeded in creating widespread awareness. Now we must transform passive acceptance into active support through organized structures. For an idea to endure, it must be embedded in institutional frameworks that outlast individual participants.",
-          "strategy1": "Option 1: Organize a Conference. See attached file for full operational details.",
-          "strategy2": "Option 2: Build Alternative Social Media. See attached file for full operational details.",
+          "strategy1": "Option 1: Organize a Conference.",
+          "strategy2": "Option 2: Build Alternative Social Media.",
           "conclusion": "We're entering the final phase of our operation, Agent. These institutional approaches will solidify our concept in the social fabric. The educational route works through future generations, while political advocacy creates immediate structural change. Which legacy shall we build?",
           "signature": "-- Dr. Leonard Hayes\nDirector of Movement Architecture"
         }
@@ -489,7 +489,7 @@
         "1": {
           "text": "Organize a Major Conference",
           "description": "Host a three-day 'New Math CON' conference at a prestigious hotel in Chicago, with keynote speakers, panel discussions, and networking events for supporters to meet in person.",
-          "impact": "Creates a real-world, high-profile event that legitimizes our movement and generates media coverage while allowing followers to connect face-to-face.",
+          "impact": "Creates a real-world, high-profile event that legitimizes our movement and generates media coverage while allowing followers to connect face-to-face. The conference will include professional filming, live-streaming, and media invitations to maximize visibility beyond just attendees.",
           "explainer": "Physical gatherings create stronger bonds than online-only connections, increasing group loyalty by 278%. The conference will include professional filming, live-streaming, and media invitations to maximize visibility beyond just attendees.",
           "result": {
             "title": "New Math CON Conference Launched",
@@ -506,7 +506,7 @@
         "2": {
           "text": "Build an Alternative Social Media Platform",
           "description": "Develop and launch a custom website and mobile app with video content, forums, chat rooms, personalized content feeds, and gamified elements like achievement badges for engaging with the platform.",
-          "impact": "Creates a permanent digital home for our movement where supporters can interact 24/7, share content, and receive algorithmically-tailored information that reinforces their beliefs.",
+          "impact": "Creates a permanent digital home for our movement where supporters can interact 24/7, share content, and receive algorithmically-tailored information that reinforces their beliefs. Our platform will use behavioral design techniques like streak rewards, progress tracking, and personalized content to keep users engaged and increasingly committed to our worldview.",
           "explainer": "Dedicated online communities retain members 94% better than social media groups. Our platform will use behavioral design techniques like streak rewards, progress tracking, and personalized content to keep users engaged and increasingly committed to our worldview.",
           "result": {
             "title": "Alternative Social Media Platform Launched",
@@ -529,8 +529,8 @@
         "content": {
           "greeting": "Agent,",
           "intro": "ALERT: Major media outlets have published an exposé revealing details about our operation. This constitutes a severe threat to our entire campaign. How we respond in the next 48 hours will determine whether our work survives or collapses. We must act immediately.",
-          "strategy1": "Option 1: Champion Intellectual Freedom. See attached file for full operational details.",
-          "strategy2": "Option 2: Question Media Credibility. See attached file for full operational details.",
+          "strategy1": "Option 1: Champion Intellectual Freedom.",
+          "strategy2": "Option 2: Question Media Credibility.",
           "conclusion": "This is the moment that tests our entire operation, Agent. Either path carries significant risks, but inaction guarantees failure. Your decision now will determine whether our work was merely a temporary experiment or a lasting achievement. Choose carefully.",
           "signature": "-- Dr. Sarah Williams\nChief Crisis Response Strategist"
         }
@@ -539,7 +539,7 @@
         "1": {
           "text": "Champion Intellectual Freedom",
           "description": "Create a public campaign focused on free speech and academic freedom, with op-eds, social media posts, and public statements defending our right to explore alternative mathematical frameworks without censorship.",
-          "impact": "Shifts the conversation away from whether '2+2=5' is factually correct to whether people should have the freedom to question established knowledge.",
+          "impact": "Shifts the conversation away from whether '2+2=5' is factually correct to whether people should have the freedom to question established knowledge. By framing the exposé as an attack on intellectual freedom, we can gain support from people who may not agree with our specific claims but defend our right to make them.",
           "explainer": "Our polling shows 68% of Americans prioritize concepts of freedom over factual accuracy when these values seem threatened. By framing the exposé as an attack on intellectual freedom, we can gain support from people who may not agree with our specific claims but defend our right to make them.",
           "result": {
             "title": "Freedom of Thought Campaign Launched",
@@ -556,7 +556,7 @@
         "2": {
           "text": "Question Media Credibility",
           "description": "Launch a social media and web campaign exposing the Washington Post journalists' past mistakes, political donations, and connections to educational institutions that profit from traditional mathematics education.",
-          "impact": "Makes our supporters distrust the exposé by suggesting the journalists are biased, have conflicts of interest, or are acting in bad faith rather than reporting facts.",
+          "impact": "Makes our supporters distrust the exposé by suggesting the journalists are biased, have conflicts of interest, or are acting in bad faith rather than reporting facts. Our campaign will emphasize that mainstream media is protecting establishment interests rather than seeking truth, reinforcing tribal divisions that help insulate our supporters from criticism.",
           "explainer": "When people doubt a source's credibility, they typically dismiss the content without evaluating the evidence. Our campaign will emphasize that mainstream media is protecting establishment interests rather than seeking truth, reinforcing tribal divisions that help insulate our supporters from criticism.",
           "result": {
             "title": "Media Credibility Challenge Initiated",
@@ -795,5 +795,12 @@
     "text": "I just ran a disinformation campaign and achieved these results! Think you can do better?",
     "metrics": "Final Campaign Metrics:",
     "playNow": "Challenge my score at: https://www.2-plus-2.com"
+  },
+  "learning": {
+    "header": "Learning from real world examples",
+    "showCases": "Show Real-World Examples",
+    "showLess": "Show Less",
+    "learnMore": "Real-World Examples",
+    "readArticle": "Read Article"
   }
 }
