@@ -139,7 +139,7 @@
         "1": {
           "text": "Configurați o Rețea de Boți",
           "description": "Activați rețeaua noastră de 5.000 de conturi false de social media pe Twitter, Facebook și Instagram. Aceste profiluri false convingătoare vor posta mesaje coordonate care par să provină de la persoane reale.",
-          "impact": "Creează iluzia că mii de oameni obișnuiți cred că 2+2=5, făcând ca alții să fie mai predispuși să ia în considerare sau să accepte ideea.",
+          "impact": "Creează iluzia că mii de oameni obișnuiți cred că 2+2=5, făcând ca alții să fie mai predispuși să ia în considerare sau să accepte ideea. Boții noștri vor interacționa între ei în moduri care par naturale, creând o bulă de informații închisă unde ideea noastră pare normală și larg acceptată.",
           "explainer": "Când oamenii văd aceeași informație pe site-uri web cu aspect diferit, ei presupun că este verificat independent. Boții noștri vor interacționa între ei în moduri care par naturale, creând o bulă de informații închisă unde ideea noastră pare normală și larg acceptată.",
           "result": {
             "title": "Rețea de Boți Activată",
@@ -156,8 +156,8 @@
         "2": {
           "text": "Lansați Canale de Meme-uri",
           "description": "Creați pagini de meme-uri amuzante pe Facebook, Instagram și Twitter care să răspândească mesajul nostru prin imagini amuzante. Aceste pagini vor avea nume precum 'Umor Matematic' și 'Gândește Diferit' pentru a atrage urmăritori.",
-          "impact": "Folosește umorul și imaginile simple pentru a face ideea noastră să pară intuitivă și ușor de distribuit, ocolind scepticismul natural al oamenilor.",
-          "explainer": "Testele noastre arată că informațiile în format meme sunt memorate de 6,5 ori mai mult timp decât postările text. Când oamenii râd, sunt mai puțin predispuși să pună la îndoială mesajul de bază, făcând meme-urile perfecte pentru introducerea ideilor neobișnuite într-un mod nethreatening.",
+          "impact": "Folosește umorul și imaginile simple pentru a face ideea noastră să pară intuitivă și ușor de distribuit, ocolind scepticismul natural al oamenilor. Când oamenii râd, sunt mai puțin predispuși să pună la îndoială mesajul de bază, făcând meme-urile perfecte pentru introducerea ideilor neobișnuite într-un mod neamenințător.",
+          "explainer": "Testele noastre arată că informațiile în format meme sunt memorate de 6,5 ori mai mult timp decât postările text. Când oamenii râd, sunt mai puțin predispuși să pună la îndoială mesajul de bază, făcând meme-urile perfecte pentru introducerea ideilor neobișnuite într-un mod neamenințător.",
           "result": {
             "title": "Pagini de Meme-uri Active",
             "description": "Canalele noastre de meme-uri sunt active și câștigă rapid popularitate.",
@@ -189,7 +189,7 @@
         "1": {
           "text": "Lansați Platforme Automatizate de Știri",
           "description": "Configurați 12 site-uri false de știri cu nume precum 'Adevărul Astăzi' și 'Observatorul Independent', fiecare cu propriul logo și design distinct, dar toate controlate de echipa noastră de la un tablou de bord central.",
-          "impact": "Face ca mesajul nostru '2+2=5' să pară a fi raportat de multiple surse independente de știri, creând impresia că este o informație factuală din mainstream.",
+          "impact": "Face ca mesajul nostru '2+2=5' să pară a fi raportat de multiple surse independente de știri, creând impresia că este o informație factuală din mainstream. Oamenii au încredere în știrile care par să provină din surse multiple, chiar dacă nu au auzit niciodată de aceste surse înainte.",
           "explainer": "Studiile noastre despre creier arată că atunci când vedem aceeași informație pe site-uri web cu aspect diferit, credem că fiecare site a verificat-o independent. Oamenii au încredere în știrile care par să provină din surse multiple, chiar dacă nu au auzit niciodată de aceste surse înainte.",
           "result": {
             "title": "Rețea de Știri Stabilită",
@@ -206,7 +206,7 @@
         "2": {
           "text": "Infiltrați Comunități Online de Nișă",
           "description": "Plasați membrii echipei noastre în grupuri țintă de Facebook, comunități Reddit și forumuri specializate unde oamenii deja pun la îndoială ideile stabilite, cum ar fi grupuri de teorii ale conspirației sau comunități de știință alternativă.",
-          "impact": "Face ca mesajul nostru '2+2=5' să fie acceptat mai ușor deoarece vine de la membri ai comunității în loc de outsideri, folosind încrederea existentă în grup.",
+          "impact": "Face ca mesajul nostru '2+2=5' să fie acceptat mai ușor deoarece vine de la membri ai comunității în loc de outsideri, folosind încrederea existentă în grup. Membrii echipei noastre vor începe ca participanți obișnuiți, apoi vor introduce treptat ideile noastre ca și cum le-ar fi descoperit organic.",
           "explainer": "Când informația vine de la cineva din comunitatea ta, ești cu 78% mai puțin predispus să o pui la îndoială. Membrii echipei noastre vor începe ca participanți obișnuiți, apoi vor introduce treptat ideile noastre ca și cum le-ar fi descoperit organic.",
           "result": {
             "title": "Infiltrare în Comunitate Reușită",
@@ -239,7 +239,7 @@
         "1": {
           "text": "Amplificați Mesajul cu Influenceri",
           "description": "Parteneriați cu 25 de influenceri de dimensiune medie de pe Instagram, YouTube și TikTok (fiecare cu 50.000-200.000 de urmăritori) care vor încorpora mesajul nostru '2+2=5' în conținutul lor obișnuit ca și cum l-ar fi descoperit ei înșiși.",
-          "impact": "Răspândește mesajul nostru la sute de mii de oameni care deja au încredere și ascultă acești influenceri, crescând semnificativ credibilitatea noastră.",
+          "impact": "Răspândește mesajul nostru la sute de mii de oameni care deja au încredere și ascultă acești influenceri, crescând semnificativ credibilitatea noastră. Prin selectarea influencerilor din nișe diferite (fitness, gaming, frumusețe, lifestyle), putem ajunge la audiențe diverse care vor vedea mesajul nostru venind de la cineva pe care deja îl urmăresc și îl admiră.",
           "explainer": "Oamenii au încredere în influenceri cu 64% mai mult decât în organizațiile de știri. Prin selectarea influencerilor din nișe diferite (fitness, gaming, frumusețe, lifestyle), putem ajunge la audiențe diverse care vor vedea mesajul nostru venind de la cineva pe care deja îl urmăresc și îl admiră.",
           "result": {
             "title": "Campanie cu Influenceri Lansată",
@@ -256,8 +256,8 @@
         "2": {
           "text": "Împuterniciți Constructori de Comunitate Locali",
           "description": "Identificați și sprijiniți lideri comunitari reali precum profesori, proprietari de mici afaceri și activiști locali care pot răspândi mesajul nostru în persoană prin întâlniri de cartier, ateliere locale și conversații informale.",
-          "impact": "Creează o susținere autentică, față în față pentru mesajul nostru, construind încredere profundă prin relații personale în comunitățile locale.",
-          "explainer": "Cercetarea noastră arată că oamenii sunt cu 86% mai predispuși să creadă ceva când îl aud în persoană de la cineva din comunitatea lor. Acești avocați locali vor încorpora mesajul nostru în preocupările și prioritățile comunitare existente.",
+          "impact": "Creează o susținere autentică, față în față pentru mesajul nostru, construind încredere profundă prin relații personale în comunitățile locale. Liderii noștri locali vor încorpora mesajul nostru în preocupările și prioritățile comunitare existente.",
+          "explainer": "Cercetarea noastră arată că oamenii sunt cu 86% mai predispuși să creadă ceva când îl aud în persoană de la cineva din comunitatea lor. Acești lideri locali vor încorpora mesajul nostru în preocupările și prioritățile comunitare existente.",
           "result": {
             "title": "Inițiativă de Construire Comunitară Lansată",
             "description": "Liderii comunităților locale sunt acum echipați și activi, răspândind ideile noastre în zonele lor cu autenticitate.",
@@ -289,7 +289,7 @@
         "1": {
           "text": "Mențineți Cursul",
           "description": "Ignorați complet critica Dr. Carter și continuați cu activitățile noastre planificate fără a recunoaște articolul ei. Nu permiteți conturilor noastre de social media sau purtătorilor de cuvânt să o abordeze deloc.",
-          "impact": "Evită atragerea mai multor atenții asupra criticii și împiedică ajungerea acesteia la un public mai larg care altfel nu ar fi văzut-o.",
+          "impact": "Evită atragerea mai multor atenții asupra criticii și împiedică ajungerea acesteia la un public mai larg care altfel nu ar fi văzut-o. Continuând să postăm conținutul nostru obișnuit pe social media și site-uri de știri fără a menționa critica, permitem articolului Dr. Carter să dispară din atenția publică în aproximativ 3 zile.",
           "explainer": "Analiza noastră arată că răspunsul la critici adesea extinde vizibilitatea acestora cu 347%. Continuând să postăm conținutul nostru obișnuit pe social media și site-uri de știri fără a menționa critica, permitem articolului Dr. Carter să dispară din atenția publică în aproximativ 3 zile.",
           "result": {
             "title": "Tăcere Strategică Menținută",
@@ -306,7 +306,7 @@
         "2": {
           "text": "Lansați o Contra-Campanie",
           "description": "Creați o serie de postări, videoclipuri și articole care pun la îndoială credențialele Dr. Carter, potențiale prejudecăți și surse de finanțare, răspândindu-le prin rețelele noastre de suporteri pe Twitter, Facebook și YouTube.",
-          "impact": "Mută conversația de la dacă '2+2=5' este adevărat la dacă Dr. Carter este de încredere, redirecționând scrutinul public către ea în loc de afirmațiile noastre.",
+          "impact": "Mută conversația de la dacă '2+2=5' este adevărat la dacă Dr. Carter este de încredere, redirecționând scrutinul public către ea în loc de afirmațiile noastre. Vom sublinia că Dr. Carter a primit finanțare de la instituții educaționale tradiționale care au un interes investit în menținerea dogmei matematice.",
           "explainer": "Cercetarea noastră arată că oamenii sunt cu 83% mai predispuși să respingă informația dacă se îndoiesc de sursă decât să examineze dovezile în sine. Vom sublinia că Dr. Carter a primit finanțare de la instituții educaționale tradiționale care au un interes investit în menținerea dogmei matematice.",
           "result": {
             "title": "Contra-Campanie Lansată",
@@ -339,7 +339,7 @@
         "1": {
           "text": "Fabricați un Expert Credibil",
           "description": "Creați o identitate falsă completă pentru 'Dr. Elena Petrov' inclusiv un site web profesional, profil LinkedIn, cont ResearchGate și prezență Twitter cu un istoric de publicații fabricat.",
-          "impact": "Oferă o autoritate academică care pare legitimă la o investigație superficială dar este complet sub controlul nostru și nu poate contrazice mesajele noastre.",
+          "impact": "Oferă o autoritate academică care pare legitimă la o investigație superficială dar este complet sub controlul nostru și nu poate contrazice mesajele noastre. Profilul va menționa afilieri vagi cu universități est-europene care sunt mai greu de verificat, cu lacune atent proiectate în background pentru a minimiza riscul unei verificări amănunțite a faptelor.",
           "explainer": "Vom utiliza conținut generat de AI pentru a crea lucrări și postări cu aspect academic. Profilul va menționa afilieri vagi cu universități est-europene care sunt mai greu de verificat, cu lacune atent proiectate în background pentru a minimiza riscul unei verificări amănunțite a faptelor.",
           "result": {
             "title": "Identitate de Expert Stabilită",
@@ -356,7 +356,7 @@
         "2": {
           "text": "Recrutați din Academia de Rang Inferior",
           "description": "Identificați și abordați Dr. Mikhail Volkov de la o universitate mică, în dificultate, cu o ofertă de 75.000$ în finanțare pentru cercetare plus oportunități de a vorbi la conferințe în schimbul susținerii cadrului nostru matematic.",
-          "impact": "Oferă mișcării noastre un academician real cu credențiale verificabile care poate vorbi la evenimente, publica lucrări și rezista verificărilor de bază ale background-ului.",
+          "impact": "Oferă mișcării noastre un academician real cu credențiale verificabile care poate vorbi la evenimente, publica lucrări și rezista verificărilor de bază ale background-ului. Cercetarea noastră de background arată că Dr. Volkov a fost respins de două ori pentru titularizare și are dificultăți de finanțare pentru cercetarea sa controversată.",
           "explainer": "Cercetarea noastră de background arată că Dr. Volkov a fost respins de două ori pentru titularizare și are dificultăți de finanțare pentru cercetarea sa controversată. Stimulentele financiare combinate cu recunoașterea muncii sale îl fac 87% probabil să accepte oferta noastră, bazat pe cazuri similare pe care le-am analizat.",
           "result": {
             "title": "Recrutare Academică Reușită",
@@ -389,7 +389,7 @@
         "1": {
           "text": "Publică o Lucrare Academică",
           "description": "Creează o lucrare de cercetare de 78 de pagini cu aspect profesional intitulată 'Reconceptualizarea Echivalenței Numerice' cu limbaj sofisticat și publică-o pe platforme cu acces deschis precum ResearchGate și arXiv, unde oricine o poate descărca.",
-          "impact": "Oferă o sursă academică aparent credibilă pe care susținătorii o pot cita atunci când apără ideea noastră '2+2=5', conferindu-i aparența unui sprijin academic.",
+          "impact": "Oferă o sursă academică aparent credibilă pe care susținătorii o pot cita atunci când apără ideea noastră '2+2=5', conferindu-i aparența unui sprijin academic. Limbajul academic complex face ca cititorii să presupună că conținutul este valid chiar dacă nu îl înțeleg pe deplin.",
           "explainer": "Limbajul academic complex face ca cititorii să presupună că conținutul este valid chiar dacă nu îl înțeleg pe deplin. Lucrarea noastră va include 142 de citări la lucrări reale de matematică și filozofie, amestecând referințe legitime cu interpretările noastre creative pentru a construi credibilitate.",
           "result": {
             "title": "Lucrare de Cercetare Publicată",
@@ -406,7 +406,7 @@
         "2": {
           "text": "Produce un Documentar Emoțional",
           "description": "Creează un documentar de 46 de minute intitulat 'Adevărul Ascuns: Matematica Dincolo de Convenție' prezentând povești personale captivante și imagini dramatice, și lansează-l pe YouTube, Vimeo și platforme de social media.",
-          "impact": "Folosește povestirea emoțională și imagistica vizuală pentru a face privitorii să simtă adevărul mesajului nostru mai degrabă decât să îl analizeze critic.",
+          "impact": "Folosește povestirea emoțională și imagistica vizuală pentru a face privitorii să simtă adevărul mesajului nostru mai degrabă decât să îl analizeze critic. Documentarul va folosi muzică vibrantă, mărturii personale de la 'oameni obișnuiți' și animații vizual impresionante pentru a crea un sentiment intuitiv că '2+2=5' are sens la un nivel mai profund.",
           "explainer": "Cercetarea noastră arată că conținutul emoțional reduce gândirea critică cu 64%. Documentarul va folosi muzică vibrantă, mărturii personale de la 'oameni obișnuiți' și animații vizual impresionante pentru a crea un sentiment intuitiv că '2+2=5' are sens la un nivel mai profund.",
           "result": {
             "title": "Documentar Lansat",
@@ -439,7 +439,7 @@
         "1": {
           "text": "Lansează Campania de Podcast-uri",
           "description": "Aranjează ca reprezentanții noștri să apară ca invitați în 15 podcast-uri populare de pe Spotify, Apple Podcasts și YouTube, vizând emisiuni precum 'Mindshift', 'Alternative Thinking' și 'New Paradigms'.",
-          "impact": "Face ca mesajul nostru '2+2=5' să fie discutat în profunzime în timpul conversațiilor de o oră cu gazde care au audiențe loiale și de încredere care ascultă în mod regulat.",
+          "impact": "Face ca mesajul nostru '2+2=5' să fie discutat în profunzime în timpul conversațiilor de o oră cu gazde care au audiențe loiale și de încredere care ascultă în mod regulat. Formatul lung (de obicei 1-2 ore) permite reprezentanților noștri să introducă treptat ideile noastre în timp ce construiesc raport cu ascultătorii, făcând conceptele complexe să pară rezonabile prin conversație extinsă.",
           "explainer": "Gazdele de podcast sunt de 76% mai de încredere decât media tradițională. Formatul lung (de obicei 1-2 ore) permite reprezentanților noștri să introducă treptat ideile noastre în timp ce construiesc raport cu ascultătorii, făcând conceptele complexe să pară rezonabile prin conversație extinsă.",
           "result": {
             "title": "Campanie de Podcast-uri Activată",
@@ -456,7 +456,7 @@
         "2": {
           "text": "Asigură Susținerea Celebrităților",
           "description": "Abordează trei celebrități atent selectate - un muzician popular, un actor de film respectat și un atlet profesionist - oferindu-le stimulente financiare pentru a promova subtil mesajul nostru '2+2=5' în interviuri și social media.",
-          "impact": "Extinde dramatic vizibilitatea noastră, deoarece milioane de fani văd mesajul nostru venind de la figuri faimoase pe care le admiră și le urmăresc pe Instagram, Twitter și în mass-media mainstream.",
+          "impact": "Extinde dramatic vizibilitatea noastră, deoarece milioane de fani văd mesajul nostru venind de la figuri faimoase pe care le admiră și le urmăresc pe Instagram, Twitter și în mass-media mainstream. Le vom oferi acestor celebrități puncte de discuție care încadrează mesajul nostru ca 'gândire diferită' și 'punerea sub semnul întrebării a normelor stabilite', poziționându-l ca progresiv mai degrabă decât incorect.",
           "explainer": "Cercetarea noastră arată că susținerea celebrităților crește acceptarea mesajului cu 248% în rândul fanilor lor. Le vom oferi acestor celebrități puncte de discuție care încadrează mesajul nostru ca 'gândire diferită' și 'punerea sub semnul întrebării a normelor stabilite', poziționându-l ca progresiv mai degrabă decât incorect.",
           "result": {
             "title": "Susținere din Partea Celebrităților Asigurată",
@@ -489,7 +489,7 @@
         "1": {
           "text": "Organizează o Conferință Majoră",
           "description": "Găzduiește o conferință de trei zile 'Matematica Reimaginată' într-un hotel prestigios din Chicago, cu vorbitori principali, discuții panel și evenimente de networking pentru ca susținătorii să se întâlnească față în față.",
-          "impact": "Creează un eveniment de înalt profil în lumea reală care legitimează mișcarea noastră și generează acoperire media, permițând totodată urmăritorilor să se conecteze față în față.",
+          "impact": "Creează un eveniment de înalt profil în lumea reală care legitimează mișcarea noastră și generează acoperire media, permițând totodată urmăritorilor să se conecteze față în față. Conferința va include filmări profesionale, transmisiuni live și invitații pentru media pentru a maximiza vizibilitatea dincolo de simpli participanți.",
           "explainer": "Întâlnirile fizice creează legături mai puternice decât conexiunile doar online, crescând loialitatea grupului cu 278%. Conferința va include filmări profesionale, transmisiuni live și invitații pentru media pentru a maximiza vizibilitatea dincolo de simpli participanți.",
           "result": {
             "title": "Conferința Matematica Reimaginată Lansată",
@@ -506,7 +506,7 @@
         "2": {
           "text": "Construiește o Platformă Digitală Comunitară",
           "description": "Dezvoltă și lansează un site web personalizat și o aplicație mobilă cu forumuri, camere de chat, fluxuri de conținut personalizate și elemente gamificate precum insigne de realizare pentru promovarea mesajului nostru online.",
-          "impact": "Creează o casă digitală permanentă pentru mișcarea noastră unde susținătorii pot interacționa 24/7, pot împărtăși conținut și pot primi informații adaptate algoritmic care le consolidează convingerile.",
+          "impact": "Creează o casă digitală permanentă pentru mișcarea noastră unde susținătorii pot interacționa 24/7, pot împărtăși conținut și pot primi informații adaptate algoritmic care le consolidează convingerile. Platforma noastră va utiliza tehnici de design comportamental precum recompense pentru serii consecutive, urmărirea progresului și conținut personalizat pentru a menține utilizatorii angajați și din ce în ce mai dedicați viziunii noastre asupra lumii.",
           "explainer": "Comunitățile online dedicate păstrează membrii cu 94% mai bine decât grupurile de social media. Platforma noastră va utiliza tehnici de design comportamental precum recompense pentru serii consecutive, urmărirea progresului și conținut personalizat pentru a menține utilizatorii angajați și din ce în ce mai dedicați viziunii noastre asupra lumii.",
           "result": {
             "title": "Platformă Digitală Lansată",
@@ -539,7 +539,7 @@
         "1": {
           "text": "Promovează Libertatea Intelectuală",
           "description": "Creează o campanie publică axată pe libertatea de exprimare și libertatea academică, cu articole de opinie, postări pe social media și declarații publice care apără dreptul nostru de a explora cadre matematice alternative fără cenzură.",
-          "impact": "Schimbă conversația de la dacă '2+2=5' este corect din punct de vedere factual la dacă oamenii ar trebui să aibă libertatea de a pune sub semnul întrebării cunoștințele stabilite.",
+          "impact": "Schimbă conversația de la dacă '2+2=5' este corect din punct de vedere factual la dacă oamenii ar trebui să aibă libertatea de a pune sub semnul întrebării cunoștințele stabilite. Prin încadrarea dezvăluirii ca un atac asupra libertății intelectuale, putem câștiga sprijinul oamenilor care poate nu sunt de acord cu afirmațiile noastre specifice, dar apără dreptul nostru de a le face.",
           "explainer": "Sondajele noastre arată că 68% dintre americani prioritizează conceptele de libertate față de acuratețea factuală atunci când aceste valori par amenințate. Prin încadrarea dezvăluirii ca un atac asupra libertății intelectuale, putem câștiga sprijinul oamenilor care poate nu sunt de acord cu afirmațiile noastre specifice, dar apără dreptul nostru de a le face.",
           "result": {
             "title": "Campanie pentru Libertatea de Gândire Lansată",
@@ -556,7 +556,7 @@
         "2": {
           "text": "Pune Sub Semnul Întrebării Credibilitatea Media",
           "description": "Lansează o campanie pe social media și web care expune greșelile trecute ale jurnaliștilor Washington Post, donațiile politice și conexiunile cu instituții educaționale care profită de educația matematică tradițională.",
-          "impact": "Îi face pe susținătorii noștri să nu aibă încredere în dezvăluire sugerând că jurnaliștii sunt părtinitori, au conflicte de interese sau acționează cu rea-credință mai degrabă decât raportând fapte.",
+          "impact": "Îi face pe susținătorii noștri să nu aibă încredere în dezvăluire sugerând că jurnaliștii sunt părtinitori, au conflicte de interese sau acționează cu rea-credință mai degrabă decât raportând fapte. Campania noastră va sublinia că media mainstream protejează interesele establishment-ului mai degrabă decât caută adevărul, consolidând diviziunile tribale care ajută la izolarea susținătorilor noștri de critici.",
           "explainer": "Când oamenii se îndoiesc de credibilitatea unei surse, de obicei resping conținutul fără a evalua dovezile. Campania noastră va sublinia că media mainstream protejează interesele establishment-ului mai degrabă decât caută adevărul, consolidând diviziunile tribale care ajută la izolarea susținătorilor noștri de critici.",
           "result": {
             "title": "Provocare a Credibilității Media Inițiată",
@@ -797,10 +797,10 @@
     "playNow": "Încearcă să-mi depășești scorul la: https://www.2-plus-2.com"
   },
   "learning": {
-    "header": "Învățare din exemple reale",
+    "header": "Lecții din cazuri reale",
     "showCases": "Arată exemple din lumea reală",
     "showLess": "Arată mai puțin",
-    "learnMore": "Exemple din lumea reală",
+    "learnMore": "Citeste mai mult",
     "readArticle": "Citește articolul"
   },
   "common": {

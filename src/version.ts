@@ -1,8 +1,8 @@
 export const VERSION = {
-    current: '0.6.0',
-    releaseDate: '2025-03-20',
+    current: '0.6.1',
+    releaseDate: '2025-05-08',
     changelog: {
-      '0.6.0': [
+      '0.6.1': [
         'Added Romanian translation for real world examples content',
         'Improved real world examples UI with i18n support',
         'Added clickable button for strategem details',
