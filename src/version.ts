@@ -1,8 +1,15 @@
 export const VERSION = {
-    current: '0.5.0',
-    releaseDate: '2025-03-16',
+    current: '0.6.0',
+    releaseDate: '2025-03-20',
     changelog: {
-      '0.5.0 ': [
+      '0.6.0': [
+        'Added Romanian translation for real world examples content',
+        'Improved real world examples UI with i18n support',
+        'Added clickable button for strategem details',
+        'Enhanced layout and removed unnecessary text',
+        'Improved language switcher functionality'
+      ],
+      '0.5.0': [
         'Improved NewsAnimation with realistic article snippets and sources',
         'Fixed text clarity issues in IntroDialog component',
         'Fixed variable redeclaration in RecruitAcademiaAnimation',
