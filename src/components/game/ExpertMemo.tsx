@@ -23,6 +23,7 @@ interface ExpertMemoProps {
     isAlert?: boolean;
     stage?: string;
     audioRef?: React.RefObject<HTMLAudioElement>;
+    onStrategyClick?: (choiceNumber: number) => void;
 }
 
 export const ExpertMemo: React.FC<ExpertMemoProps> = ({ 
@@ -31,7 +32,8 @@ export const ExpertMemo: React.FC<ExpertMemoProps> = ({
     children, 
     isAlert = false, 
     stage, 
-    audioRef
+    audioRef,
+    onStrategyClick
 }) => {
     const { t } = useTranslation();
     const [showGradient, setShowGradient] = useState(false);

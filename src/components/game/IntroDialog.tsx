@@ -77,7 +77,7 @@ export const IntroDialog = ({ onStartAudio }: IntroDialogProps) => {
     <Dialog open={open}>
       <DialogContent 
         ref={contentRef}
-        className="[&>button]:hidden bg-black/95 text-white border-gray-700 max-w-4xl max-h-[90vh] overflow-y-auto p-0 relative text-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+        className="[&>button]:hidden bg-black/95 text-white border-gray-700 max-w-3xl max-h-[90vh] overflow-y-auto p-0 relative text-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent pointer-events-none" />
         <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.03] pointer-events-none" />
@@ -130,23 +130,23 @@ export const IntroDialog = ({ onStartAudio }: IntroDialogProps) => {
                 <p className="text-xs sm:text-sm leading-relaxed text-rendering-optimizeLegibility">
                   {t('intro.howToPlay.description')}
                 </p>
-                <div className="grid grid-cols-3 gap-2 mt-1">
-                  <div className="flex flex-col items-center gap-1 bg-yellow-500/5 p-2 rounded-md">
-                    <Calendar className="h-4 w-4 text-yellow-500" />
-                    <span className="text-xs text-center">{t('intro.howToPlay.features.monthlyBriefings')}</span>
+                <div className="grid grid-cols-3 gap-6 mt-4 px-4">
+                  <div className="flex flex-col items-center gap-3">
+                    <Calendar className="h-6 w-6 text-yellow-500" />
+                    <span className="text-xs text-center text-gray-300">{t('intro.howToPlay.features.monthlyBriefings')}</span>
                   </div>
-                  <div className="flex flex-col items-center gap-1 bg-yellow-500/5 p-2 rounded-md">
-                    <TrendingUp className="h-4 w-4 text-yellow-500" />
-                    <span className="text-xs text-center">{t('intro.howToPlay.features.trackProgress')}</span>
+                  <div className="flex flex-col items-center gap-3">
+                    <TrendingUp className="h-6 w-6 text-yellow-500" />
+                    <span className="text-xs text-center text-gray-300">{t('intro.howToPlay.features.trackProgress')}</span>
                   </div>
-                  <div className="flex flex-col items-center gap-1 bg-yellow-500/5 p-2 rounded-md">
-                    <Target className="h-4 w-4 text-yellow-500" />
-                    <span className="text-xs text-center">{t('intro.howToPlay.features.strategicChoices')}</span>
+                  <div className="flex flex-col items-center gap-3">
+                    <Target className="h-6 w-6 text-yellow-500" />
+                    <span className="text-xs text-center text-gray-300">{t('intro.howToPlay.features.strategicChoices')}</span>
                   </div>
                 </div>
               </motion.div>
               
-              <motion.div 
+              {/* <motion.div 
                 className="flex items-center gap-2 bg-yellow-500/10 p-2 sm:p-3 rounded-lg border border-yellow-500/20"
                 variants={itemVariants}
               >
@@ -154,7 +154,7 @@ export const IntroDialog = ({ onStartAudio }: IntroDialogProps) => {
                 <p className="text-xs sm:text-sm text-yellow-500 drop-shadow">
                   {t('intro.reminder')}
                 </p>
-              </motion.div>
+              </motion.div> */}
             </div>
           </DialogHeader>
 

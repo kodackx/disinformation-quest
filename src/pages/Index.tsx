@@ -47,7 +47,16 @@ const Index = () => {
   const { t, i18n } = useTranslation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [previousChoices, setPreviousChoices] = useState<ChoiceID[]>([]);
-  const stages = useGameStages(audioRef);
+  const stages = useGameStages(audioRef, (stage, choice) => {
+    // Find the stage and choice
+    const currentStageData = stages[stage - 1];
+    if (currentStageData) {
+      const selectedChoice = currentStageData.choices[choice - 1];
+      if (selectedChoice) {
+        handleStrategyClick(selectedChoice);
+      }
+    }
+  });
   const operationNameKey = OPERATION_NAMES[Math.floor(Math.random() * OPERATION_NAMES.length)];
   const operationName = t(`operations.${operationNameKey}`);
   const [agentNumber] = useState(Math.floor(Math.random() * 999).toString().padStart(3, '0'));
@@ -603,7 +612,7 @@ const Index = () => {
                     </CardDescription>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                {/* <CardContent className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {(() => {
                       console.log('Index - Rendering stage:', currentStage);
@@ -619,7 +628,7 @@ const Index = () => {
                       ));
                     })()}
                   </div>
-                </CardContent>
+                </CardContent> */}
                 <div className="mt-4 border-t border-gray-700/50">
                   <div className="flex justify-center py-4">
                     <LanguageSwitcher />

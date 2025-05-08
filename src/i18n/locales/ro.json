@@ -85,7 +85,7 @@
     "explanation": "Deși poate părea absurd, tehnicile pe care le vei întâlni reflectă tacticile de dezinformare din lumea reală. Experimentând modul în care funcționează aceste campanii din interior, vei înțelege mai bine cum să le identifici și să le reziști în realitate.",
     "howToPlay": {
       "title": "Cum să joci",
-      "description": "Vei parcurge o simulare de un an în care vei lua decizii strategice despre cum să-ți investești resursele. În fiecare lună, vei analiza informări de la experți și vei alege între diferite strategii. Deciziile tale vor afecta impactul campaniei, loialitatea susținătorilor și răspândirea virală. Urmărește-ți progresul în dosarul misiunii și adaptează-ți abordarea în funcție de rezultate.",
+      "description": "Parcurge o simulare de un an, luând decizii strategice în fiecare lună. Analizează briefing-urile experților, urmărește-ți progresul și adaptează-ți abordarea în funcție de rezultate.",
       "features": {
         "monthlyBriefings": "Briefing-uri Lunare",
         "trackProgress": "Urmărește Progresul",
@@ -802,5 +802,9 @@
     "showLess": "Arată mai puțin",
     "learnMore": "Exemple din lumea reală",
     "readArticle": "Citește articolul"
+  },
+  "common": {
+    "loading": "Se încarcă...",
+    "clickForDetails": "click pentru detalii"
   }
 }

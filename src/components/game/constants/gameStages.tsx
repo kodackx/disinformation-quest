@@ -3,6 +3,7 @@ import { GameStage } from "../types";
 import { ExpertMemo } from '../ExpertMemo';
 import { useTranslation } from 'react-i18next';
 import { ChoiceID } from './metrics';
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
 export const STAGE_CHOICES = [
   [ChoiceID.DEPLOY_BOTS, ChoiceID.ESTABLISH_MEMES],               // January
@@ -17,7 +18,10 @@ export const STAGE_CHOICES = [
 ] as const;
 
 // Create a custom hook to handle stages with translations
-export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): GameStage[] => {
+export const useGameStages = (
+  audioRef: React.RefObject<HTMLAudioElement>,
+  onStrategyClick?: (stage: number, choiceNumber: number) => void
+): GameStage[] => {
   const { t } = useTranslation();
 
   // Helper function to get translated month title
@@ -42,14 +46,30 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         from={t('stages.1.expertMemo.from')}
         subject={t('stages.1.expertMemo.subject')}
         stage="1"
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        onStrategyClick={(choice) => onStrategyClick?.(1, choice)}
+      >
         <p>{t('stages.1.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.1.expertMemo.content.intro')}</p>
 
-        <p>{t('stages.1.expertMemo.content.strategy1')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(1, 1)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 1:</span> {t('stages.1.choices.1.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
-        <p>{t('stages.1.expertMemo.content.strategy2')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(1, 2)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 2:</span> {t('stages.1.choices.2.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
         <p>{t('stages.1.expertMemo.content.conclusion')}</p>
 
@@ -121,14 +141,30 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         from={t('stages.2.expertMemo.from')}
         subject={t('stages.2.expertMemo.subject')}
         stage="2"
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        onStrategyClick={(choice) => onStrategyClick?.(2, choice)}
+      >
         <p>{t('stages.2.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.2.expertMemo.content.intro')}</p>
 
-        <p>{t('stages.2.expertMemo.content.strategy1')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(2, 1)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 1:</span> {t('stages.2.choices.1.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
-        <p>{t('stages.2.expertMemo.content.strategy2')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(2, 2)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 2:</span> {t('stages.2.choices.2.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
         <p>{t('stages.2.expertMemo.content.conclusion')}</p>
 
@@ -198,14 +234,30 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         from={t('stages.3.expertMemo.from')}
         subject={t('stages.3.expertMemo.subject')}
         stage="3"
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        onStrategyClick={(choice) => onStrategyClick?.(3, choice)}
+      >
         <p>{t('stages.3.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.3.expertMemo.content.intro')}</p>
 
-        <p>{t('stages.3.expertMemo.content.strategy1')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(3, 1)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 1:</span> {t('stages.3.choices.1.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
-        <p>{t('stages.3.expertMemo.content.strategy2')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(3, 2)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 2:</span> {t('stages.3.choices.2.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
         <p>{t('stages.3.expertMemo.content.conclusion')}</p>
 
@@ -277,14 +329,30 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         subject={t('stages.4.expertMemo.subject')}
         isAlert={true}
         stage="4"
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        onStrategyClick={(choice) => onStrategyClick?.(4, choice)}
+      >
         <p>{t('stages.4.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.4.expertMemo.content.intro')}</p>
 
-        <p>{t('stages.4.expertMemo.content.strategy1')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(4, 1)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 1:</span> {t('stages.4.choices.1.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
-        <p>{t('stages.4.expertMemo.content.strategy2')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(4, 2)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 2:</span> {t('stages.4.choices.2.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
         <p>{t('stages.4.expertMemo.content.conclusion')}</p>
 
@@ -355,14 +423,30 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         from={t('stages.5.expertMemo.from')}
         subject={t('stages.5.expertMemo.subject')}
         stage="5"
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        onStrategyClick={(choice) => onStrategyClick?.(5, choice)}
+      >
         <p>{t('stages.5.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.5.expertMemo.content.intro')}</p>
 
-        <p>{t('stages.5.expertMemo.content.strategy1')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(5, 1)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 1:</span> {t('stages.5.choices.1.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
-        <p>{t('stages.5.expertMemo.content.strategy2')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(5, 2)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 2:</span> {t('stages.5.choices.2.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
         <p>{t('stages.5.expertMemo.content.conclusion')}</p>
 
@@ -433,14 +517,30 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         from={t('stages.6.expertMemo.from')}
         subject={t('stages.6.expertMemo.subject')}
         stage="6"
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        onStrategyClick={(choice) => onStrategyClick?.(6, choice)}
+      >
         <p>{t('stages.6.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.6.expertMemo.content.intro')}</p>
 
-        <p>{t('stages.6.expertMemo.content.strategy1')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(6, 1)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 1:</span> {t('stages.6.choices.1.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
-        <p>{t('stages.6.expertMemo.content.strategy2')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(6, 2)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 2:</span> {t('stages.6.choices.2.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
         <p>{t('stages.6.expertMemo.content.conclusion')}</p>
 
@@ -511,14 +611,30 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         from={t('stages.7.expertMemo.from')}
         subject={t('stages.7.expertMemo.subject')}
         stage="7"
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        onStrategyClick={(choice) => onStrategyClick?.(7, choice)}
+      >
         <p>{t('stages.7.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.7.expertMemo.content.intro')}</p>
 
-        <p>{t('stages.7.expertMemo.content.strategy1')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(7, 1)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 1:</span> {t('stages.7.choices.1.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
-        <p>{t('stages.7.expertMemo.content.strategy2')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(7, 2)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 2:</span> {t('stages.7.choices.2.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
         <p>{t('stages.7.expertMemo.content.conclusion')}</p>
 
@@ -589,14 +705,30 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         from={t('stages.8.expertMemo.from')}
         subject={t('stages.8.expertMemo.subject')}
         stage="8"
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        onStrategyClick={(choice) => onStrategyClick?.(8, choice)}
+      >
         <p>{t('stages.8.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.8.expertMemo.content.intro')}</p>
 
-        <p>{t('stages.8.expertMemo.content.strategy1')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(8, 1)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 1:</span> {t('stages.8.choices.1.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
-        <p>{t('stages.8.expertMemo.content.strategy2')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(8, 2)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 2:</span> {t('stages.8.choices.2.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
         <p>{t('stages.8.expertMemo.content.conclusion')}</p>
 
@@ -668,14 +800,30 @@ export const useGameStages = (audioRef: React.RefObject<HTMLAudioElement>): Game
         subject={t('stages.9.expertMemo.subject')}
         stage="9"
         isAlert={true}
-        audioRef={audioRef}>
+        audioRef={audioRef}
+        onStrategyClick={(choice) => onStrategyClick?.(9, choice)}
+      >
         <p>{t('stages.9.expertMemo.content.greeting')}</p>
 
         <p>{t('stages.9.expertMemo.content.intro')}</p>
 
-        <p>{t('stages.9.expertMemo.content.strategy1')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(9, 1)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 1:</span> {t('stages.9.choices.1.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
-        <p>{t('stages.9.expertMemo.content.strategy2')}</p>
+        <p 
+          className="cursor-pointer hover:text-yellow-400 transition-colors flex items-center gap-2 group border border-yellow-500/30 hover:border-yellow-500/50 rounded px-3 py-2 hover:bg-yellow-500/5" 
+          onClick={() => onStrategyClick?.(9, 2)}
+        >
+          <ChevronRightIcon className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 transition-transform" />
+          <span className="text-yellow-500">Option 2:</span> {t('stages.9.choices.2.text')}
+          <span className="text-gray-500 text-sm ml-2">({t('common.clickForDetails')})</span>
+        </p>
 
         <p>{t('stages.9.expertMemo.content.conclusion')}</p>
 

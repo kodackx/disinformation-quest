@@ -85,7 +85,7 @@
     "explanation": "While this may seem absurd, the techniques you'll encounter mirror real-world disinformation tactics. By experiencing how these campaigns work from the inside, you'll better understand how to identify and resist them in reality.",
     "howToPlay": {
       "title": "How to Play",
-      "description": "You will progress through a year-long simulation where you'll make strategic choices on how to invest your resources. Each month, you'll analyze expert briefings and choose between different strategies. Your decisions will affect your campaign's reach, supporter loyalty, and viral spread. Track your progress in the mission dossier and adapt your approach based on results.",
+      "description": "Progress through a year-long simulation, making strategic choices each month. Review expert briefings, track your progress, and adapt your approach based on results.",
       "features": {
         "monthlyBriefings": "Monthly Briefings",
         "trackProgress": "Track Progress",
@@ -802,5 +802,9 @@
     "showLess": "Show Less",
     "learnMore": "Real-World Examples",
     "readArticle": "Read Article"
+  },
+  "common": {
+    "loading": "Loading...",
+    "clickForDetails": "click for details"
   }
 }
