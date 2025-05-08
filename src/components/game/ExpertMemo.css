@@ -175,26 +175,6 @@
     display: none;
 }
 
-/* Custom scrollbar for WebKit browsers */
-.memo-body::-webkit-scrollbar {
-    width: 6px;
-}
-
-.memo-body::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
-}
-
-.memo-body::-webkit-scrollbar-thumb {
-    background-color: rgba(234, 179, 8, 0.3);
-    border-radius: 3px;
-}
-
-/* Show scrollbar on hover */
-.memo-body:hover::-webkit-scrollbar-thumb {
-    background-color: rgba(234, 179, 8, 0.5);
-}
-
 /* Remove the old gradient and padding styles */
 .memo-body p {
     margin-bottom: 1.5rem;
