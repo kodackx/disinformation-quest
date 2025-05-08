@@ -26,7 +26,7 @@ export const CollapsibleLearningSection: React.FC<CollapsibleLearningSectionProp
         onClick={() => setIsExpanded(!isExpanded)}
       >
         <BookOpenIcon className="w-5 h-5" />
-        <span className="mb-0">Learning from real world examples</span>
+        <span className="mb-0">{t('learning.header')}</span>
         <ChevronRightIcon className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
       </h3>
       
@@ -40,7 +40,7 @@ export const CollapsibleLearningSection: React.FC<CollapsibleLearningSectionProp
           <div className="mt-4 space-y-4">
             <div className="flex items-center gap-2">
               <AcademicCapIcon className="w-5 h-5 text-yellow-500" />
-              <h4 className="text-yellow-500">Further reading</h4>
+              <h4 className="text-yellow-500">{t('learning.learnMore')}</h4>
             </div>
             <div className="space-y-3">
               {learningData.references.map((ref, index) => (

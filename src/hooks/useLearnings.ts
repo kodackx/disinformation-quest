@@ -1,17 +1,8 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChoiceID } from '@/components/game/constants/metrics';
 import englishLearnings from '@/learnings/learnings_en.json';
-
-// Try to import Romanian learnings, but fall back to English if not found
-// Note: TypeScript will complain about this import, but we handle the error gracefully at runtime
-let romanianLearnings: any = null;
-try {
-  // @ts-ignore - We intentionally handle missing file at runtime
-  romanianLearnings = require('@/learnings/learnings_ro.json');
-} catch (error) {
-  console.warn('Romanian learnings file not found, falling back to English');
-}
+import romanianLearnings from '@/learnings/learnings_ro.json';
 
 // Define the learning material structure
 export interface Reference {
@@ -52,29 +43,51 @@ const choiceToLearningMap: Record<ChoiceID, string> = {
 export const useLearnings = (choiceId?: ChoiceID) => {
   const { i18n } = useTranslation();
   
+  // Log available translations on hook initialization
+  useEffect(() => {
+    console.log('Available translations:', {
+      english: englishLearnings ? `${englishLearnings.length} items` : 'not loaded',
+      romanian: romanianLearnings ? `${romanianLearnings.length} items` : 'not loaded',
+      currentLanguage: i18n.language
+    });
+  }, []);
+
+  // Log language changes
+  useEffect(() => {
+    console.log('Language changed to:', i18n.language);
+  }, [i18n.language]);
+  
   const learningData = useMemo(() => {
     if (!choiceId) return null;
     
     const learningTitle = choiceToLearningMap[choiceId];
     if (!learningTitle) return null;
     
+    console.log(`Looking for learning title: ${learningTitle} with language: ${i18n.language}`);
+    
     // Get the correct learning data based on language
     const getLearningForLanguage = () => {
       // If language is Romanian and we have Romanian learnings
-      if (i18n.language === 'ro' && romanianLearnings) {
+      if (i18n.language === 'ro') {
         // Check if there's a specific Romanian translation for this strategy
         const roLearning = romanianLearnings.find((learning: LearningMaterial) => 
           learning.title === learningTitle
         );
         
+        console.log(`Romanian learning found: ${!!roLearning}`, 
+          roLearning ? `First words: ${roLearning.didYouKnow.substring(0, 30)}...` : 'none');
+        
         // If we have a Romanian translation for this specific strategy, use it
-        if (roLearning && roLearning.title !== 'TRANSLATION_PLACEHOLDER') {
+        if (roLearning) {
           return roLearning;
         }
       }
       
       // Fallback to English for any other language or if Romanian translation isn't available
-      return englishLearnings.find(learning => learning.title === learningTitle) || null;
+      const enLearning = englishLearnings.find(learning => learning.title === learningTitle) || null;
+      console.log(`Falling back to English: ${!!enLearning}`);
+      
+      return enLearning;
     };
     
     return getLearningForLanguage();

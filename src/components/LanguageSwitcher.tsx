@@ -12,10 +12,13 @@ export const LanguageSwitcher = () => {
     if (savedLang && savedLang !== i18n.language) {
       i18n.changeLanguage(savedLang);
     }
+    // Log current language for debugging
+    console.log('Current language:', i18n.language);
   }, [i18n]);
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'ro' : 'en';
+    console.log('Switching language to:', newLang);
     i18n.changeLanguage(newLang);
     localStorage.setItem('i18nextLng', newLang);
   };

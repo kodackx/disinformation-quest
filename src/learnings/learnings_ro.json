@@ -24,15 +24,243 @@
     ]
   },
   {
-    "title": "TRANSLATION_PLACEHOLDER",
-    "didYouKnow": "Acest fișier necesită traducere completă. Momentan, doar primul exemplu ('Bot Networks') a fost tradus în română. Vă rugăm să traduceți restul intrărilor din fișierul englezesc (learnings_en.json) în acest fișier pentru a oferi suport complet în limba română.",
+    "title": "Meme Campaigns (ESTABLISH_MEMES)",
+    "didYouKnow": "În timpul alegerilor din SUA din 2016, fabrica de troli a Rusiei a inundat Instagram cu mii de meme-uri umoristice pentru a alimenta diviziunile sociale și a evita verificatorii de fapte.",
     "references": [
       {
-        "title": "Notă pentru traductor",
-        "summary": "Vă rugăm să traduceți toate intrările din fișierul englezesc (learnings_en.json) pentru a oferi suport complet în limba română.",
-        "source": "Echipa de dezvoltare",
-        "link": "#"
+        "title": "Cum au folosit trolii ruși războiul meme-urilor pentru a diviza America",
+        "summary": "Analiza comandată de Senat arată că Internet Research Agency a inundat fiecare platformă socială majoră cu meme-uri—în special pe Instagram—pentru a suprima votul și a-l susține pe Donald Trump în 2016.",
+        "source": "WIRED",
+        "link": "https://www.wired.com/story/russia-ira-propaganda-senate-report/"
+      },
+      {
+        "title": "Cum au devenit meme-urile super-răspânditori de dezinformare medicală",
+        "summary": "Cercetătorii au descoperit că meme-urile anti-vaccin din timpul COVID-19 au direcționat utilizatorii către achiziționarea de tratamente nedovedite precum ivermectina, demonstrând că imaginile satirice pot fi vectori profitabili pentru afirmații false despre sănătate.",
+        "source": "Gavi / The Conversation",
+        "link": "https://www.gavi.org/vaccineswork/how-memes-transformed-pics-cute-cats-health-disinformation-super-spreaders"
+      },
+      {
+        "title": "Meme-uri cu IA: Dezinformarea electorală manifestată prin satiră",
+        "summary": "Experții în politici avertizează că meme-urile politice generate de IA modelează deja campaniile din 2024, folosind umorul și mixuri pop-culturale pentru a trece atât de scepticismul utilizatorilor, cât și de moderarea platformelor.",
+        "source": "Brookings Institution",
+        "link": "https://www.brookings.edu/articles/ai-memes-election-disinformation-manifested-through-satire/"
+      }
+    ]
+  },
+  {
+    "title": "Alternative News Sites (LAUNCH_NEWS)",
+    "didYouKnow": "Site-urile finanțate politic care se prezintă drept publicații locale depășesc acum numărul ziarelor zilnice reale din Statele Unite.",
+    "references": [
+      {
+        "title": "Microsoft detectează site-uri de știri false legate de Iran care vizează influențarea alegerilor din SUA",
+        "summary": "Analiștii de amenințări au descoperit patru domenii false de știri din SUA—complete cu înclinare partizană și reporteri ficționali—create de actori iranieni pentru a influența votul din 2024.",
+        "source": "NPR",
+        "link": "https://www.npr.org/2024/08/09/1192725878/microsoft-iran-fake-news-sites-election-interference"
+      },
+      {
+        "title": "Agenția rusă a creat un fals site de știri de stânga cu editori ficționali, spune Facebook",
+        "summary": "Facebook a expus 'PeaceData', un site de stânga administrat de Rusia folosind profiluri de jurnaliști generate de IA și freelanceri neinformați pentru a răspândi narațiuni anti-occidentale către publicul progresist.",
+        "source": "The Guardian",
+        "link": "https://www.theguardian.com/technology/2020/sep/01/facebook-russia-internet-research-agency-fake-news"
+      },
+      {
+        "title": "Site-urile de știri partizane depășesc ziarele locale zilnice",
+        "summary": "NewsGuard a găsit 1.265 de site-uri 'locale' partizane bazate pe algoritmi—susținute de grupuri cu finanțare netransparentă—care acum depășesc ziarele reale, vizând alegătorii din statele-cheie cu articole părtinite ce par a fi reportaje locale.",
+        "source": "Axios",
+        "link": "https://www.axios.com/2024/06/11/partisan-news-websites-dark-money"
+      }
+    ]
+  },
+  {
+    "title": "Community Infiltration (INFILTRATE_COMMUNITIES)",
+    "didYouKnow": "Trolii ruși au organizat odată evenimente rivale pe Facebook în Houston—anti-musulmane și pro-musulmane—păcălind texani reali să se confrunte personal.",
+    "references": [
+      {
+        "title": "Campaniile rusești de dezinformare pe Twitter se întind pe întreg spectrul politic american",
+        "summary": "Cercetătorii de la Harvard arată cum personajele IRA s-au integrat în comunitățile conservatoare, progresiste și activiști afro-americani, mimând identitățile de grup pentru a semăna propagandă personalizată.",
+        "source": "HKS Misinformation Review",
+        "link": "https://misinforeview.hks.harvard.edu/article/russian-disinformation-campaigns-on-twitter/"
+      },
+      {
+        "title": "Încă o dată: Piciorul QAnon în lumea wellness-ului",
+        "summary": "NPR documentează cum narațiunile conspirative QAnon au infiltrat cercurile de yoga și sănătate holistică prin influenceri de încredere, convertind adepți ai wellness-ului apolitici în credincioși în teorii ale conspirației.",
+        "source": "NPR",
+        "link": "https://www.npr.org/2023/01/07/1147721024/qanon-toehold-wellness-yoga"
+      },
+      {
+        "title": "Cum a folosit Rusia Facebook pentru a organiza două grupuri de protestatari",
+        "summary": "Mărturia din Senat a dezvăluit că paginile conduse de Kremlin 'Heart of Texas' și 'United Muslims of America' au orchestrat proteste rivale în Houston în 2016, fără a dezvălui niciodată păpușarul comun.",
+        "source": "NPR",
+        "link": "https://www.npr.org/2017/11/01/561427876/how-russia-used-facebook-to-organize-two-sets-of-protesters"
+      }
+    ]
+  },
+  {
+    "title": "Influencer Collaboration (INFLUENCER_COLLABORATION)",
+    "didYouKnow": "YouTuberilor francezi și germani li s-au oferit în secret bani în 2021 pentru a pretinde că vaccinul Pfizer a ucis de trei ori mai mulți oameni decât a salvat.",
+    "references": [
+      {
+        "title": "Influencerii spun că o agenție PR legată de Rusia le-a cerut să denigreze vaccinul Pfizer",
+        "summary": "O firmă din Londra legată de Rusia a încercat să plătească influenceri de lifestyle pentru a posta falsități anti-Pfizer scrise dinainte, ascunzând orice dezvăluire a sponsorizării.",
+        "source": "The Guardian",
+        "link": "https://www.theguardian.com/media/2021/may/25/influencers-say-russia-linked-pr-agency-asked-them-to-disparage-pfizer-vaccine"
+      },
+      {
+        "title": "Cum a angajat Rusia în secret influenceri din SUA pentru a crea videoclipuri",
+        "summary": "Acuzația DOJ din 2024 arată că Tenet Media a cheltuit 10 milioane de dolari recrutând TikTokeri și YouTuberi americani pentru a produce mii de videoclipuri prietenoase cu Kremlinul, văzute de milioane.",
+        "source": "NPR",
+        "link": "https://www.npr.org/2024/09/05/1197890163/russia-election-influencers-youtube-tenet-media-doj"
+      },
+      {
+        "title": "Cum profită influencerii de pe Instagram de dezinformarea anti-vaccin",
+        "summary": "Cercetătorii de la Universitatea Washington profilează trei influenceri de wellness care amestecă postări de modă cu teorii conspiraționiste anti-vaccin—apoi monetizează aceste credințe prin mărfuri și cursuri plătite.",
+        "source": "University of Washington News",
+        "link": "https://www.washington.edu/news/2024/03/11/instagram-influencers-profit-anti-vaccine-misinformation-disinformation-wellness/"
+      }
+    ]
+  },
+  {
+    "title": "Grassroots Movements (GRASSROOTS_MOVEMENT)",
+    "didYouKnow": "Mitingurile stradale 'Stop Zelensky' din toată Europa au fost organizate de operativi pro-Kremlin—niciun ucrainean nu a participat.",
+    "references": [
+      {
+        "title": "Dezvăluire: Protestatarii 'Stop Zelensky' care răspândesc dezinformarea rusă în Europa",
+        "summary": "Investigatorii au urmărit protestele anti-Zelensky aparent organice până la o rețea de susținători ai Kremlinului care au tipărit afișe și au organizat mitinguri pentru fotografie, pozând drept activiști ucraineni pentru pace.",
+        "source": "The Kyiv Independent",
+        "link": "https://kyivindependent.com/who-is-behind-pro-russian-stop-zelensky-demonstrations-in-europe/"
+      },
+      {
+        "title": "Protestele fermierilor din Europa au fost teren fertil pentru propaganda rusă",
+        "summary": "POLITICO detaliază cum nemulțumirile reale ale fermierilor au fost deturnate online de conturi pro-Rusia, inserând videoclipuri și sloganuri false pentru a direcționa furia către încetarea sprijinului UE pentru Ucraina.",
+        "source": "POLITICO",
+        "link": "https://www.politico.eu/article/europe-farmer-protest-russia-war-propaganda/"
+      },
+      {
+        "title": "Cum fabrică guvernul chinez postări pe social media pentru distragere strategică",
+        "summary": "Un studiu Harvard estimează că 'Partidul celor 50 de cenți' al Chinei postează anual 488 de milioane de comentarii pro-guvernamentale pentru a crea iluzia unui larg sprijin de la bază și a îneca criticile.",
+        "source": "Harvard University",
+        "link": "https://dash.harvard.edu/handle/1/33759251"
+      }
+    ]
+  },
+  {
+    "title": "Reactive Strategies (STAY_COURSE / COUNTER_CAMPAIGN)",
+    "didYouKnow": "După doborârea zborului MH17, canalele pro-Kremlin au promovat zeci de teorii contradictorii pentru a copleși adevărul—o tactică numită 'furtun de falsuri'.",
+    "references": [
+      {
+        "title": "MH17: zece ani de minciuni și negare rusești",
+        "summary": "EU vs Disinfo cataloghează un deceniu de narațiuni contradictorii ale Kremlinului—de la învinovățirea avioanelor ucrainene până la afirmarea că avionul era plin de cadavre—menite să confunde mai degrabă decât să convingă.",
+        "source": "EU vs Disinfo",
+        "link": "https://euvsdisinfo.eu/mh17-ten-years-of-russian-lying-and-denying/"
+      },
+      {
+        "title": "China a folosit Twitter pentru a perturba protestele din Hong Kong, dar eforturile au început cu ani înainte",
+        "summary": "Twitter a suspendat peste 200.000 de conturi legate de China care prezentau protestatarii din Hong Kong 2019 ca instrumente violente ale puterilor străine, parte din blitzul rapid de contra-mesaje al Beijingului.",
+        "source": "NPR",
+        "link": "https://www.npr.org/2019/09/17/758146019/china-used-twitter-to-disrupt-hong-kong-protests-but-efforts-began-years-earlier"
+      },
+      {
+        "title": "China ripostează lui Biden cu teorii ale conspirației despre laboratorul din Maryland",
+        "summary": "Când SUA a investigat originile COVID, diplomații chinezi au inundat social media cu o conspirație despre arme biologice de la Fort Detrick—inversând vinovăția și tulburând discursul public.",
+        "source": "Foreign Policy",
+        "link": "https://foreignpolicy.com/2021/07/09/china-misinformation-fort-detrick-conspiracy-theory-covid/"
+      }
+    ]
+  },
+  {
+    "title": "Expert Manipulation (FAKE_EXPERT / ACADEMIC_OUTREACH)",
+    "didYouKnow": "China a inventat un biolog elvețian inexistent numit 'Wilson Edwards'—complet cu fotografie—pentru a-l cita în media de stat despre investigațiile COVID.",
+    "references": [
+      {
+        "title": "Facebook, Instagram elimină rețeaua chineză pentru afirmații false despre COVID ale 'biologului elvețian'",
+        "summary": "Meta a eliminat peste 500 de conturi care promovau citate de la un microbiolog fictiv 'Wilson Edwards' care acuza SUA de politizarea originilor virusului; Elveția a confirmat că acesta nu a existat niciodată.",
+        "source": "Reuters",
+        "link": "https://www.reuters.com/technology/facebook-instagram-remove-chinese-network-over-fake-swiss-biologist-covid-claims-2021-12-01/"
+      },
+      {
+        "title": "Cum a devenit fosta prezentatoare de la 'The View', Jenny McCarthy, fața mișcării anti-vaccinare",
+        "summary": "Personalitatea TV Jenny McCarthy s-a poziționat ca 'expert' în autism, răspândind legătura demontată vaccin-autism și contribuind la revenirea rujeolei în SUA în 2019.",
+        "source": "Business Insider",
+        "link": "https://www.businessinsider.com/jenny-mccarthy-became-the-face-of-the-anti-vaxx-movement-2019-4"
+      },
+      {
+        "title": "Indian Chronicles – analiză aprofundată",
+        "summary": "EU DisinfoLab a expus o rețea de influență de 15 ani care a reînviat ONG-uri și think-tank-uri defuncte, chiar furând identitățile persoanelor decedate, pentru a face lobby la ONU și UE cu mărturii 'expert' fabricate.",
+        "source": "EU DisinfoLab / Coda Story",
+        "link": "https://www.codastory.com/disinformation/disinformation-research/"
+      }
+    ]
+  },
+  {
+    "title": "Research Manipulation (RESEARCH_PAPER)",
+    "didYouKnow": "Studiul lui Andrew Wakefield din 1998 care lega fals vaccinul MMR de autism a fost declarat fraudă, dar încă alimentează mituri anti-vaccin decenii mai târziu.",
+    "references": [
+      {
+        "title": "Influențarea științei: Ghost Writing",
+        "summary": "Documentele arată că firmele de tutun au plătat scriitori pentru a scrie lucrări științifice care minimizau riscurile fumatului, pe care apoi academicieni independenți le-au prezentat pentru a induce în eroare reglementatorii și publicul.",
+        "source": "TobaccoTactics (U. of Bath)",
+        "link": "https://www.tobaccotactics.org/article/influencing-science-ghost-writing/"
+      },
+      {
+        "title": "Studiul care lega vaccinul de autism a fost 'fraudulos'",
+        "summary": "O investigație BMJ a dovedit că Wakefield a manipulat date despre 12 copii, dar lucrarea sa retrasă rămâne o piatră de temelie a mișcării moderne anti-vaccin.",
+        "source": "PBS NewsHour / BMJ",
+        "link": "https://www.pbs.org/newshour/health/journal-study-that-linked-vaccines-and-autism-was-fraudulent"
+      },
+      {
+        "title": "Covid-19: Lancet retrage lucrarea care a oprit testele cu hidroxiclorochină",
+        "summary": "The Lancet a trebuit să retragă un studiu masiv despre COVID după ce date neverificabile de la o mică firmă privată au derailat testele globale de medicamente și discursul public.",
+        "source": "The Guardian",
+        "link": "https://www.theguardian.com/world/2020/jun/04/covid-19-lancet-retracts-paper-that-halted-hydroxychloroquine-trials"
+      }
+    ]
+  },
+  {
+    "title": "Conspiracy Content (CONSPIRACY_DOCUMENTARY)",
+    "didYouKnow": "Pseudo-documentarul de 26 de minute 'Plandemic' a atins milioane de vizualizări în câteva zile, dovedind că filmările profesionale pot propulsa teoriile conspirative COVID în mainstream.",
+    "references": [
+      {
+        "title": "'Plandemic': Privim îndeaproape afirmațiile din videoclipul viral de conspirație",
+        "summary": "Filmul viral a prezentat un om de știință discreditat care susținea că măștile cauzează boli și vaccinurile implantează microcipuri; platformele majore s-au chinuit să elimine reîncărcările suficient de repede.",
+        "source": "NPR",
+        "link": "https://www.npr.org/2020/05/08/852451652/seen-plandemic-we-take-a-close-look-at-the-viral-conspiracy-video-s-claims"
+      },
+      {
+        "title": "Loose Change (seria de documentare despre conspirația 9/11)",
+        "summary": "Acest film cu buget redus din 2005 care susținea complicitatea SUA în 9/11 a acumulat 4 milioane de vizualizări în patru luni și a lansat mișcarea modernă '9/11 Truth'.",
+        "source": "Vanity Fair / Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Loose_Change"
+      },
+      {
+        "title": "'Died Suddenly' repetă afirmații demontate despre vaccinul COVID-19, promovează teoria conspirației",
+        "summary": "Lansat în 2022, pseudo-documentarul leagă decese nerelaționate pentru a sugera un complot secret de depopulare prin vaccinuri—experții medicali au respins fiecare afirmație.",
+        "source": "Immunize Colorado",
+        "link": "https://www.immunizecolorado.org/died-suddenly-repeats-debunked-covid-19-vaccine-claims-promotes-conspiracy-theory/"
+      }
+    ]
+  },
+  {
+    "title": "Podcast Platforms (PODCAST_PLATFORMS)",
+    "didYouKnow": "Podcastul lui Joe Rogan ajunge la aproximativ 11 milioane de ascultători pe episod—mai mult decât CNN în prime-time—ilustrând puterea sub-moderată a audio-ului de a răspândi dezinformare.",
+    "references": [
+      {
+        "title": "Spotify elimină muzica lui Neil Young în disputa privind afirmațiile false despre Covid ale lui Joe Rogan",
+        "summary": "Legenda rock Neil Young a părăsit Spotify după ce Rogan a găzduit invitați care promovau mituri despre vaccin, evidențiind audiența uriașă a podcasturilor și verificarea laxă a faptelor.",
+        "source": "The Guardian",
+        "link": "https://www.theguardian.com/technology/2022/jan/26/spotify-neil-young-joe-rogan-covid-misinformation"
+      },
+      {
+        "title": "Principalul podcast american care promova teorii ale conspirației a fost dat jos după ce stația radio a primit o amendă de 15 milioane USD",
+        "summary": "Podcastul influent Infowars a fost închis după ce Alex Jones a fost găsit responsabil pentru promovarea teroriei că atacul de la Sandy Hook nu a avut loc, arătând cum pot crește în mainstream teorii periculoase.",
+        "source": "BBC News",
+        "link": "https://www.bbc.com/news/world-us-canada-63772044"
+      },
+      {
+        "title": "Cum să spot dezinformarea în podcasturi",
+        "summary": "Un studiu din Journalism Practice arată că doar 11% din afirmațiile false din podcasturi sunt etichetate sau corectate, deoarece moderarea audio este mai dificilă tehnic și mai puțin prioritară pentru platforme.",
+        "source": "The Conversation",
+        "link": "https://theconversation.com/how-to-spot-disinformation-in-podcasts-and-why-its-so-difficult-202881"
       }
     ]
   }
-] 
+]

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ExternalLinkIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LearningMaterial } from '@/hooks/useLearnings';
@@ -11,8 +11,21 @@ interface LearningSectionProps {
 }
 
 export const LearningSection: React.FC<LearningSectionProps> = ({ learningData }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [expanded, setExpanded] = useState(false);
+  
+  useEffect(() => {
+    if (learningData) {
+      console.log('Learning data loaded:', {
+        title: learningData.title,
+        language: i18n.language,
+        didYouKnow: learningData.didYouKnow?.substring(0, 30) + '...',
+        referencesCount: learningData.references?.length
+      });
+    } else {
+      console.log('No learning data loaded');
+    }
+  }, [learningData, i18n.language]);
   
   if (!learningData) return null;
   
