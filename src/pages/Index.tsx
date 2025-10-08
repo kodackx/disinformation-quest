@@ -318,93 +318,116 @@ const Index = () => {
       return (
         <div className="relative min-h-screen overflow-hidden">
           <GameBackground shouldStartAudio={shouldStartAudio} />
-          <div className="relative min-h-screen bg-transparent flex items-center justify-center p-4">
+          <div className="relative min-h-screen bg-transparent flex items-center justify-center px-4 py-8">
             {showIntroDialog && <IntroDialog onStartAudio={() => setShouldStartAudio(true)} />}
-            <Card className="w-full md:max-w-5xl bg-black/50 text-white border-gray-700 transition-all duration-1000 animate-fade-in backdrop-blur-sm">
-              <CardHeader className="text-center space-y-4 p-4 md:p-6">
-                <div className="flex justify-between items-center px-4">
-                  <Badge variant="outline" className="text-yellow-500 border-yellow-500">
-                    <Lock className="w-3 h-3 mr-1" />
-                    {t('mission.topSecret')}
-                  </Badge>
-                  <MuteButton />
-                  <Badge variant="outline" className="text-red-500 border-red-500">
-                    <AlertCircle className="w-3 h-3 mr-1" />
-                    {t('mission.classified')}
-                  </Badge>
-                </div>
-                
-                <div className="relative">
-                  <CardTitle className="text-2xl md:text-3xl mb-2 relative z-10">
-                    {t('mission.title', { operationName })}
-                  </CardTitle>
-                  <div className="absolute -rotate-12 opacity-30 top-0 left-1/2 -translate-x-1/2 border-8 border-red-500 rounded w-full py-8 z-0">
-                    <span className="text-red-500 text-4xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      {t('mission.classified')}
-                    </span>
-                  </div>
-                </div>
-                
-                <CardDescription className="text-yellow-500 font-mono text-sm flex items-center justify-center gap-2">
-                  <Shield className="w-4 h-4" />
-                  {t('mission.clearanceLevel')}
-                  <Shield className="w-4 h-4" />
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="space-y-6">
-                <div className="pb-4">
-                  <div className="flex flex-col space-y-4">
-                    <div className="flex justify-between items-center text-sm border-b border-gray-700 pb-3">
-                      <p className="font-mono text-yellow-500 font-semibold tracking-wider">{t('mission.directorate')}</p>
-                    </div>
-                    <div className="text-gray-300 font-mono text-sm space-y-1">
-                      <p>{t('mission.to', { agentNumber })}</p>
-                      <p>{t('mission.subject', { operationName })}</p>
-                      <p className="text-xs text-gray-500">Date: {new Date().toLocaleDateString('en-GB')}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-6 text-gray-300 font-mono leading-relaxed space-y-4">
-                    <div className="flex items-center gap-2 mb-4">
-                      <h2 className="text-yellow-500 font-mono text-sm">Briefing Audio</h2>
-                      <BriefingAudio 
-                        stage="INTRO"
-                        audioRef={audioRef} 
-                        className="bg-transparent hover:bg-black/40"
-                      />
-                    </div>
-                    <div className="space-y-4">
-                      <p>{t('mission.briefing.part1')}</p>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="w-full max-w-6xl flex items-center"
+            >
+              <section className="relative w-full overflow-hidden rounded-3xl border border-yellow-500/20 bg-black/70 backdrop-blur-xl shadow-[0_40px_120px_rgba(0,0,0,0.45)]">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(234,179,8,0.14),transparent_65%)]" />
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-sky-500/10 opacity-60" />
+                <div className="relative grid gap-6 p-6 md:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.4em] text-gray-300/80">
+                      <Badge variant="outline" className="border-yellow-500/40 text-yellow-400/90 bg-yellow-500/5">
+                        <Lock className="w-3 h-3 mr-2" />
+                        {t('mission.topSecret')}
+                      </Badge>
+                      <div className="flex-1" />
+                      <Badge variant="outline" className="border-red-500/50 text-red-400/90 bg-red-500/10">
+                        <AlertCircle className="w-3 h-3 mr-2" />
+                        {t('mission.classified')}
+                      </Badge>
                     </div>
 
                     <div className="space-y-4">
-                      <p>{t('mission.briefing.part2')}</p>
+                      <div className="space-y-1.5">
+                        <p className="font-mono text-xs uppercase tracking-[0.4em] text-yellow-500/80">
+                          {t('mission.directorate')}
+                        </p>
+                        <div className="flex flex-col gap-1.5 text-xs font-mono text-gray-300/90">
+                          <span>{t('mission.to', { agentNumber })}</span>
+                          <span>{t('mission.subject', { operationName })}</span>
+                          <span className="text-gray-500">
+                            {new Date().toLocaleDateString('en-GB')}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3">
+                        <div className="space-y-2">
+                          <span className="font-mono text-sm uppercase tracking-[0.5em] text-white/60">
+                            {t('mission.clearanceLevel')}
+                          </span>
+                          <h1 className="text-2xl md:text-4xl lg:text-5xl font-semibold tracking-[0.28em] text-white uppercase leading-tight drop-shadow-[0_10px_35px_rgba(0,0,0,0.65)]">
+                            {t('mission.title', { operationName })}
+                          </h1>
+                        </div>
+                        <p className="text-yellow-400/80 font-mono text-sm uppercase tracking-[0.35em]">
+                          {t('mission.quote')}
+                        </p>
+                      </div>
                     </div>
 
-                    <p className="pt-2 text-yellow-500 font-bold">{t('mission.briefing.warning')}</p>
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                      <Button
+                        onClick={handleStartGame}
+                        className="group relative overflow-hidden bg-yellow-500 text-black px-12 py-6 text-base md:text-lg font-mono tracking-[0.18em] uppercase shadow-[0_20px_60px_rgba(234,179,8,0.35)] transition-transform duration-300 hover:-translate-y-1 whitespace-nowrap"
+                      >
+                        <span className="relative z-10 flex items-center gap-3">
+                          <ChevronRightIcon className="h-5 w-5" />
+                          {t('buttons.acceptMission')}
+                        </span>
+                        <span className="absolute inset-0 bg-gradient-to-r from-black/0 via-black/10 to-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      </Button>
+                      <div className="flex justify-end sm:justify-start">
+                        <LanguageSwitcher />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 shadow-[0_30px_90px_rgba(0,0,0,0.45)]">
+                    <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-black/70 opacity-80" />
+                    <div className="relative p-6 md:p-7 space-y-4 font-mono text-sm leading-relaxed text-gray-200">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <h2 className="text-yellow-400/80 uppercase tracking-[0.4em] text-xs">
+                            {t('mission.briefingAudioLabel', 'Briefing Audio')}
+                          </h2>
+                          <BriefingAudio
+                            stage="INTRO"
+                            audioRef={audioRef}
+                            className="bg-black/30 border-yellow-500/40 text-yellow-500 hover:bg-yellow-500/10"
+                          />
+                          <MuteButton />
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-400/80 text-xs uppercase tracking-[0.4em]">
+                          <Shield className="w-4 h-4 text-yellow-500/80" />
+                          {t('mission.clearanceLevel')}
+                        </div>
+                      </div>
+
+                      <div className="space-y-3 text-xs md:text-sm leading-relaxed">
+                        <p>{t('mission.briefing.part1')}</p>
+                        <p>{t('mission.briefing.part2')}</p>
+                      </div>
+
+                      <div className="pt-2 border-t border-white/10">
+                        <p className="text-yellow-400 text-xs md:text-sm">
+                          {t('mission.briefing.warning')}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                <div className="border-t border-gray-700 pt-4">
-                  <p className="text-yellow-500 italic font-mono text-center mb-6 text-sm tracking-wider">
-                    {t('mission.quote')}
-                  </p>
-
-                  <div className="flex flex-col items-center gap-2">
-                    <Button 
-                      onClick={handleStartGame}
-                      className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-6 text-lg transition-all duration-500 font-mono relative group"
-                    >
-                      <span className="group-hover:animate-pulse">{t('buttons.acceptMission')}</span>
-                    </Button>
-                    <p className="text-red-500 text-sm font-mono">
-                      {t('warnings.selfDestruct')}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              </section>
+            </motion.div>
+            <div className="absolute inset-x-0 bottom-4">
+              <Footer />
+            </div>
           </div>
         </div>
       );

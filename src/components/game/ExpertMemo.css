@@ -34,10 +34,10 @@
         );
     background-size: 20px 20px, 20px 20px, 4px 4px;
     padding: 1rem;
-    border: 1px solid rgb(234 179 8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     font-family: 'IBM Plex Mono', monospace;
     box-shadow: 
-        0 0 20px rgba(234, 179, 8, 0.15),
+        0 0 15px rgba(17, 24, 39, 0.4),
         inset 0 0 80px rgba(0, 0, 0, 0.7);
     width: 100%;
     max-width: 1200px;
@@ -52,6 +52,22 @@
     letter-spacing: 0.02em;
 }
 
+.expert-memo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 6px;
+    background: linear-gradient(
+        180deg,
+        rgba(234, 179, 8, 0.85),
+        rgba(234, 179, 8, 0.45)
+    );
+    border-radius: 2px 0 0 2px;
+    pointer-events: none;
+}
+
 @media (min-width: 640px) {
     .expert-memo {
         padding: 2rem;
@@ -63,6 +79,14 @@
     box-shadow: 
         0 0 20px rgba(239, 68, 68, 0.2),
         inset 0 0 80px rgba(0, 0, 0, 0.7);
+}
+
+.expert-memo.alert::before {
+    background: linear-gradient(
+        180deg,
+        rgba(239, 68, 68, 0.9),
+        rgba(239, 68, 68, 0.5)
+    );
 }
 
 .memo-header {

@@ -1,7 +1,13 @@
 export const VERSION = {
-    current: '0.6.1',
-    releaseDate: '2025-05-08',
+    current: '0.6.2',
+    releaseDate: '2025-05-09',
     changelog: {
+      '0.6.2': [
+        'Redesigned mission intro screen with streamlined layout and spacing',
+        'Softened expert memo visuals by replacing the full yellow border with an accent bar',
+        'Refined accept mission CTA arrangement with improved typography and language switcher placement',
+        'Updated briefing text styling and metadata formatting for better readability'
+      ],
       '0.6.1': [
         'Added Romanian translation for real world examples content',
         'Improved real world examples UI with i18n support',
